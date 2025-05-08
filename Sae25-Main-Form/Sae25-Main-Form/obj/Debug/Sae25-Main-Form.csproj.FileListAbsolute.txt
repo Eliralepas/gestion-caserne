@@ -1,0 +1,10 @@
+C:\Users\miaou\Desktop\SAE25\Sae25-Main-Form\Sae25-Main-Form\bin\Debug\Sae25-Main-Form.exe.config
+C:\Users\miaou\Desktop\SAE25\Sae25-Main-Form\Sae25-Main-Form\bin\Debug\Sae25-Main-Form.exe
+C:\Users\miaou\Desktop\SAE25\Sae25-Main-Form\Sae25-Main-Form\bin\Debug\Sae25-Main-Form.pdb
+C:\Users\miaou\Desktop\SAE25\Sae25-Main-Form\Sae25-Main-Form\obj\Debug\Sae25-Main-Form.csproj.AssemblyReference.cache
+C:\Users\miaou\Desktop\SAE25\Sae25-Main-Form\Sae25-Main-Form\obj\Debug\Sae25_Main_Form.Form1.resources
+C:\Users\miaou\Desktop\SAE25\Sae25-Main-Form\Sae25-Main-Form\obj\Debug\Sae25_Main_Form.Properties.Resources.resources
+C:\Users\miaou\Desktop\SAE25\Sae25-Main-Form\Sae25-Main-Form\obj\Debug\Sae25-Main-Form.csproj.GenerateResource.cache
+C:\Users\miaou\Desktop\SAE25\Sae25-Main-Form\Sae25-Main-Form\obj\Debug\Sae25-Main-Form.csproj.CoreCompileInputs.cache
+C:\Users\miaou\Desktop\SAE25\Sae25-Main-Form\Sae25-Main-Form\obj\Debug\Sae25-Main-Form.exe
+C:\Users\miaou\Desktop\SAE25\Sae25-Main-Form\Sae25-Main-Form\obj\Debug\Sae25-Main-Form.pdb
