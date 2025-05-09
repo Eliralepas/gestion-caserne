@@ -10,11 +10,12 @@ using System.Windows.Forms;
 
 namespace UserControlMission
 {
-    public partial class UserControl1: UserControl
+    public partial class ucMission: UserControl
     {
-        public UserControl1()
+        public ucMission()
         {
             InitializeComponent();
         }
+
     }
 }
