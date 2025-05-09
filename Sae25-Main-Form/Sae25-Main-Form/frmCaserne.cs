@@ -1,4 +1,5 @@
-﻿using System;
+﻿using NavigationBarUserControl;
+using System;
 using System.Collections.Generic;
 using System.ComponentModel;
 using System.Data;
@@ -20,10 +21,15 @@ namespace Sae25_Main_Form
         private void frmCaserne_Load(object sender, EventArgs e)
         {
             
-            foreach (Button btn in grpNavigation.Controls.OfType<Button>())
+            foreach (button btn in grpNavigation.Controls.OfType<button>())
             {
-                btn.Click = MenuClickButon();
+                btn.ButtonClicked += NavigationButtonClick;
             }
+        }
+
+        private void NavigationButtonClick(object sender, EventArgs e)
+        {
+            MessageBox.Show($"Le bounton {(button)sender.UcControled} a étais cliquer");
         }
 
 
