@@ -31,14 +31,16 @@
             System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(frmCaserne));
             this.picBoxCaserne = new System.Windows.Forms.PictureBox();
             this.grpNavigation = new System.Windows.Forms.GroupBox();
-            this.grpVolet = new System.Windows.Forms.GroupBox();
             this.btnNum5 = new NavigationBarUserControl.button();
             this.btnNum4 = new NavigationBarUserControl.button();
             this.btnNum3 = new NavigationBarUserControl.button();
             this.btnNum2 = new NavigationBarUserControl.button();
             this.btnNum1 = new NavigationBarUserControl.button();
+            this.grpVolet = new System.Windows.Forms.GroupBox();
+            this.Tablodebord = new UC_TableauDeBord.UC_TableauDeBord();
             ((System.ComponentModel.ISupportInitialize)(this.picBoxCaserne)).BeginInit();
             this.grpNavigation.SuspendLayout();
+            this.grpVolet.SuspendLayout();
             this.SuspendLayout();
             // 
             // picBoxCaserne
@@ -68,14 +70,6 @@
             this.grpNavigation.TabIndex = 1;
             this.grpNavigation.TabStop = false;
             // 
-            // grpVolet
-            // 
-            this.grpVolet.Location = new System.Drawing.Point(324, 12);
-            this.grpVolet.Name = "grpVolet";
-            this.grpVolet.Size = new System.Drawing.Size(846, 629);
-            this.grpVolet.TabIndex = 2;
-            this.grpVolet.TabStop = false;
-            // 
             // btnNum5
             // 
             this.btnNum5.Font = new System.Drawing.Font("Arial Narrow", 13.8F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
@@ -84,6 +78,7 @@
             this.btnNum5.Name = "btnNum5";
             this.btnNum5.Size = new System.Drawing.Size(272, 120);
             this.btnNum5.TabIndex = 4;
+            this.btnNum5.UcControled = null;
             // 
             // btnNum4
             // 
@@ -93,6 +88,7 @@
             this.btnNum4.Name = "btnNum4";
             this.btnNum4.Size = new System.Drawing.Size(272, 120);
             this.btnNum4.TabIndex = 3;
+            this.btnNum4.UcControled = null;
             // 
             // btnNum3
             // 
@@ -102,6 +98,7 @@
             this.btnNum3.Name = "btnNum3";
             this.btnNum3.Size = new System.Drawing.Size(272, 120);
             this.btnNum3.TabIndex = 2;
+            this.btnNum3.UcControled = null;
             // 
             // btnNum2
             // 
@@ -111,6 +108,7 @@
             this.btnNum2.Name = "btnNum2";
             this.btnNum2.Size = new System.Drawing.Size(271, 120);
             this.btnNum2.TabIndex = 1;
+            this.btnNum2.UcControled = null;
             // 
             // btnNum1
             // 
@@ -120,6 +118,25 @@
             this.btnNum1.Name = "btnNum1";
             this.btnNum1.Size = new System.Drawing.Size(272, 120);
             this.btnNum1.TabIndex = 0;
+            this.btnNum1.UcControled = null;
+            // 
+            // grpVolet
+            // 
+            this.grpVolet.Controls.Add(this.Tablodebord);
+            this.grpVolet.Location = new System.Drawing.Point(324, 12);
+            this.grpVolet.Name = "grpVolet";
+            this.grpVolet.Size = new System.Drawing.Size(846, 629);
+            this.grpVolet.TabIndex = 2;
+            this.grpVolet.TabStop = false;
+            // 
+            // Tablodebord
+            // 
+            this.Tablodebord.Font = new System.Drawing.Font("Arial", 14F);
+            this.Tablodebord.Location = new System.Drawing.Point(33, 35);
+            this.Tablodebord.Margin = new System.Windows.Forms.Padding(5);
+            this.Tablodebord.Name = "Tablodebord";
+            this.Tablodebord.Size = new System.Drawing.Size(431, 415);
+            this.Tablodebord.TabIndex = 0;
             // 
             // frmCaserne
             // 
@@ -136,6 +153,7 @@
             this.Load += new System.EventHandler(this.frmCaserne_Load);
             ((System.ComponentModel.ISupportInitialize)(this.picBoxCaserne)).EndInit();
             this.grpNavigation.ResumeLayout(false);
+            this.grpVolet.ResumeLayout(false);
             this.ResumeLayout(false);
 
         }
@@ -150,6 +168,7 @@
         private NavigationBarUserControl.button btnNum5;
         private NavigationBarUserControl.button btnNum4;
         private NavigationBarUserControl.button btnNum3;
+        private UC_TableauDeBord.UC_TableauDeBord Tablodebord;
     }
 }
 

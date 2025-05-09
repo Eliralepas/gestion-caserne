@@ -66,5 +66,10 @@ namespace NavigationBarUserControl
         {
             OnAnyClick(sender, e);
         }
+
+        public Control getBindedControl()
+        {
+            return UcControled;
+        }
     }
 }

@@ -20,16 +20,19 @@ namespace Sae25_Main_Form
 
         private void frmCaserne_Load(object sender, EventArgs e)
         {
+            btnNum1.UcControled = Tablodebord;
             
             foreach (button btn in grpNavigation.Controls.OfType<button>())
             {
                 btn.ButtonClicked += NavigationButtonClick;
+                btn.getBindedControl();
             }
         }
 
         private void NavigationButtonClick(object sender, EventArgs e)
         {
-            MessageBox.Show($"Le bounton {(button)sender.UcControled} a étais cliquer");
+            MessageBox.Show($"Le bounton {((button)sender).getBindedControl()} a étais cliquer");
+            ((button)sender).getBindedControl().Visible = false;
         }
 
 
