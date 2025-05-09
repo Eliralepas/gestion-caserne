@@ -59,10 +59,10 @@
             this.groupBox1.Controls.Add(this.txtMotif);
             this.groupBox1.ForeColor = System.Drawing.Color.White;
             this.groupBox1.Location = new System.Drawing.Point(22, 37);
-            this.groupBox1.Margin = new System.Windows.Forms.Padding(3, 4, 3, 4);
+            this.groupBox1.Margin = new System.Windows.Forms.Padding(2, 4, 2, 4);
             this.groupBox1.Name = "groupBox1";
-            this.groupBox1.Padding = new System.Windows.Forms.Padding(3, 4, 3, 4);
-            this.groupBox1.Size = new System.Drawing.Size(462, 230);
+            this.groupBox1.Padding = new System.Windows.Forms.Padding(2, 4, 2, 4);
+            this.groupBox1.Size = new System.Drawing.Size(424, 230);
             this.groupBox1.TabIndex = 0;
             this.groupBox1.TabStop = false;
             this.groupBox1.Text = "Motif";
@@ -70,10 +70,10 @@
             // txtMotif
             // 
             this.txtMotif.Location = new System.Drawing.Point(22, 45);
-            this.txtMotif.Margin = new System.Windows.Forms.Padding(3, 4, 3, 4);
+            this.txtMotif.Margin = new System.Windows.Forms.Padding(2, 4, 2, 4);
             this.txtMotif.Multiline = true;
             this.txtMotif.Name = "txtMotif";
-            this.txtMotif.Size = new System.Drawing.Size(415, 158);
+            this.txtMotif.Size = new System.Drawing.Size(363, 159);
             this.txtMotif.TabIndex = 4;
             // 
             // lblNumMission
@@ -81,7 +81,8 @@
             this.lblNumMission.AutoSize = true;
             this.lblNumMission.BackColor = System.Drawing.Color.DarkRed;
             this.lblNumMission.ForeColor = System.Drawing.Color.White;
-            this.lblNumMission.Location = new System.Drawing.Point(471, 11);
+            this.lblNumMission.Location = new System.Drawing.Point(471, 12);
+            this.lblNumMission.Margin = new System.Windows.Forms.Padding(2, 0, 2, 0);
             this.lblNumMission.Name = "lblNumMission";
             this.lblNumMission.Size = new System.Drawing.Size(100, 23);
             this.lblNumMission.TabIndex = 1;
@@ -91,7 +92,8 @@
             // 
             this.lblDate.AutoSize = true;
             this.lblDate.ForeColor = System.Drawing.Color.White;
-            this.lblDate.Location = new System.Drawing.Point(799, 11);
+            this.lblDate.Location = new System.Drawing.Point(737, 12);
+            this.lblDate.Margin = new System.Windows.Forms.Padding(2, 0, 2, 0);
             this.lblDate.Name = "lblDate";
             this.lblDate.Size = new System.Drawing.Size(134, 23);
             this.lblDate.TabIndex = 2;
@@ -104,27 +106,31 @@
             this.grpDecision.Controls.Add(this.lblCaserne);
             this.grpDecision.Controls.Add(this.lblNatSin);
             this.grpDecision.ForeColor = System.Drawing.Color.White;
-            this.grpDecision.Location = new System.Drawing.Point(16, 404);
-            this.grpDecision.Margin = new System.Windows.Forms.Padding(3, 4, 3, 4);
+            this.grpDecision.Location = new System.Drawing.Point(16, 405);
+            this.grpDecision.Margin = new System.Windows.Forms.Padding(2, 4, 2, 4);
             this.grpDecision.Name = "grpDecision";
-            this.grpDecision.Padding = new System.Windows.Forms.Padding(3, 4, 3, 4);
-            this.grpDecision.Size = new System.Drawing.Size(1045, 132);
+            this.grpDecision.Padding = new System.Windows.Forms.Padding(2, 4, 2, 4);
+            this.grpDecision.Size = new System.Drawing.Size(984, 131);
             this.grpDecision.TabIndex = 1;
             this.grpDecision.TabStop = false;
             this.grpDecision.Text = "Décisions du régulateurs";
             // 
             // cboCaserne
             // 
+            this.cboCaserne.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
             this.cboCaserne.FormattingEnabled = true;
             this.cboCaserne.Location = new System.Drawing.Point(543, 81);
+            this.cboCaserne.Margin = new System.Windows.Forms.Padding(2, 3, 2, 3);
             this.cboCaserne.Name = "cboCaserne";
-            this.cboCaserne.Size = new System.Drawing.Size(423, 31);
+            this.cboCaserne.Size = new System.Drawing.Size(394, 31);
             this.cboCaserne.TabIndex = 18;
             // 
             // cboNature
             // 
+            this.cboNature.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
             this.cboNature.FormattingEnabled = true;
-            this.cboNature.Location = new System.Drawing.Point(22, 81);
+            this.cboNature.Location = new System.Drawing.Point(22, 80);
+            this.cboNature.Margin = new System.Windows.Forms.Padding(2, 3, 2, 3);
             this.cboNature.Name = "cboNature";
             this.cboNature.Size = new System.Drawing.Size(345, 31);
             this.cboNature.TabIndex = 17;
@@ -133,6 +139,7 @@
             // 
             this.lblCaserne.AutoSize = true;
             this.lblCaserne.Location = new System.Drawing.Point(539, 55);
+            this.lblCaserne.Margin = new System.Windows.Forms.Padding(2, 0, 2, 0);
             this.lblCaserne.Name = "lblCaserne";
             this.lblCaserne.Size = new System.Drawing.Size(185, 23);
             this.lblCaserne.TabIndex = 16;
@@ -142,6 +149,7 @@
             // 
             this.lblNatSin.AutoSize = true;
             this.lblNatSin.Location = new System.Drawing.Point(18, 55);
+            this.lblNatSin.Margin = new System.Windows.Forms.Padding(2, 0, 2, 0);
             this.lblNatSin.Name = "lblNatSin";
             this.lblNatSin.Size = new System.Drawing.Size(163, 23);
             this.lblNatSin.TabIndex = 15;
@@ -156,9 +164,11 @@
             this.grpAdr.Controls.Add(this.lblCP);
             this.grpAdr.Controls.Add(this.lblRue);
             this.grpAdr.ForeColor = System.Drawing.Color.White;
-            this.grpAdr.Location = new System.Drawing.Point(507, 37);
+            this.grpAdr.Location = new System.Drawing.Point(465, 37);
+            this.grpAdr.Margin = new System.Windows.Forms.Padding(2, 3, 2, 3);
             this.grpAdr.Name = "grpAdr";
-            this.grpAdr.Size = new System.Drawing.Size(520, 230);
+            this.grpAdr.Padding = new System.Windows.Forms.Padding(2, 3, 2, 3);
+            this.grpAdr.Size = new System.Drawing.Size(501, 230);
             this.grpAdr.TabIndex = 3;
             this.grpAdr.TabStop = false;
             this.grpAdr.Text = "Adresse sinistre";
@@ -166,31 +176,34 @@
             // txtCP
             // 
             this.txtCP.Location = new System.Drawing.Point(139, 148);
-            this.txtCP.Margin = new System.Windows.Forms.Padding(3, 4, 3, 4);
+            this.txtCP.Margin = new System.Windows.Forms.Padding(2, 4, 2, 4);
             this.txtCP.Name = "txtCP";
             this.txtCP.Size = new System.Drawing.Size(116, 30);
             this.txtCP.TabIndex = 16;
+            this.txtCP.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.txtCP_KeyPress);
             // 
             // txtVille
             // 
-            this.txtVille.Location = new System.Drawing.Point(85, 106);
-            this.txtVille.Margin = new System.Windows.Forms.Padding(3, 4, 3, 4);
+            this.txtVille.Location = new System.Drawing.Point(86, 106);
+            this.txtVille.Margin = new System.Windows.Forms.Padding(2, 4, 2, 4);
             this.txtVille.Name = "txtVille";
-            this.txtVille.Size = new System.Drawing.Size(216, 30);
+            this.txtVille.Size = new System.Drawing.Size(215, 30);
             this.txtVille.TabIndex = 15;
+            this.txtVille.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.txtVille_KeyPress);
             // 
             // txtRue
             // 
-            this.txtRue.Location = new System.Drawing.Point(85, 65);
-            this.txtRue.Margin = new System.Windows.Forms.Padding(3, 4, 3, 4);
+            this.txtRue.Location = new System.Drawing.Point(86, 65);
+            this.txtRue.Margin = new System.Windows.Forms.Padding(2, 4, 2, 4);
             this.txtRue.Name = "txtRue";
-            this.txtRue.Size = new System.Drawing.Size(422, 30);
+            this.txtRue.Size = new System.Drawing.Size(399, 30);
             this.txtRue.TabIndex = 14;
             // 
             // lblVille
             // 
             this.lblVille.AutoSize = true;
             this.lblVille.Location = new System.Drawing.Point(17, 109);
+            this.lblVille.Margin = new System.Windows.Forms.Padding(2, 0, 2, 0);
             this.lblVille.Name = "lblVille";
             this.lblVille.Size = new System.Drawing.Size(46, 23);
             this.lblVille.TabIndex = 13;
@@ -200,6 +213,7 @@
             // 
             this.lblCP.AutoSize = true;
             this.lblCP.Location = new System.Drawing.Point(17, 151);
+            this.lblCP.Margin = new System.Windows.Forms.Padding(2, 0, 2, 0);
             this.lblCP.Name = "lblCP";
             this.lblCP.Size = new System.Drawing.Size(116, 23);
             this.lblCP.TabIndex = 12;
@@ -209,6 +223,7 @@
             // 
             this.lblRue.AutoSize = true;
             this.lblRue.Location = new System.Drawing.Point(17, 68);
+            this.lblRue.Margin = new System.Windows.Forms.Padding(2, 0, 2, 0);
             this.lblRue.Name = "lblRue";
             this.lblRue.Size = new System.Drawing.Size(45, 23);
             this.lblRue.TabIndex = 11;
@@ -216,27 +231,30 @@
             // 
             // btnAnnuler
             // 
-            this.btnAnnuler.Location = new System.Drawing.Point(702, 558);
+            this.btnAnnuler.Location = new System.Drawing.Point(702, 559);
+            this.btnAnnuler.Margin = new System.Windows.Forms.Padding(2, 3, 2, 3);
             this.btnAnnuler.Name = "btnAnnuler";
-            this.btnAnnuler.Size = new System.Drawing.Size(161, 37);
+            this.btnAnnuler.Size = new System.Drawing.Size(100, 36);
             this.btnAnnuler.TabIndex = 19;
             this.btnAnnuler.Text = "Annuler";
             this.btnAnnuler.UseVisualStyleBackColor = true;
             // 
             // btnValider
             // 
-            this.btnValider.Location = new System.Drawing.Point(900, 558);
+            this.btnValider.Location = new System.Drawing.Point(900, 559);
+            this.btnValider.Margin = new System.Windows.Forms.Padding(2, 3, 2, 3);
             this.btnValider.Name = "btnValider";
-            this.btnValider.Size = new System.Drawing.Size(161, 37);
+            this.btnValider.Size = new System.Drawing.Size(100, 36);
             this.btnValider.TabIndex = 20;
             this.btnValider.Text = "Valider";
             this.btnValider.UseVisualStyleBackColor = true;
             // 
             // btnFermer
             // 
-            this.btnFermer.Location = new System.Drawing.Point(900, 891);
+            this.btnFermer.Location = new System.Drawing.Point(900, 900);
+            this.btnFermer.Margin = new System.Windows.Forms.Padding(2, 3, 2, 3);
             this.btnFermer.Name = "btnFermer";
-            this.btnFermer.Size = new System.Drawing.Size(161, 37);
+            this.btnFermer.Size = new System.Drawing.Size(100, 36);
             this.btnFermer.TabIndex = 21;
             this.btnFermer.Text = "Fermer";
             this.btnFermer.UseVisualStyleBackColor = true;
@@ -246,9 +264,11 @@
             this.grpInfo.Controls.Add(this.groupBox1);
             this.grpInfo.Controls.Add(this.grpAdr);
             this.grpInfo.ForeColor = System.Drawing.Color.White;
-            this.grpInfo.Location = new System.Drawing.Point(16, 77);
+            this.grpInfo.Location = new System.Drawing.Point(16, 78);
+            this.grpInfo.Margin = new System.Windows.Forms.Padding(2, 3, 2, 3);
             this.grpInfo.Name = "grpInfo";
-            this.grpInfo.Size = new System.Drawing.Size(1045, 297);
+            this.grpInfo.Padding = new System.Windows.Forms.Padding(2, 3, 2, 3);
+            this.grpInfo.Size = new System.Drawing.Size(984, 295);
             this.grpInfo.TabIndex = 22;
             this.grpInfo.TabStop = false;
             this.grpInfo.Text = "Informations usager";
@@ -266,9 +286,9 @@
             this.Controls.Add(this.lblDate);
             this.Controls.Add(this.lblNumMission);
             this.Font = new System.Drawing.Font("Arial", 10F);
-            this.Margin = new System.Windows.Forms.Padding(3, 4, 3, 4);
+            this.Margin = new System.Windows.Forms.Padding(2, 4, 2, 4);
             this.Name = "ucMission";
-            this.Size = new System.Drawing.Size(1085, 953);
+            this.Size = new System.Drawing.Size(1021, 953);
             this.groupBox1.ResumeLayout(false);
             this.groupBox1.PerformLayout();
             this.grpDecision.ResumeLayout(false);
