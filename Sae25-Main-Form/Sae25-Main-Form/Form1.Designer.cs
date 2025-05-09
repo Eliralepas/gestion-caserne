@@ -1,6 +1,6 @@
 ﻿namespace Sae25_Main_Form
 {
-    partial class Form1
+    partial class frmCaserne
     {
         /// <summary>
         /// Variable nécessaire au concepteur.
@@ -30,13 +30,15 @@
         {
             this.SuspendLayout();
             // 
-            // Form1
+            // frmCaserne
             // 
-            this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 16F);
+            this.AutoScaleDimensions = new System.Drawing.SizeF(13F, 26F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(800, 450);
-            this.Name = "Form1";
-            this.Text = "Form1";
+            this.ClientSize = new System.Drawing.Size(1182, 653);
+            this.Font = new System.Drawing.Font("Arial", 14F);
+            this.Margin = new System.Windows.Forms.Padding(5, 5, 5, 5);
+            this.Name = "frmCaserne";
+            this.Text = "Pinpon 🚒";
             this.ResumeLayout(false);
 
         }

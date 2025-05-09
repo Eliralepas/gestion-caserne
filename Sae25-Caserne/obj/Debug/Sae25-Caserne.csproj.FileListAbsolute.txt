@@ -1,0 +1,10 @@
+C:\Users\Diego\Source\Repos\sae-caserne\Sae25-Caserne\bin\Debug\Sae25-Caserne.exe.config
+C:\Users\Diego\Source\Repos\sae-caserne\Sae25-Caserne\bin\Debug\Sae25-Caserne.exe
+C:\Users\Diego\Source\Repos\sae-caserne\Sae25-Caserne\bin\Debug\Sae25-Caserne.pdb
+C:\Users\Diego\Source\Repos\sae-caserne\Sae25-Caserne\obj\Debug\Sae25-Caserne.csproj.AssemblyReference.cache
+C:\Users\Diego\Source\Repos\sae-caserne\Sae25-Caserne\obj\Debug\Sae25_Caserne.frmCaserne.resources
+C:\Users\Diego\Source\Repos\sae-caserne\Sae25-Caserne\obj\Debug\Sae25_Caserne.Properties.Resources.resources
+C:\Users\Diego\Source\Repos\sae-caserne\Sae25-Caserne\obj\Debug\Sae25-Caserne.csproj.GenerateResource.cache
+C:\Users\Diego\Source\Repos\sae-caserne\Sae25-Caserne\obj\Debug\Sae25-Caserne.csproj.CoreCompileInputs.cache
+C:\Users\Diego\Source\Repos\sae-caserne\Sae25-Caserne\obj\Debug\Sae25-Caserne.exe
+C:\Users\Diego\Source\Repos\sae-caserne\Sae25-Caserne\obj\Debug\Sae25-Caserne.pdb
