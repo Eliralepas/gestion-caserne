@@ -31,11 +31,11 @@
             System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(frmCaserne));
             this.picBoxCaserne = new System.Windows.Forms.PictureBox();
             this.grpNavigation = new System.Windows.Forms.GroupBox();
-            this.btnNum5 = new NavigationBarUserControl.button();
-            this.btnNum4 = new NavigationBarUserControl.button();
-            this.btnNum3 = new NavigationBarUserControl.button();
-            this.btnNum2 = new NavigationBarUserControl.button();
-            this.btnNum1 = new NavigationBarUserControl.button();
+            this.btn2 = new NavigationBarUserControl.UCButton();
+            this.btn5 = new NavigationBarUserControl.UCButton();
+            this.btn4 = new NavigationBarUserControl.UCButton();
+            this.btn3 = new NavigationBarUserControl.UCButton();
+            this.btn1 = new NavigationBarUserControl.UCButton();
             this.grpVolet = new System.Windows.Forms.GroupBox();
             this.Tablodebord = new UC_TableauDeBord.UC_TableauDeBord();
             ((System.ComponentModel.ISupportInitialize)(this.picBoxCaserne)).BeginInit();
@@ -59,66 +59,66 @@
             // grpNavigation
             // 
             this.grpNavigation.BackColor = System.Drawing.Color.DarkRed;
-            this.grpNavigation.Controls.Add(this.btnNum5);
-            this.grpNavigation.Controls.Add(this.btnNum4);
-            this.grpNavigation.Controls.Add(this.btnNum3);
-            this.grpNavigation.Controls.Add(this.btnNum2);
-            this.grpNavigation.Controls.Add(this.btnNum1);
+            this.grpNavigation.Controls.Add(this.btn2);
+            this.grpNavigation.Controls.Add(this.btn5);
+            this.grpNavigation.Controls.Add(this.btn4);
+            this.grpNavigation.Controls.Add(this.btn3);
+            this.grpNavigation.Controls.Add(this.btn1);
             this.grpNavigation.Location = new System.Drawing.Point(12, 12);
             this.grpNavigation.Name = "grpNavigation";
             this.grpNavigation.Size = new System.Drawing.Size(296, 629);
             this.grpNavigation.TabIndex = 1;
             this.grpNavigation.TabStop = false;
             // 
-            // btnNum5
+            // btn2
             // 
-            this.btnNum5.Font = new System.Drawing.Font("Arial Narrow", 13.8F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.btnNum5.Location = new System.Drawing.Point(5, 418);
-            this.btnNum5.Margin = new System.Windows.Forms.Padding(4, 5, 4, 5);
-            this.btnNum5.Name = "btnNum5";
-            this.btnNum5.Size = new System.Drawing.Size(272, 120);
-            this.btnNum5.TabIndex = 4;
-            this.btnNum5.UcControled = null;
+            this.btn2.Font = new System.Drawing.Font("Arial Narrow", 13.8F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.btn2.Location = new System.Drawing.Point(7, 121);
+            this.btn2.Margin = new System.Windows.Forms.Padding(4, 5, 4, 5);
+            this.btn2.Name = "btn2";
+            this.btn2.Size = new System.Drawing.Size(282, 112);
+            this.btn2.TabIndex = 4;
+            this.btn2.UcControled = null;
             // 
-            // btnNum4
+            // btn5
             // 
-            this.btnNum4.Font = new System.Drawing.Font("Arial Narrow", 13.8F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.btnNum4.Location = new System.Drawing.Point(7, 319);
-            this.btnNum4.Margin = new System.Windows.Forms.Padding(4, 5, 4, 5);
-            this.btnNum4.Name = "btnNum4";
-            this.btnNum4.Size = new System.Drawing.Size(272, 120);
-            this.btnNum4.TabIndex = 3;
-            this.btnNum4.UcControled = null;
+            this.btn5.Font = new System.Drawing.Font("Arial Narrow", 13.8F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.btn5.Location = new System.Drawing.Point(7, 426);
+            this.btn5.Margin = new System.Windows.Forms.Padding(4, 5, 4, 5);
+            this.btn5.Name = "btn5";
+            this.btn5.Size = new System.Drawing.Size(282, 112);
+            this.btn5.TabIndex = 3;
+            this.btn5.UcControled = null;
             // 
-            // btnNum3
+            // btn4
             // 
-            this.btnNum3.Font = new System.Drawing.Font("Arial Narrow", 13.8F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.btnNum3.Location = new System.Drawing.Point(5, 216);
-            this.btnNum3.Margin = new System.Windows.Forms.Padding(4, 5, 4, 5);
-            this.btnNum3.Name = "btnNum3";
-            this.btnNum3.Size = new System.Drawing.Size(272, 120);
-            this.btnNum3.TabIndex = 2;
-            this.btnNum3.UcControled = null;
+            this.btn4.Font = new System.Drawing.Font("Arial Narrow", 13.8F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.btn4.Location = new System.Drawing.Point(7, 320);
+            this.btn4.Margin = new System.Windows.Forms.Padding(4, 5, 4, 5);
+            this.btn4.Name = "btn4";
+            this.btn4.Size = new System.Drawing.Size(282, 112);
+            this.btn4.TabIndex = 2;
+            this.btn4.UcControled = null;
             // 
-            // btnNum2
+            // btn3
             // 
-            this.btnNum2.Font = new System.Drawing.Font("Arial Narrow", 13.8F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.btnNum2.Location = new System.Drawing.Point(6, 116);
-            this.btnNum2.Margin = new System.Windows.Forms.Padding(4, 5, 4, 5);
-            this.btnNum2.Name = "btnNum2";
-            this.btnNum2.Size = new System.Drawing.Size(271, 120);
-            this.btnNum2.TabIndex = 1;
-            this.btnNum2.UcControled = null;
+            this.btn3.Font = new System.Drawing.Font("Arial Narrow", 13.8F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.btn3.Location = new System.Drawing.Point(7, 223);
+            this.btn3.Margin = new System.Windows.Forms.Padding(4, 5, 4, 5);
+            this.btn3.Name = "btn3";
+            this.btn3.Size = new System.Drawing.Size(282, 112);
+            this.btn3.TabIndex = 1;
+            this.btn3.UcControled = null;
             // 
-            // btnNum1
+            // btn1
             // 
-            this.btnNum1.Font = new System.Drawing.Font("Arial Narrow", 13.8F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.btnNum1.Location = new System.Drawing.Point(6, 17);
-            this.btnNum1.Margin = new System.Windows.Forms.Padding(4, 5, 4, 5);
-            this.btnNum1.Name = "btnNum1";
-            this.btnNum1.Size = new System.Drawing.Size(272, 120);
-            this.btnNum1.TabIndex = 0;
-            this.btnNum1.UcControled = null;
+            this.btn1.Font = new System.Drawing.Font("Arial Narrow", 13.8F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.btn1.Location = new System.Drawing.Point(7, 17);
+            this.btn1.Margin = new System.Windows.Forms.Padding(4, 5, 4, 5);
+            this.btn1.Name = "btn1";
+            this.btn1.Size = new System.Drawing.Size(282, 112);
+            this.btn1.TabIndex = 0;
+            this.btn1.UcControled = null;
             // 
             // grpVolet
             // 
@@ -132,11 +132,12 @@
             // Tablodebord
             // 
             this.Tablodebord.Font = new System.Drawing.Font("Arial", 14F);
-            this.Tablodebord.Location = new System.Drawing.Point(33, 35);
+            this.Tablodebord.Location = new System.Drawing.Point(8, 17);
             this.Tablodebord.Margin = new System.Windows.Forms.Padding(5);
             this.Tablodebord.Name = "Tablodebord";
-            this.Tablodebord.Size = new System.Drawing.Size(431, 415);
+            this.Tablodebord.Size = new System.Drawing.Size(414, 415);
             this.Tablodebord.TabIndex = 0;
+            this.Tablodebord.Load += new System.EventHandler(this.Tablodebord_Load);
             // 
             // frmCaserne
             // 
@@ -163,12 +164,12 @@
         private System.Windows.Forms.PictureBox picBoxCaserne;
         private System.Windows.Forms.GroupBox grpNavigation;
         private System.Windows.Forms.GroupBox grpVolet;
-        private NavigationBarUserControl.button btnNum1;
-        private NavigationBarUserControl.button btnNum2;
-        private NavigationBarUserControl.button btnNum5;
-        private NavigationBarUserControl.button btnNum4;
-        private NavigationBarUserControl.button btnNum3;
         private UC_TableauDeBord.UC_TableauDeBord Tablodebord;
+        private NavigationBarUserControl.UCButton btn2;
+        private NavigationBarUserControl.UCButton btn5;
+        private NavigationBarUserControl.UCButton btn4;
+        private NavigationBarUserControl.UCButton btn3;
+        private NavigationBarUserControl.UCButton btn1;
     }
 }
 

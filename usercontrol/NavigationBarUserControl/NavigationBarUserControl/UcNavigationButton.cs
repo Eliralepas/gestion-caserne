@@ -10,11 +10,11 @@ using System.Windows.Forms;
 
 namespace NavigationBarUserControl
 {
-    public partial class button: UserControl
+    public partial class UCButton: UserControl
     {
 
 
-        public button()
+        public UCButton()
         {
             InitializeComponent();
         }
@@ -26,7 +26,7 @@ namespace NavigationBarUserControl
             set { _ucControled = value; }
         }
 
-        public button(string str, Image img, Control binder)
+        public UCButton(string str, Image img, Control binder)
         {
             InitializeComponent(); 
             label1.Text = str;

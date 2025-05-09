@@ -20,9 +20,11 @@ namespace Sae25_Main_Form
 
         private void frmCaserne_Load(object sender, EventArgs e)
         {
-            btnNum1.UcControled = Tablodebord;
+            //Ne pas oublier de bind tout les Controller a leur bouton
+
+            btn1.UcControled = Tablodebord;
             
-            foreach (button btn in grpNavigation.Controls.OfType<button>())
+            foreach (UCButton btn in grpNavigation.Controls.OfType<UCButton>())
             {
                 btn.ButtonClicked += NavigationButtonClick;
                 btn.getBindedControl();
@@ -31,10 +33,13 @@ namespace Sae25_Main_Form
 
         private void NavigationButtonClick(object sender, EventArgs e)
         {
-            MessageBox.Show($"Le bounton {((button)sender).getBindedControl()} a étais cliquer");
-            ((button)sender).getBindedControl().Visible = false;
+            //*faire la logique de clique une fois que on a tout les volet
+
         }
 
+        private void Tablodebord_Load(object sender, EventArgs e)
+        {
 
+        }
     }
 }
