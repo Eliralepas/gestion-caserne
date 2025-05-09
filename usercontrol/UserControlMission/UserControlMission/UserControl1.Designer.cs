@@ -1,6 +1,6 @@
-﻿namespace Sae25_Main_Form
+﻿namespace UserControlMission
 {
-    partial class Form1
+    partial class UserControl1
     {
         /// <summary>
         /// Variable nécessaire au concepteur.
@@ -20,28 +20,19 @@
             base.Dispose(disposing);
         }
 
-        #region Code généré par le Concepteur Windows Form
+        #region Code généré par le Concepteur de composants
 
         /// <summary>
-        /// Méthode requise pour la prise en charge du concepteur - ne modifiez pas
+        /// Méthode requise pour la prise en charge du concepteur - ne modifiez pas 
         /// le contenu de cette méthode avec l'éditeur de code.
         /// </summary>
         private void InitializeComponent()
         {
-            this.SuspendLayout();
-            // 
-            // Form1
-            // 
-            this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 16F);
+            components = new System.ComponentModel.Container();
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(800, 450);
-            this.Name = "Form1";
-            this.Text = "Form1";
-            this.ResumeLayout(false);
-
         }
 
         #endregion
     }
 }
-

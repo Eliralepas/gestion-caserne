@@ -8,3 +8,13 @@ C:\Users\miaou\Desktop\SAE25\Sae25-Main-Form\Sae25-Main-Form\obj\Debug\Sae25-Mai
 C:\Users\miaou\Desktop\SAE25\Sae25-Main-Form\Sae25-Main-Form\obj\Debug\Sae25-Main-Form.csproj.CoreCompileInputs.cache
 C:\Users\miaou\Desktop\SAE25\Sae25-Main-Form\Sae25-Main-Form\obj\Debug\Sae25-Main-Form.exe
 C:\Users\miaou\Desktop\SAE25\Sae25-Main-Form\Sae25-Main-Form\obj\Debug\Sae25-Main-Form.pdb
+C:\Users\Diego\Source\Repos\sae-caserne\Sae25-Main-Form\Sae25-Main-Form\bin\Debug\Sae25-Main-Form.exe.config
+C:\Users\Diego\Source\Repos\sae-caserne\Sae25-Main-Form\Sae25-Main-Form\bin\Debug\Sae25-Main-Form.exe
+C:\Users\Diego\Source\Repos\sae-caserne\Sae25-Main-Form\Sae25-Main-Form\bin\Debug\Sae25-Main-Form.pdb
+C:\Users\Diego\Source\Repos\sae-caserne\Sae25-Main-Form\Sae25-Main-Form\obj\Debug\Sae25-Main-Form.csproj.AssemblyReference.cache
+C:\Users\Diego\Source\Repos\sae-caserne\Sae25-Main-Form\Sae25-Main-Form\obj\Debug\Sae25_Main_Form.frmCaserne.resources
+C:\Users\Diego\Source\Repos\sae-caserne\Sae25-Main-Form\Sae25-Main-Form\obj\Debug\Sae25_Main_Form.Properties.Resources.resources
+C:\Users\Diego\Source\Repos\sae-caserne\Sae25-Main-Form\Sae25-Main-Form\obj\Debug\Sae25-Main-Form.csproj.GenerateResource.cache
+C:\Users\Diego\Source\Repos\sae-caserne\Sae25-Main-Form\Sae25-Main-Form\obj\Debug\Sae25-Main-Form.csproj.CoreCompileInputs.cache
+C:\Users\Diego\Source\Repos\sae-caserne\Sae25-Main-Form\Sae25-Main-Form\obj\Debug\Sae25-Main-Form.exe
+C:\Users\Diego\Source\Repos\sae-caserne\Sae25-Main-Form\Sae25-Main-Form\obj\Debug\Sae25-Main-Form.pdb
