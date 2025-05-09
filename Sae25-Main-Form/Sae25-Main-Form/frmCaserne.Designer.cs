@@ -37,10 +37,8 @@
             this.btn3 = new NavigationBarUserControl.UCButton();
             this.btn1 = new NavigationBarUserControl.UCButton();
             this.grpVolet = new System.Windows.Forms.GroupBox();
-            this.Tablodebord = new UC_TableauDeBord.UC_TableauDeBord();
             ((System.ComponentModel.ISupportInitialize)(this.picBoxCaserne)).BeginInit();
             this.grpNavigation.SuspendLayout();
-            this.grpVolet.SuspendLayout();
             this.SuspendLayout();
             // 
             // picBoxCaserne
@@ -122,22 +120,11 @@
             // 
             // grpVolet
             // 
-            this.grpVolet.Controls.Add(this.Tablodebord);
             this.grpVolet.Location = new System.Drawing.Point(324, 12);
             this.grpVolet.Name = "grpVolet";
             this.grpVolet.Size = new System.Drawing.Size(846, 629);
             this.grpVolet.TabIndex = 2;
             this.grpVolet.TabStop = false;
-            // 
-            // Tablodebord
-            // 
-            this.Tablodebord.Font = new System.Drawing.Font("Arial", 14F);
-            this.Tablodebord.Location = new System.Drawing.Point(8, 17);
-            this.Tablodebord.Margin = new System.Windows.Forms.Padding(5);
-            this.Tablodebord.Name = "Tablodebord";
-            this.Tablodebord.Size = new System.Drawing.Size(414, 415);
-            this.Tablodebord.TabIndex = 0;
-            this.Tablodebord.Load += new System.EventHandler(this.Tablodebord_Load);
             // 
             // frmCaserne
             // 
@@ -154,7 +141,6 @@
             this.Load += new System.EventHandler(this.frmCaserne_Load);
             ((System.ComponentModel.ISupportInitialize)(this.picBoxCaserne)).EndInit();
             this.grpNavigation.ResumeLayout(false);
-            this.grpVolet.ResumeLayout(false);
             this.ResumeLayout(false);
 
         }
@@ -164,7 +150,6 @@
         private System.Windows.Forms.PictureBox picBoxCaserne;
         private System.Windows.Forms.GroupBox grpNavigation;
         private System.Windows.Forms.GroupBox grpVolet;
-        private UC_TableauDeBord.UC_TableauDeBord Tablodebord;
         private NavigationBarUserControl.UCButton btn2;
         private NavigationBarUserControl.UCButton btn5;
         private NavigationBarUserControl.UCButton btn4;
