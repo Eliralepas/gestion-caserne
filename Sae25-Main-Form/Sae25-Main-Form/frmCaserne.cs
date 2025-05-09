@@ -10,9 +10,9 @@ using System.Windows.Forms;
 
 namespace Sae25_Main_Form
 {
-    public partial class Form1 : Form
+    public partial class frmCaserne : Form
     {
-        public Form1()
+        public frmCaserne()
         {
             InitializeComponent();
         }
