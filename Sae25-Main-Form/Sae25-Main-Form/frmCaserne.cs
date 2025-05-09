@@ -16,5 +16,16 @@ namespace Sae25_Main_Form
         {
             InitializeComponent();
         }
+
+        private void frmCaserne_Load(object sender, EventArgs e)
+        {
+            
+            foreach (Button btn in grpNavigation.Controls.OfType<Button>())
+            {
+                btn.Click = MenuClickButon();
+            }
+        }
+
+
     }
 }

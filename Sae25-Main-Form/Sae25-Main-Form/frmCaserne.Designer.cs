@@ -32,11 +32,11 @@
             this.picBoxCaserne = new System.Windows.Forms.PictureBox();
             this.grpNavigation = new System.Windows.Forms.GroupBox();
             this.grpVolet = new System.Windows.Forms.GroupBox();
-            this.button5 = new NavigationBarUserControl.button();
-            this.button4 = new NavigationBarUserControl.button();
-            this.button3 = new NavigationBarUserControl.button();
-            this.button2 = new NavigationBarUserControl.button();
-            this.button1 = new NavigationBarUserControl.button();
+            this.btnNum5 = new NavigationBarUserControl.button();
+            this.btnNum4 = new NavigationBarUserControl.button();
+            this.btnNum3 = new NavigationBarUserControl.button();
+            this.btnNum2 = new NavigationBarUserControl.button();
+            this.btnNum1 = new NavigationBarUserControl.button();
             ((System.ComponentModel.ISupportInitialize)(this.picBoxCaserne)).BeginInit();
             this.grpNavigation.SuspendLayout();
             this.SuspendLayout();
@@ -57,11 +57,11 @@
             // grpNavigation
             // 
             this.grpNavigation.BackColor = System.Drawing.Color.DarkRed;
-            this.grpNavigation.Controls.Add(this.button5);
-            this.grpNavigation.Controls.Add(this.button4);
-            this.grpNavigation.Controls.Add(this.button3);
-            this.grpNavigation.Controls.Add(this.button2);
-            this.grpNavigation.Controls.Add(this.button1);
+            this.grpNavigation.Controls.Add(this.btnNum5);
+            this.grpNavigation.Controls.Add(this.btnNum4);
+            this.grpNavigation.Controls.Add(this.btnNum3);
+            this.grpNavigation.Controls.Add(this.btnNum2);
+            this.grpNavigation.Controls.Add(this.btnNum1);
             this.grpNavigation.Location = new System.Drawing.Point(12, 12);
             this.grpNavigation.Name = "grpNavigation";
             this.grpNavigation.Size = new System.Drawing.Size(296, 629);
@@ -76,50 +76,50 @@
             this.grpVolet.TabIndex = 2;
             this.grpVolet.TabStop = false;
             // 
-            // button5
+            // btnNum5
             // 
-            this.button5.Font = new System.Drawing.Font("Arial Narrow", 13.8F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.button5.Location = new System.Drawing.Point(5, 418);
-            this.button5.Margin = new System.Windows.Forms.Padding(4, 5, 4, 5);
-            this.button5.Name = "button5";
-            this.button5.Size = new System.Drawing.Size(272, 120);
-            this.button5.TabIndex = 4;
+            this.btnNum5.Font = new System.Drawing.Font("Arial Narrow", 13.8F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.btnNum5.Location = new System.Drawing.Point(5, 418);
+            this.btnNum5.Margin = new System.Windows.Forms.Padding(4, 5, 4, 5);
+            this.btnNum5.Name = "btnNum5";
+            this.btnNum5.Size = new System.Drawing.Size(272, 120);
+            this.btnNum5.TabIndex = 4;
             // 
-            // button4
+            // btnNum4
             // 
-            this.button4.Font = new System.Drawing.Font("Arial Narrow", 13.8F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.button4.Location = new System.Drawing.Point(7, 319);
-            this.button4.Margin = new System.Windows.Forms.Padding(4, 5, 4, 5);
-            this.button4.Name = "button4";
-            this.button4.Size = new System.Drawing.Size(272, 120);
-            this.button4.TabIndex = 3;
+            this.btnNum4.Font = new System.Drawing.Font("Arial Narrow", 13.8F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.btnNum4.Location = new System.Drawing.Point(7, 319);
+            this.btnNum4.Margin = new System.Windows.Forms.Padding(4, 5, 4, 5);
+            this.btnNum4.Name = "btnNum4";
+            this.btnNum4.Size = new System.Drawing.Size(272, 120);
+            this.btnNum4.TabIndex = 3;
             // 
-            // button3
+            // btnNum3
             // 
-            this.button3.Font = new System.Drawing.Font("Arial Narrow", 13.8F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.button3.Location = new System.Drawing.Point(5, 216);
-            this.button3.Margin = new System.Windows.Forms.Padding(4, 5, 4, 5);
-            this.button3.Name = "button3";
-            this.button3.Size = new System.Drawing.Size(272, 120);
-            this.button3.TabIndex = 2;
+            this.btnNum3.Font = new System.Drawing.Font("Arial Narrow", 13.8F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.btnNum3.Location = new System.Drawing.Point(5, 216);
+            this.btnNum3.Margin = new System.Windows.Forms.Padding(4, 5, 4, 5);
+            this.btnNum3.Name = "btnNum3";
+            this.btnNum3.Size = new System.Drawing.Size(272, 120);
+            this.btnNum3.TabIndex = 2;
             // 
-            // button2
+            // btnNum2
             // 
-            this.button2.Font = new System.Drawing.Font("Arial Narrow", 13.8F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.button2.Location = new System.Drawing.Point(6, 116);
-            this.button2.Margin = new System.Windows.Forms.Padding(4, 5, 4, 5);
-            this.button2.Name = "button2";
-            this.button2.Size = new System.Drawing.Size(271, 120);
-            this.button2.TabIndex = 1;
+            this.btnNum2.Font = new System.Drawing.Font("Arial Narrow", 13.8F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.btnNum2.Location = new System.Drawing.Point(6, 116);
+            this.btnNum2.Margin = new System.Windows.Forms.Padding(4, 5, 4, 5);
+            this.btnNum2.Name = "btnNum2";
+            this.btnNum2.Size = new System.Drawing.Size(271, 120);
+            this.btnNum2.TabIndex = 1;
             // 
-            // button1
+            // btnNum1
             // 
-            this.button1.Font = new System.Drawing.Font("Arial Narrow", 13.8F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.button1.Location = new System.Drawing.Point(6, 17);
-            this.button1.Margin = new System.Windows.Forms.Padding(4, 5, 4, 5);
-            this.button1.Name = "button1";
-            this.button1.Size = new System.Drawing.Size(272, 120);
-            this.button1.TabIndex = 0;
+            this.btnNum1.Font = new System.Drawing.Font("Arial Narrow", 13.8F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.btnNum1.Location = new System.Drawing.Point(6, 17);
+            this.btnNum1.Margin = new System.Windows.Forms.Padding(4, 5, 4, 5);
+            this.btnNum1.Name = "btnNum1";
+            this.btnNum1.Size = new System.Drawing.Size(272, 120);
+            this.btnNum1.TabIndex = 0;
             // 
             // frmCaserne
             // 
@@ -133,6 +133,7 @@
             this.Margin = new System.Windows.Forms.Padding(5);
             this.Name = "frmCaserne";
             this.Text = "Pinpon 🚒";
+            this.Load += new System.EventHandler(this.frmCaserne_Load);
             ((System.ComponentModel.ISupportInitialize)(this.picBoxCaserne)).EndInit();
             this.grpNavigation.ResumeLayout(false);
             this.ResumeLayout(false);
@@ -144,11 +145,11 @@
         private System.Windows.Forms.PictureBox picBoxCaserne;
         private System.Windows.Forms.GroupBox grpNavigation;
         private System.Windows.Forms.GroupBox grpVolet;
-        private NavigationBarUserControl.button button1;
-        private NavigationBarUserControl.button button2;
-        private NavigationBarUserControl.button button5;
-        private NavigationBarUserControl.button button4;
-        private NavigationBarUserControl.button button3;
+        private NavigationBarUserControl.button btnNum1;
+        private NavigationBarUserControl.button btnNum2;
+        private NavigationBarUserControl.button btnNum5;
+        private NavigationBarUserControl.button btnNum4;
+        private NavigationBarUserControl.button btnNum3;
     }
 }
 

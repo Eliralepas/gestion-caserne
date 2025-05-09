@@ -17,11 +17,24 @@ namespace NavigationBarUserControl
             InitializeComponent();
         }
 
+        public delegate  void ClickOnButton(object sender,EventArgs e);
+
+        ClickOnButton ButtonClick;
         
 
         private void label1_Click(object sender, EventArgs e)
         {
+            ButtonClick(sender, e);
+        }
 
+        private void pictureBox1_Click(object sender, EventArgs e)
+        {
+            ButtonClick(sender, e);
+        }
+
+        private void roundedRectangle_Click(object sender, EventArgs e)
+        {
+            ButtonClick(sender, e);
         }
     }
 }
