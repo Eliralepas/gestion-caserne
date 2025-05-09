@@ -29,14 +29,14 @@
         private void InitializeComponent()
         {
             this.picBox = new System.Windows.Forms.PictureBox();
-            this.lblIdMission = new System.Windows.Forms.Label();
+            this.lblMissionId = new System.Windows.Forms.Label();
             this.lblDateDebut = new System.Windows.Forms.Label();
-            this.lblNature = new System.Windows.Forms.Label();
-            this.lblMotif = new System.Windows.Forms.Label();
+            this.lblNatureMission = new System.Windows.Forms.Label();
+            this.lblMotifMission = new System.Windows.Forms.Label();
             this.lblCaserne = new System.Windows.Forms.Label();
             this.panelMission = new System.Windows.Forms.Panel();
-            this.btnCreerPdf = new System.Windows.Forms.Button();
             this.lblDateFin = new System.Windows.Forms.Label();
+            this.btnCreerPdf = new System.Windows.Forms.Button();
             this.btnVoirPdf = new System.Windows.Forms.Button();
             ((System.ComponentModel.ISupportInitialize)(this.picBox)).BeginInit();
             this.panelMission.SuspendLayout();
@@ -46,21 +46,21 @@
             // 
             this.picBox.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
             this.picBox.Location = new System.Drawing.Point(20, 25);
-            this.picBox.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
+            this.picBox.Margin = new System.Windows.Forms.Padding(2);
             this.picBox.Name = "picBox";
             this.picBox.Size = new System.Drawing.Size(100, 100);
             this.picBox.TabIndex = 0;
             this.picBox.TabStop = false;
             // 
-            // lblIdMission
+            // lblMissionId
             // 
-            this.lblIdMission.AutoSize = true;
-            this.lblIdMission.Location = new System.Drawing.Point(143, 9);
-            this.lblIdMission.Margin = new System.Windows.Forms.Padding(2, 0, 2, 0);
-            this.lblIdMission.Name = "lblIdMission";
-            this.lblIdMission.Size = new System.Drawing.Size(119, 23);
-            this.lblIdMission.TabIndex = 1;
-            this.lblIdMission.Text = "ID mission : ";
+            this.lblMissionId.AutoSize = true;
+            this.lblMissionId.Location = new System.Drawing.Point(143, 9);
+            this.lblMissionId.Margin = new System.Windows.Forms.Padding(2, 0, 2, 0);
+            this.lblMissionId.Name = "lblMissionId";
+            this.lblMissionId.Size = new System.Drawing.Size(119, 23);
+            this.lblMissionId.TabIndex = 1;
+            this.lblMissionId.Text = "ID mission : ";
             // 
             // lblDateDebut
             // 
@@ -72,26 +72,26 @@
             this.lblDateDebut.TabIndex = 2;
             this.lblDateDebut.Text = "Début le    : ";
             // 
-            // lblNature
+            // lblNatureMission
             // 
-            this.lblNature.AutoSize = true;
-            this.lblNature.Font = new System.Drawing.Font("Arial", 12F, System.Drawing.FontStyle.Bold);
-            this.lblNature.Location = new System.Drawing.Point(428, 9);
-            this.lblNature.Margin = new System.Windows.Forms.Padding(2, 0, 2, 0);
-            this.lblNature.Name = "lblNature";
-            this.lblNature.Size = new System.Drawing.Size(209, 24);
-            this.lblNature.TabIndex = 4;
-            this.lblNature.Text = "Nature de la mission ";
+            this.lblNatureMission.AutoSize = true;
+            this.lblNatureMission.Font = new System.Drawing.Font("Arial", 12F, System.Drawing.FontStyle.Bold);
+            this.lblNatureMission.Location = new System.Drawing.Point(428, 9);
+            this.lblNatureMission.Margin = new System.Windows.Forms.Padding(2, 0, 2, 0);
+            this.lblNatureMission.Name = "lblNatureMission";
+            this.lblNatureMission.Size = new System.Drawing.Size(209, 24);
+            this.lblNatureMission.TabIndex = 4;
+            this.lblNatureMission.Text = "Nature de la mission ";
             // 
-            // lblMotif
+            // lblMotifMission
             // 
-            this.lblMotif.AutoSize = true;
-            this.lblMotif.Location = new System.Drawing.Point(431, 73);
-            this.lblMotif.Margin = new System.Windows.Forms.Padding(2, 0, 2, 0);
-            this.lblMotif.Name = "lblMotif";
-            this.lblMotif.Size = new System.Drawing.Size(206, 23);
-            this.lblMotif.TabIndex = 5;
-            this.lblMotif.Text = "--> Motif de la mission";
+            this.lblMotifMission.AutoSize = true;
+            this.lblMotifMission.Location = new System.Drawing.Point(431, 73);
+            this.lblMotifMission.Margin = new System.Windows.Forms.Padding(2, 0, 2, 0);
+            this.lblMotifMission.Name = "lblMotifMission";
+            this.lblMotifMission.Size = new System.Drawing.Size(206, 23);
+            this.lblMotifMission.TabIndex = 5;
+            this.lblMotifMission.Text = "--> Motif de la mission";
             // 
             // lblCaserne
             // 
@@ -107,24 +107,16 @@
             // 
             this.panelMission.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
             this.panelMission.Controls.Add(this.lblDateFin);
-            this.panelMission.Controls.Add(this.lblMotif);
+            this.panelMission.Controls.Add(this.lblMotifMission);
             this.panelMission.Controls.Add(this.picBox);
-            this.panelMission.Controls.Add(this.lblIdMission);
-            this.panelMission.Controls.Add(this.lblNature);
+            this.panelMission.Controls.Add(this.lblMissionId);
+            this.panelMission.Controls.Add(this.lblNatureMission);
             this.panelMission.Controls.Add(this.lblCaserne);
             this.panelMission.Controls.Add(this.lblDateDebut);
             this.panelMission.Location = new System.Drawing.Point(0, 0);
             this.panelMission.Name = "panelMission";
             this.panelMission.Size = new System.Drawing.Size(815, 150);
             this.panelMission.TabIndex = 6;
-            // 
-            // btnCreerPdf
-            // 
-            this.btnCreerPdf.Location = new System.Drawing.Point(825, 6);
-            this.btnCreerPdf.Name = "btnCreerPdf";
-            this.btnCreerPdf.Size = new System.Drawing.Size(65, 65);
-            this.btnCreerPdf.TabIndex = 7;
-            this.btnCreerPdf.UseVisualStyleBackColor = true;
             // 
             // lblDateFin
             // 
@@ -136,6 +128,15 @@
             this.lblDateFin.TabIndex = 6;
             this.lblDateFin.Text = "Fin le        :  ";
             // 
+            // btnCreerPdf
+            // 
+            this.btnCreerPdf.Location = new System.Drawing.Point(825, 6);
+            this.btnCreerPdf.Name = "btnCreerPdf";
+            this.btnCreerPdf.Size = new System.Drawing.Size(65, 65);
+            this.btnCreerPdf.TabIndex = 7;
+            this.btnCreerPdf.UseVisualStyleBackColor = true;
+            this.btnCreerPdf.Click += new System.EventHandler(this.btnCreerPdf_Click);
+            // 
             // btnVoirPdf
             // 
             this.btnVoirPdf.Location = new System.Drawing.Point(825, 74);
@@ -143,6 +144,7 @@
             this.btnVoirPdf.Size = new System.Drawing.Size(65, 65);
             this.btnVoirPdf.TabIndex = 8;
             this.btnVoirPdf.UseVisualStyleBackColor = true;
+            this.btnVoirPdf.Click += new System.EventHandler(this.btnVoirPdf_Click);
             // 
             // UC_Mission
             // 
@@ -165,10 +167,10 @@
         #endregion
 
         private System.Windows.Forms.PictureBox picBox;
-        private System.Windows.Forms.Label lblIdMission;
+        private System.Windows.Forms.Label lblMissionId;
         private System.Windows.Forms.Label lblDateDebut;
-        private System.Windows.Forms.Label lblNature;
-        private System.Windows.Forms.Label lblMotif;
+        private System.Windows.Forms.Label lblNatureMission;
+        private System.Windows.Forms.Label lblMotifMission;
         private System.Windows.Forms.Label lblCaserne;
         private System.Windows.Forms.Panel panelMission;
         private System.Windows.Forms.Button btnCreerPdf;
