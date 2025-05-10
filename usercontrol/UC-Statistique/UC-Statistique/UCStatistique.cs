@@ -39,14 +39,11 @@ namespace UC_Statistique
             switch (tabStatistique.SelectedTab)
             {
                 case var tab when tab == tabPage1:
-                    MessageBox.Show("Tab 1 sélectionné");
                     loadCaserne();
                     break;
                 case var tab when tab == tabPage2:
-                    MessageBox.Show("Tab 2 sélectionné");
                     break;
                 case var tab when tab == tabPage3:
-                    MessageBox.Show("Tab 3 sélectionné");
                     break;
                 default:
                     MessageBox.Show("Onglet inconnu sélectionné");
@@ -88,7 +85,6 @@ namespace UC_Statistique
                 return;
             }
             ItemCombo selected = (ItemCombo)cbxCaserne.SelectedItem;
-            MessageBox.Show(selected.Nom,selected.Id.ToString());
             flpHistogram.Controls.Clear();
             try { 
                 string command = $@"
