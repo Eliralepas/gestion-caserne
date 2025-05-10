@@ -31,7 +31,7 @@ namespace UC_Mission
         int idMission;
         string nomCaserne;
         string natureMission;
-        string motifMission;
+        string motifMission = "--> ";
         DateTime dateDebut;
         DateTime dateFin;
         bool estEnCours;
