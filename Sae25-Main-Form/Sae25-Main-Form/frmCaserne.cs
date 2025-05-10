@@ -20,13 +20,10 @@ namespace Sae25_Main_Form
 
         private void frmCaserne_Load(object sender, EventArgs e)
         {
-            //Ne pas oublier de bind tout les Controller a leur bouton
-
-            
-            foreach (UCButton btn in grpNavigation.Controls.OfType<UCButton>())
+            foreach (UCButton btn in panelNavigation.Controls.OfType<UCButton>()) //Lier les boutons de navigation
             {
-                btn.ButtonClicked += NavigationButtonClick;
-                btn.getBindedControl();
+                btn.ButtonClicked += NavigationButtonClick; //Lier l'événement de clic du bouton
+                btn.getBindedControl(); //Lier le bouton à son contrôleur
             }
         }
 

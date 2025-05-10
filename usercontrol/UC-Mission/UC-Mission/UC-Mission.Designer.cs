@@ -1,6 +1,6 @@
 ﻿namespace UC_Mission
 {
-    partial class UC_Mission
+    partial class Mission
     {
         /// <summary>
         /// Variable nécessaire au concepteur.

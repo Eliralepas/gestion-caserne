@@ -1,6 +1,6 @@
 ﻿namespace UC_TableauDeBord
 {
-    partial class UC_TableauDeBord
+    partial class TableauDeBord
     {
         /// <summary>
         /// Variable nécessaire au concepteur.
@@ -43,7 +43,7 @@
             this.lblTableauDeBord.Font = new System.Drawing.Font("Arial", 20F, System.Drawing.FontStyle.Bold);
             this.lblTableauDeBord.ForeColor = System.Drawing.Color.DarkRed;
             this.lblTableauDeBord.ImageAlign = System.Drawing.ContentAlignment.TopCenter;
-            this.lblTableauDeBord.Location = new System.Drawing.Point(320, 20);
+            this.lblTableauDeBord.Location = new System.Drawing.Point(366, 20);
             this.lblTableauDeBord.Name = "lblTableauDeBord";
             this.lblTableauDeBord.Size = new System.Drawing.Size(277, 40);
             this.lblTableauDeBord.TabIndex = 0;
@@ -62,13 +62,14 @@
             this.ckbEnCours.TabIndex = 1;
             this.ckbEnCours.Text = "En cours";
             this.ckbEnCours.UseVisualStyleBackColor = false;
+            this.ckbEnCours.CheckedChanged += new System.EventHandler(this.ckbEnCours_CheckedChanged);
             // 
             // panelMissions
             // 
             this.panelMissions.AutoScroll = true;
-            this.panelMissions.Location = new System.Drawing.Point(19, 82);
+            this.panelMissions.Location = new System.Drawing.Point(19, 95);
             this.panelMissions.Name = "panelMissions";
-            this.panelMissions.Size = new System.Drawing.Size(865, 500);
+            this.panelMissions.Size = new System.Drawing.Size(960, 487);
             this.panelMissions.TabIndex = 4;
             // 
             // lblBarre
@@ -77,11 +78,11 @@
             this.lblBarre.Font = new System.Drawing.Font("Arial", 4F);
             this.lblBarre.Location = new System.Drawing.Point(32, 69);
             this.lblBarre.Name = "lblBarre";
-            this.lblBarre.Size = new System.Drawing.Size(838, 10);
+            this.lblBarre.Size = new System.Drawing.Size(933, 10);
             this.lblBarre.TabIndex = 5;
             this.lblBarre.Text = "                                  ";
             // 
-            // UC_TableauDeBord
+            // TableauDeBord
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(13F, 26F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
@@ -90,9 +91,9 @@
             this.Controls.Add(this.ckbEnCours);
             this.Controls.Add(this.lblTableauDeBord);
             this.Font = new System.Drawing.Font("Arial", 14F);
-            this.Margin = new System.Windows.Forms.Padding(5, 5, 5, 5);
-            this.Name = "UC_TableauDeBord";
-            this.Size = new System.Drawing.Size(900, 600);
+            this.Margin = new System.Windows.Forms.Padding(5);
+            this.Name = "TableauDeBord";
+            this.Size = new System.Drawing.Size(1000, 600);
             this.ResumeLayout(false);
             this.PerformLayout();
 

@@ -10,9 +10,14 @@ using System.Windows.Forms;
 
 namespace UC_Mission
 {
-    public partial class UC_Mission: UserControl
+    public partial class Mission: UserControl
     {
-        public UC_Mission(int _idMission, string _nomCaserne, string _natureMission, string _motifMission ,DateTime _dateDebut, bool _estEnCours)
+        public Mission()
+        {
+            InitializeComponent();
+        }
+
+        public Mission(int _idMission, string _nomCaserne, string _natureMission, string _motifMission ,DateTime _dateDebut, bool _estEnCours)
         {
             InitializeComponent();
             MissionID = _idMission;
@@ -23,10 +28,21 @@ namespace UC_Mission
             EstEnCours = _estEnCours;
         }
 
+        public Mission(DataRow dr)
+        {
+            InitializeComponent();
+            MissionID = Convert.ToInt32(dr[0]);
+            Caserne = dr[1].ToString();
+            NatureMission = dr[2].ToString();
+            MotifMission = dr[3].ToString();
+            DateDebut = Convert.ToDateTime(dr[4]);
+            EstEnCours = Convert.ToBoolean(dr[5]);
+        }
+
         int idMission;
         string nomCaserne;
         string natureMission;
-        string motifMission;
+        string motifMission = "--> ";
         DateTime dateDebut;
         DateTime dateFin;
         bool estEnCours;
@@ -37,7 +53,7 @@ namespace UC_Mission
             set 
             {
                 idMission = value;
-                lblMissionId.Text = "ID Mission : " + idMission; 
+                lblMissionId.Text = "ID Mission : " + idMission;
             }
         }
 
@@ -73,14 +89,11 @@ namespace UC_Mission
 
         public DateTime DateDebut
         {
-            get 
-            { 
-                return dateDebut; 
-            }
+            get { return dateDebut; }
             set 
             {
                 dateDebut = value;
-                lblDateDebut.Text = "Début le    : " + dateDebut.ToString(); 
+                lblDateDebut.Text = "Début le    : " + dateDebut.ToString();
             }
         }
 
@@ -91,16 +104,16 @@ namespace UC_Mission
             {
                 estEnCours = value;
                 string etat = "";
-                if (estEnCours)
+                if (estEnCours) //Si la mission est en cours
                 {
                     etat = "----------";
                 }
-                else
+                else //Si la mission est terminée: afficher la date de fin
                 {
                     dateFin = DateTime.Now;
                     etat = dateFin.ToString();
                 }
-                lblDateFin.Text = "Fin le        :  " + etat; 
+                lblDateFin.Text = "Fin le        :  " + etat;
             }
         }
 

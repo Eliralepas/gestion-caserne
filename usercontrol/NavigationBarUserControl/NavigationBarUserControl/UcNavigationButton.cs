@@ -12,8 +12,6 @@ namespace NavigationBarUserControl
 {
     public partial class UCButton: UserControl
     {
-
-
         public UCButton()
         {
             InitializeComponent();
