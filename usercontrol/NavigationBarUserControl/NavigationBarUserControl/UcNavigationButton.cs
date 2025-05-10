@@ -26,6 +26,16 @@ namespace NavigationBarUserControl
             set { _ucControled = value; }
         }
 
+        private String _strText;
+        public String buttonText{
+            get { return _strText; }
+            set { _strText = value;
+                label1.Text = value;
+            }
+
+            }
+
+
         public UCButton(string str, Image img, Control binder)
         {
             InitializeComponent(); 

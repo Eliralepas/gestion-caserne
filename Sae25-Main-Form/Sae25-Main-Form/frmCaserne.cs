@@ -22,7 +22,6 @@ namespace Sae25_Main_Form
         {
             //Ne pas oublier de bind tout les Controller a leur bouton
 
-            btn1.UcControled = Tablodebord;
             
             foreach (UCButton btn in grpNavigation.Controls.OfType<UCButton>())
             {
