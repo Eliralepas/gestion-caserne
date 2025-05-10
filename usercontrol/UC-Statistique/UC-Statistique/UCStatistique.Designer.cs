@@ -35,6 +35,9 @@
             this.lblCaserne = new System.Windows.Forms.Label();
             this.tabPage2 = new System.Windows.Forms.TabPage();
             this.tabPage3 = new System.Windows.Forms.TabPage();
+            this.label1 = new System.Windows.Forms.Label();
+            this.label2 = new System.Windows.Forms.Label();
+            this.flowLayoutPanel1 = new System.Windows.Forms.FlowLayoutPanel();
             this.tabStatistique.SuspendLayout();
             this.tabPage1.SuspendLayout();
             this.grpEngins.SuspendLayout();
@@ -70,6 +73,9 @@
             // 
             // grpEngins
             // 
+            this.grpEngins.Controls.Add(this.flowLayoutPanel1);
+            this.grpEngins.Controls.Add(this.label2);
+            this.grpEngins.Controls.Add(this.label1);
             this.grpEngins.Controls.Add(this.cbxCaserne);
             this.grpEngins.Controls.Add(this.lblCaserne);
             this.grpEngins.Dock = System.Windows.Forms.DockStyle.Left;
@@ -123,6 +129,31 @@
             this.tabPage3.Text = "Habilitation";
             this.tabPage3.UseVisualStyleBackColor = true;
             // 
+            // label1
+            // 
+            this.label1.AutoSize = true;
+            this.label1.Location = new System.Drawing.Point(784, 133);
+            this.label1.Name = "label1";
+            this.label1.Size = new System.Drawing.Size(52, 23);
+            this.label1.TabIndex = 2;
+            this.label1.Text = "label1";
+            // 
+            // label2
+            // 
+            this.label2.AutoSize = true;
+            this.label2.Location = new System.Drawing.Point(141, 119);
+            this.label2.Name = "label2";
+            this.label2.Size = new System.Drawing.Size(52, 23);
+            this.label2.TabIndex = 3;
+            this.label2.Text = "label2";
+            // 
+            // flowLayoutPanel1
+            // 
+            this.flowLayoutPanel1.Location = new System.Drawing.Point(587, 159);
+            this.flowLayoutPanel1.Name = "flowLayoutPanel1";
+            this.flowLayoutPanel1.Size = new System.Drawing.Size(580, 580);
+            this.flowLayoutPanel1.TabIndex = 4;
+            // 
             // UCStatistique
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(9F, 23F);
@@ -150,5 +181,8 @@
         private System.Windows.Forms.GroupBox grpEngins;
         private System.Windows.Forms.Label lblCaserne;
         private System.Windows.Forms.ComboBox cbxCaserne;
+        private System.Windows.Forms.FlowLayoutPanel flowLayoutPanel1;
+        private System.Windows.Forms.Label label2;
+        private System.Windows.Forms.Label label1;
     }
 }

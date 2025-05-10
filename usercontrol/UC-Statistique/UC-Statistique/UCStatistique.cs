@@ -8,6 +8,7 @@ using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
 using System.Data.SQLite;
+using System.Security.Cryptography;
 
 namespace UC_Statistique
 {
@@ -53,14 +54,22 @@ namespace UC_Statistique
             }
         }
 
+        private SQLiteDataReader executeDataReaderCommand(string command)
+        {
+            SQLiteCommand cmd = new SQLiteCommand(command, _con);
+            
+            return cmd.ExecuteReader(); ;
+        }
+
+
+
 
 
         private void loadCaserne()
         {
           try{
                 string command = "Select [id] ,[nom] FROM Caserne;";
-                SQLiteCommand cmd = new SQLiteCommand(command,_con);
-                SQLiteDataReader dataRead =  cmd.ExecuteReader();
+                SQLiteDataReader dataRead = executeDataReaderCommand(command);
                 while (dataRead.Read())
                 {
                     cbxCaserne.Items.Add(new ItemCombo(dataRead.GetInt32(0), dataRead.GetString(1)));
@@ -80,6 +89,39 @@ namespace UC_Statistique
             }
             ItemCombo selected = (ItemCombo)cbxCaserne.SelectedItem;
             MessageBox.Show(selected.Nom,selected.Id.ToString());
+            pnlResult.Controls.Clear();
+            try { 
+                string command = $@"
+                    SELECT E.codeTypeEngin,E.numero,
+                    ROUND(SUM((julianday(M.dateHeureRetour) - julianday(M.dateHeureDepart)) * 24), 2) AS cumul_heures                     
+                    FROM Engin E
+                    JOIN Partiravec P ON E.idCaserne = P.idCaserne 
+                    AND E.codeTypeEngin = P.codeTypeEngin 
+                    AND E.numero = P.numeroEngin 
+                    JOIN Mission M ON P.idMission = M.id
+                    WHERE E.idCaserne = @idMission 
+                    AND M.dateHeureRetour IS NOT NULL 
+                    GROUP BY  E.codeTypeEngin, E.numero 
+                    ORDER BY cumul_heures DESC;" ;
+
+                SQLiteCommand cmd = new SQLiteCommand(command,_con);
+                cmd.Parameters.AddWithValue("@idMission",selected.Id);
+                SQLiteDataReader dataReader =  cmd.ExecuteReader();
+
+
+                Dictionary<string, float> EnginPerHour =  new Dictionary<string, float>();
+
+                while (dataReader.Read())
+                {
+                    string engin = dataReader.GetString(0) + " " + dataReader.GetInt32(1).ToString();
+                    float heures = dataReader.GetFloat(2);
+                    EnginPerHour.Add(engin,heures);
+                }
+                pnlResult.Controls.Add(new histogram(EnginPerHour));
+            }catch(Exception ex)
+            {
+                MessageBox.Show(ex.Message);
+            }
         }
     }
 

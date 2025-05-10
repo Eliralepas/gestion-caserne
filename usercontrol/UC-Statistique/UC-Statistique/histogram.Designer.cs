@@ -28,10 +28,32 @@
         /// </summary>
         private void InitializeComponent()
         {
-            components = new System.ComponentModel.Container();
+            this.flpHeurPEngin = new System.Windows.Forms.FlowLayoutPanel();
+            this.SuspendLayout();
+            // 
+            // flpHeurPEngin
+            // 
+            this.flpHeurPEngin.AutoScroll = true;
+            this.flpHeurPEngin.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.flpHeurPEngin.Location = new System.Drawing.Point(0, 0);
+            this.flpHeurPEngin.Name = "flpHeurPEngin";
+            this.flpHeurPEngin.Size = new System.Drawing.Size(489, 397);
+            this.flpHeurPEngin.TabIndex = 0;
+            this.flpHeurPEngin.WrapContents = false;
+            // 
+            // histogram
+            // 
+            this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
+            this.Controls.Add(this.flpHeurPEngin);
+            this.Name = "histogram";
+            this.Size = new System.Drawing.Size(489, 397);
+            this.ResumeLayout(false);
+
         }
 
         #endregion
+
+        private System.Windows.Forms.FlowLayoutPanel flpHeurPEngin;
     }
 }
