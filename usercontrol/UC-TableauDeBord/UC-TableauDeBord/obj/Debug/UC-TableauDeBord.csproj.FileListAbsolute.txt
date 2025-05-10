@@ -19,3 +19,4 @@ C:\Users\Diego\source\repos\sae-caserne\usercontrol\UC-TableauDeBord\UC-TableauD
 C:\Users\Diego\source\repos\sae-caserne\usercontrol\UC-TableauDeBord\UC-TableauDeBord\bin\Debug\UC-Mission.pdb
 C:\Users\Diego\source\repos\sae-caserne\usercontrol\UC-TableauDeBord\UC-TableauDeBord\obj\Debug\UC-Table.C7420841.Up2Date
 C:\Users\Diego\source\repos\sae-caserne\usercontrol\UC-TableauDeBord\UC-TableauDeBord\obj\Debug\UC_TableauDeBord.TableauDeBord.resources
+C:\Users\Diego\source\repos\sae-caserne\usercontrol\UC-TableauDeBord\UC-TableauDeBord\obj\Debug\UC_TableauDeBord.frmTerminerMission.resources
