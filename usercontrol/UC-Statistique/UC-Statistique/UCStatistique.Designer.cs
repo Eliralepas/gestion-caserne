@@ -37,7 +37,7 @@
             this.tabPage3 = new System.Windows.Forms.TabPage();
             this.label1 = new System.Windows.Forms.Label();
             this.label2 = new System.Windows.Forms.Label();
-            this.flowLayoutPanel1 = new System.Windows.Forms.FlowLayoutPanel();
+            this.flpHistogram = new System.Windows.Forms.FlowLayoutPanel();
             this.tabStatistique.SuspendLayout();
             this.tabPage1.SuspendLayout();
             this.grpEngins.SuspendLayout();
@@ -73,7 +73,7 @@
             // 
             // grpEngins
             // 
-            this.grpEngins.Controls.Add(this.flowLayoutPanel1);
+            this.grpEngins.Controls.Add(this.flpHistogram);
             this.grpEngins.Controls.Add(this.label2);
             this.grpEngins.Controls.Add(this.label1);
             this.grpEngins.Controls.Add(this.cbxCaserne);
@@ -132,7 +132,7 @@
             // label1
             // 
             this.label1.AutoSize = true;
-            this.label1.Location = new System.Drawing.Point(784, 133);
+            this.label1.Location = new System.Drawing.Point(865, 119);
             this.label1.Name = "label1";
             this.label1.Size = new System.Drawing.Size(52, 23);
             this.label1.TabIndex = 2;
@@ -147,12 +147,14 @@
             this.label2.TabIndex = 3;
             this.label2.Text = "label2";
             // 
-            // flowLayoutPanel1
+            // flpHistogram
             // 
-            this.flowLayoutPanel1.Location = new System.Drawing.Point(587, 159);
-            this.flowLayoutPanel1.Name = "flowLayoutPanel1";
-            this.flowLayoutPanel1.Size = new System.Drawing.Size(580, 580);
-            this.flowLayoutPanel1.TabIndex = 4;
+            this.flpHistogram.AutoScroll = true;
+            this.flpHistogram.Location = new System.Drawing.Point(587, 159);
+            this.flpHistogram.Name = "flpHistogram";
+            this.flpHistogram.Size = new System.Drawing.Size(580, 411);
+            this.flpHistogram.TabIndex = 4;
+            this.flpHistogram.WrapContents = false;
             // 
             // UCStatistique
             // 
@@ -181,7 +183,7 @@
         private System.Windows.Forms.GroupBox grpEngins;
         private System.Windows.Forms.Label lblCaserne;
         private System.Windows.Forms.ComboBox cbxCaserne;
-        private System.Windows.Forms.FlowLayoutPanel flowLayoutPanel1;
+        private System.Windows.Forms.FlowLayoutPanel flpHistogram;
         private System.Windows.Forms.Label label2;
         private System.Windows.Forms.Label label1;
     }

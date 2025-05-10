@@ -89,7 +89,7 @@ namespace UC_Statistique
             }
             ItemCombo selected = (ItemCombo)cbxCaserne.SelectedItem;
             MessageBox.Show(selected.Nom,selected.Id.ToString());
-            pnlResult.Controls.Clear();
+            flpHistogram.Controls.Clear();
             try { 
                 string command = $@"
                     SELECT E.codeTypeEngin,E.numero,
@@ -109,15 +109,20 @@ namespace UC_Statistique
                 SQLiteDataReader dataReader =  cmd.ExecuteReader();
 
 
-                Dictionary<string, float> EnginPerHour =  new Dictionary<string, float>();
-
+                float maxValue = 0;
+                Dictionary<string, float> EnginPerHour = new Dictionary<string, float>();
                 while (dataReader.Read())
                 {
                     string engin = dataReader.GetString(0) + " " + dataReader.GetInt32(1).ToString();
                     float heures = dataReader.GetFloat(2);
-                    EnginPerHour.Add(engin,heures);
+                    if (heures > maxValue) maxValue = heures;
+                    EnginPerHour.Add(engin, heures);
                 }
-                pnlResult.Controls.Add(new histogram(EnginPerHour));
+                foreach(KeyValuePair<string,float> eph in EnginPerHour)
+                {
+                    flpHistogram.Controls.Add(new histogram(eph.Key,eph.Value,maxValue));
+
+                }
             }catch(Exception ex)
             {
                 MessageBox.Show(ex.Message);

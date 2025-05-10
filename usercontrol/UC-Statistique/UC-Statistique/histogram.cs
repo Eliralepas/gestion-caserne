@@ -12,37 +12,26 @@ namespace UC_Statistique
 {
     public partial class histogram : UserControl
     {
-
-        private Dictionary<string, float> _data;
+        string _nom;
+        float _hour;
         public histogram()
         {
             InitializeComponent();
         }
-        public histogram(Dictionary<string,float> data) :this()
+        public histogram(string nom,float hour,float max) :this()
         {
-            _data = data;
-            loadHistogram();
-            this.BackColor = Color.Black;
-            flpHeurPEngin.BackColor = Color.Blue;
-        }
-
-        private void loadHistogram()
-        {
-            if (_data == null || _data.Count == 0) return;
-            int i = 1;
-            foreach (KeyValuePair<string, float> bar in _data)
-            {
-                string labeltext = bar.Key.ToString();
-                Label lbl = new Label();
-                lbl.Text = labeltext;
-                lbl.Top = flpHeurPEngin.Height - 20;
-                lbl.Left = i * 30 + lbl.Width;
-                lbl.BackColor = Color.Red;
-                flpHeurPEngin.Controls.Add(lbl);
-                i++;
-            }
+            _nom = nom;
+            _hour = hour;
+            lblVehicule.Text = nom;
+            lblVehicule.Top = this.Height - 20;
+            lblVehicule.Left = this.Width / 2 - lblVehicule.Width / 2+10;
+            this.rectValue.Height =(int)((this.Height-10-lblVehicule.Height)*(hour/max)+10);
+            this.rectValue.Width = this.Width - 30;
+            this.rectValue.Left = this.Width / 2 - rectValue.Width / 2;
+            this.rectValue.Top = this.Height - lblVehicule.Height - rectValue.Height;
 
         }
+
 
 
     }
