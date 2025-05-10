@@ -30,11 +30,14 @@
         {
             this.tabStatistique = new System.Windows.Forms.TabControl();
             this.tabPage1 = new System.Windows.Forms.TabPage();
-            this.groupBox1 = new System.Windows.Forms.GroupBox();
+            this.grpEngins = new System.Windows.Forms.GroupBox();
             this.tabPage2 = new System.Windows.Forms.TabPage();
             this.tabPage3 = new System.Windows.Forms.TabPage();
+            this.lblCaserne = new System.Windows.Forms.Label();
+            this.cbxCaserne = new System.Windows.Forms.ComboBox();
             this.tabStatistique.SuspendLayout();
             this.tabPage1.SuspendLayout();
+            this.grpEngins.SuspendLayout();
             this.SuspendLayout();
             // 
             // tabStatistique
@@ -46,39 +49,46 @@
             this.tabStatistique.Cursor = System.Windows.Forms.Cursors.Hand;
             this.tabStatistique.Dock = System.Windows.Forms.DockStyle.Fill;
             this.tabStatistique.Location = new System.Drawing.Point(0, 0);
+            this.tabStatistique.Margin = new System.Windows.Forms.Padding(4, 5, 4, 5);
             this.tabStatistique.Name = "tabStatistique";
             this.tabStatistique.SelectedIndex = 0;
-            this.tabStatistique.Size = new System.Drawing.Size(800, 450);
+            this.tabStatistique.Size = new System.Drawing.Size(1200, 796);
             this.tabStatistique.TabIndex = 0;
             this.tabStatistique.SelectedIndexChanged += new System.EventHandler(this.tabStatistique_SelectedIndexChanged);
             // 
             // tabPage1
             // 
-            this.tabPage1.Controls.Add(this.groupBox1);
-            this.tabPage1.Location = new System.Drawing.Point(4, 25);
+            this.tabPage1.Controls.Add(this.grpEngins);
+            this.tabPage1.Location = new System.Drawing.Point(4, 35);
+            this.tabPage1.Margin = new System.Windows.Forms.Padding(4, 5, 4, 5);
             this.tabPage1.Name = "tabPage1";
-            this.tabPage1.Padding = new System.Windows.Forms.Padding(3);
-            this.tabPage1.Size = new System.Drawing.Size(792, 421);
+            this.tabPage1.Padding = new System.Windows.Forms.Padding(4, 5, 4, 5);
+            this.tabPage1.Size = new System.Drawing.Size(1192, 757);
             this.tabPage1.TabIndex = 0;
             this.tabPage1.Text = "Engins";
             this.tabPage1.UseVisualStyleBackColor = true;
             // 
-            // groupBox1
+            // grpEngins
             // 
-            this.groupBox1.Dock = System.Windows.Forms.DockStyle.Left;
-            this.groupBox1.Location = new System.Drawing.Point(3, 3);
-            this.groupBox1.Name = "groupBox1";
-            this.groupBox1.Size = new System.Drawing.Size(327, 415);
-            this.groupBox1.TabIndex = 0;
-            this.groupBox1.TabStop = false;
-            this.groupBox1.Text = "groupBox1";
+            this.grpEngins.Controls.Add(this.cbxCaserne);
+            this.grpEngins.Controls.Add(this.lblCaserne);
+            this.grpEngins.Dock = System.Windows.Forms.DockStyle.Left;
+            this.grpEngins.Location = new System.Drawing.Point(4, 5);
+            this.grpEngins.Margin = new System.Windows.Forms.Padding(4, 5, 4, 5);
+            this.grpEngins.Name = "grpEngins";
+            this.grpEngins.Padding = new System.Windows.Forms.Padding(4, 5, 4, 5);
+            this.grpEngins.Size = new System.Drawing.Size(1174, 747);
+            this.grpEngins.TabIndex = 0;
+            this.grpEngins.TabStop = false;
+            this.grpEngins.Text = "Statistique reltives au Engins";
             // 
             // tabPage2
             // 
             this.tabPage2.Location = new System.Drawing.Point(4, 25);
+            this.tabPage2.Margin = new System.Windows.Forms.Padding(4, 5, 4, 5);
             this.tabPage2.Name = "tabPage2";
-            this.tabPage2.Padding = new System.Windows.Forms.Padding(3);
-            this.tabPage2.Size = new System.Drawing.Size(792, 421);
+            this.tabPage2.Padding = new System.Windows.Forms.Padding(4, 5, 4, 5);
+            this.tabPage2.Size = new System.Drawing.Size(1192, 767);
             this.tabPage2.TabIndex = 1;
             this.tabPage2.Text = "Intervention";
             this.tabPage2.UseVisualStyleBackColor = true;
@@ -86,23 +96,46 @@
             // tabPage3
             // 
             this.tabPage3.Location = new System.Drawing.Point(4, 25);
+            this.tabPage3.Margin = new System.Windows.Forms.Padding(4, 5, 4, 5);
             this.tabPage3.Name = "tabPage3";
-            this.tabPage3.Padding = new System.Windows.Forms.Padding(3);
-            this.tabPage3.Size = new System.Drawing.Size(792, 421);
+            this.tabPage3.Padding = new System.Windows.Forms.Padding(4, 5, 4, 5);
+            this.tabPage3.Size = new System.Drawing.Size(1192, 767);
             this.tabPage3.TabIndex = 2;
             this.tabPage3.Text = "Habilitation";
             this.tabPage3.UseVisualStyleBackColor = true;
             // 
+            // lblCaserne
+            // 
+            this.lblCaserne.AutoSize = true;
+            this.lblCaserne.Location = new System.Drawing.Point(199, 33);
+            this.lblCaserne.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
+            this.lblCaserne.Name = "lblCaserne";
+            this.lblCaserne.Size = new System.Drawing.Size(82, 23);
+            this.lblCaserne.TabIndex = 0;
+            this.lblCaserne.Text = "Caserne : ";
+            // 
+            // cbxCaserne
+            // 
+            this.cbxCaserne.FormattingEnabled = true;
+            this.cbxCaserne.Location = new System.Drawing.Point(288, 30);
+            this.cbxCaserne.Name = "cbxCaserne";
+            this.cbxCaserne.Size = new System.Drawing.Size(272, 31);
+            this.cbxCaserne.TabIndex = 1;
+            // 
             // UCStatistique
             // 
-            this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
+            this.AutoScaleDimensions = new System.Drawing.SizeF(9F, 23F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.BackColor = System.Drawing.SystemColors.ActiveCaption;
             this.Controls.Add(this.tabStatistique);
+            this.Font = new System.Drawing.Font("Arial Narrow", 14.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.Margin = new System.Windows.Forms.Padding(4, 5, 4, 5);
             this.Name = "UCStatistique";
-            this.Size = new System.Drawing.Size(800, 450);
+            this.Size = new System.Drawing.Size(1200, 796);
             this.tabStatistique.ResumeLayout(false);
             this.tabPage1.ResumeLayout(false);
+            this.grpEngins.ResumeLayout(false);
+            this.grpEngins.PerformLayout();
             this.ResumeLayout(false);
 
         }
@@ -113,6 +146,8 @@
         private System.Windows.Forms.TabPage tabPage1;
         private System.Windows.Forms.TabPage tabPage2;
         private System.Windows.Forms.TabPage tabPage3;
-        private System.Windows.Forms.GroupBox groupBox1;
+        private System.Windows.Forms.GroupBox grpEngins;
+        private System.Windows.Forms.Label lblCaserne;
+        private System.Windows.Forms.ComboBox cbxCaserne;
     }
 }
