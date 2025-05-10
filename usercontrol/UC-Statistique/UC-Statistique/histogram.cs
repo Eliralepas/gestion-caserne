@@ -41,6 +41,13 @@ namespace UC_Statistique
             rectValue.Left = this.Width / 2 - rectValue.Width / 2;
             rectValue.Top = this.Height - lblVehicule.Height - rectValue.Height - 20;
             _basetop = rectValue.Top;
+
+
+            ToolTip valueToolTip = new ToolTip();
+            valueToolTip.AutoPopDelay = 0;
+            valueToolTip.IsBalloon = true;
+            valueToolTip.SetToolTip(rectValue, "heure Cumulé " + _hour.ToString());
+
         }
 
         private void histogram_MouseEnter(object sender, EventArgs e)
