@@ -10,14 +10,14 @@ using System.Windows.Forms;
 
 namespace UC_Mission
 {
-    public partial class UC_Mission: UserControl
+    public partial class Mission: UserControl
     {
-        public UC_Mission()
+        public Mission()
         {
             InitializeComponent();
         }
 
-        public UC_Mission(int _idMission, string _nomCaserne, string _natureMission, string _motifMission ,DateTime _dateDebut, bool _estEnCours)
+        public Mission(int _idMission, string _nomCaserne, string _natureMission, string _motifMission ,DateTime _dateDebut, bool _estEnCours)
         {
             InitializeComponent();
             MissionID = _idMission;

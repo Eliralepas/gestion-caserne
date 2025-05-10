@@ -17,7 +17,7 @@ namespace UC_TableauDeBord
             InitializeComponent();
         }
 
-        List<UserControl> listMissions = new List<UserControl>();
+        List<UC_Mission> listMissions = new List<UserControl>();
 
         public void AddMission(UserControl mission)
         {
