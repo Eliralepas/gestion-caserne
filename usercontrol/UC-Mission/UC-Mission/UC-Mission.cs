@@ -28,6 +28,17 @@ namespace UC_Mission
             EstEnCours = _estEnCours;
         }
 
+        public Mission(DataRow dr)
+        {
+            InitializeComponent();
+            MissionID = Convert.ToInt32(dr[0]);
+            Caserne = dr[1].ToString();
+            NatureMission = dr[2].ToString();
+            MotifMission = dr[3].ToString();
+            DateDebut = Convert.ToDateTime(dr[4]);
+            EstEnCours = Convert.ToBoolean(dr[5]);
+        }
+
         int idMission;
         string nomCaserne;
         string natureMission;
