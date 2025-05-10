@@ -31,10 +31,10 @@
             this.tabStatistique = new System.Windows.Forms.TabControl();
             this.tabPage1 = new System.Windows.Forms.TabPage();
             this.grpEngins = new System.Windows.Forms.GroupBox();
+            this.cbxCaserne = new System.Windows.Forms.ComboBox();
+            this.lblCaserne = new System.Windows.Forms.Label();
             this.tabPage2 = new System.Windows.Forms.TabPage();
             this.tabPage3 = new System.Windows.Forms.TabPage();
-            this.lblCaserne = new System.Windows.Forms.Label();
-            this.cbxCaserne = new System.Windows.Forms.ComboBox();
             this.tabStatistique.SuspendLayout();
             this.tabPage1.SuspendLayout();
             this.grpEngins.SuspendLayout();
@@ -82,27 +82,14 @@
             this.grpEngins.TabStop = false;
             this.grpEngins.Text = "Statistique reltives au Engins";
             // 
-            // tabPage2
+            // cbxCaserne
             // 
-            this.tabPage2.Location = new System.Drawing.Point(4, 25);
-            this.tabPage2.Margin = new System.Windows.Forms.Padding(4, 5, 4, 5);
-            this.tabPage2.Name = "tabPage2";
-            this.tabPage2.Padding = new System.Windows.Forms.Padding(4, 5, 4, 5);
-            this.tabPage2.Size = new System.Drawing.Size(1192, 767);
-            this.tabPage2.TabIndex = 1;
-            this.tabPage2.Text = "Intervention";
-            this.tabPage2.UseVisualStyleBackColor = true;
-            // 
-            // tabPage3
-            // 
-            this.tabPage3.Location = new System.Drawing.Point(4, 25);
-            this.tabPage3.Margin = new System.Windows.Forms.Padding(4, 5, 4, 5);
-            this.tabPage3.Name = "tabPage3";
-            this.tabPage3.Padding = new System.Windows.Forms.Padding(4, 5, 4, 5);
-            this.tabPage3.Size = new System.Drawing.Size(1192, 767);
-            this.tabPage3.TabIndex = 2;
-            this.tabPage3.Text = "Habilitation";
-            this.tabPage3.UseVisualStyleBackColor = true;
+            this.cbxCaserne.FormattingEnabled = true;
+            this.cbxCaserne.Location = new System.Drawing.Point(288, 30);
+            this.cbxCaserne.Name = "cbxCaserne";
+            this.cbxCaserne.Size = new System.Drawing.Size(272, 31);
+            this.cbxCaserne.TabIndex = 1;
+            this.cbxCaserne.SelectedIndexChanged += new System.EventHandler(this.cbxCaserne_SelectedIndexChanged);
             // 
             // lblCaserne
             // 
@@ -114,13 +101,27 @@
             this.lblCaserne.TabIndex = 0;
             this.lblCaserne.Text = "Caserne : ";
             // 
-            // cbxCaserne
+            // tabPage2
             // 
-            this.cbxCaserne.FormattingEnabled = true;
-            this.cbxCaserne.Location = new System.Drawing.Point(288, 30);
-            this.cbxCaserne.Name = "cbxCaserne";
-            this.cbxCaserne.Size = new System.Drawing.Size(272, 31);
-            this.cbxCaserne.TabIndex = 1;
+            this.tabPage2.Location = new System.Drawing.Point(4, 35);
+            this.tabPage2.Margin = new System.Windows.Forms.Padding(4, 5, 4, 5);
+            this.tabPage2.Name = "tabPage2";
+            this.tabPage2.Padding = new System.Windows.Forms.Padding(4, 5, 4, 5);
+            this.tabPage2.Size = new System.Drawing.Size(1192, 757);
+            this.tabPage2.TabIndex = 1;
+            this.tabPage2.Text = "Intervention";
+            this.tabPage2.UseVisualStyleBackColor = true;
+            // 
+            // tabPage3
+            // 
+            this.tabPage3.Location = new System.Drawing.Point(4, 35);
+            this.tabPage3.Margin = new System.Windows.Forms.Padding(4, 5, 4, 5);
+            this.tabPage3.Name = "tabPage3";
+            this.tabPage3.Padding = new System.Windows.Forms.Padding(4, 5, 4, 5);
+            this.tabPage3.Size = new System.Drawing.Size(1192, 757);
+            this.tabPage3.TabIndex = 2;
+            this.tabPage3.Text = "Habilitation";
+            this.tabPage3.UseVisualStyleBackColor = true;
             // 
             // UCStatistique
             // 

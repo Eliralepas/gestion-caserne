@@ -11,23 +11,7 @@ using System.Data.SQLite;
 
 namespace UC_Statistique
 {
-    public class ItemCombo
-    {
-        public ItemCombo(int id, string nom)
-        {
-            Id = id;
-            Nom = nom;
-        }
-
-        public int Id { get; set; }
-        public string Nom { get; set; }
-
-        public override string ToString()
-        {
-            return Nom; 
-        }
-    }
-
+ 
 
     public partial class UCStatistique: UserControl
     {
@@ -86,7 +70,48 @@ namespace UC_Statistique
                 MessageBox.Show(ex.Message);
           }
 
-        } 
+        }
 
+        private void cbxCaserne_SelectedIndexChanged(object sender, EventArgs e)
+        {
+            if (cbxCaserne.SelectedIndex == -1)
+            {
+                return;
+            }
+            ItemCombo selected = (ItemCombo)cbxCaserne.SelectedItem;
+            MessageBox.Show(selected.Nom,selected.Id.ToString());
+        }
     }
+
+
+
+
+
+
+
+
+
+
+
+
+
+    public class ItemCombo
+    {
+        public ItemCombo(int id, string nom)
+        {
+            Id = id;
+            Nom = nom;
+        }
+
+        public int Id { get; set; }
+        public string Nom { get; set; }
+
+        public override string ToString()
+        {
+            return Nom;
+        }
+    }
+
+
+
 }
