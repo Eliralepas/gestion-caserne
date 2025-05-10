@@ -53,7 +53,7 @@ namespace UC_Mission
             set 
             {
                 idMission = value;
-                lblMissionId.Text = "ID Mission : " + idMission; 
+                lblMissionId.Text = "ID Mission : " + idMission;
             }
         }
 
@@ -89,14 +89,11 @@ namespace UC_Mission
 
         public DateTime DateDebut
         {
-            get 
-            { 
-                return dateDebut; 
-            }
+            get { return dateDebut; }
             set 
             {
                 dateDebut = value;
-                lblDateDebut.Text = "Début le    : " + dateDebut.ToString(); 
+                lblDateDebut.Text = "Début le    : " + dateDebut.ToString();
             }
         }
 
@@ -107,16 +104,16 @@ namespace UC_Mission
             {
                 estEnCours = value;
                 string etat = "";
-                if (estEnCours)
+                if (estEnCours) //Si la mission est en cours
                 {
                     etat = "----------";
                 }
-                else
+                else //Si la mission est terminée: afficher la date de fin
                 {
                     dateFin = DateTime.Now;
                     etat = dateFin.ToString();
                 }
-                lblDateFin.Text = "Fin le        :  " + etat; 
+                lblDateFin.Text = "Fin le        :  " + etat;
             }
         }
 
