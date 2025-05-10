@@ -16,5 +16,25 @@ namespace UC_TableauDeBord
         {
             InitializeComponent();
         }
+
+        List<UserControl> listMissions = new List<UserControl>();
+
+        public void AddMission(UserControl mission)
+        {
+            listMissions.Add(mission);
+        }
+
+        public void RemoveMission(UserControl mission)
+        {
+            listMissions.Remove(mission);
+        }
+
+        public void DisplayMissions()
+        {
+            foreach (var mission in listMissions)
+            {
+                mission.Visible = true;
+            }
+        }
     }
 }

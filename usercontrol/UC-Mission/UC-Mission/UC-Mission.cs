@@ -12,6 +12,11 @@ namespace UC_Mission
 {
     public partial class UC_Mission: UserControl
     {
+        public UC_Mission()
+        {
+            InitializeComponent();
+        }
+
         public UC_Mission(int _idMission, string _nomCaserne, string _natureMission, string _motifMission ,DateTime _dateDebut, bool _estEnCours)
         {
             InitializeComponent();

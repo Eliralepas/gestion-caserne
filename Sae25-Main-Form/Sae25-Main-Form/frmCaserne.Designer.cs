@@ -78,7 +78,7 @@
             // 
             // btn5
             // 
-            this.btn5.buttonText = null;
+            //this.btn5.buttonText = null;
             this.btn5.Font = new System.Drawing.Font("Arial Narrow", 13.8F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.btn5.Location = new System.Drawing.Point(7, 387);
             this.btn5.Margin = new System.Windows.Forms.Padding(4, 5, 4, 5);
@@ -89,7 +89,7 @@
             // 
             // btn1
             // 
-            this.btn1.buttonText = "Display Text Here ";
+            //this.btn1.buttonText = "Display Text Here ";
             this.btn1.Font = new System.Drawing.Font("Arial Narrow", 13.8F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.btn1.Location = new System.Drawing.Point(7, 30);
             this.btn1.Margin = new System.Windows.Forms.Padding(4, 5, 4, 5);
@@ -100,7 +100,7 @@
             // 
             // btn4
             // 
-            this.btn4.buttonText = null;
+            //this.btn4.buttonText = null;
             this.btn4.Font = new System.Drawing.Font("Arial Narrow", 13.8F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.btn4.Location = new System.Drawing.Point(8, 294);
             this.btn4.Margin = new System.Windows.Forms.Padding(4, 5, 4, 5);
@@ -111,7 +111,7 @@
             // 
             // btn2
             // 
-            this.btn2.buttonText = null;
+            //this.btn2.buttonText = null;
             this.btn2.Font = new System.Drawing.Font("Arial Narrow", 13.8F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.btn2.Location = new System.Drawing.Point(7, 119);
             this.btn2.Margin = new System.Windows.Forms.Padding(4, 5, 4, 5);
@@ -122,7 +122,7 @@
             // 
             // btn3
             // 
-            this.btn3.buttonText = null;
+            //this.btn3.buttonText = null;
             this.btn3.Font = new System.Drawing.Font("Arial Narrow", 13.8F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.btn3.Location = new System.Drawing.Point(7, 208);
             this.btn3.Margin = new System.Windows.Forms.Padding(4, 5, 4, 5);
