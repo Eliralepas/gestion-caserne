@@ -198,6 +198,7 @@ namespace UC_Statistique
         private void loadHabilitation()
         {
             loadMostUsedHabilitation();
+            loadPompierPerHabilitation();
         }
 
         private void loadMostUsedHabilitation()
@@ -234,6 +235,29 @@ namespace UC_Statistique
             camenbert.m_EdgeSize = 0;
             camenbert.Dock = DockStyle.Fill;
             pnlGrapheHabit.Controls.Add(camenbert);
+
+        }
+        private void loadPompierPerHabilitation()
+        {
+            tabPompierPerHabilitation.Controls.Clear();
+            string command = $@"SELECT H.libelle, P.nom , P.prenom
+                                FROM Habilitation H
+                                LEFT JOIN Passer Pa ON Pa.idHabilitation = H.id
+                                LEFT JOIN Pompier P ON Pa.matriculePompier = P.matricule
+                                ORDER BY H.id;";
+            SQLiteDataReader data = executeDataReaderCommand(command);
+            string currentTab = "";
+            while (data.Read())
+            {
+                string hability = data.GetString(0);
+                    string nom = data.IsDBNull(1) ? "" : data.GetString(1);//verifier si l'habilitation à un prénom car left Join
+                string prenom = data.IsDBNull(2) ? "" : data.GetString(2);
+                if (hability != currentTab)
+                {
+                    currentTab = hability;
+                    tabPompierPerHabilitation.TabPages.Add(currentTab);
+                }
+            }
 
         }
     }
