@@ -11,30 +11,34 @@ using UC_Mission;
 
 namespace UC_TableauDeBord
 {
+
+    public delegate void AjouterMissionBD(UC_Mission.Mission mission); //Déclaration de la signature du délégué pour ajouter une mission à la base de données
+
     public partial class TableauDeBord: UserControl
     {
         public TableauDeBord()
         {
             InitializeComponent();
-            listMissions.AddRange(new UC_Mission.Mission[]
-            {
-                new UC_Mission.Mission(1, "A", "Chépa", "Feur", DateTime.Now, false),
-                new UC_Mission.Mission(2, "B", "Chépa", "Feur", DateTime.Now, true),
-                new UC_Mission.Mission(3, "C", "Chépa", "Feur", DateTime.Now, true),
-                new UC_Mission.Mission(4, "D", "Chépa", "Feur", DateTime.Now, true),
-            }); //Ajout des missions à la liste
-            DisplayMissions(); //Appel de la méthode pour afficher les missions
+            UC_Mission.Mission mission1 = new UC_Mission.Mission(1, "A", "Chépa", "Feur", DateTime.Now, DateTime.Now.AddDays(2));
+            UC_Mission.Mission mission2 = new UC_Mission.Mission(2, "B", "Chépa", "Feur", DateTime.Now);
+            UC_Mission.Mission mission3 = new UC_Mission.Mission(3, "C", "Chépa", "Feur", DateTime.Now);
+            UC_Mission.Mission mission4 = new UC_Mission.Mission(4, "D", "Chépa", "Feur", DateTime.Now);
+            AddMission(mission1);
+            AddMission(mission2);
+            AddMission(mission3);
+            AddMission(mission4);
         }
 
-        List<UC_Mission.Mission> listMissions = new List<UC_Mission.Mission>(); //Liste des missions
-        
+        private List<UC_Mission.Mission> listMissions = new List<UC_Mission.Mission>(); //Liste des missions
+        public AjouterMissionBD ajouterMissionBD; //Instance du délégué pour ajouter une mission à la base de données
+
         public void LoadMissions(DataTable dt)
         {
             listMissions.Clear(); //Vider la liste avant de la remplir
             foreach (DataRow dr in dt.Rows)
             {
                 UC_Mission.Mission mission = new UC_Mission.Mission(dr); //Création d'une nouvelle mission à partir de la ligne du DataTable
-                mission.Tag = mission.MissionID; //Ajout de l'ID de la mission dans le tag de la mission
+                mission.terminerMission += TerminerMission; //Ajout de l'événement pour terminer la mission
                 listMissions.Add(mission); //Ajout de la mission à la liste
             }
             DisplayMissions(); //Appel de la méthode pour afficher les missions
@@ -43,6 +47,7 @@ namespace UC_TableauDeBord
         public void AddMission(UC_Mission.Mission mission)
         {
             listMissions.Add(mission); //Ajout de la mission à la liste
+            mission.terminerMission += TerminerMission; //Ajout de l'événement pour terminer la mission
             DisplayMissions(); //Appel de la méthode pour afficher les missions
         }
 
@@ -73,37 +78,19 @@ namespace UC_TableauDeBord
             DisplayMissions(); //Appel de la méthode pour afficher les missions
         }
 
-        private void btnTerminerMission_Click(object sender, EventArgs e)
+        private void TerminerMission(object sender, EventArgs e, int idMission)
         {
-            List<int> numeroMissions = new List<int>(); //Liste des numéros de mission
-            foreach (UC_Mission.Mission mission in listMissions)
-            {
-                if (mission.EstEnCours) //Si la mission est en cours
-                {
-                    numeroMissions.Add(mission.MissionID); //Ajout de l'ID de la mission à la liste
-                }
-            }
-            if (numeroMissions.Count == 0) //Si la liste des missions en cours est vide
-            {
-                MessageBox.Show("Aucune mission à terminer !"); //Message d'erreur
-                return; //Sortir de la méthode
-            }
-            frmTerminerMission frm = new frmTerminerMission(numeroMissions); //Création d'une nouvelle instance de la fenêtre de terminaison de mission
+            frmTerminerMission frm = new frmTerminerMission(); //Création d'une nouvelle instance de la fenêtre de terminaison de mission
             if (frm.ShowDialog() == DialogResult.OK) //Affichage de la fenêtre et gestion de la fermeture du formulaire
             {
-                int i = 0; //Index de la mission sélectionnée
-                int n = listMissions.Count; //Nombre de missions
-                int selectedMissionID = frm.SelectedMissionID; //Récupération de l'ID de la mission sélectionnée
-                while (i < n && listMissions[i].MissionID != selectedMissionID) //Parcours de la liste des missions pour trouver la mission sélectionnée
+                UC_Mission.Mission mission = (UC_Mission.Mission)sender; //Récupération de la mission sélectionnée
+                mission.Terminer(); //La mission n'est plus en cours, ajout automatique de la date de fin à la mission sélectionnée
+                mission.CompteRendu = frm.CompteRendu; //Ajout du compte rendu à la mission sélectionnée
+                if (ajouterMissionBD != null) //Si le délégué n'est pas nul
                 {
-                    i++; //Incrémentation de l'index
+                    ajouterMissionBD(mission); //Appel du délégué pour ajouter la mission à la base de données
                 }
-                if (i < n) //Si la mission a été trouvée
-                {
-                    UC_Mission.Mission mission = listMissions[i]; //Récupération de la mission sélectionnée
-                    mission.EstEnCours = false; //La mission n'est plus en cours, ajout automatique de la date de fin à la mission sélectionnée
-                    mission.CompteRendu = frm.CompteRendu; //Ajout du compte rendu à la mission sélectionnée
-                }
+                DisplayMissions(); //Appel de la méthode pour afficher les missions
             }
         }
     }

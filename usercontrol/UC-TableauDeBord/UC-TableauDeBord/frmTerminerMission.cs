@@ -12,36 +12,11 @@ namespace UC_TableauDeBord
 {
     public partial class frmTerminerMission: Form
     {
-        public frmTerminerMission(List<int> lst)
+        public frmTerminerMission()
         {
             InitializeComponent();
-            LoadComboBox(lst); //Chargement de la liste des missions dans le combobox de la fenêtre
         }
-
-        int selectedMissionID;
         string compteRendu;
-
-        public void LoadComboBox(List<int> lst)
-        {
-            foreach (int i in lst)
-            {
-                cboMissionId.Items.Add(i);
-            }
-        }
-
-        public int SelectedMissionID
-        {
-            get { return selectedMissionID; }
-            set
-            {
-                selectedMissionID = value;
-                if (!cboMissionId.Items.Contains(value))
-                {
-                   cboMissionId.Items.Add(value);
-                }
-                cboMissionId.SelectedItem = value;
-            }
-        }
 
         public string CompteRendu
         {
@@ -55,7 +30,6 @@ namespace UC_TableauDeBord
 
         private void btnValider_Click(object sender, EventArgs e)
         {
-            selectedMissionID = Convert.ToInt32(cboMissionId.SelectedItem); //Récupération de l'ID de la mission sélectionnée
             compteRendu = txtCompteRendu.Text; //Récupération du compte rendu
             DialogResult = DialogResult.OK; //Fermer la fenêtre avec le résultat OK
         }
