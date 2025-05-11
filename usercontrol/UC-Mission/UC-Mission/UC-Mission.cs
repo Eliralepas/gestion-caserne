@@ -12,10 +12,6 @@ namespace UC_Mission
 {
     public partial class Mission: UserControl
     {
-        public Mission()
-        {
-            InitializeComponent();
-        }
 
         public Mission(int _idMission, string _nomCaserne, string _natureMission, string _motifMission ,DateTime _dateDebut, bool _estEnCours)
         {
@@ -46,6 +42,12 @@ namespace UC_Mission
         DateTime dateDebut;
         DateTime dateFin;
         bool estEnCours;
+        string adresse;
+        string codePostal;
+        string ville;
+        string compteRendu;
+        DataTable dtPompiers = new DataTable(); //Tableau des pompiers de la mission
+        DataTable dtEngins = new DataTable(); //Tableau des engins de la mission
 
         public int MissionID
         {
@@ -114,6 +116,42 @@ namespace UC_Mission
                     etat = dateFin.ToString();
                 }
                 lblDateFin.Text = "Fin le        :  " + etat;
+            }
+        }
+
+        public string Adresse
+        {
+            get { return adresse; }
+            set
+            {
+                adresse = value;
+            }
+        }
+
+        public string CodePostal
+        {
+            get { return codePostal; }
+            set
+            {
+                codePostal = value;
+            }
+        }
+
+        public string Ville
+        {
+            get { return ville; }
+            set
+            {
+                ville = value;
+            }
+        }
+
+        public string CompteRendu
+        {
+            get { return compteRendu; }
+            set
+            {
+                compteRendu = value;
             }
         }
 
