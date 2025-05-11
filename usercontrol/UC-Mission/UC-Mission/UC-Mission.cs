@@ -59,12 +59,6 @@ namespace UC_Mission
         private DateTime dateDebut;
         private DateTime dateFin;
         private bool estEnCours;
-        private string adresse;
-        private string codePostal;
-        private string ville;
-        private string compteRendu;
-        private List<string> listePompiers = new List<string>(); //Liste des pompiers affectés à la mission
-        private List<string> listeEngins = new List<string>(); //Liste des engins affectés à la mission
 
         public int MissionID
         {
@@ -134,48 +128,12 @@ namespace UC_Mission
                 estEnCours = value;
                 if (estEnCours)
                 {
-                    lblDateFin.Text = "Fin le        :  -----------------";
+                    lblDateFin.Text = "Fin le        :  ";
                 }
                 else
                 {
                     btnTerminerMission.Visible = false; //On cache le bouton terminer la mission
                 }
-            }
-        }
-
-        public string Adresse
-        {
-            get { return adresse; }
-            set
-            {
-                adresse = value;
-            }
-        }
-
-        public string CodePostal
-        {
-            get { return codePostal; }
-            set
-            {
-                codePostal = value;
-            }
-        }
-
-        public string Ville
-        {
-            get { return ville; }
-            set
-            {
-                ville = value;
-            }
-        }
-
-        public string CompteRendu
-        {
-            get { return compteRendu; }
-            set
-            {
-                compteRendu = value;
             }
         }
 

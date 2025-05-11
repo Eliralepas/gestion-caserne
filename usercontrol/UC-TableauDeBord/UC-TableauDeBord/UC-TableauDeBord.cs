@@ -12,7 +12,7 @@ using UC_Mission;
 namespace UC_TableauDeBord
 {
 
-    public delegate void AjouterMissionBD(UC_Mission.Mission mission); //Déclaration de la signature du délégué pour ajouter une mission à la base de données
+    public delegate void AjouterMissionBD(UC_Mission.Mission mission, string compteRendu); //Déclaration de la signature du délégué pour ajouter une mission à la base de données
 
     public partial class TableauDeBord: UserControl
     {
@@ -85,10 +85,9 @@ namespace UC_TableauDeBord
             {
                 UC_Mission.Mission mission = (UC_Mission.Mission)sender; //Récupération de la mission sélectionnée
                 mission.Terminer(); //La mission n'est plus en cours, ajout automatique de la date de fin à la mission sélectionnée
-                mission.CompteRendu = frm.CompteRendu; //Ajout du compte rendu à la mission sélectionnée
                 if (ajouterMissionBD != null) //Si le délégué n'est pas nul
                 {
-                    ajouterMissionBD(mission); //Appel du délégué pour ajouter la mission à la base de données
+                    ajouterMissionBD(mission, frm.CompteRendu); //Appel du délégué pour ajouter la mission à la base de données
                 }
                 DisplayMissions(); //Appel de la méthode pour afficher les missions
             }
