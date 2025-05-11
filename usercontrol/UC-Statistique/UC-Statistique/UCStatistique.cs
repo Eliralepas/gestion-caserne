@@ -9,6 +9,7 @@ using System.Threading.Tasks;
 using System.Windows.Forms;
 using System.Data.SQLite;
 using System.Security.Cryptography;
+using Polygon;
 
 namespace UC_Statistique
 {
@@ -17,7 +18,7 @@ namespace UC_Statistique
     public partial class UCStatistique: UserControl
     {
         private SQLiteConnection _con;//connection utilisé pour récupere les statistiques
-
+        private Color[] colors = new Color[] { Color.Blue, Color.Green, Color.Red, Color.Yellow, Color.Purple, Color.Black, Color.Fuchsia };
         public UCStatistique()
         {
             InitializeComponent();
@@ -84,9 +85,15 @@ namespace UC_Statistique
             {
                 return;
             }
+            loadEnginPerHour();
+            loadMostUsedEngin();
+        }
+        private void loadEnginPerHour()
+        {
             ItemCombo selected = (ItemCombo)cbxCaserne.SelectedItem;
             flpHistogram.Controls.Clear();
-            try { 
+            try
+            {
                 string command = $@"
                     SELECT E.codeTypeEngin,E.numero,
                     ROUND(SUM((julianday(M.dateHeureRetour) - julianday(M.dateHeureDepart)) * 24), 2) AS cumul_heures                     
@@ -98,11 +105,11 @@ namespace UC_Statistique
                     WHERE E.idCaserne = @idMission 
                     AND M.dateHeureRetour IS NOT NULL 
                     GROUP BY  E.codeTypeEngin, E.numero 
-                    ORDER BY cumul_heures DESC;" ;
+                    ORDER BY cumul_heures DESC;";
 
-                SQLiteCommand cmd = new SQLiteCommand(command,_con);
-                cmd.Parameters.AddWithValue("@idMission",selected.Id);
-                SQLiteDataReader dataReader =  cmd.ExecuteReader();
+                SQLiteCommand cmd = new SQLiteCommand(command, _con);
+                cmd.Parameters.AddWithValue("@idMission", selected.Id);
+                SQLiteDataReader dataReader = cmd.ExecuteReader();
 
 
                 float maxValue = 0;
@@ -114,16 +121,43 @@ namespace UC_Statistique
                     if (heures > maxValue) maxValue = heures;
                     EnginPerHour.Add(engin, heures);
                 }
-                foreach(KeyValuePair<string,float> eph in EnginPerHour)
+                foreach (KeyValuePair<string, float> eph in EnginPerHour)
                 {
-                    flpHistogram.Controls.Add(new histogram(eph.Key,eph.Value,maxValue));
+                    flpHistogram.Controls.Add(new histogram(eph.Key, eph.Value, maxValue));
 
                 }
-            }catch(Exception ex)
+            }
+            catch (Exception ex)
             {
                 MessageBox.Show(ex.Message);
             }
         }
+
+        private void loadMostUsedEngin()
+        {
+            pnlMostUsedEngin.Controls.Clear();
+            ItemCombo selected = (ItemCombo)cbxCaserne.SelectedItem;
+            string command = $@"SELECT E.codeTypeEngin,count(*)
+                                FROM Engin E
+                                JOIN PartirAvec P on P.codeTypeEngin = E.codeTypeEngin AND E.numero = P.numeroEngin AND P.idCaserne = E.idCaserne
+                                WHERE P.idCaserne = {selected.Id}
+                                GROUP BY E.codeTypeEngin 
+                                ORDER BY COUNT() DESC;";
+
+            SQLiteDataReader data = executeDataReaderCommand(command);
+            Dictionary<string, int> values = new Dictionary<string, int>();
+            for(int i = 0; i < 4 && data.Read(); i++)
+            {
+                values.Add(data.GetString(0),data.GetInt32(1));
+            }
+            Color[] selectedColor = new Color[values.Count];
+            Array.Copy(colors, selectedColor, values.Count);
+            PartionedCircle camenbert = new PartionedCircle(values,colors);
+            camenbert.Dock = DockStyle.Fill;
+            pnlCamembert.Controls.Add(camenbert);
+
+        }
+
     }
 
 
