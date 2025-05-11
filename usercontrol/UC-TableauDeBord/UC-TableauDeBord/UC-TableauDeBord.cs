@@ -85,7 +85,6 @@ namespace UC_TableauDeBord
             {
                 UC_Mission.Mission mission = (UC_Mission.Mission)sender; //Récupération de la mission sélectionnée
                 mission.Terminer(); //La mission n'est plus en cours, ajout automatique de la date de fin à la mission sélectionnée
-                mission.CompteRendu = frm.CompteRendu; //Ajout du compte rendu à la mission sélectionnée
                 if (ajouterMissionBD != null) //Si le délégué n'est pas nul
                 {
                     ajouterMissionBD(mission, frm.CompteRendu); //Appel du délégué pour ajouter la mission à la base de données

@@ -77,7 +77,7 @@ namespace Sae25_Main_Form
             panelVolet.Controls.Add(tabStat);
         }
         
-        private void AjouterMissionBD(UC_Mission.Mission mission)
+        private void AjouterMissionBD(UC_Mission.Mission mission, string compteRendu)
         {
             // Logique pour ajouter une mission à la base de données
             MessageBox.Show("Mission ajoutée à la base de données : Mission n°" + mission.MissionID + "\nCompte rendu: " + compteRendu); //Afficher un message de confirmation
