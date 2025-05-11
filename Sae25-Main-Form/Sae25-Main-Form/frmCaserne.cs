@@ -39,8 +39,6 @@ namespace Sae25_Main_Form
             {
                 btn.ButtonClicked += NavigationButtonClick; //Lier l'événement de clic du bouton
             }
-            //Test du TableauDeBord --A SUPPRIMER PLUS TARD--
-            LoadTableauDeBord(); //Charger le tableau de bord par défaut
         }
 
         private void NavigationButtonClick(object sender, EventArgs e)
@@ -62,19 +60,22 @@ namespace Sae25_Main_Form
 
         private void LoadTableauDeBord()
         {
-            tableauDeBord = new UC_TableauDeBord.TableauDeBord(); //Instancier le volet de tableau de bord
-            tableauDeBord.ajouterMissionBD = AjouterMissionBD; //Lier la méthode d'ajout de mission à la base de données
-            //tableauDeBord.LoadMissions(DataTable locale des missions qui regroupe les missions de la base et celles du DataSet local)
-            panelVolet.Controls.Add(tableauDeBord); //Ajouter le nouveau contrôle au panneau
+            if (tableauDeBord == null) //Vérifier si le tableau de bord n'existe pas
+            {
+                tableauDeBord = new UC_TableauDeBord.TableauDeBord(); //Instancier le volet de tableau de bord
+                tableauDeBord.ajouterMissionBD = AjouterMissionBD; //Lier la méthode d'ajout de mission à la base de données
+                //tableauDeBord.LoadMissions(DataTable locale des missions qui regroupe les missions de la base et celles du DataSet local)
+            }
+            panelVolet.Controls.Add(tableauDeBord); //Ajouter le tableau de bord au panneau
         }
 
         private void LoadStatistique()
         {
-            if (tabStat == null)//on recréer uniquement si premier fois
+            if (tabStat == null) //Vérifier si le tableau de statistiques n'existe pas
             {
-                tabStat = new UCStatistique(con);
+                tabStat = new UCStatistique(con); //Instancier le volet de statistiques
             }
-            panelVolet.Controls.Add(tabStat);
+            panelVolet.Controls.Add(tabStat); //Ajouter le tableau de statistiques au panneau
         }
         
         private void AjouterMissionBD(UC_Mission.Mission mission, string compteRendu)
