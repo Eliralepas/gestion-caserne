@@ -36,8 +36,8 @@
             this.lblCaserne = new System.Windows.Forms.Label();
             this.panelMission = new System.Windows.Forms.Panel();
             this.lblDateFin = new System.Windows.Forms.Label();
+            this.btnTerminerMission = new System.Windows.Forms.Button();
             this.btnCreerPdf = new System.Windows.Forms.Button();
-            this.btnVoirPdf = new System.Windows.Forms.Button();
             ((System.ComponentModel.ISupportInitialize)(this.picBox)).BeginInit();
             this.panelMission.SuspendLayout();
             this.SuspendLayout();
@@ -128,34 +128,36 @@
             this.lblDateFin.TabIndex = 6;
             this.lblDateFin.Text = "Fin le        :  ";
             // 
+            // btnTerminerMission
+            // 
+            this.btnTerminerMission.Location = new System.Drawing.Point(825, 6);
+            this.btnTerminerMission.Name = "btnTerminerMission";
+            this.btnTerminerMission.Size = new System.Drawing.Size(65, 65);
+            this.btnTerminerMission.TabIndex = 7;
+            this.btnTerminerMission.Text = "Terminer";
+            this.btnTerminerMission.UseVisualStyleBackColor = true;
+            this.btnTerminerMission.Click += new System.EventHandler(this.btnTerminerMission_Click);
+            // 
             // btnCreerPdf
             // 
-            this.btnCreerPdf.Location = new System.Drawing.Point(825, 6);
+            this.btnCreerPdf.Location = new System.Drawing.Point(825, 74);
             this.btnCreerPdf.Name = "btnCreerPdf";
             this.btnCreerPdf.Size = new System.Drawing.Size(65, 65);
-            this.btnCreerPdf.TabIndex = 7;
+            this.btnCreerPdf.TabIndex = 8;
+            this.btnCreerPdf.Text = "PDF";
             this.btnCreerPdf.UseVisualStyleBackColor = true;
             this.btnCreerPdf.Click += new System.EventHandler(this.btnCreerPdf_Click);
             // 
-            // btnVoirPdf
-            // 
-            this.btnVoirPdf.Location = new System.Drawing.Point(825, 74);
-            this.btnVoirPdf.Name = "btnVoirPdf";
-            this.btnVoirPdf.Size = new System.Drawing.Size(65, 65);
-            this.btnVoirPdf.TabIndex = 8;
-            this.btnVoirPdf.UseVisualStyleBackColor = true;
-            this.btnVoirPdf.Click += new System.EventHandler(this.btnVoirPdf_Click);
-            // 
-            // UC_Mission
+            // Mission
             // 
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.None;
-            this.Controls.Add(this.btnVoirPdf);
             this.Controls.Add(this.btnCreerPdf);
+            this.Controls.Add(this.btnTerminerMission);
             this.Controls.Add(this.panelMission);
             this.Font = new System.Drawing.Font("Arial", 12F);
             this.ForeColor = System.Drawing.Color.DarkRed;
             this.Margin = new System.Windows.Forms.Padding(5, 6, 5, 6);
-            this.Name = "UC_Mission";
+            this.Name = "Mission";
             this.Size = new System.Drawing.Size(900, 150);
             ((System.ComponentModel.ISupportInitialize)(this.picBox)).EndInit();
             this.panelMission.ResumeLayout(false);
@@ -173,8 +175,8 @@
         private System.Windows.Forms.Label lblMotifMission;
         private System.Windows.Forms.Label lblCaserne;
         private System.Windows.Forms.Panel panelMission;
-        private System.Windows.Forms.Button btnCreerPdf;
+        private System.Windows.Forms.Button btnTerminerMission;
         private System.Windows.Forms.Label lblDateFin;
-        private System.Windows.Forms.Button btnVoirPdf;
+        private System.Windows.Forms.Button btnCreerPdf;
     }
 }

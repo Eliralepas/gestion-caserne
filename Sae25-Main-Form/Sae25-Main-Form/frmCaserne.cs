@@ -19,6 +19,8 @@ namespace Sae25_Main_Form
             InitializeComponent();
         }
 
+        UC_TableauDeBord.TableauDeBord tableauDeBord;
+
         private void frmCaserne_Load(object sender, EventArgs e)
         {
             foreach (UCButton btn in panelNavigation.Controls.OfType<UCButton>()) //Lier les boutons de navigation
@@ -38,15 +40,10 @@ namespace Sae25_Main_Form
 
         private void LoadTableauDeBord()
         {
-            UC_TableauDeBord.TableauDeBord tableauDeBord = new UC_TableauDeBord.TableauDeBord(); //Instancier le volet de tableau de bord
+            tableauDeBord = new UC_TableauDeBord.TableauDeBord(); //Instancier le volet de tableau de bord
             tableauDeBord.ajouterMissionBD = AjouterMissionBD; //Lier la méthode d'ajout de mission à la base de données
-            LoadVolet(tableauDeBord); //Charger le volet de tableau de bord
-        }
-
-        private void LoadVolet(UserControl uc)
-        {
-            panelVolet.Controls.Clear(); //Vider le panneau de volet
-            panelVolet.Controls.Add(uc); //Ajouter le nouveau contrôle au panneau
+            //tableauDeBord.LoadMissions(DataTable locale des missions qui regroupe les missions de la base et celles du DataSet local)
+            panelVolet.Controls.Add(tableauDeBord); //Ajouter le nouveau contrôle au panneau
         }
 
         private void AjouterMissionBD(UC_Mission.Mission mission)
