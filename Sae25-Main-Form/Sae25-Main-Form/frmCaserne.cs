@@ -9,6 +9,8 @@ using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
 using System.Data.SQLite;
+using UC_Statistique;
+
 
 namespace Sae25_Main_Form
 {
@@ -20,13 +22,20 @@ namespace Sae25_Main_Form
         }
 
         UC_TableauDeBord.TableauDeBord tableauDeBord;
+        UCStatistique tabStat;
+        SQLiteConnection con;
 
         private void frmCaserne_Load(object sender, EventArgs e)
         {
+            con = Connexion.Connec;
+            MessageBox.Show(con.ConnectionString);
+
+            btn1.Tag = "tabBord";
+            btn5.Tag = "tabStat";
+
             foreach (UCButton btn in panelNavigation.Controls.OfType<UCButton>()) //Lier les boutons de navigation
             {
                 btn.ButtonClicked += NavigationButtonClick; //Lier l'événement de clic du bouton
-                btn.getBindedControl(); //Lier le bouton à son contrôleur
             }
             //Test du TableauDeBord --A SUPPRIMER PLUS TARD--
             LoadTableauDeBord(); //Charger le tableau de bord par défaut
@@ -34,6 +43,17 @@ namespace Sae25_Main_Form
 
         private void NavigationButtonClick(object sender, EventArgs e)
         {
+            panelVolet.Controls.Clear();
+            switch (((UCButton)sender).Tag)
+            {
+                case ("tabBord"):
+                    LoadTableauDeBord();
+                    break;
+                case ("tabStat"):
+                    LoadStatistique();
+                    break;
+                
+            }
             //*faire la logique de clique une fois que on a tout les volet
 
         }
@@ -44,6 +64,15 @@ namespace Sae25_Main_Form
             tableauDeBord.ajouterMissionBD = AjouterMissionBD; //Lier la méthode d'ajout de mission à la base de données
             //tableauDeBord.LoadMissions(DataTable locale des missions qui regroupe les missions de la base et celles du DataSet local)
             panelVolet.Controls.Add(tableauDeBord); //Ajouter le nouveau contrôle au panneau
+        }
+
+        private void LoadStatistique()
+        {
+            if (tabStat == null)//on recréer uniquement si premier fois
+            {
+                tabStat = new UCStatistique(con);
+            }
+            panelVolet.Controls.Add(tabStat);
         }
 
         private void AjouterMissionBD(UC_Mission.Mission mission)
