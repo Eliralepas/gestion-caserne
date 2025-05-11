@@ -17,13 +17,7 @@ namespace NavigationBarUserControl
             InitializeComponent();
         }
 
-        private Control _ucControled;
-        public Control UcControled
-        {
-            get { return _ucControled; }
-            set { _ucControled = value; }
-        }
-
+        
         private String _strText;
         public String buttonText{
             get { return _strText; }
@@ -39,26 +33,25 @@ namespace NavigationBarUserControl
             InitializeComponent(); 
             label1.Text = str;
             pictureBox1.Image = img;
-            UcControled = binder;
         }
 
         public event EventHandler<ControlClickedEventArgs> ButtonClicked;
 
         public class ControlClickedEventArgs : EventArgs
         {
-            public Control ControlToReturn { get; }
+            public String ControlToReturn { get; }
 
-            public ControlClickedEventArgs(Control control)
+            public ControlClickedEventArgs(string Tag)
             {
-                ControlToReturn = control;
+                ControlToReturn = Tag;
             }
         }
 
         private void OnAnyClick(object sender, EventArgs e)
         {
-            if (ButtonClicked != null)
+            if (ButtonClicked != null && this.Tag != null)
             {
-                ButtonClicked(this, new ControlClickedEventArgs(UcControled));
+                ButtonClicked(this, new ControlClickedEventArgs(this.Tag.ToString()));
             }
         }
 
@@ -75,9 +68,9 @@ namespace NavigationBarUserControl
             OnAnyClick(sender, e);
         }
 
-        public Control getBindedControl()
+        public String getBindedControl()
         {
-            return UcControled;
+            return this.Tag.ToString() ;
         }
     }
 }

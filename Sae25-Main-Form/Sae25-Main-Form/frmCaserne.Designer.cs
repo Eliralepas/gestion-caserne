@@ -64,7 +64,6 @@
             this.btn5.Name = "btn5";
             this.btn5.Size = new System.Drawing.Size(229, 71);
             this.btn5.TabIndex = 3;
-            this.btn5.UcControled = null;
             // 
             // btn1
             // 
@@ -75,7 +74,6 @@
             this.btn1.Name = "btn1";
             this.btn1.Size = new System.Drawing.Size(225, 79);
             this.btn1.TabIndex = 0;
-            this.btn1.UcControled = null;
             // 
             // btn4
             // 
@@ -86,7 +84,6 @@
             this.btn4.Name = "btn4";
             this.btn4.Size = new System.Drawing.Size(229, 83);
             this.btn4.TabIndex = 2;
-            this.btn4.UcControled = null;
             // 
             // btn2
             // 
@@ -97,8 +94,7 @@
             this.btn2.Name = "btn2";
             this.btn2.Size = new System.Drawing.Size(225, 79);
             this.btn2.TabIndex = 4;
-            this.btn2.UcControled = null;
-            // 
+            // s
             // btn3
             // 
             this.btn3.buttonText = null;
@@ -108,7 +104,6 @@
             this.btn3.Name = "btn3";
             this.btn3.Size = new System.Drawing.Size(229, 76);
             this.btn3.TabIndex = 1;
-            this.btn3.UcControled = null;
             // 
             // panelVolet
             // 
@@ -142,6 +137,7 @@
             this.Font = new System.Drawing.Font("Arial", 14F);
             this.Margin = new System.Windows.Forms.Padding(5);
             this.Name = "frmCaserne";
+            this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
             this.Text = "Pinpon 🚒";
             this.Load += new System.EventHandler(this.frmCaserne_Load);
             ((System.ComponentModel.ISupportInitialize)(this.picBoxCaserne)).EndInit();

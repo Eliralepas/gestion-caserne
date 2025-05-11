@@ -10,7 +10,6 @@ C:\Users\miaou\Desktop\SAE25\usercontrol\UC-TableauDeBord\UC-TableauDeBord\bin\D
 C:\Users\miaou\Desktop\SAE25\usercontrol\UC-TableauDeBord\UC-TableauDeBord\bin\Debug\UC-TableauDeBord.pdb
 C:\Users\miaou\Desktop\SAE25\usercontrol\UC-TableauDeBord\UC-TableauDeBord\obj\Debug\UC-TableauDeBord.csproj.AssemblyReference.cache
 C:\Users\miaou\Desktop\SAE25\usercontrol\UC-TableauDeBord\UC-TableauDeBord\obj\Debug\UC_TableauDeBord.Properties.Resources.resources
-C:\Users\miaou\Desktop\SAE25\usercontrol\UC-TableauDeBord\UC-TableauDeBord\obj\Debug\UC_TableauDeBord.UC_TableauDeBord.resources
 C:\Users\miaou\Desktop\SAE25\usercontrol\UC-TableauDeBord\UC-TableauDeBord\obj\Debug\UC-TableauDeBord.csproj.GenerateResource.cache
 C:\Users\miaou\Desktop\SAE25\usercontrol\UC-TableauDeBord\UC-TableauDeBord\obj\Debug\UC-TableauDeBord.csproj.CoreCompileInputs.cache
 C:\Users\miaou\Desktop\SAE25\usercontrol\UC-TableauDeBord\UC-TableauDeBord\obj\Debug\UC-TableauDeBord.dll
@@ -20,3 +19,8 @@ C:\Users\Diego\source\repos\sae-caserne\usercontrol\UC-TableauDeBord\UC-TableauD
 C:\Users\Diego\source\repos\sae-caserne\usercontrol\UC-TableauDeBord\UC-TableauDeBord\obj\Debug\UC-Table.C7420841.Up2Date
 C:\Users\Diego\source\repos\sae-caserne\usercontrol\UC-TableauDeBord\UC-TableauDeBord\obj\Debug\UC_TableauDeBord.TableauDeBord.resources
 C:\Users\Diego\source\repos\sae-caserne\usercontrol\UC-TableauDeBord\UC-TableauDeBord\obj\Debug\UC_TableauDeBord.frmTerminerMission.resources
+C:\Users\miaou\Desktop\SAE25\usercontrol\UC-TableauDeBord\UC-TableauDeBord\obj\Debug\UC_TableauDeBord.frmTerminerMission.resources
+C:\Users\miaou\Desktop\SAE25\usercontrol\UC-TableauDeBord\UC-TableauDeBord\obj\Debug\UC_TableauDeBord.TableauDeBord.resources
+C:\Users\miaou\Desktop\SAE25\usercontrol\UC-TableauDeBord\UC-TableauDeBord\bin\Debug\UC-Mission.dll
+C:\Users\miaou\Desktop\SAE25\usercontrol\UC-TableauDeBord\UC-TableauDeBord\bin\Debug\UC-Mission.pdb
+C:\Users\miaou\Desktop\SAE25\usercontrol\UC-TableauDeBord\UC-TableauDeBord\obj\Debug\UC-Table.C7420841.Up2Date
