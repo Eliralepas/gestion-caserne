@@ -142,6 +142,7 @@
             this.Font = new System.Drawing.Font("Arial", 14F);
             this.Margin = new System.Windows.Forms.Padding(5);
             this.Name = "frmCaserne";
+            this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
             this.Text = "Pinpon 🚒";
             this.Load += new System.EventHandler(this.frmCaserne_Load);
             ((System.ComponentModel.ISupportInitialize)(this.picBoxCaserne)).EndInit();
