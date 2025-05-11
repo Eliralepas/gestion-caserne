@@ -95,23 +95,28 @@ namespace UC_TableauDeBord
             frmTerminerMission frm = new frmTerminerMission(numeroMissions); //Création d'une nouvelle instance de la fenêtre de terminaison de mission
             if (frm.ShowDialog() == DialogResult.OK) //Affichage de la fenêtre et gestion de la fermeture du formulaire
             {
-                int i = 0; //Index de la mission sélectionnée
-                int n = listMissions.Count; //Nombre de missions
-                int selectedMissionID = frm.SelectedMissionID; //Récupération de l'ID de la mission sélectionnée
-                while (i < n && listMissions[i].MissionID != selectedMissionID) //Parcours de la liste des missions pour trouver la mission sélectionnée
+                TerminerMission(frm.SelectedMissionID, frm.CompteRendu); //Appel de la méthode pour terminer la mission
+            }
+        }
+
+        private void TerminerMission(int selectedMissionID, string compteRendu)
+        {
+            int i = 0; //Index de la mission sélectionnée
+            int n = listMissions.Count; //Nombre de missions
+            while (i < n && listMissions[i].MissionID != selectedMissionID) //Parcours de la liste des missions pour trouver la mission sélectionnée
+            {
+                i++; //Incrémentation de l'index
+            }
+            if (i < n) //Si la mission a été trouvée
+            {
+                UC_Mission.Mission mission = listMissions[i]; //Récupération de la mission sélectionnée
+                mission.EstEnCours = false; //La mission n'est plus en cours, ajout automatique de la date de fin à la mission sélectionnée
+                mission.CompteRendu = compteRendu; //Ajout du compte rendu à la mission sélectionnée
+                if (ajouterMissionBD != null) //Si le délégué n'est pas nul
                 {
-                    i++; //Incrémentation de l'index
+                    ajouterMissionBD(mission); //Appel du délégué pour ajouter la mission à la base de données
                 }
-                if (i < n) //Si la mission a été trouvée
-                {
-                    UC_Mission.Mission mission = listMissions[i]; //Récupération de la mission sélectionnée
-                    mission.EstEnCours = false; //La mission n'est plus en cours, ajout automatique de la date de fin à la mission sélectionnée
-                    mission.CompteRendu = frm.CompteRendu; //Ajout du compte rendu à la mission sélectionnée
-                    if (ajouterMissionBD != null) //Si le délégué n'est pas nul
-                    {
-                        ajouterMissionBD(mission); //Appel du délégué pour ajouter la mission à la base de données
-                    }
-                }
+                DisplayMissions(); //Appel de la méthode pour afficher les missions
             }
         }
     }
