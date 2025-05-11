@@ -10,6 +10,7 @@ using System.Windows.Forms;
 using System.Data.SQLite;
 using System.Security.Cryptography;
 using Polygon;
+using System.Data.Common;
 
 namespace UC_Statistique
 {
@@ -37,12 +38,14 @@ namespace UC_Statistique
 
         private void tabStatistique_SelectedIndexChanged(object sender, EventArgs e)
         {
+            if (_con == null) return;
             switch (tabStatistique.SelectedTab)
             {
                 case var tab when tab == tabPage1:
                     loadCaserne();
                     break;
                 case var tab when tab == tabPage2:
+                    loadInterventionStat();
                     break;
                 case var tab when tab == tabPage3:
                     break;
@@ -66,7 +69,7 @@ namespace UC_Statistique
         private void loadCaserne()
         {//on load toute les casernes de la bases dans la comboBox
           try{
-                cbxCaserne.Controls.Clear();
+                cbxCaserne.Items.Clear();
                 string command = "Select [id] ,[nom] FROM Caserne;";
                 SQLiteDataReader dataRead = executeDataReaderCommand(command);
                 while (dataRead.Read())
@@ -124,7 +127,7 @@ namespace UC_Statistique
                 }
                 foreach (KeyValuePair<string, float> eph in EnginPerHour)
                 {
-                    flpHistogram.Controls.Add(new histogram(eph.Key, eph.Value, maxValue));
+                    flpHistogram.Controls.Add(new histogram(eph.Key, eph.Value, maxValue,"heure Cumulé : "));
 
                 }
             }
@@ -161,7 +164,36 @@ namespace UC_Statistique
             pnlCamembert.Controls.Add(camenbert);
 
         }
-        //Statistique relatif au 
+        //Statistique relatif au intervention
+        
+        private void loadInterventionStat()
+        {
+            flpSinistreStat.Controls.Clear();
+            string command = $@"SELECT ns.libelle,Count(*) from NatureSinistre ns
+                             JOIN Mission M ON M.idNatureSinistre = ns.id
+                              GROUP BY ns.id;";
+            SQLiteDataReader data = executeDataReaderCommand(command);
+
+
+            float maxValue = 0;
+            Dictionary<string, float> EnginPerHour = new Dictionary<string, float>();
+            while (data.Read())
+            {
+                string sinistre = data.GetString(0);
+                float nbIntervention = data.GetFloat(1);
+                if (nbIntervention > maxValue) maxValue = nbIntervention;
+                EnginPerHour.Add(sinistre, nbIntervention);
+            }
+            foreach (KeyValuePair<string, float> eph in EnginPerHour)
+            {
+                flpSinistreStat.Controls.Add(new histogram(eph.Key, eph.Value, maxValue,"Nombre de Siniste : "));
+
+            }
+
+
+        }
+
+
     }
 
 

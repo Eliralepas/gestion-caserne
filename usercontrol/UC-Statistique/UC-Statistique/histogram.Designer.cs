@@ -72,6 +72,7 @@
             this.Name = "histogram";
             this.Size = new System.Drawing.Size(109, 256);
             this.Load += new System.EventHandler(this.histogram_Load);
+            this.MouseLeave += new System.EventHandler(this.histogram_MouseLeave_1);
             this.ResumeLayout(false);
             this.PerformLayout();
 

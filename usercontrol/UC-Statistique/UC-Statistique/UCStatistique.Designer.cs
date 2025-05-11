@@ -41,10 +41,13 @@
             this.lblCaserne = new System.Windows.Forms.Label();
             this.tabPage2 = new System.Windows.Forms.TabPage();
             this.tabPage3 = new System.Windows.Forms.TabPage();
+            this.lblTitleIntervention = new System.Windows.Forms.Label();
+            this.flpSinistreStat = new System.Windows.Forms.FlowLayoutPanel();
             this.tabStatistique.SuspendLayout();
             this.tabPage1.SuspendLayout();
             this.grpEngins.SuspendLayout();
             this.pnlMostUsedEngin.SuspendLayout();
+            this.tabPage2.SuspendLayout();
             this.SuspendLayout();
             // 
             // tabStatistique
@@ -172,6 +175,8 @@
             // 
             // tabPage2
             // 
+            this.tabPage2.Controls.Add(this.flpSinistreStat);
+            this.tabPage2.Controls.Add(this.lblTitleIntervention);
             this.tabPage2.Location = new System.Drawing.Point(4, 34);
             this.tabPage2.Margin = new System.Windows.Forms.Padding(3, 4, 3, 4);
             this.tabPage2.Name = "tabPage2";
@@ -192,6 +197,24 @@
             this.tabPage3.Text = "Habilitation";
             this.tabPage3.UseVisualStyleBackColor = true;
             // 
+            // lblTitleIntervention
+            // 
+            this.lblTitleIntervention.AutoSize = true;
+            this.lblTitleIntervention.Location = new System.Drawing.Point(285, 4);
+            this.lblTitleIntervention.Name = "lblTitleIntervention";
+            this.lblTitleIntervention.Size = new System.Drawing.Size(284, 22);
+            this.lblTitleIntervention.TabIndex = 0;
+            this.lblTitleIntervention.Text = "Nombre d’interventions par type de sinistre ";
+            // 
+            // flpSinistreStat
+            // 
+            this.flpSinistreStat.AutoScroll = true;
+            this.flpSinistreStat.Dock = System.Windows.Forms.DockStyle.Bottom;
+            this.flpSinistreStat.Location = new System.Drawing.Point(3, 157);
+            this.flpSinistreStat.Name = "flpSinistreStat";
+            this.flpSinistreStat.Size = new System.Drawing.Size(875, 393);
+            this.flpSinistreStat.TabIndex = 1;
+            // 
             // UCStatistique
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 22F);
@@ -207,6 +230,8 @@
             this.grpEngins.ResumeLayout(false);
             this.grpEngins.PerformLayout();
             this.pnlMostUsedEngin.ResumeLayout(false);
+            this.tabPage2.ResumeLayout(false);
+            this.tabPage2.PerformLayout();
             this.ResumeLayout(false);
 
         }
@@ -226,5 +251,7 @@
         private System.Windows.Forms.Panel pnlMostUsedEngin;
         private System.Windows.Forms.Panel pnlCamembert;
         private System.Windows.Forms.FlowLayoutPanel flpLegende;
+        private System.Windows.Forms.Label lblTitleIntervention;
+        private System.Windows.Forms.FlowLayoutPanel flpSinistreStat;
     }
 }

@@ -12,17 +12,20 @@ namespace UC_Statistique
         private float _max;
         private int _baseHeight;
         private int _basetop;
+        private bool leave = false;
+        private string libelleToolTip = "";
 
         public histogram()
         {
             InitializeComponent();
         }
 
-        public histogram(string nom, float hour, float max) : this()
+        public histogram(string nom, float hour, float max,string tooltip) : this()
         {
             _nom = nom;
             _hour = hour;
             _max = max;
+            libelleToolTip = tooltip;
         }
 
         private void histogram_Load(object sender, EventArgs e)
@@ -31,13 +34,15 @@ namespace UC_Statistique
 
             lblVehicule.Text = _nom;
             lblVehicule.Top = this.Height - 20;
+            this.Width = lblVehicule.Width + 20;
             lblVehicule.Left = this.Width / 2 - lblVehicule.Width / 2 + 10;
+
 
             int availableHeight = this.Height -50- lblVehicule.Height;
             rectValue.Height = (int)(availableHeight * (_hour / _max))>10? (int)(availableHeight * (_hour / _max)): (50-(int)_hour*2);
 
             _baseHeight = rectValue.Height;
-            rectValue.Width = this.Width - 30;
+            rectValue.Width = this.Width - 30<60? this.Width - 30:60;
             rectValue.Left = this.Width / 2 - rectValue.Width / 2;
             rectValue.Top = this.Height - lblVehicule.Height - rectValue.Height - 20;
             _basetop = rectValue.Top;
@@ -46,12 +51,14 @@ namespace UC_Statistique
             ToolTip valueToolTip = new ToolTip();
             valueToolTip.AutoPopDelay = 0;
             valueToolTip.IsBalloon = true;
-            valueToolTip.SetToolTip(rectValue, "heure Cumulé " + _hour.ToString());
+            valueToolTip.SetToolTip(rectValue, libelleToolTip + _hour.ToString());
 
         }
 
         private void histogram_MouseEnter(object sender, EventArgs e)
         {
+            if (leave) { return; }
+            leave = true;
             rectValue.Height = (int)(_baseHeight * 1.2);
             rectValue.Top = _basetop - (rectValue.Height - _baseHeight);
         }
@@ -62,5 +69,10 @@ namespace UC_Statistique
             rectValue.Top = _basetop;
         }
 
+        private void histogram_MouseLeave_1(object sender, EventArgs e)
+        {
+            leave = false;
+
+        }
     }
 }
