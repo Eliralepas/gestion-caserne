@@ -46,10 +46,24 @@ namespace Sae25_Main_Form
             panelVolet.Controls.Add(tableauDeBord); //Ajouter le nouveau contrôle au panneau
         }
 
-        private void AjouterMissionBD(UC_Mission.Mission mission)
+        private void AjouterMissionBD(UC_Mission.Mission mission, string compteRendu)
         {
             // Logique pour ajouter une mission à la base de données
-            MessageBox.Show("Mission ajoutée à la base de données : Mission n°" + mission.MissionID); //Afficher un message de confirmation
+            MessageBox.Show("Mission ajoutée à la base de données : Mission n°" + mission.MissionID + "\nCompte rendu: " + compteRendu); //Afficher un message de confirmation
+            /* Pseudo code pour insérer la mission dans la base de données
+            Début
+                Connexion à la base de données
+                AdresseMission = (récupération de l'adresse de la mission dans le DataSet local);
+                CodePostalMission = (récupération du code postal de la mission dans le DataSet local);
+                VilleMission = (récupération de la ville de la mission dans le DataSet local);
+                IdNatureSinistre = (récupération de l'id du sinistre dans le DataSet local);
+                IdCaserne = (récupération de l'id de la caserne de la mission dans le DataSet local);
+                Création d'une commande SQL pour insérer la mission:
+                "INSERT INTO Missions VALUES (mission.MissionID, mission.DateDebut, mission.DateFin, mission.MotifMission, AdresseMission, CodePostalMission, VilleMission, mission.EstEnCours, IdNatureSinistre, IdCaserne);"
+                Insertion de la mission dans la table des missions
+                Supprimer la mission du dataset local
+            Fin
+            */
         }
     }
 }
