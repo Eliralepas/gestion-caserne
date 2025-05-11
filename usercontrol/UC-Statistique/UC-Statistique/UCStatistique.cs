@@ -11,6 +11,7 @@ using System.Data.SQLite;
 using System.Security.Cryptography;
 using Polygon;
 using System.Data.Common;
+using System.Data.SqlClient;
 
 namespace UC_Statistique
 {
@@ -48,6 +49,7 @@ namespace UC_Statistique
                     loadInterventionStat();
                     break;
                 case var tab when tab == tabPage3:
+                    loadHabilitation();
                     break;
                 default:
                     MessageBox.Show("Onglet inconnu sélectionné");
@@ -151,7 +153,7 @@ namespace UC_Statistique
 
             SQLiteDataReader data = executeDataReaderCommand(command);
             Dictionary<string, int> values = new Dictionary<string, int>();
-            for(int i = 0; i < 4 && data.Read(); i++)
+            for(int i = 0; i < 4 && data.Read(); i++)//on ne garde que les 4 plus utilisé 
             {
                 values.Add(data.GetString(0),data.GetInt32(1));
                 legende l =  new legende($"{data.GetString(0)} : {data.GetInt32(1)}", colors[i]);
@@ -193,7 +195,46 @@ namespace UC_Statistique
 
         }
 
+        private void loadHabilitation()
+        {
+            loadMostUsedHabilitation();
+        }
 
+        private void loadMostUsedHabilitation()
+        {
+            pnlGrapheHabit.Controls.Clear();
+            flpLegendHabi.Controls.Clear();
+            string command = $@"SELECT h.libelle ,Count(m.idMission)
+                                FROM Habilitation h
+                                JOIN Mobiliser m ON h.id = m.idHabilitation
+                                GROUP BY h.libelle
+                                ORDER by COUNT(m.idMission) DESC ";
+
+            Dictionary<string, int> values = new Dictionary<string, int>();
+            SQLiteDataReader data = executeDataReaderCommand(command);
+            int i = 0;
+            while(data.Read())
+            {
+                if (i > colors.Length-1) i = 0;
+                values.Add(data.GetString(0), data.GetInt32(1));
+                legende l = new legende($"{data.GetString(0)} : {data.GetInt32(1)}", colors[i]);
+                flpLegendHabi.Controls.Add(l);
+                i++;
+            }
+            Color[] selectedColor = new Color[values.Count];
+            if (values.Count > colors.Length)
+            {
+                selectedColor = colors;
+            }
+            else
+            {
+                Array.Copy(colors, selectedColor, values.Count);
+            }
+            PartionedCircle camenbert = new PartionedCircle(values, colors);
+            camenbert.Dock = DockStyle.Fill;
+            pnlGrapheHabit.Controls.Add(camenbert);
+
+        }
     }
 
 

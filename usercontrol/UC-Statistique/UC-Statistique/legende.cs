@@ -21,10 +21,11 @@ namespace UC_Statistique
         {
             rctColor.m_BackGroundColor = color;
             lblLegende.Text = value;
+            this.Width = lblLegende.Width+rctColor.Width+20;
         }
         private void legende_Load(object sender, EventArgs e)
         {
-
+            this.Width = lblLegende.Width + rctColor.Width + 20;
         }
     }
 }

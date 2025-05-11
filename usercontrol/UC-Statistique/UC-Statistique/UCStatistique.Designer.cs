@@ -40,14 +40,20 @@
             this.cbxCaserne = new System.Windows.Forms.ComboBox();
             this.lblCaserne = new System.Windows.Forms.Label();
             this.tabPage2 = new System.Windows.Forms.TabPage();
-            this.tabPage3 = new System.Windows.Forms.TabPage();
-            this.lblTitleIntervention = new System.Windows.Forms.Label();
             this.flpSinistreStat = new System.Windows.Forms.FlowLayoutPanel();
+            this.lblTitleIntervention = new System.Windows.Forms.Label();
+            this.tabPage3 = new System.Windows.Forms.TabPage();
+            this.panel1 = new System.Windows.Forms.Panel();
+            this.flpLegendHabi = new System.Windows.Forms.FlowLayoutPanel();
+            this.pnlGrapheHabit = new System.Windows.Forms.Panel();
+            this.lblTitleHabilitation = new System.Windows.Forms.Label();
             this.tabStatistique.SuspendLayout();
             this.tabPage1.SuspendLayout();
             this.grpEngins.SuspendLayout();
             this.pnlMostUsedEngin.SuspendLayout();
             this.tabPage2.SuspendLayout();
+            this.tabPage3.SuspendLayout();
+            this.panel1.SuspendLayout();
             this.SuspendLayout();
             // 
             // tabStatistique
@@ -186,16 +192,14 @@
             this.tabPage2.Text = "Intervention";
             this.tabPage2.UseVisualStyleBackColor = true;
             // 
-            // tabPage3
+            // flpSinistreStat
             // 
-            this.tabPage3.Location = new System.Drawing.Point(4, 34);
-            this.tabPage3.Margin = new System.Windows.Forms.Padding(3, 4, 3, 4);
-            this.tabPage3.Name = "tabPage3";
-            this.tabPage3.Padding = new System.Windows.Forms.Padding(3, 4, 3, 4);
-            this.tabPage3.Size = new System.Drawing.Size(881, 554);
-            this.tabPage3.TabIndex = 2;
-            this.tabPage3.Text = "Habilitation";
-            this.tabPage3.UseVisualStyleBackColor = true;
+            this.flpSinistreStat.AutoScroll = true;
+            this.flpSinistreStat.Dock = System.Windows.Forms.DockStyle.Bottom;
+            this.flpSinistreStat.Location = new System.Drawing.Point(3, 157);
+            this.flpSinistreStat.Name = "flpSinistreStat";
+            this.flpSinistreStat.Size = new System.Drawing.Size(875, 393);
+            this.flpSinistreStat.TabIndex = 1;
             // 
             // lblTitleIntervention
             // 
@@ -206,14 +210,56 @@
             this.lblTitleIntervention.TabIndex = 0;
             this.lblTitleIntervention.Text = "Nombre d’interventions par type de sinistre ";
             // 
-            // flpSinistreStat
+            // tabPage3
             // 
-            this.flpSinistreStat.AutoScroll = true;
-            this.flpSinistreStat.Dock = System.Windows.Forms.DockStyle.Bottom;
-            this.flpSinistreStat.Location = new System.Drawing.Point(3, 157);
-            this.flpSinistreStat.Name = "flpSinistreStat";
-            this.flpSinistreStat.Size = new System.Drawing.Size(875, 393);
-            this.flpSinistreStat.TabIndex = 1;
+            this.tabPage3.Controls.Add(this.panel1);
+            this.tabPage3.Controls.Add(this.lblTitleHabilitation);
+            this.tabPage3.Location = new System.Drawing.Point(4, 34);
+            this.tabPage3.Margin = new System.Windows.Forms.Padding(3, 4, 3, 4);
+            this.tabPage3.Name = "tabPage3";
+            this.tabPage3.Padding = new System.Windows.Forms.Padding(3, 4, 3, 4);
+            this.tabPage3.Size = new System.Drawing.Size(881, 554);
+            this.tabPage3.TabIndex = 2;
+            this.tabPage3.Text = "Habilitation";
+            this.tabPage3.UseVisualStyleBackColor = true;
+            // 
+            // panel1
+            // 
+            this.panel1.Controls.Add(this.flpLegendHabi);
+            this.panel1.Controls.Add(this.pnlGrapheHabit);
+            this.panel1.Location = new System.Drawing.Point(15, 142);
+            this.panel1.Margin = new System.Windows.Forms.Padding(2);
+            this.panel1.Name = "panel1";
+            this.panel1.Size = new System.Drawing.Size(384, 370);
+            this.panel1.TabIndex = 7;
+            // 
+            // flpLegendHabi
+            // 
+            this.flpLegendHabi.AutoScroll = true;
+            this.flpLegendHabi.Dock = System.Windows.Forms.DockStyle.Bottom;
+            this.flpLegendHabi.Location = new System.Drawing.Point(0, 283);
+            this.flpLegendHabi.Name = "flpLegendHabi";
+            this.flpLegendHabi.Size = new System.Drawing.Size(384, 87);
+            this.flpLegendHabi.TabIndex = 1;
+            this.flpLegendHabi.WrapContents = false;
+            // 
+            // pnlGrapheHabit
+            // 
+            this.pnlGrapheHabit.Dock = System.Windows.Forms.DockStyle.Top;
+            this.pnlGrapheHabit.Location = new System.Drawing.Point(0, 0);
+            this.pnlGrapheHabit.Name = "pnlGrapheHabit";
+            this.pnlGrapheHabit.Size = new System.Drawing.Size(384, 277);
+            this.pnlGrapheHabit.TabIndex = 0;
+            // 
+            // lblTitleHabilitation
+            // 
+            this.lblTitleHabilitation.AutoSize = true;
+            this.lblTitleHabilitation.Location = new System.Drawing.Point(108, 117);
+            this.lblTitleHabilitation.Margin = new System.Windows.Forms.Padding(2, 0, 2, 0);
+            this.lblTitleHabilitation.Name = "lblTitleHabilitation";
+            this.lblTitleHabilitation.Size = new System.Drawing.Size(184, 22);
+            this.lblTitleHabilitation.TabIndex = 6;
+            this.lblTitleHabilitation.Text = "Habilitation les plus solicités";
             // 
             // UCStatistique
             // 
@@ -232,6 +278,9 @@
             this.pnlMostUsedEngin.ResumeLayout(false);
             this.tabPage2.ResumeLayout(false);
             this.tabPage2.PerformLayout();
+            this.tabPage3.ResumeLayout(false);
+            this.tabPage3.PerformLayout();
+            this.panel1.ResumeLayout(false);
             this.ResumeLayout(false);
 
         }
@@ -253,5 +302,9 @@
         private System.Windows.Forms.FlowLayoutPanel flpLegende;
         private System.Windows.Forms.Label lblTitleIntervention;
         private System.Windows.Forms.FlowLayoutPanel flpSinistreStat;
+        private System.Windows.Forms.Panel panel1;
+        private System.Windows.Forms.FlowLayoutPanel flpLegendHabi;
+        private System.Windows.Forms.Panel pnlGrapheHabit;
+        private System.Windows.Forms.Label lblTitleHabilitation;
     }
 }
