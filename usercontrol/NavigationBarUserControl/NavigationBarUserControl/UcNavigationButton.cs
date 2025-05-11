@@ -49,7 +49,7 @@ namespace NavigationBarUserControl
 
         private void OnAnyClick(object sender, EventArgs e)
         {
-            if (ButtonClicked != null)
+            if (ButtonClicked != null && this.Tag != null)
             {
                 ButtonClicked(this, new ControlClickedEventArgs(this.Tag.ToString()));
             }

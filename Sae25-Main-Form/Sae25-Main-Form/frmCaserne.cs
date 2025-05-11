@@ -28,9 +28,11 @@ namespace Sae25_Main_Form
         private void frmCaserne_Load(object sender, EventArgs e)
         {
             con = Connexion.Connec;
-            MessageBox.Show(con.ConnectionString);
 
             btn1.Tag = "tabBord";
+            btn2.Tag = "dummy";
+            btn3.Tag = "dummy";
+            btn4.Tag = "dummy";
             btn5.Tag = "tabStat";
 
             foreach (UCButton btn in panelNavigation.Controls.OfType<UCButton>()) //Lier les boutons de navigation
