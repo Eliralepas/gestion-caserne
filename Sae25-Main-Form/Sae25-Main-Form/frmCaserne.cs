@@ -74,6 +74,7 @@ namespace Sae25_Main_Form
             if (tabStat == null) //Vérifier si le tableau de statistiques n'existe pas
             {
                 tabStat = new UCStatistique(con); //Instancier le volet de statistiques
+                tabStat.Dock = DockStyle.Fill;
             }
             panelVolet.Controls.Add(tabStat); //Ajouter le tableau de statistiques au panneau
         }

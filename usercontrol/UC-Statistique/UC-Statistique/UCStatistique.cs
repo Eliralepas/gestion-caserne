@@ -34,7 +34,8 @@ namespace UC_Statistique
             }
             _con = con;
             tabStatistique.SelectedTab = tabPage1; 
-            tabStatistique_SelectedIndexChanged(this, EventArgs.Empty);//Déclechement automatique pour 
+            tabStatistique_SelectedIndexChanged(this, EventArgs.Empty);//Déclechement automatique pour que ça charge de base la premiere page;
+            cbxCaserne.Focus();
         }
 
         private void tabStatistique_SelectedIndexChanged(object sender, EventArgs e)
@@ -44,12 +45,14 @@ namespace UC_Statistique
             {
                 case var tab when tab == tabPage1:
                     loadCaserne();
+                    cbxCaserne.Focus();
                     break;
                 case var tab when tab == tabPage2:
                     loadInterventionStat();
                     break;
                 case var tab when tab == tabPage3:
                     loadHabilitation();
+                    cbxHabilitation.Focus();
                     break;
                 default:
                     MessageBox.Show("Onglet inconnu sélectionné");
@@ -239,7 +242,7 @@ namespace UC_Statistique
         }
         private void loadPompierPerHabilitation()
         {
-            tabPompierPerHabilitation.Controls.Clear();
+            cbxHabilitation.Items.Clear();
             string command = $@"SELECT H.libelle, P.nom , P.prenom
                                 FROM Habilitation H
                                 LEFT JOIN Passer Pa ON Pa.idHabilitation = H.id
@@ -255,7 +258,6 @@ namespace UC_Statistique
                 if (hability != currentTab)
                 {
                     currentTab = hability;
-                    tabPompierPerHabilitation.TabPages.Add(currentTab);
                 }
             }
 
