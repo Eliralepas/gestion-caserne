@@ -135,7 +135,8 @@ namespace UC_Statistique
 
         private void loadMostUsedEngin()
         {
-            pnlMostUsedEngin.Controls.Clear();
+            pnlCamembert.Controls.Clear();
+            flpLegende.Controls.Clear();
             ItemCombo selected = (ItemCombo)cbxCaserne.SelectedItem;
             string command = $@"SELECT E.codeTypeEngin,count(*)
                                 FROM Engin E
@@ -149,6 +150,8 @@ namespace UC_Statistique
             for(int i = 0; i < 4 && data.Read(); i++)
             {
                 values.Add(data.GetString(0),data.GetInt32(1));
+                legende l =  new legende($"{data.GetString(0)} : {data.GetInt32(1)}", colors[i]);
+                flpLegende.Controls.Add(l);
             }
             Color[] selectedColor = new Color[values.Count];
             Array.Copy(colors, selectedColor, values.Count);

@@ -32,15 +32,15 @@
             this.tabPage1 = new System.Windows.Forms.TabPage();
             this.grpEngins = new System.Windows.Forms.GroupBox();
             this.pnlMostUsedEngin = new System.Windows.Forms.Panel();
+            this.flpLegende = new System.Windows.Forms.FlowLayoutPanel();
+            this.pnlCamembert = new System.Windows.Forms.Panel();
             this.flpHistogram = new System.Windows.Forms.FlowLayoutPanel();
-            this.label2 = new System.Windows.Forms.Label();
-            this.label1 = new System.Windows.Forms.Label();
+            this.lblTitleMostUsedEngin = new System.Windows.Forms.Label();
+            this.lblTitleEnginPerHour = new System.Windows.Forms.Label();
             this.cbxCaserne = new System.Windows.Forms.ComboBox();
             this.lblCaserne = new System.Windows.Forms.Label();
             this.tabPage2 = new System.Windows.Forms.TabPage();
             this.tabPage3 = new System.Windows.Forms.TabPage();
-            this.pnlCamembert = new System.Windows.Forms.Panel();
-            this.flpLegende = new System.Windows.Forms.FlowLayoutPanel();
             this.tabStatistique.SuspendLayout();
             this.tabPage1.SuspendLayout();
             this.grpEngins.SuspendLayout();
@@ -79,8 +79,8 @@
             // 
             this.grpEngins.Controls.Add(this.pnlMostUsedEngin);
             this.grpEngins.Controls.Add(this.flpHistogram);
-            this.grpEngins.Controls.Add(this.label2);
-            this.grpEngins.Controls.Add(this.label1);
+            this.grpEngins.Controls.Add(this.lblTitleMostUsedEngin);
+            this.grpEngins.Controls.Add(this.lblTitleEnginPerHour);
             this.grpEngins.Controls.Add(this.cbxCaserne);
             this.grpEngins.Controls.Add(this.lblCaserne);
             this.grpEngins.Dock = System.Windows.Forms.DockStyle.Left;
@@ -103,40 +103,58 @@
             this.pnlMostUsedEngin.Size = new System.Drawing.Size(384, 370);
             this.pnlMostUsedEngin.TabIndex = 5;
             // 
+            // flpLegende
+            // 
+            this.flpLegende.AutoScroll = true;
+            this.flpLegende.Dock = System.Windows.Forms.DockStyle.Bottom;
+            this.flpLegende.Location = new System.Drawing.Point(0, 283);
+            this.flpLegende.Name = "flpLegende";
+            this.flpLegende.Size = new System.Drawing.Size(384, 87);
+            this.flpLegende.TabIndex = 1;
+            this.flpLegende.WrapContents = false;
+            // 
+            // pnlCamembert
+            // 
+            this.pnlCamembert.Dock = System.Windows.Forms.DockStyle.Top;
+            this.pnlCamembert.Location = new System.Drawing.Point(0, 0);
+            this.pnlCamembert.Name = "pnlCamembert";
+            this.pnlCamembert.Size = new System.Drawing.Size(384, 277);
+            this.pnlCamembert.TabIndex = 0;
+            // 
             // flpHistogram
             // 
             this.flpHistogram.AutoScroll = true;
-            this.flpHistogram.Location = new System.Drawing.Point(470, 130);
+            this.flpHistogram.Location = new System.Drawing.Point(470, 120);
             this.flpHistogram.Margin = new System.Windows.Forms.Padding(2);
             this.flpHistogram.Name = "flpHistogram";
-            this.flpHistogram.Size = new System.Drawing.Size(357, 360);
+            this.flpHistogram.Size = new System.Drawing.Size(357, 370);
             this.flpHistogram.TabIndex = 4;
             this.flpHistogram.WrapContents = false;
             // 
-            // label2
+            // lblTitleMostUsedEngin
             // 
-            this.label2.AutoSize = true;
-            this.label2.Location = new System.Drawing.Point(174, 90);
-            this.label2.Margin = new System.Windows.Forms.Padding(2, 0, 2, 0);
-            this.label2.Name = "label2";
-            this.label2.Size = new System.Drawing.Size(48, 22);
-            this.label2.TabIndex = 3;
-            this.label2.Text = "label2";
+            this.lblTitleMostUsedEngin.AutoSize = true;
+            this.lblTitleMostUsedEngin.Location = new System.Drawing.Point(89, 90);
+            this.lblTitleMostUsedEngin.Margin = new System.Windows.Forms.Padding(2, 0, 2, 0);
+            this.lblTitleMostUsedEngin.Name = "lblTitleMostUsedEngin";
+            this.lblTitleMostUsedEngin.Size = new System.Drawing.Size(247, 22);
+            this.lblTitleMostUsedEngin.TabIndex = 3;
+            this.lblTitleMostUsedEngin.Text = "Engins les plus utilisé de la caserne : ";
             // 
-            // label1
+            // lblTitleEnginPerHour
             // 
-            this.label1.AutoSize = true;
-            this.label1.Location = new System.Drawing.Point(645, 90);
-            this.label1.Margin = new System.Windows.Forms.Padding(2, 0, 2, 0);
-            this.label1.Name = "label1";
-            this.label1.Size = new System.Drawing.Size(48, 22);
-            this.label1.TabIndex = 2;
-            this.label1.Text = "label1";
+            this.lblTitleEnginPerHour.AutoSize = true;
+            this.lblTitleEnginPerHour.Location = new System.Drawing.Point(578, 90);
+            this.lblTitleEnginPerHour.Margin = new System.Windows.Forms.Padding(2, 0, 2, 0);
+            this.lblTitleEnginPerHour.Name = "lblTitleEnginPerHour";
+            this.lblTitleEnginPerHour.Size = new System.Drawing.Size(166, 22);
+            this.lblTitleEnginPerHour.TabIndex = 2;
+            this.lblTitleEnginPerHour.Text = "Total d\'heure par Engins";
             // 
             // cbxCaserne
             // 
             this.cbxCaserne.FormattingEnabled = true;
-            this.cbxCaserne.Location = new System.Drawing.Point(209, 23);
+            this.cbxCaserne.Location = new System.Drawing.Point(386, 30);
             this.cbxCaserne.Margin = new System.Windows.Forms.Padding(2);
             this.cbxCaserne.Name = "cbxCaserne";
             this.cbxCaserne.Size = new System.Drawing.Size(199, 30);
@@ -146,7 +164,7 @@
             // lblCaserne
             // 
             this.lblCaserne.AutoSize = true;
-            this.lblCaserne.Location = new System.Drawing.Point(145, 25);
+            this.lblCaserne.Location = new System.Drawing.Point(281, 38);
             this.lblCaserne.Name = "lblCaserne";
             this.lblCaserne.Size = new System.Drawing.Size(77, 22);
             this.lblCaserne.TabIndex = 0;
@@ -173,20 +191,6 @@
             this.tabPage3.TabIndex = 2;
             this.tabPage3.Text = "Habilitation";
             this.tabPage3.UseVisualStyleBackColor = true;
-            // 
-            // pnlCamembert
-            // 
-            this.pnlCamembert.Location = new System.Drawing.Point(17, 16);
-            this.pnlCamembert.Name = "pnlCamembert";
-            this.pnlCamembert.Size = new System.Drawing.Size(351, 277);
-            this.pnlCamembert.TabIndex = 0;
-            // 
-            // flpLegende
-            // 
-            this.flpLegende.Location = new System.Drawing.Point(17, 299);
-            this.flpLegende.Name = "flpLegende";
-            this.flpLegende.Size = new System.Drawing.Size(351, 61);
-            this.flpLegende.TabIndex = 1;
             // 
             // UCStatistique
             // 
@@ -217,8 +221,8 @@
         private System.Windows.Forms.Label lblCaserne;
         private System.Windows.Forms.ComboBox cbxCaserne;
         private System.Windows.Forms.FlowLayoutPanel flpHistogram;
-        private System.Windows.Forms.Label label2;
-        private System.Windows.Forms.Label label1;
+        private System.Windows.Forms.Label lblTitleMostUsedEngin;
+        private System.Windows.Forms.Label lblTitleEnginPerHour;
         private System.Windows.Forms.Panel pnlMostUsedEngin;
         private System.Windows.Forms.Panel pnlCamembert;
         private System.Windows.Forms.FlowLayoutPanel flpLegende;
