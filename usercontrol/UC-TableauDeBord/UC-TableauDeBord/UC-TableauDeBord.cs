@@ -11,6 +11,9 @@ using UC_Mission;
 
 namespace UC_TableauDeBord
 {
+
+    public delegate void AjouterMissionBD(UC_Mission.Mission mission); //Déclaration de la signature du délégué pour ajouter une mission à la base de données
+
     public partial class TableauDeBord: UserControl
     {
         public TableauDeBord()
@@ -26,8 +29,9 @@ namespace UC_TableauDeBord
             DisplayMissions(); //Appel de la méthode pour afficher les missions
         }
 
-        List<UC_Mission.Mission> listMissions = new List<UC_Mission.Mission>(); //Liste des missions
-        
+        private List<UC_Mission.Mission> listMissions = new List<UC_Mission.Mission>(); //Liste des missions
+        public AjouterMissionBD ajouterMissionBD; //Instance du délégué pour ajouter une mission à la base de données
+
         public void LoadMissions(DataTable dt)
         {
             listMissions.Clear(); //Vider la liste avant de la remplir
@@ -103,6 +107,10 @@ namespace UC_TableauDeBord
                     UC_Mission.Mission mission = listMissions[i]; //Récupération de la mission sélectionnée
                     mission.EstEnCours = false; //La mission n'est plus en cours, ajout automatique de la date de fin à la mission sélectionnée
                     mission.CompteRendu = frm.CompteRendu; //Ajout du compte rendu à la mission sélectionnée
+                    if (ajouterMissionBD != null) //Si le délégué n'est pas nul
+                    {
+                        ajouterMissionBD(mission); //Appel du délégué pour ajouter la mission à la base de données
+                    }
                 }
             }
         }

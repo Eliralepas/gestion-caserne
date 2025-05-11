@@ -18,6 +18,8 @@ namespace Sae25_Main_Form
             InitializeComponent();
         }
 
+        private UserControl voletActuel;
+
         private void frmCaserne_Load(object sender, EventArgs e)
         {
             foreach (UCButton btn in panelNavigation.Controls.OfType<UCButton>()) //Lier les boutons de navigation
@@ -33,9 +35,9 @@ namespace Sae25_Main_Form
 
         }
 
-        private void Tablodebord_Load(object sender, EventArgs e)
+        private void TableauDeBord_Load(object sender, EventArgs e)
         {
-
+            panelVolet.Controls.
         }
     }
 }
