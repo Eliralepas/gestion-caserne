@@ -16,7 +16,7 @@ namespace UC_Mission
     public partial class Mission: UserControl
     {
 
-        public Mission(int _idMission, string _nomCaserne, string _natureMission, string _motifMission ,DateTime _dateDebut)
+        public Mission(int _idMission, string _nomCaserne, string _natureMission, string _motifMission ,DateTime _dateDebut) //Constructeur pour une mission en cours
         {
             InitializeComponent();
             MissionID = _idMission;
@@ -27,7 +27,7 @@ namespace UC_Mission
             EstEnCours = true;
         }
 
-        public Mission(int _idMission, string _nomCaserne, string _natureMission, string _motifMission, DateTime _dateDebut, DateTime _dateFin)
+        public Mission(int _idMission, string _nomCaserne, string _natureMission, string _motifMission, DateTime _dateDebut, DateTime _dateFin) //Constructeur pour une mission terminée
         {
             InitializeComponent();
             MissionID = _idMission;
@@ -37,7 +37,6 @@ namespace UC_Mission
             DateDebut = _dateDebut;
             DateFin = _dateFin;
             EstEnCours = false;
-            btnTerminerMission.Visible = false; //On cache le bouton terminer la mission si elle est déjà terminée
         }
 
         public Mission(DataRow dr)
@@ -137,6 +136,10 @@ namespace UC_Mission
                 {
                     lblDateFin.Text = "Fin le        :  -----------------";
                 }
+                else
+                {
+                    btnTerminerMission.Visible = false; //On cache le bouton terminer la mission
+                }
             }
         }
 
@@ -181,7 +184,6 @@ namespace UC_Mission
             
             DateFin = DateTime.Now; //On met à jour la date de fin
             EstEnCours = false; //On met à jour l'état de la mission
-            btnTerminerMission.Visible = false; //On cache le bouton terminer la mission
         }
 
         private void btnTerminerMission_Click(object sender, EventArgs e)
