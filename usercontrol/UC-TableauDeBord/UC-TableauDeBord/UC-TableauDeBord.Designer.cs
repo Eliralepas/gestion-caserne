@@ -32,7 +32,6 @@
             this.ckbEnCours = new System.Windows.Forms.CheckBox();
             this.panelMissions = new System.Windows.Forms.Panel();
             this.lblBarre = new System.Windows.Forms.Label();
-            this.btnTerminerMission = new System.Windows.Forms.Button();
             this.SuspendLayout();
             // 
             // lblTableauDeBord
@@ -83,22 +82,10 @@
             this.lblBarre.TabIndex = 5;
             this.lblBarre.Text = "                                  ";
             // 
-            // btnTerminerMission
-            // 
-            this.btnTerminerMission.AutoSize = true;
-            this.btnTerminerMission.Location = new System.Drawing.Point(763, 23);
-            this.btnTerminerMission.Name = "btnTerminerMission";
-            this.btnTerminerMission.Size = new System.Drawing.Size(202, 37);
-            this.btnTerminerMission.TabIndex = 6;
-            this.btnTerminerMission.Text = "Terminer mission";
-            this.btnTerminerMission.UseVisualStyleBackColor = true;
-            this.btnTerminerMission.Click += new System.EventHandler(this.btnTerminerMission_Click);
-            // 
             // TableauDeBord
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(13F, 26F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.Controls.Add(this.btnTerminerMission);
             this.Controls.Add(this.lblBarre);
             this.Controls.Add(this.panelMissions);
             this.Controls.Add(this.ckbEnCours);
@@ -118,6 +105,5 @@
         private System.Windows.Forms.CheckBox ckbEnCours;
         private System.Windows.Forms.Panel panelMissions;
         private System.Windows.Forms.Label lblBarre;
-        private System.Windows.Forms.Button btnTerminerMission;
     }
 }

@@ -34,3 +34,12 @@ C:\Users\Diego\source\repos\sae-caserne\Sae25-Main-Form\Sae25-Main-Form\bin\Debu
 C:\Users\Diego\source\repos\sae-caserne\Sae25-Main-Form\Sae25-Main-Form\obj\Debug\Sae25-Ma.85EEC115.Up2Date
 C:\Users\Diego\source\repos\sae-caserne\Sae25-Main-Form\Sae25-Main-Form\bin\Debug\UC-Mission.dll
 C:\Users\Diego\source\repos\sae-caserne\Sae25-Main-Form\Sae25-Main-Form\bin\Debug\UC-Mission.pdb
+C:\Users\Diego\source\repos\sae-caserne\Sae25-Main-Form\Sae25-Main-Form\bin\Debug\System.Data.SQLite.dll
+C:\Users\Diego\source\repos\sae-caserne\Sae25-Main-Form\Sae25-Main-Form\bin\Debug\System.Data.SQLite.xml
+C:\Users\miaou\Desktop\SAE25\Sae25-Main-Form\Sae25-Main-Form\bin\Debug\System.Data.SQLite.dll
+C:\Users\miaou\Desktop\SAE25\Sae25-Main-Form\Sae25-Main-Form\bin\Debug\UC-Mission.dll
+C:\Users\miaou\Desktop\SAE25\Sae25-Main-Form\Sae25-Main-Form\bin\Debug\System.Data.SQLite.xml
+C:\Users\miaou\Desktop\SAE25\Sae25-Main-Form\Sae25-Main-Form\bin\Debug\UC-Mission.pdb
+C:\Users\miaou\Desktop\SAE25\Sae25-Main-Form\Sae25-Main-Form\bin\Debug\UC-Statistique.dll
+C:\Users\miaou\Desktop\SAE25\Sae25-Main-Form\Sae25-Main-Form\bin\Debug\UC-Statistique.pdb
+C:\Users\miaou\Desktop\SAE25\Sae25-Main-Form\Sae25-Main-Form\bin\Debug\UC-Statistique.dll.config

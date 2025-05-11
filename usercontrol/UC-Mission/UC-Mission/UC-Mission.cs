@@ -10,10 +10,13 @@ using System.Windows.Forms;
 
 namespace UC_Mission
 {
+
+    public delegate void TerminerMission(object sender, EventArgs e, int idMission); //Déclaration de la signature du délégué pour terminer une mission
+
     public partial class Mission: UserControl
     {
 
-        public Mission(int _idMission, string _nomCaserne, string _natureMission, string _motifMission ,DateTime _dateDebut, bool _estEnCours)
+        public Mission(int _idMission, string _nomCaserne, string _natureMission, string _motifMission ,DateTime _dateDebut) //Constructeur pour une mission en cours
         {
             InitializeComponent();
             MissionID = _idMission;
@@ -21,7 +24,19 @@ namespace UC_Mission
             NatureMission = _natureMission;
             MotifMission = _motifMission;
             DateDebut = _dateDebut;
-            EstEnCours = _estEnCours;
+            EstEnCours = true;
+        }
+
+        public Mission(int _idMission, string _nomCaserne, string _natureMission, string _motifMission, DateTime _dateDebut, DateTime _dateFin) //Constructeur pour une mission terminée
+        {
+            InitializeComponent();
+            MissionID = _idMission;
+            Caserne = _nomCaserne;
+            NatureMission = _natureMission;
+            MotifMission = _motifMission;
+            DateDebut = _dateDebut;
+            DateFin = _dateFin;
+            EstEnCours = false;
         }
 
         public Mission(DataRow dr)
@@ -35,19 +50,21 @@ namespace UC_Mission
             EstEnCours = Convert.ToBoolean(dr[5]);
         }
 
-        int idMission;
-        string nomCaserne;
-        string natureMission;
-        string motifMission = "--> ";
-        DateTime dateDebut;
-        DateTime dateFin;
-        bool estEnCours;
-        string adresse;
-        string codePostal;
-        string ville;
-        string compteRendu;
-        DataTable dtPompiers = new DataTable(); //Tableau des pompiers de la mission
-        DataTable dtEngins = new DataTable(); //Tableau des engins de la mission
+        public TerminerMission terminerMission; //Instance du délégué pour terminer une mission
+
+        private int idMission;
+        private string nomCaserne;
+        private string natureMission;
+        private string motifMission = "--> ";
+        private DateTime dateDebut;
+        private DateTime dateFin;
+        private bool estEnCours;
+        private string adresse;
+        private string codePostal;
+        private string ville;
+        private string compteRendu;
+        private List<string> listePompiers = new List<string>(); //Liste des pompiers affectés à la mission
+        private List<string> listeEngins = new List<string>(); //Liste des engins affectés à la mission
 
         public int MissionID
         {
@@ -99,23 +116,30 @@ namespace UC_Mission
             }
         }
 
+        public DateTime DateFin
+        {
+            get { return dateFin; }
+            set
+            {
+                dateFin = value;
+                lblDateFin.Text = "Fin le        :  " + dateFin.ToString();
+            }
+        }
+
         public bool EstEnCours
         {
             get { return estEnCours; }
             set 
             {
                 estEnCours = value;
-                string etat = "";
-                if (estEnCours) //Si la mission est en cours
+                if (estEnCours)
                 {
-                    etat = "----------";
+                    lblDateFin.Text = "Fin le        :  -----------------";
                 }
-                else //Si la mission est terminée: afficher la date de fin
+                else
                 {
-                    dateFin = DateTime.Now;
-                    etat = dateFin.ToString();
+                    btnTerminerMission.Visible = false; //On cache le bouton terminer la mission
                 }
-                lblDateFin.Text = "Fin le        :  " + etat;
             }
         }
 
@@ -155,12 +179,22 @@ namespace UC_Mission
             }
         }
 
-        private void btnCreerPdf_Click(object sender, EventArgs e)
+        public void Terminer()
         {
             
+            DateFin = DateTime.Now; //On met à jour la date de fin
+            EstEnCours = false; //On met à jour l'état de la mission
         }
 
-        private void btnVoirPdf_Click(object sender, EventArgs e)
+        private void btnTerminerMission_Click(object sender, EventArgs e)
+        {
+            if (terminerMission != null)
+            {
+                terminerMission(this, e, MissionID); //On appelle le délégué pour terminer la mission
+            }
+        }
+
+        private void btnCreerPdf_Click(object sender, EventArgs e)
         {
 
         }

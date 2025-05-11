@@ -17,7 +17,6 @@
 mono_crash.*
 
 # Build results
-[Dd]ebug/
 [Dd]ebugPublic/
 [Rr]elease/
 [Rr]eleases/
@@ -27,7 +26,6 @@ x86/
 [Aa][Rr][Mm]/
 [Aa][Rr][Mm]64/
 bld/
-[Bb]in/
 [Oo]bj/
 [Oo]ut/
 [Ll]og/
@@ -223,11 +221,11 @@ _pkginfo.txt
 *.appxbundle
 *.appxupload
 
-# Ignore all .cache files and folders (Visual Studio and others)
-*.cache
-.cache/
-**/.cache/
-
+# Visual Studio cache files
+# files ending in .cache can be ignored
+*.[Cc]ache
+# but keep track of directories ending in .cache
+.[Cc]ache/
 
 # Others
 ClientBin/
