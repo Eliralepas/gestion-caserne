@@ -53,7 +53,7 @@
             this.grpMobilisation.Margin = new System.Windows.Forms.Padding(4);
             this.grpMobilisation.Name = "grpMobilisation";
             this.grpMobilisation.Padding = new System.Windows.Forms.Padding(4);
-            this.grpMobilisation.Size = new System.Drawing.Size(952, 330);
+            this.grpMobilisation.Size = new System.Drawing.Size(969, 284);
             this.grpMobilisation.TabIndex = 0;
             this.grpMobilisation.TabStop = false;
             this.grpMobilisation.Text = "Mobilisation des engins et pompiers";
@@ -61,7 +61,7 @@
             // dtgPompier
             // 
             this.dtgPompier.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
-            this.dtgPompier.Location = new System.Drawing.Point(481, 103);
+            this.dtgPompier.Location = new System.Drawing.Point(507, 86);
             this.dtgPompier.Name = "dtgPompier";
             this.dtgPompier.RowHeadersWidth = 62;
             this.dtgPompier.RowTemplate.Height = 28;
@@ -71,7 +71,7 @@
             // dtgEngin
             // 
             this.dtgEngin.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
-            this.dtgEngin.Location = new System.Drawing.Point(29, 103);
+            this.dtgEngin.Location = new System.Drawing.Point(28, 86);
             this.dtgEngin.Name = "dtgEngin";
             this.dtgEngin.RowHeadersWidth = 62;
             this.dtgEngin.RowTemplate.Height = 28;
@@ -81,20 +81,20 @@
             // label2
             // 
             this.label2.AutoSize = true;
-            this.label2.Font = new System.Drawing.Font("Arial", 11F);
-            this.label2.Location = new System.Drawing.Point(477, 64);
+            this.label2.Font = new System.Drawing.Font("Arial", 10F);
+            this.label2.Location = new System.Drawing.Point(503, 47);
             this.label2.Name = "label2";
-            this.label2.Size = new System.Drawing.Size(202, 25);
+            this.label2.Size = new System.Drawing.Size(180, 23);
             this.label2.TabIndex = 1;
             this.label2.Text = "Pompiers mobilisés";
             // 
             // lblEngin
             // 
             this.lblEngin.AutoSize = true;
-            this.lblEngin.Font = new System.Drawing.Font("Arial", 11F);
-            this.lblEngin.Location = new System.Drawing.Point(25, 64);
+            this.lblEngin.Font = new System.Drawing.Font("Arial", 10F);
+            this.lblEngin.Location = new System.Drawing.Point(24, 47);
             this.lblEngin.Name = "lblEngin";
-            this.lblEngin.Size = new System.Drawing.Size(174, 25);
+            this.lblEngin.Size = new System.Drawing.Size(155, 23);
             this.lblEngin.TabIndex = 0;
             this.lblEngin.Text = "Engins mobilisés";
             // 
@@ -107,7 +107,7 @@
             this.Font = new System.Drawing.Font("Arial", 10F);
             this.Margin = new System.Windows.Forms.Padding(4);
             this.Name = "UC_MobilisationEnginPompier";
-            this.Size = new System.Drawing.Size(956, 330);
+            this.Size = new System.Drawing.Size(973, 288);
             this.Load += new System.EventHandler(this.UC_MobilisationEnginPompier_Load);
             this.grpMobilisation.ResumeLayout(false);
             this.grpMobilisation.PerformLayout();

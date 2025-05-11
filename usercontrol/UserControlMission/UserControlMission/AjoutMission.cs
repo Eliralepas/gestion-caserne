@@ -86,6 +86,12 @@ namespace UserControlMission
             date = DateTime.Now.ToString("dd-MM-yyyy HH:mm:ss");
             lblDate.Text = "déclenchée le : " + date;
             initialiser();
+            btnAnnuler.Visible = false;
+            btnValider.Visible = false;
+
+            //UC gried view
+            ucMobil.Visible = true;
+
         }
 
         private void btnAnnuler_Click(object sender, EventArgs e)

@@ -48,7 +48,7 @@
             this.btnValider = new System.Windows.Forms.Button();
             this.grpInfo = new System.Windows.Forms.GroupBox();
             this.btnFermer = new System.Windows.Forms.Button();
-            this.uC_MobilisationEnginPompier1 = new UserControlMission.UC_MobilisationEnginPompier();
+            this.ucMobil = new UserControlMission.UC_MobilisationEnginPompier();
             this.groupBox1.SuspendLayout();
             this.grpDecision.SuspendLayout();
             this.grpAdr.SuspendLayout();
@@ -80,6 +80,9 @@
             // 
             // lblNumMission
             // 
+            this.lblNumMission.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
+            | System.Windows.Forms.AnchorStyles.Left) 
+            | System.Windows.Forms.AnchorStyles.Right)));
             this.lblNumMission.AutoSize = true;
             this.lblNumMission.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(100)))), ((int)(((byte)(20)))), ((int)(((byte)(0)))));
             this.lblNumMission.Font = new System.Drawing.Font("Arial", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
@@ -93,6 +96,9 @@
             // 
             // lblDate
             // 
+            this.lblDate.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
+            | System.Windows.Forms.AnchorStyles.Left) 
+            | System.Windows.Forms.AnchorStyles.Right)));
             this.lblDate.AutoSize = true;
             this.lblDate.Font = new System.Drawing.Font("Arial", 9F);
             this.lblDate.ForeColor = System.Drawing.Color.White;
@@ -105,6 +111,9 @@
             // 
             // grpDecision
             // 
+            this.grpDecision.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
+            | System.Windows.Forms.AnchorStyles.Left) 
+            | System.Windows.Forms.AnchorStyles.Right)));
             this.grpDecision.Controls.Add(this.cboCaserne);
             this.grpDecision.Controls.Add(this.cboNature);
             this.grpDecision.Controls.Add(this.lblCaserne);
@@ -243,6 +252,9 @@
             // 
             // btnAnnuler
             // 
+            this.btnAnnuler.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
+            | System.Windows.Forms.AnchorStyles.Left) 
+            | System.Windows.Forms.AnchorStyles.Right)));
             this.btnAnnuler.Location = new System.Drawing.Point(615, 543);
             this.btnAnnuler.Margin = new System.Windows.Forms.Padding(2, 3, 2, 3);
             this.btnAnnuler.Name = "btnAnnuler";
@@ -254,6 +266,9 @@
             // 
             // btnValider
             // 
+            this.btnValider.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
+            | System.Windows.Forms.AnchorStyles.Left) 
+            | System.Windows.Forms.AnchorStyles.Right)));
             this.btnValider.Location = new System.Drawing.Point(805, 543);
             this.btnValider.Margin = new System.Windows.Forms.Padding(2, 3, 2, 3);
             this.btnValider.Name = "btnValider";
@@ -265,6 +280,9 @@
             // 
             // grpInfo
             // 
+            this.grpInfo.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
+            | System.Windows.Forms.AnchorStyles.Left) 
+            | System.Windows.Forms.AnchorStyles.Right)));
             this.grpInfo.Controls.Add(this.groupBox1);
             this.grpInfo.Controls.Add(this.grpAdr);
             this.grpInfo.Font = new System.Drawing.Font("Arial", 12F);
@@ -280,6 +298,9 @@
             // 
             // btnFermer
             // 
+            this.btnFermer.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
+            | System.Windows.Forms.AnchorStyles.Left) 
+            | System.Windows.Forms.AnchorStyles.Right)));
             this.btnFermer.Location = new System.Drawing.Point(805, 959);
             this.btnFermer.Margin = new System.Windows.Forms.Padding(2, 3, 2, 3);
             this.btnFermer.Name = "btnFermer";
@@ -288,23 +309,26 @@
             this.btnFermer.Text = "Fermer";
             this.btnFermer.UseVisualStyleBackColor = true;
             // 
-            // uC_MobilisationEnginPompier1
+            // ucMobil
             // 
-            this.uC_MobilisationEnginPompier1.BackColor = System.Drawing.Color.DarkRed;
-            this.uC_MobilisationEnginPompier1.Font = new System.Drawing.Font("Arial", 10F);
-            this.uC_MobilisationEnginPompier1.Location = new System.Drawing.Point(16, 598);
-            this.uC_MobilisationEnginPompier1.Margin = new System.Windows.Forms.Padding(4);
-            this.uC_MobilisationEnginPompier1.Name = "uC_MobilisationEnginPompier1";
-            this.uC_MobilisationEnginPompier1.Size = new System.Drawing.Size(956, 330);
-            this.uC_MobilisationEnginPompier1.TabIndex = 23;
-            this.uC_MobilisationEnginPompier1.Visible = false;
+            this.ucMobil.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
+            | System.Windows.Forms.AnchorStyles.Left) 
+            | System.Windows.Forms.AnchorStyles.Right)));
+            this.ucMobil.BackColor = System.Drawing.Color.DarkRed;
+            this.ucMobil.Font = new System.Drawing.Font("Arial", 10F);
+            this.ucMobil.Location = new System.Drawing.Point(16, 598);
+            this.ucMobil.Margin = new System.Windows.Forms.Padding(4);
+            this.ucMobil.Name = "ucMobil";
+            this.ucMobil.Size = new System.Drawing.Size(956, 300);
+            this.ucMobil.TabIndex = 23;
+            this.ucMobil.Visible = false;
             // 
             // ucMission
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(11F, 23F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.BackColor = System.Drawing.Color.DarkRed;
-            this.Controls.Add(this.uC_MobilisationEnginPompier1);
+            this.Controls.Add(this.ucMobil);
             this.Controls.Add(this.btnFermer);
             this.Controls.Add(this.grpInfo);
             this.Controls.Add(this.btnValider);
@@ -350,6 +374,6 @@
         private System.Windows.Forms.TextBox txtVille;
         private System.Windows.Forms.GroupBox grpInfo;
         private System.Windows.Forms.Button btnFermer;
-        private UC_MobilisationEnginPompier uC_MobilisationEnginPompier1;
+        private UC_MobilisationEnginPompier ucMobil;
     }
 }
