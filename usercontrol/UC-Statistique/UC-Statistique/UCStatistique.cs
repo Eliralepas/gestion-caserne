@@ -62,10 +62,11 @@ namespace UC_Statistique
 
 
 
-
+        /**Statistique Relatif a la caserne choisis*/
         private void loadCaserne()
-        {
+        {//on load toute les casernes de la bases dans la comboBox
           try{
+                cbxCaserne.Controls.Clear();
                 string command = "Select [id] ,[nom] FROM Caserne;";
                 SQLiteDataReader dataRead = executeDataReaderCommand(command);
                 while (dataRead.Read())
@@ -160,19 +161,8 @@ namespace UC_Statistique
             pnlCamembert.Controls.Add(camenbert);
 
         }
-
+        //Statistique relatif au 
     }
-
-
-
-
-
-
-
-
-
-
-
 
 
     public class ItemCombo
