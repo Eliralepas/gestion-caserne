@@ -231,6 +231,7 @@ namespace UC_Statistique
                 Array.Copy(colors, selectedColor, values.Count);
             }
             PartionedCircle camenbert = new PartionedCircle(values, colors);
+            camenbert.m_EdgeSize = 0;
             camenbert.Dock = DockStyle.Fill;
             pnlGrapheHabit.Controls.Add(camenbert);
 
