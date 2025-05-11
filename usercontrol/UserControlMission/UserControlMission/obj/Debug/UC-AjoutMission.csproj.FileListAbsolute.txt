@@ -6,3 +6,4 @@ C:\Users\elira\OneDrive\Desktop\SAE\usercontrol\UserControlMission\UserControlMi
 C:\Users\elira\OneDrive\Desktop\SAE\usercontrol\UserControlMission\UserControlMission\obj\Debug\UC-AjoutMission.csproj.CoreCompileInputs.cache
 C:\Users\elira\OneDrive\Desktop\SAE\usercontrol\UserControlMission\UserControlMission\obj\Debug\UserControlMission.dll
 C:\Users\elira\OneDrive\Desktop\SAE\usercontrol\UserControlMission\UserControlMission\obj\Debug\UserControlMission.pdb
+C:\Users\elira\OneDrive\Desktop\SAE\usercontrol\UserControlMission\UserControlMission\obj\Debug\UserControlMission.UC_MobilisationEnginPompier.resources
