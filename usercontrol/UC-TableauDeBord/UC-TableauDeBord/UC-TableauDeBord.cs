@@ -31,19 +31,16 @@ namespace UC_TableauDeBord
 
         private List<UC_Mission.Mission> listMissions = new List<UC_Mission.Mission>(); //Liste des missions
         public AjouterMissionBD ajouterMissionBD; //Instance du délégué pour ajouter une mission à la base de données
+        private bool switchCouleur = true; //Variable pour alterner les couleurs des missions
+        private Color couleurSecondaire = Color.FromArgb(234,234,234);
 
         public void LoadMissions(DataTable dt)
         {
             listMissions.Clear(); //Vider la liste avant de la remplir
-            bool switchCouleur = true; //Variable pour alterner les couleurs des missions
             foreach (DataRow dr in dt.Rows)
             {
                 UC_Mission.Mission mission = new UC_Mission.Mission(dr); //Création d'une nouvelle mission à partir de la ligne du DataTable
-                switchCouleur = !switchCouleur; //Alterner la couleur
-                if (switchCouleur)
-                {
-                    mission.Couleur = Color.LightGray; //Couleur grise
-                }
+                switchCouleurMission(mission); //Appel de la méthode pour alterner la couleur de la mission
                 mission.terminerMission += TerminerMission; //Ajout de l'événement pour terminer la mission
                 listMissions.Add(mission); //Ajout de la mission à la liste
             }
@@ -53,6 +50,7 @@ namespace UC_TableauDeBord
         public void AddMission(UC_Mission.Mission mission)
         {
             listMissions.Add(mission); //Ajout de la mission à la liste
+            switchCouleurMission(mission); //Appel de la méthode pour alterner la couleur de la mission
             mission.terminerMission += TerminerMission; //Ajout de l'événement pour terminer la mission
             DisplayMissions(); //Appel de la méthode pour afficher les missions
         }
@@ -96,6 +94,15 @@ namespace UC_TableauDeBord
                     ajouterMissionBD(mission, frm.CompteRendu); //Appel du délégué pour ajouter la mission à la base de données
                 }
                 DisplayMissions(); //Appel de la méthode pour afficher les missions
+            }
+        }
+
+        private void switchCouleurMission(UC_Mission.Mission mission)
+        {
+            switchCouleur = !switchCouleur; //Alterner la couleur
+            if (switchCouleur)
+            {
+                mission.Couleur = couleurSecondaire; //Couleur grise
             }
         }
     }
