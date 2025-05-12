@@ -44,7 +44,7 @@
             this.lblTitleIntervention = new System.Windows.Forms.Label();
             this.tabPage3 = new System.Windows.Forms.TabPage();
             this.cbxHabilitation = new System.Windows.Forms.ComboBox();
-            this.flowLayoutPanel1 = new System.Windows.Forms.FlowLayoutPanel();
+            this.flpHabilitation = new System.Windows.Forms.FlowLayoutPanel();
             this.pnlHabilitation = new System.Windows.Forms.Panel();
             this.flpLegendHabi = new System.Windows.Forms.FlowLayoutPanel();
             this.pnlGrapheHabit = new System.Windows.Forms.Panel();
@@ -112,7 +112,7 @@
             this.pnlMostUsedEngin.Location = new System.Drawing.Point(24, 120);
             this.pnlMostUsedEngin.Margin = new System.Windows.Forms.Padding(2);
             this.pnlMostUsedEngin.Name = "pnlMostUsedEngin";
-            this.pnlMostUsedEngin.Size = new System.Drawing.Size(506, 478);
+            this.pnlMostUsedEngin.Size = new System.Drawing.Size(506, 424);
             this.pnlMostUsedEngin.TabIndex = 5;
             // 
             // flpLegende
@@ -121,7 +121,7 @@
             this.flpLegende.Dock = System.Windows.Forms.DockStyle.Bottom;
             this.flpLegende.Location = new System.Drawing.Point(0, 320);
             this.flpLegende.Name = "flpLegende";
-            this.flpLegende.Size = new System.Drawing.Size(506, 158);
+            this.flpLegende.Size = new System.Drawing.Size(506, 104);
             this.flpLegende.TabIndex = 1;
             this.flpLegende.WrapContents = false;
             // 
@@ -218,7 +218,7 @@
             // tabPage3
             // 
             this.tabPage3.Controls.Add(this.cbxHabilitation);
-            this.tabPage3.Controls.Add(this.flowLayoutPanel1);
+            this.tabPage3.Controls.Add(this.flpHabilitation);
             this.tabPage3.Controls.Add(this.pnlHabilitation);
             this.tabPage3.Controls.Add(this.lblTitleHabilitation);
             this.tabPage3.Location = new System.Drawing.Point(4, 34);
@@ -237,13 +237,16 @@
             this.cbxHabilitation.Name = "cbxHabilitation";
             this.cbxHabilitation.Size = new System.Drawing.Size(530, 30);
             this.cbxHabilitation.TabIndex = 0;
+            this.cbxHabilitation.SelectedIndexChanged += new System.EventHandler(this.cbxHabilitation_SelectedIndexChanged);
             // 
-            // flowLayoutPanel1
+            // flpHabilitation
             // 
-            this.flowLayoutPanel1.Location = new System.Drawing.Point(448, 100);
-            this.flowLayoutPanel1.Name = "flowLayoutPanel1";
-            this.flowLayoutPanel1.Size = new System.Drawing.Size(530, 502);
-            this.flowLayoutPanel1.TabIndex = 2;
+            this.flpHabilitation.AutoScroll = true;
+            this.flpHabilitation.BackColor = System.Drawing.SystemColors.ActiveBorder;
+            this.flpHabilitation.Location = new System.Drawing.Point(448, 100);
+            this.flpHabilitation.Name = "flpHabilitation";
+            this.flpHabilitation.Size = new System.Drawing.Size(530, 454);
+            this.flpHabilitation.TabIndex = 2;
             // 
             // pnlHabilitation
             // 
@@ -252,16 +255,16 @@
             this.pnlHabilitation.Location = new System.Drawing.Point(15, 64);
             this.pnlHabilitation.Margin = new System.Windows.Forms.Padding(2);
             this.pnlHabilitation.Name = "pnlHabilitation";
-            this.pnlHabilitation.Size = new System.Drawing.Size(427, 560);
+            this.pnlHabilitation.Size = new System.Drawing.Size(427, 490);
             this.pnlHabilitation.TabIndex = 7;
             // 
             // flpLegendHabi
             // 
             this.flpLegendHabi.AutoScroll = true;
             this.flpLegendHabi.Dock = System.Windows.Forms.DockStyle.Bottom;
-            this.flpLegendHabi.Location = new System.Drawing.Point(0, 395);
+            this.flpLegendHabi.Location = new System.Drawing.Point(0, 379);
             this.flpLegendHabi.Name = "flpLegendHabi";
-            this.flpLegendHabi.Size = new System.Drawing.Size(427, 165);
+            this.flpLegendHabi.Size = new System.Drawing.Size(427, 111);
             this.flpLegendHabi.TabIndex = 1;
             this.flpLegendHabi.WrapContents = false;
             // 
@@ -270,7 +273,7 @@
             this.pnlGrapheHabit.Dock = System.Windows.Forms.DockStyle.Top;
             this.pnlGrapheHabit.Location = new System.Drawing.Point(0, 0);
             this.pnlGrapheHabit.Name = "pnlGrapheHabit";
-            this.pnlGrapheHabit.Size = new System.Drawing.Size(427, 389);
+            this.pnlGrapheHabit.Size = new System.Drawing.Size(427, 367);
             this.pnlGrapheHabit.TabIndex = 0;
             // 
             // lblTitleHabilitation
@@ -329,7 +332,7 @@
         private System.Windows.Forms.FlowLayoutPanel flpLegendHabi;
         private System.Windows.Forms.Panel pnlGrapheHabit;
         private System.Windows.Forms.Label lblTitleHabilitation;
-        private System.Windows.Forms.FlowLayoutPanel flowLayoutPanel1;
+        private System.Windows.Forms.FlowLayoutPanel flpHabilitation;
         private System.Windows.Forms.ComboBox cbxHabilitation;
     }
 }
