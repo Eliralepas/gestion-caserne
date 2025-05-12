@@ -10,11 +10,19 @@ using System.Windows.Forms;
 
 namespace UCGestionEngins
 {
-    public partial class UserControl1: UserControl
+    public partial class UCGestionEngin: UserControl
     {
-        public UserControl1()
+        
+        public UCGestionEngin()
         {
             InitializeComponent();
         }
+
+        public UCGestionEngin()
+        {
+
+        }
+
+
     }
 }
