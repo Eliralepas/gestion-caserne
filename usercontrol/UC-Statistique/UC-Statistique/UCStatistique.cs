@@ -156,12 +156,14 @@ namespace UC_Statistique
 
             SQLiteDataReader data = executeDataReaderCommand(command);
             Dictionary<string, int> values = new Dictionary<string, int>();
-            for(int i = 0; i < 4 && data.Read(); i++)//on ne garde que les 4 plus utilisé 
+            
+            for (int i = 0; i < 4 && data.Read(); i++)//on ne garde que les 4 plus utilisé 
             {
                 values.Add(data.GetString(0),data.GetInt32(1));
                 legende l =  new legende($"{data.GetString(0)} : {data.GetInt32(1)}", colors[i]);
                 flpLegende.Controls.Add(l);
             }
+            Color[] selectedColor = new Color[values.Count];
             Array.Copy(colors, selectedColor, values.Count);
             PartionedCircle camenbert = new PartionedCircle(values,colors);
             camenbert.Dock = DockStyle.Fill;
@@ -264,25 +266,5 @@ namespace UC_Statistique
 
         }
     }
-
-
-    public class ItemCombo
-    {
-        public ItemCombo(int id, string nom)
-        {
-            Id = id;
-            Nom = nom;
-        }
-
-        public int Id { get; set; }
-        public string Nom { get; set; }
-
-        public override string ToString()
-        {
-            return Nom;
-        }
-    }
-
-
 
 }
