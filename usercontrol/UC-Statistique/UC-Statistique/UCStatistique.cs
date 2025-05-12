@@ -30,11 +30,11 @@ namespace UC_Statistique
         {
             if (con.State != ConnectionState.Open)
             {
-                throw new ArgumentException("Connection dois être ouverte"); //Exception si la connection n'est pas ouverte
+                throw new ArgumentException("Connection dois être ouverte");
             }
-            _con = con; // 
-            tabStatistique.SelectedTab = tabPage1;
-            tabStatistique_SelectedIndexChanged(this, EventArgs.Empty); //Déclechement automatique pour que ça charge de base la premiere page;
+            _con = con;
+            tabStatistique.SelectedTab = tabPage1; 
+            tabStatistique_SelectedIndexChanged(this, EventArgs.Empty);//Déclechement automatique pour que ça charge de base la premiere page;
             cbxCaserne.Focus();
         }
 
@@ -240,30 +240,55 @@ namespace UC_Statistique
             }
             PartionedCircle camenbert = new PartionedCircle(values, colors);
             camenbert.Dock = DockStyle.Fill;
+            camenbert.m_EdgeSize = 0;
             pnlGrapheHabit.Controls.Add(camenbert);
 
         }
         private void loadPompierPerHabilitation()
         {
             cbxHabilitation.Items.Clear();
-            string command = $@"SELECT H.libelle, P.nom , P.prenom
-                                FROM Habilitation H
-                                LEFT JOIN Passer Pa ON Pa.idHabilitation = H.id
+            string command = $@"SELECT H.libelle,H.id
+                                FROM Habilitation H;";
+
+            /*
+             P.nom , P.prenom
+             LEFT JOIN Passer Pa ON Pa.idHabilitation = H.id
                                 LEFT JOIN Pompier P ON Pa.matriculePompier = P.matricule
-                                ORDER BY H.id;";
+                                ORDER BY H.id
+            */
             SQLiteDataReader data = executeDataReaderCommand(command);
-            string currentTab = "";
             while (data.Read())
             {
                 string hability = data.GetString(0);
-                string nom = data.IsDBNull(1) ? "" : data.GetString(1); //verifier si l'habilitation à un prénom car left Join
-                string prenom = data.IsDBNull(2) ? "" : data.GetString(2); 
-                if (hability != currentTab)
-                {
-                    currentTab = hability;
-                }
+                int habilityId = data.GetInt32(1);
+                ItemCombo item = new ItemCombo(habilityId, hability);
+                cbxHabilitation.Items.Add(item);
             }
 
+        }
+
+        private void cbxHabilitation_SelectedIndexChanged(object sender, EventArgs e)
+        {
+            flpHabilitation.Controls.Clear();
+            int idSelected = ((ItemCombo)cbxHabilitation.SelectedItem).Id;
+            string command = $@"SELECT P.nom , P.prenom
+                                FROM Pompier P
+                                JOIN Passer Pa ON Pa.matriculePompier = P.matricule
+                                WHERE Pa.idHabilitation = {idSelected}
+                                ORDER BY P.nom";
+            SQLiteDataReader data = executeDataReaderCommand(command);
+            while (data.Read())
+            {
+                Label Pompier = new Label();
+                Pompier.Text = $"{data.GetString(0)} {data.GetString(1)}";
+                flpHabilitation.Controls.Add(Pompier);
+            }
+            if (flpHabilitation.Controls.Count == 0)
+            {
+                Label empty = new Label();
+                empty.Text = $"Pas de Pompier ayant cette habilitation";
+                flpHabilitation.Controls.Add(empty);
+            }
         }
     }
 
