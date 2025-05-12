@@ -94,7 +94,7 @@
             this.btn2.Name = "btn2";
             this.btn2.Size = new System.Drawing.Size(225, 79);
             this.btn2.TabIndex = 4;
-            // s
+            // 
             // btn3
             // 
             this.btn3.buttonText = null;
@@ -128,8 +128,7 @@
             // 
             // frmCaserne
             // 
-            this.AutoScaleDimensions = new System.Drawing.SizeF(13F, 26F);
-            this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
+            this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.None;
             this.ClientSize = new System.Drawing.Size(1337, 653);
             this.Controls.Add(this.panelNavigation);
             this.Controls.Add(this.panelVolet);
@@ -138,7 +137,7 @@
             this.Margin = new System.Windows.Forms.Padding(5);
             this.Name = "frmCaserne";
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
-            this.Text = "Pinpon 🚒";
+            this.Text = "Quoi ?!  Les soldats du feur";
             this.Load += new System.EventHandler(this.frmCaserne_Load);
             ((System.ComponentModel.ISupportInitialize)(this.picBoxCaserne)).EndInit();
             this.panelNavigation.ResumeLayout(false);

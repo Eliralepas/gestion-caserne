@@ -39,11 +39,13 @@ namespace Sae25_Main_Form
             {
                 btn.ButtonClicked += NavigationButtonClick; //Lier l'événement de clic du bouton
             }
+            panelVolet.Visible = false; //Rendre le panneau de volet invisible au départ
         }
 
         private void NavigationButtonClick(object sender, EventArgs e)
         {
-            panelVolet.Controls.Clear();
+            panelVolet.Visible = true; //Rendre le panneau de volet visible
+            panelVolet.Controls.Clear(); //Vider le panneau de volet avant d'ajouter un nouveau contrôle
             switch (((UCButton)sender).Tag)
             {
                 case ("tabBord"):
