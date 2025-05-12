@@ -16,7 +16,7 @@ namespace UC_Mission
     public partial class Mission: UserControl
     {
 
-        public Mission(int _idMission, string _nomCaserne, string _natureMission, string _motifMission ,DateTime _dateDebut) //Constructeur pour une mission en cours
+        public Mission(int _idMission, string _nomCaserne, string _natureMission, string _motifMission, DateTime _dateDebut) //Constructeur pour une mission en cours
         {
             InitializeComponent();
             MissionID = _idMission;
@@ -47,7 +47,8 @@ namespace UC_Mission
             NatureMission = dr[2].ToString();
             MotifMission = dr[3].ToString();
             DateDebut = Convert.ToDateTime(dr[4]);
-            EstEnCours = Convert.ToBoolean(dr[5]);
+            DateFin = Convert.ToDateTime(dr[5]);
+            EstEnCours = Convert.ToBoolean(dr[6]);
         }
 
         public TerminerMission terminerMission; //Instance du délégué pour terminer une mission

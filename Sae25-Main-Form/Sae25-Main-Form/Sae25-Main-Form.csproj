@@ -72,6 +72,7 @@
     <Compile Include="frmCaserne.Designer.cs">
       <DependentUpon>frmCaserne.cs</DependentUpon>
     </Compile>
+    <Compile Include="mesDatas.cs" />
     <Compile Include="Program.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <EmbeddedResource Include="frmCaserne.resx">

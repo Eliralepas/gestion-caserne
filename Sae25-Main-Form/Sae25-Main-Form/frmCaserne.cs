@@ -24,11 +24,27 @@ namespace Sae25_Main_Form
         UC_TableauDeBord.TableauDeBord tableauDeBord;
         UCStatistique tabStat;
         SQLiteConnection con;
+        DataSet monDs;
 
         private void frmCaserne_Load(object sender, EventArgs e)
         {
-            con = Connexion.Connec;
+            con = Connexion.Connec; //Récupérer la connexion à la base de données
+            monDs = MesDatas.DsGlobal; //Récupérer le DataSet global
+            try //Ouvrir la connexion à la base de données
+            {
+                con.Open(); //Ouvrir la connexion
+                DataTable schemaTable = con.GetSchema("Tables"); //Récupérer le schéma de la base de données
+                foreach (DataRow row in schemaTable.Rows) //Parcourir les lignes du schéma
+                {
+                    string nomTable = row[2].ToString(); //Récupérer le nom de la table
+                    SQLiteDataAdapter da = new SQLiteDataAdapter("Select * From " + nomTable, con); //Créer un adaptateur de données
+                    da.Fill(monDs, nomTable); //Remplir le DataSet avec les données de la table
+                }
+                con.Close(); //Fermer la connexion
+            }
+            catch { } //Gérer les exceptions
 
+            //Initialiser les boutons de navigation et définir leurs tags
             btn1.Tag = "tabBord";
             btn2.Tag = "dummy";
             btn3.Tag = "dummy";
@@ -46,7 +62,7 @@ namespace Sae25_Main_Form
         {
             panelVolet.Visible = true; //Rendre le panneau de volet visible
             panelVolet.Controls.Clear(); //Vider le panneau de volet avant d'ajouter un nouveau contrôle
-            switch (((UCButton)sender).Tag)
+            switch (((UCButton)sender).Tag) //Vérifier le tag du bouton cliqué
             {
                 case ("tabBord"):
                     LoadTableauDeBord();
@@ -62,11 +78,13 @@ namespace Sae25_Main_Form
 
         private void LoadTableauDeBord()
         {
-            if (tableauDeBord == null) //Vérifier si le tableau de bord n'existe pas
+            if (tableauDeBord == null) //Si le tableau de bord n'existe pas
             {
                 tableauDeBord = new UC_TableauDeBord.TableauDeBord(); //Instancier le volet de tableau de bord
                 tableauDeBord.ajouterMissionBD = AjouterMissionBD; //Lier la méthode d'ajout de mission à la base de données
-                //tableauDeBord.LoadMissions(DataTable locale des missions qui regroupe les missions de la base et celles du DataSet local)
+                DataTable dtMissions = CreerTableMission(); //Créer une table de missions au bon format
+                RemplirTableMission(dtMissions); //Remplir la table de missions
+                tableauDeBord.LoadMissions(dtMissions);
             }
             panelVolet.Controls.Add(tableauDeBord); //Ajouter le tableau de bord au panneau
         }
@@ -80,7 +98,86 @@ namespace Sae25_Main_Form
             }
             panelVolet.Controls.Add(tabStat); //Ajouter le tableau de statistiques au panneau
         }
-        
+
+        private DataTable CreerTableMission()
+        {
+            if (monDs != null)
+            {
+                DataTable dtMissions = new DataTable(); //Créer une nouvelle table de données
+                for(int i = 0; i < 7; i++)
+                {
+                    DataColumn column = new DataColumn(); //Créer une nouvelle colonne
+                    switch (i)
+                    {
+                        case 0:
+                            column.ColumnName = "MissionID"; //Nom de la colonne
+                            column.DataType = typeof(int); //Type de données
+                            break;
+                        case 1:
+                            column.ColumnName = "Caserne";
+                            column.DataType = typeof(string);
+                            break;
+                        case 2:
+                            column.ColumnName = "Nature";
+                            column.DataType = typeof(string);
+                            break;
+                        case 3:
+                            column.ColumnName = "Motif";
+                            column.DataType = typeof(string);
+                            break;
+                        case 4:
+                            column.ColumnName = "DateDebut";
+                            column.DataType = typeof(DateTime);
+                            break;
+                        case 5:
+                            column.ColumnName = "DateFin";
+                            column.DataType = typeof(DateTime);
+                            break;
+                        case 6:
+                            column.ColumnName = "EstEnCours";
+                            column.DataType = typeof(bool);
+                            break;
+                    }
+                    dtMissions.Columns.Add(column); //Ajouter la colonne à la table de données
+                }
+                return dtMissions; //Retourner la table de données
+            }
+            return null; //Retourner null si le DataSet est vide
+        }
+
+        private void RemplirTableMission(DataTable dtMissions)
+        {
+            if (monDs != null)
+            {
+                DataTable dt = monDs.Tables["Missions"]; //Récupérer la table des missions
+                foreach (DataRow row in dt.Rows) //Parcourir les lignes de la table
+                {
+                    DataRow newRow = dtMissions.NewRow(); //Créer une nouvelle ligne
+                    //Récupérer l'ID de la mission
+                    newRow["MissionID"] = Convert.ToInt32(row["id"]); 
+                    //Récupérer la caserne
+                    newRow["Caserne"] = monDs.Tables["Caserne"].Select("id = " + row["idCaserne"].ToString());
+                    //Récupérer la nature de la mission
+                    newRow["Nature"] = monDs.Tables["NatureSinistre"].Select("id = " + row["idNatureSinistre"].ToString());
+                    //Récupérer le motif de la mission
+                    newRow["Motif"] = row["motifAppel"].ToString();
+                    //Récupérer la date de début
+                    newRow["DateDebut"] = DateTime.Parse(row["dateHeureDepart"].ToString());
+                    //Récupérer la date de fin
+                    if (row["dateHeureRetour"] == DBNull.Value) //Vérifier si la date de retour est nulle
+                    {
+                        newRow["DateFin"] = null; //Mettre la date de fin à null
+                    }
+                    else
+                        newRow["DateFin"] = DateTime.Parse(row["dateHeureRetour"].ToString()); 
+
+                    newRow["EstEnCours"] = Convert.ToInt32(row["terminee"]); //Récupérer l'état de la mission
+
+                    dtMissions.Rows.Add(newRow); //Ajouter la nouvelle ligne à la table de données
+                }
+            }
+        }
+
         private void AjouterMissionBD(UC_Mission.Mission mission, string compteRendu)
         {
             // Logique pour ajouter une mission à la base de données
