@@ -105,6 +105,7 @@
             // 
             // panelMission
             // 
+            this.panelMission.BackColor = System.Drawing.Color.White;
             this.panelMission.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
             this.panelMission.Controls.Add(this.lblDateFin);
             this.panelMission.Controls.Add(this.lblMotifMission);
