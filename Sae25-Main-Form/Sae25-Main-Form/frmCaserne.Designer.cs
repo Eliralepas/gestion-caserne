@@ -94,7 +94,7 @@
             this.btn2.Name = "btn2";
             this.btn2.Size = new System.Drawing.Size(225, 79);
             this.btn2.TabIndex = 4;
-            // 
+            // s
             // btn3
             // 
             this.btn3.buttonText = null;
@@ -107,6 +107,7 @@
             // 
             // panelVolet
             // 
+            this.panelVolet.AutoScroll = true;
             this.panelVolet.Location = new System.Drawing.Point(315, 12);
             this.panelVolet.Name = "panelVolet";
             this.panelVolet.Size = new System.Drawing.Size(1010, 629);

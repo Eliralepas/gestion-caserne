@@ -162,7 +162,6 @@ namespace UC_Statistique
                 legende l =  new legende($"{data.GetString(0)} : {data.GetInt32(1)}", colors[i]);
                 flpLegende.Controls.Add(l);
             }
-            Color[] selectedColor = new Color[values.Count];
             Array.Copy(colors, selectedColor, values.Count);
             PartionedCircle camenbert = new PartionedCircle(values,colors);
             camenbert.Dock = DockStyle.Fill;
@@ -238,7 +237,6 @@ namespace UC_Statistique
                 Array.Copy(colors, selectedColor, values.Count);
             }
             PartionedCircle camenbert = new PartionedCircle(values, colors);
-            camenbert.m_EdgeSize = 0;
             camenbert.Dock = DockStyle.Fill;
             pnlGrapheHabit.Controls.Add(camenbert);
 

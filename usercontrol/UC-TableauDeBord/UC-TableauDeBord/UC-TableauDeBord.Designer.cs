@@ -67,6 +67,7 @@
             // panelMissions
             // 
             this.panelMissions.AutoScroll = true;
+            this.panelMissions.BackColor = System.Drawing.Color.DarkRed;
             this.panelMissions.Location = new System.Drawing.Point(19, 95);
             this.panelMissions.Name = "panelMissions";
             this.panelMissions.Size = new System.Drawing.Size(960, 487);
