@@ -43,12 +43,12 @@
             this.flpSinistreStat = new System.Windows.Forms.FlowLayoutPanel();
             this.lblTitleIntervention = new System.Windows.Forms.Label();
             this.tabPage3 = new System.Windows.Forms.TabPage();
+            this.cbxHabilitation = new System.Windows.Forms.ComboBox();
+            this.flowLayoutPanel1 = new System.Windows.Forms.FlowLayoutPanel();
             this.pnlHabilitation = new System.Windows.Forms.Panel();
             this.flpLegendHabi = new System.Windows.Forms.FlowLayoutPanel();
             this.pnlGrapheHabit = new System.Windows.Forms.Panel();
             this.lblTitleHabilitation = new System.Windows.Forms.Label();
-            this.flowLayoutPanel1 = new System.Windows.Forms.FlowLayoutPanel();
-            this.cbxHabilitation = new System.Windows.Forms.ComboBox();
             this.tabStatistique.SuspendLayout();
             this.tabPage1.SuspendLayout();
             this.grpEngins.SuspendLayout();
@@ -230,6 +230,21 @@
             this.tabPage3.Text = "Habilitation";
             this.tabPage3.UseVisualStyleBackColor = true;
             // 
+            // cbxHabilitation
+            // 
+            this.cbxHabilitation.FormattingEnabled = true;
+            this.cbxHabilitation.Location = new System.Drawing.Point(448, 64);
+            this.cbxHabilitation.Name = "cbxHabilitation";
+            this.cbxHabilitation.Size = new System.Drawing.Size(530, 30);
+            this.cbxHabilitation.TabIndex = 0;
+            // 
+            // flowLayoutPanel1
+            // 
+            this.flowLayoutPanel1.Location = new System.Drawing.Point(448, 100);
+            this.flowLayoutPanel1.Name = "flowLayoutPanel1";
+            this.flowLayoutPanel1.Size = new System.Drawing.Size(530, 502);
+            this.flowLayoutPanel1.TabIndex = 2;
+            // 
             // pnlHabilitation
             // 
             this.pnlHabilitation.Controls.Add(this.flpLegendHabi);
@@ -267,21 +282,6 @@
             this.lblTitleHabilitation.Size = new System.Drawing.Size(184, 22);
             this.lblTitleHabilitation.TabIndex = 6;
             this.lblTitleHabilitation.Text = "Habilitation les plus solicités";
-            // 
-            // flowLayoutPanel1
-            // 
-            this.flowLayoutPanel1.Location = new System.Drawing.Point(448, 100);
-            this.flowLayoutPanel1.Name = "flowLayoutPanel1";
-            this.flowLayoutPanel1.Size = new System.Drawing.Size(530, 502);
-            this.flowLayoutPanel1.TabIndex = 2;
-            // 
-            // cbxHabilitation
-            // 
-            this.cbxHabilitation.FormattingEnabled = true;
-            this.cbxHabilitation.Location = new System.Drawing.Point(448, 64);
-            this.cbxHabilitation.Name = "cbxHabilitation";
-            this.cbxHabilitation.Size = new System.Drawing.Size(530, 30);
-            this.cbxHabilitation.TabIndex = 0;
             // 
             // UCStatistique
             // 

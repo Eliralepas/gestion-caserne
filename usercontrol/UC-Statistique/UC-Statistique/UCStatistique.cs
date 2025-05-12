@@ -198,6 +198,9 @@ namespace UC_Statistique
 
         }
 
+
+        /*Statistique relatif au Habilitation*/
+
         private void loadHabilitation()
         {
             loadMostUsedHabilitation();
