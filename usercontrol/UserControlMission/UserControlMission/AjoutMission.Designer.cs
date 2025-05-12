@@ -45,13 +45,11 @@
             this.btnAnnuler = new System.Windows.Forms.Button();
             this.btnValider = new System.Windows.Forms.Button();
             this.grpInfo = new System.Windows.Forms.GroupBox();
-            this.label1 = new System.Windows.Forms.Label();
             this.label2 = new System.Windows.Forms.Label();
+            this.label1 = new System.Windows.Forms.Label();
             this.grpMob = new System.Windows.Forms.GroupBox();
             this.label3 = new System.Windows.Forms.Label();
             this.label4 = new System.Windows.Forms.Label();
-            this.uC_MobilisationEnginPompier1 = new UserControlMission.UC_MobilisationEnginPompier();
-            this.uC_MobilisationEnginPompier2 = new UserControlMission.UC_MobilisationEnginPompier();
             this.grpDecision.SuspendLayout();
             this.grpInfo.SuspendLayout();
             this.grpMob.SuspendLayout();
@@ -224,7 +222,7 @@
             this.btnAnnuler.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
             | System.Windows.Forms.AnchorStyles.Left) 
             | System.Windows.Forms.AnchorStyles.Right)));
-            this.btnAnnuler.Location = new System.Drawing.Point(615, 506);
+            this.btnAnnuler.Location = new System.Drawing.Point(558, 506);
             this.btnAnnuler.Margin = new System.Windows.Forms.Padding(2, 3, 2, 3);
             this.btnAnnuler.Name = "btnAnnuler";
             this.btnAnnuler.Size = new System.Drawing.Size(149, 36);
@@ -238,12 +236,12 @@
             this.btnValider.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
             | System.Windows.Forms.AnchorStyles.Left) 
             | System.Windows.Forms.AnchorStyles.Right)));
-            this.btnValider.Location = new System.Drawing.Point(805, 506);
+            this.btnValider.Location = new System.Drawing.Point(745, 506);
             this.btnValider.Margin = new System.Windows.Forms.Padding(2, 3, 2, 3);
             this.btnValider.Name = "btnValider";
-            this.btnValider.Size = new System.Drawing.Size(149, 36);
+            this.btnValider.Size = new System.Drawing.Size(209, 36);
             this.btnValider.TabIndex = 20;
-            this.btnValider.Text = "Valider";
+            this.btnValider.Text = "Constituer équipe";
             this.btnValider.UseVisualStyleBackColor = true;
             this.btnValider.Click += new System.EventHandler(this.btnValider_Click);
             // 
@@ -272,17 +270,6 @@
             this.grpInfo.TabStop = false;
             this.grpInfo.Text = "Informations usager";
             // 
-            // label1
-            // 
-            this.label1.AutoSize = true;
-            this.label1.Font = new System.Drawing.Font("Arial", 10F);
-            this.label1.Location = new System.Drawing.Point(29, 49);
-            this.label1.Margin = new System.Windows.Forms.Padding(2, 0, 2, 0);
-            this.label1.Name = "label1";
-            this.label1.Size = new System.Drawing.Size(54, 23);
-            this.label1.TabIndex = 17;
-            this.label1.Text = "Motif";
-            // 
             // label2
             // 
             this.label2.AutoSize = true;
@@ -294,13 +281,22 @@
             this.label2.TabIndex = 18;
             this.label2.Text = "Adresse du sinistre";
             // 
+            // label1
+            // 
+            this.label1.AutoSize = true;
+            this.label1.Font = new System.Drawing.Font("Arial", 10F);
+            this.label1.Location = new System.Drawing.Point(29, 49);
+            this.label1.Margin = new System.Windows.Forms.Padding(2, 0, 2, 0);
+            this.label1.Name = "label1";
+            this.label1.Size = new System.Drawing.Size(54, 23);
+            this.label1.TabIndex = 17;
+            this.label1.Text = "Motif";
+            // 
             // grpMob
             // 
             this.grpMob.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
             | System.Windows.Forms.AnchorStyles.Left) 
             | System.Windows.Forms.AnchorStyles.Right)));
-            this.grpMob.Controls.Add(this.uC_MobilisationEnginPompier2);
-            this.grpMob.Controls.Add(this.uC_MobilisationEnginPompier1);
             this.grpMob.Controls.Add(this.label3);
             this.grpMob.Controls.Add(this.label4);
             this.grpMob.Font = new System.Drawing.Font("Arial", 12F);
@@ -336,26 +332,6 @@
             this.label4.Size = new System.Drawing.Size(155, 23);
             this.label4.TabIndex = 15;
             this.label4.Text = "Engins mobilisés";
-            // 
-            // uC_MobilisationEnginPompier1
-            // 
-            this.uC_MobilisationEnginPompier1.BackColor = System.Drawing.Color.DarkRed;
-            this.uC_MobilisationEnginPompier1.Font = new System.Drawing.Font("Arial", 10F);
-            this.uC_MobilisationEnginPompier1.Location = new System.Drawing.Point(22, 66);
-            this.uC_MobilisationEnginPompier1.Margin = new System.Windows.Forms.Padding(4);
-            this.uC_MobilisationEnginPompier1.Name = "uC_MobilisationEnginPompier1";
-            this.uC_MobilisationEnginPompier1.Size = new System.Drawing.Size(425, 187);
-            this.uC_MobilisationEnginPompier1.TabIndex = 17;
-            // 
-            // uC_MobilisationEnginPompier2
-            // 
-            this.uC_MobilisationEnginPompier2.BackColor = System.Drawing.Color.DarkRed;
-            this.uC_MobilisationEnginPompier2.Font = new System.Drawing.Font("Arial", 10F);
-            this.uC_MobilisationEnginPompier2.Location = new System.Drawing.Point(503, 66);
-            this.uC_MobilisationEnginPompier2.Margin = new System.Windows.Forms.Padding(4);
-            this.uC_MobilisationEnginPompier2.Name = "uC_MobilisationEnginPompier2";
-            this.uC_MobilisationEnginPompier2.Size = new System.Drawing.Size(425, 187);
-            this.uC_MobilisationEnginPompier2.TabIndex = 18;
             // 
             // ucMission
             // 
@@ -407,7 +383,5 @@
         private System.Windows.Forms.GroupBox grpMob;
         private System.Windows.Forms.Label label3;
         private System.Windows.Forms.Label label4;
-        private UC_MobilisationEnginPompier uC_MobilisationEnginPompier2;
-        private UC_MobilisationEnginPompier uC_MobilisationEnginPompier1;
     }
 }
