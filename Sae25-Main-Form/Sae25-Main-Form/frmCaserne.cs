@@ -32,7 +32,6 @@ namespace Sae25_Main_Form
             monDs = MesDatas.DsGlobal; //Récupérer le DataSet global
             try //Ouvrir la connexion à la base de données
             {
-                con.Open(); //Ouvrir la connexion
                 DataTable schemaTable = con.GetSchema("Tables"); //Récupérer le schéma de la base de données
                 foreach (DataRow row in schemaTable.Rows) //Parcourir les lignes du schéma
                 {
@@ -40,7 +39,6 @@ namespace Sae25_Main_Form
                     SQLiteDataAdapter da = new SQLiteDataAdapter("Select * From " + nomTable, con); //Créer un adaptateur de données
                     da.Fill(monDs, nomTable); //Remplir le DataSet avec les données de la table
                 }
-                con.Close(); //Fermer la connexion
             }
             catch { } //Gérer les exceptions
 
@@ -149,7 +147,7 @@ namespace Sae25_Main_Form
         {
             if (monDs != null)
             {
-                DataTable dt = monDs.Tables["Missions"]; //Récupérer la table des missions
+                DataTable dt = monDs.Tables["Mission"]; //Récupérer la table des missions
                 foreach (DataRow row in dt.Rows) //Parcourir les lignes de la table
                 {
                     DataRow newRow = dtMissions.NewRow(); //Créer une nouvelle ligne
@@ -166,7 +164,7 @@ namespace Sae25_Main_Form
                     //Récupérer la date de fin
                     if (row["dateHeureRetour"] == DBNull.Value) //Vérifier si la date de retour est nulle
                     {
-                        newRow["DateFin"] = null; //Mettre la date de fin à null
+                        newRow["DateFin"] = DBNull.Value; //Mettre la date de fin à null
                     }
                     else
                         newRow["DateFin"] = DateTime.Parse(row["dateHeureRetour"].ToString()); 

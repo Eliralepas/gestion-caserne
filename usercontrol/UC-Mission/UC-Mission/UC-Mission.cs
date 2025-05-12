@@ -47,7 +47,10 @@ namespace UC_Mission
             NatureMission = dr[2].ToString();
             MotifMission = dr[3].ToString();
             DateDebut = Convert.ToDateTime(dr[4]);
-            DateFin = Convert.ToDateTime(dr[5]);
+            if (dr[5] != DBNull.Value) //Si la date de fin n'est pas nulle
+            {
+                DateFin = Convert.ToDateTime(dr[5]);
+            }
             EstEnCours = Convert.ToBoolean(dr[6]);
         }
 
