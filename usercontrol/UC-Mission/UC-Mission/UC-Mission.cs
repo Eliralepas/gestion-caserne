@@ -137,6 +137,14 @@ namespace UC_Mission
             }
         }
 
+        public Color Couleur
+        {
+            set
+            {
+                panelMission.BackColor = value; //On change la couleur du panel
+            }
+        }
+
         public void Terminer()
         {
             

@@ -30,11 +30,11 @@ namespace UC_Statistique
         {
             if (con.State != ConnectionState.Open)
             {
-                throw new ArgumentException("Connection dois être ouverte");
+                throw new ArgumentException("Connection dois être ouverte"); //Exception si la connection n'est pas ouverte
             }
-            _con = con;
-            tabStatistique.SelectedTab = tabPage1; 
-            tabStatistique_SelectedIndexChanged(this, EventArgs.Empty);//Déclechement automatique pour que ça charge de base la premiere page;
+            _con = con; // 
+            tabStatistique.SelectedTab = tabPage1;
+            tabStatistique_SelectedIndexChanged(this, EventArgs.Empty); //Déclechement automatique pour que ça charge de base la premiere page;
             cbxCaserne.Focus();
         }
 
@@ -256,8 +256,8 @@ namespace UC_Statistique
             while (data.Read())
             {
                 string hability = data.GetString(0);
-                    string nom = data.IsDBNull(1) ? "" : data.GetString(1);//verifier si l'habilitation à un prénom car left Join
-                string prenom = data.IsDBNull(2) ? "" : data.GetString(2);
+                string nom = data.IsDBNull(1) ? "" : data.GetString(1); //verifier si l'habilitation à un prénom car left Join
+                string prenom = data.IsDBNull(2) ? "" : data.GetString(2); 
                 if (hability != currentTab)
                 {
                     currentTab = hability;

@@ -35,9 +35,15 @@ namespace UC_TableauDeBord
         public void LoadMissions(DataTable dt)
         {
             listMissions.Clear(); //Vider la liste avant de la remplir
+            bool switchCouleur = true; //Variable pour alterner les couleurs des missions
             foreach (DataRow dr in dt.Rows)
             {
                 UC_Mission.Mission mission = new UC_Mission.Mission(dr); //Création d'une nouvelle mission à partir de la ligne du DataTable
+                switchCouleur = !switchCouleur; //Alterner la couleur
+                if (switchCouleur)
+                {
+                    mission.Couleur = Color.LightGray; //Couleur grise
+                }
                 mission.terminerMission += TerminerMission; //Ajout de l'événement pour terminer la mission
                 listMissions.Add(mission); //Ajout de la mission à la liste
             }
