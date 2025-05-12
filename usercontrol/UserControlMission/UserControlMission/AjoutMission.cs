@@ -90,7 +90,7 @@ namespace UserControlMission
             btnValider.Visible = false;
 
             //UC gried view
-            ucMobil.Visible = true;
+            grpMob.Visible = true;
 
         }
 
