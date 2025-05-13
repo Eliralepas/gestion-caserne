@@ -27,6 +27,11 @@ namespace NavigationBarUserControl
 
             }
 
+        public Image _image
+        {
+            set { pictureBox1.Image = value; }
+        }
+
 
         public UCButton(string str, Image img, Control binder)
         {
