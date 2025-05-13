@@ -44,6 +44,7 @@ namespace Sae25_Main_Form
 
             //Initialiser les boutons de navigation et définir leurs tags
             btn1.Tag = "tabBord";
+            btn1.buttonText = "Tableau de Bord";
             btn2.Tag = "dummy";
             btn3.Tag = "dummy";
             btn4.Tag = "dummy";

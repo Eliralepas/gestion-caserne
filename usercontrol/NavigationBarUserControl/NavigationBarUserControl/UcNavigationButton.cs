@@ -26,8 +26,9 @@ namespace NavigationBarUserControl
             }
             }
 
-        public Image _image
+        public Image Buttonimage
         {
+            get { return pictureBox1.Image; }
             set { pictureBox1.Image = value; }
         }
 
@@ -65,7 +66,7 @@ namespace NavigationBarUserControl
         }
         private void pictureBox1_Click(object sender, EventArgs e)
         {
-            OnAnyClick(sender, e);
+            OnAnyClick(sender, e);  
         }
         private void roundedRectangle_Click(object sender, EventArgs e)
         {
