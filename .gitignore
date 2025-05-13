@@ -309,6 +309,8 @@ Debug.*exe
 Debug.*pdb
 Debug.*cache
 **/Debug/*.exe
+**/Debug/*.cache
+**/Debug/*.pdb
 
 *.cache
 # FAKE - F# Make
