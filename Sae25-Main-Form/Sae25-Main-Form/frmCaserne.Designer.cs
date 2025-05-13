@@ -79,7 +79,7 @@
             // btn5
             // 
             this.btn5.Buttonimage = global::Sae25_Main_Form.Properties.Resources.stat;
-            this.btn5.buttonText = null;
+            this.btn5.buttonText = "Statistiques";
             this.btn5.Font = new System.Drawing.Font("Arial Narrow", 13.8F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.btn5.Location = new System.Drawing.Point(14, 387);
             this.btn5.Margin = new System.Windows.Forms.Padding(4, 5, 4, 5);
@@ -101,7 +101,7 @@
             // btn4
             // 
             this.btn4.Buttonimage = global::Sae25_Main_Form.Properties.Resources.perso;
-            this.btn4.buttonText = null;
+            this.btn4.buttonText = "Gestion du personnel";
             this.btn4.Font = new System.Drawing.Font("Arial Narrow", 13.8F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.btn4.Location = new System.Drawing.Point(14, 294);
             this.btn4.Margin = new System.Windows.Forms.Padding(4, 5, 4, 5);
@@ -112,7 +112,7 @@
             // btn2
             // 
             this.btn2.Buttonimage = global::Sae25_Main_Form.Properties.Resources.alarme;
-            this.btn2.buttonText = null;
+            this.btn2.buttonText = "Nouvelle mission";
             this.btn2.Font = new System.Drawing.Font("Arial Narrow", 13.8F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.btn2.Location = new System.Drawing.Point(10, 119);
             this.btn2.Margin = new System.Windows.Forms.Padding(4, 5, 4, 5);
@@ -123,7 +123,7 @@
             // btn3
             // 
             this.btn3.Buttonimage = global::Sae25_Main_Form.Properties.Resources.pompiers;
-            this.btn3.buttonText = null;
+            this.btn3.buttonText = "Gestion des engins";
             this.btn3.Font = new System.Drawing.Font("Arial Narrow", 13.8F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.btn3.Location = new System.Drawing.Point(10, 208);
             this.btn3.Margin = new System.Windows.Forms.Padding(4, 5, 4, 5);
