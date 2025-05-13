@@ -308,6 +308,7 @@ paket-files/
 Debug.*exe
 Debug.*pdb
 Debug.*cache
+**/Debug/*.exe
 
 *.cache
 # FAKE - F# Make
