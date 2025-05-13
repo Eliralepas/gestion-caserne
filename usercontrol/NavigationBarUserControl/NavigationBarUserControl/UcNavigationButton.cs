@@ -16,7 +16,7 @@ namespace NavigationBarUserControl
         {
             InitializeComponent();
         }
-
+        
         
         private String _strText;
         public String buttonText{
@@ -24,7 +24,6 @@ namespace NavigationBarUserControl
             set { _strText = value;
                 label1.Text = value;
             }
-
             }
 
         public Image _image
