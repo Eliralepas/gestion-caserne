@@ -12,6 +12,7 @@ namespace NavigationBarUserControl
 {
     public partial class UCButton: UserControl
     {
+        private bool isExpanded =false;
         public UCButton()
         {
             InitializeComponent();
@@ -77,5 +78,7 @@ namespace NavigationBarUserControl
         {
             return this.Tag.ToString() ;
         }
+
+
     }
 }
