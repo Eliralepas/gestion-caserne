@@ -63,6 +63,9 @@
     <Reference Include="UC-TableauDeBord">
       <HintPath>..\..\usercontrol\UC-TableauDeBord\UC-TableauDeBord\bin\Debug\UC-TableauDeBord.dll</HintPath>
     </Reference>
+    <Reference Include="UCGestionEngins">
+      <HintPath>..\..\usercontrol\UCGestionEngins\UCGestionEngins\bin\Debug\UCGestionEngins.dll</HintPath>
+    </Reference>
   </ItemGroup>
   <ItemGroup>
     <Compile Include="Connexion.cs" />

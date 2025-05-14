@@ -46,7 +46,7 @@ namespace Sae25_Main_Form
             btn1.Tag = "tabBord";
             btn1.buttonText = "Tableau de Bord";
             btn2.Tag = "dummy";
-            btn3.Tag = "dummy";
+            btn3.Tag = "engins";
             btn4.Tag = "dummy";
             btn5.Tag = "tabStat";
 
@@ -68,6 +68,9 @@ namespace Sae25_Main_Form
                     break;
                 case ("tabStat"):
                     LoadStatistique();
+                    break;
+                case ("engins"):
+                    LoadEngins();
                     break;
                 
             }
@@ -97,6 +100,15 @@ namespace Sae25_Main_Form
             }
             panelVolet.Controls.Add(tabStat); //Ajouter le tableau de statistiques au panneau
         }
+
+        private void LoadEngins()
+        {
+            UCGestionEngins.UCGestionEngin uc = new UCGestionEngins.UCGestionEngin(monDs);
+            uc.Dock = DockStyle.Fill;
+
+            panelVolet.Controls.Add(uc);
+        }
+
 
         private DataTable CreerTableMission()
         {

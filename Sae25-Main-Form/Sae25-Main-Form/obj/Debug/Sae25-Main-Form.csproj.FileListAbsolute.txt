@@ -19,12 +19,9 @@ C:\Users\Diego\Source\Repos\sae-caserne\Sae25-Main-Form\Sae25-Main-Form\obj\Debu
 C:\Users\Diego\Source\Repos\sae-caserne\Sae25-Main-Form\Sae25-Main-Form\obj\Debug\Sae25-Main-Form.pdb
 C:\Users\miaou\Desktop\SAE25\Sae25-Main-Form\Sae25-Main-Form\bin\Debug\NavigationBarUserControl.dll
 C:\Users\miaou\Desktop\SAE25\Sae25-Main-Form\Sae25-Main-Form\bin\Debug\Polygon.dll
-C:\Users\miaou\Desktop\SAE25\Sae25-Main-Form\Sae25-Main-Form\bin\Debug\NavigationBarUserControl.pdb
-C:\Users\miaou\Desktop\SAE25\Sae25-Main-Form\Sae25-Main-Form\bin\Debug\Polygon.pdb
 C:\Users\miaou\Desktop\SAE25\Sae25-Main-Form\Sae25-Main-Form\obj\Debug\Sae25_Main_Form.frmCaserne.resources
 C:\Users\miaou\Desktop\SAE25\Sae25-Main-Form\Sae25-Main-Form\obj\Debug\Sae25-Ma.85EEC115.Up2Date
 C:\Users\miaou\Desktop\SAE25\Sae25-Main-Form\Sae25-Main-Form\bin\Debug\UC-TableauDeBord.dll
-C:\Users\miaou\Desktop\SAE25\Sae25-Main-Form\Sae25-Main-Form\bin\Debug\UC-TableauDeBord.pdb
 C:\Users\Diego\source\repos\sae-caserne\Sae25-Main-Form\Sae25-Main-Form\bin\Debug\NavigationBarUserControl.dll
 C:\Users\Diego\source\repos\sae-caserne\Sae25-Main-Form\Sae25-Main-Form\bin\Debug\UC-TableauDeBord.dll
 C:\Users\Diego\source\repos\sae-caserne\Sae25-Main-Form\Sae25-Main-Form\bin\Debug\Polygon.dll
@@ -46,3 +43,5 @@ C:\Users\miaou\Desktop\SAE25\Sae25-Main-Form\Sae25-Main-Form\bin\Debug\UC-Statis
 C:\Users\Diego\source\repos\sae-caserne\Sae25-Main-Form\Sae25-Main-Form\bin\Debug\UC-Statistique.dll
 C:\Users\Diego\source\repos\sae-caserne\Sae25-Main-Form\Sae25-Main-Form\bin\Debug\UC-Statistique.dll.config
 C:\Users\Diego\source\repos\sae-caserne\Sae25-Main-Form\Sae25-Main-Form\bin\Debug\UC-Statistique.pdb
+C:\Users\miaou\Desktop\SAE25\Sae25-Main-Form\Sae25-Main-Form\bin\Debug\UCGestionEngins.dll
+C:\Users\miaou\Desktop\SAE25\Sae25-Main-Form\Sae25-Main-Form\bin\Debug\UCGestionEngins.pdb

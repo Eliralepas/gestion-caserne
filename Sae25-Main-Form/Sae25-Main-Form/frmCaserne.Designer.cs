@@ -31,12 +31,12 @@
             System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(frmCaserne));
             this.panelVolet = new System.Windows.Forms.Panel();
             this.panelNavigation = new System.Windows.Forms.Panel();
-            this.picBoxCaserne = new System.Windows.Forms.PictureBox();
             this.btn5 = new NavigationBarUserControl.UCButton();
             this.btn1 = new NavigationBarUserControl.UCButton();
             this.btn4 = new NavigationBarUserControl.UCButton();
             this.btn2 = new NavigationBarUserControl.UCButton();
             this.btn3 = new NavigationBarUserControl.UCButton();
+            this.picBoxCaserne = new System.Windows.Forms.PictureBox();
             this.panelNavigation.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.picBoxCaserne)).BeginInit();
             this.SuspendLayout();
@@ -61,20 +61,6 @@
             this.panelNavigation.Name = "panelNavigation";
             this.panelNavigation.Size = new System.Drawing.Size(283, 628);
             this.panelNavigation.TabIndex = 3;
-            // 
-            // picBoxCaserne
-            // 
-            this.picBoxCaserne.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
-            | System.Windows.Forms.AnchorStyles.Left) 
-            | System.Windows.Forms.AnchorStyles.Right)));
-            this.picBoxCaserne.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Center;
-            this.picBoxCaserne.Image = ((System.Drawing.Image)(resources.GetObject("picBoxCaserne.Image")));
-            this.picBoxCaserne.Location = new System.Drawing.Point(-81, -1);
-            this.picBoxCaserne.Name = "picBoxCaserne";
-            this.picBoxCaserne.Size = new System.Drawing.Size(1260, 712);
-            this.picBoxCaserne.SizeMode = System.Windows.Forms.PictureBoxSizeMode.StretchImage;
-            this.picBoxCaserne.TabIndex = 0;
-            this.picBoxCaserne.TabStop = false;
             // 
             // btn5
             // 
@@ -130,6 +116,20 @@
             this.btn3.Name = "btn3";
             this.btn3.Size = new System.Drawing.Size(229, 76);
             this.btn3.TabIndex = 1;
+            // 
+            // picBoxCaserne
+            // 
+            this.picBoxCaserne.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
+            | System.Windows.Forms.AnchorStyles.Left) 
+            | System.Windows.Forms.AnchorStyles.Right)));
+            this.picBoxCaserne.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Center;
+            this.picBoxCaserne.Image = ((System.Drawing.Image)(resources.GetObject("picBoxCaserne.Image")));
+            this.picBoxCaserne.Location = new System.Drawing.Point(-81, -1);
+            this.picBoxCaserne.Name = "picBoxCaserne";
+            this.picBoxCaserne.Size = new System.Drawing.Size(1260, 712);
+            this.picBoxCaserne.SizeMode = System.Windows.Forms.PictureBoxSizeMode.StretchImage;
+            this.picBoxCaserne.TabIndex = 0;
+            this.picBoxCaserne.TabStop = false;
             // 
             // frmCaserne
             // 

@@ -33,6 +33,9 @@
     <WarningLevel>4</WarningLevel>
   </PropertyGroup>
   <ItemGroup>
+    <Reference Include="Polygon">
+      <HintPath>..\..\Rectangle\Rectangle\bin\Debug\Polygon.dll</HintPath>
+    </Reference>
     <Reference Include="System" />
     <Reference Include="System.Core" />
     <Reference Include="System.Xml.Linq" />
@@ -45,6 +48,12 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="EnginsDisplay.cs">
+      <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Include="EnginsDisplay.Designer.cs">
+      <DependentUpon>EnginsDisplay.cs</DependentUpon>
+    </Compile>
     <Compile Include="UCGestionEngin.cs">
       <SubType>UserControl</SubType>
     </Compile>
@@ -55,6 +64,9 @@
     <Service Include="{94E38DFF-614B-4cbd-B67C-F211BB35CE8B}" />
   </ItemGroup>
   <ItemGroup>
+    <EmbeddedResource Include="EnginsDisplay.resx">
+      <DependentUpon>EnginsDisplay.cs</DependentUpon>
+    </EmbeddedResource>
     <EmbeddedResource Include="UCGestionEngin.resx">
       <DependentUpon>UCGestionEngin.cs</DependentUpon>
     </EmbeddedResource>
