@@ -12,11 +12,12 @@ namespace NavigationBarUserControl
 {
     public partial class UCButton: UserControl
     {
+        private bool isExpanded =false;
         public UCButton()
         {
             InitializeComponent();
         }
-
+        
         
         private String _strText;
         public String buttonText{
@@ -24,8 +25,13 @@ namespace NavigationBarUserControl
             set { _strText = value;
                 label1.Text = value;
             }
-
             }
+
+        public Image Buttonimage
+        {
+            get { return pictureBox1.Image; }
+            set { pictureBox1.Image = value; }
+        }
 
 
         public UCButton(string str, Image img, Control binder)
@@ -61,7 +67,7 @@ namespace NavigationBarUserControl
         }
         private void pictureBox1_Click(object sender, EventArgs e)
         {
-            OnAnyClick(sender, e);
+            OnAnyClick(sender, e);  
         }
         private void roundedRectangle_Click(object sender, EventArgs e)
         {
@@ -72,5 +78,7 @@ namespace NavigationBarUserControl
         {
             return this.Tag.ToString() ;
         }
+
+
     }
 }
