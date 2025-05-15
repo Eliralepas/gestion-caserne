@@ -39,32 +39,49 @@ namespace UCGestionEngins
 
             strMission.m_BackGroundColor =Convert.ToBoolean(currentEngin["enMission"]) ? Color.Yellow : Color.White;
             strPanne.m_BackGroundColor = Convert.ToBoolean(currentEngin["enPanne"]) ? Color.Yellow : Color.White;
+            string codeType = currentEngin["codeTypeEngin"].ToString();
 
+
+           var varimg = Properties.Resources.ResourceManager.GetObject(codeType);
+           if(varimg is Image img){
+                pctEnginImage.Image = img;
+           }
+           else{
+                pctEnginImage.Image = Properties.Resources.Default;
+           }
+            
         }
 
 
-        public void Next()
+        private int getPos()
+        {
+            refresh();
+            return EnginsList.Position;
+        }
+
+
+        public int Next()
         {
             EnginsList.MoveNext();
-            refresh();
+            return EnginsList.Count -1-  getPos();
         }
 
-        public void Last()
+        public int Last()
         {
             EnginsList.MoveLast();
-            refresh();
+            return EnginsList.Count - 1-  getPos();
         }
 
-        public void Previous()
+        public int Previous()
         {
             EnginsList.MovePrevious();
-            refresh();
+            return getPos();
         }
 
-        public void First()
+        public int First()
         {
             EnginsList.MoveFirst();
-            refresh();
+            return getPos();
         }
 
 

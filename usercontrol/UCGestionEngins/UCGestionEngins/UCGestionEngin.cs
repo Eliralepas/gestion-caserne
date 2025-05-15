@@ -7,6 +7,7 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
+using static System.Windows.Forms.VisualStyles.VisualStyleElement;
 
 namespace UCGestionEngins
 {
@@ -47,9 +48,11 @@ namespace UCGestionEngins
 
             BindingSource baseEngin = new BindingSource(baseCaserne, "RelationsCaserneEngins");
 
-
             display = new EnginsDisplay(baseEngin);
+            display.Dock = DockStyle.Fill;
             cbxChoixCaserne.Focus();
+            setNext(false);
+            setPrevious(false);
             
 
         }
@@ -61,26 +64,56 @@ namespace UCGestionEngins
                 pnlDisplayEngin.Controls.Add(display);
             }
             display.First();
+            setPrevious(false);
+            setNext(true);
+
+
+
         }
+
+
+        private void setNext(bool status)
+        {
+            btnNext.Enabled = status;
+            btnLast.Enabled = status;
+        }
+        private void setPrevious(bool status)
+        {
+            btnPrevious.Enabled = status;
+            btnFirst.Enabled = status;
+        }
+
 
         private void btnNext_Click(object sender, EventArgs e)
         {
-            display.Next();
+            if(display.Next() == 0)
+            {
+                setNext(false);
+            };
+            setPrevious(true);
         }
 
         private void btnFirst_Click(object sender, EventArgs e)
         {
             display.First();
+            setPrevious(false);
+            setNext(true);
         }
 
         private void btnPrevious_Click(object sender, EventArgs e)
         {
-            display.Previous();
+            if(display.Previous() == 0)
+            {
+                setPrevious(false);
+            };
+            setNext(true);
         }
 
         private void btnLast_Click(object sender, EventArgs e)
         {
             display.Last();
+            setNext(false);
+            setPrevious(true);
         }
     }
 }

@@ -54,6 +54,11 @@
     <Compile Include="EnginsDisplay.Designer.cs">
       <DependentUpon>EnginsDisplay.cs</DependentUpon>
     </Compile>
+    <Compile Include="Properties\Resources.Designer.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>Resources.resx</DependentUpon>
+    </Compile>
     <Compile Include="UCGestionEngin.cs">
       <SubType>UserControl</SubType>
     </Compile>
@@ -67,12 +72,49 @@
     <EmbeddedResource Include="EnginsDisplay.resx">
       <DependentUpon>EnginsDisplay.cs</DependentUpon>
     </EmbeddedResource>
+    <EmbeddedResource Include="Properties\Resources.resx">
+      <Generator>ResXFileCodeGenerator</Generator>
+      <LastGenOutput>Resources.Designer.cs</LastGenOutput>
+    </EmbeddedResource>
     <EmbeddedResource Include="UCGestionEngin.resx">
       <DependentUpon>UCGestionEngin.cs</DependentUpon>
     </EmbeddedResource>
   </ItemGroup>
   <ItemGroup>
     <None Include="packages.config" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\BRS.jpg" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\VPC.jpg" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\VSR.jpg" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\VSS.jpg" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\VID.jpg" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\FCYN.jpg" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\CCF.jpg" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\FPT.jpg" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\EPA.jpg" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\VSAV.jpg" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\Default.png" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <Target Name="EnsureNuGetPackageBuildImports" BeforeTargets="PrepareForBuild">

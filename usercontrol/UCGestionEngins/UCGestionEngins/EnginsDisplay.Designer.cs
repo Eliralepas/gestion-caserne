@@ -36,6 +36,8 @@
             this.lblTitleMission = new System.Windows.Forms.Label();
             this.strPanne = new Polygon.Star();
             this.strMission = new Polygon.Star();
+            this.pctEnginImage = new System.Windows.Forms.PictureBox();
+            ((System.ComponentModel.ISupportInitialize)(this.pctEnginImage)).BeginInit();
             this.SuspendLayout();
             // 
             // lblEnginTitle
@@ -137,10 +139,25 @@
             this.strMission.Size = new System.Drawing.Size(103, 74);
             this.strMission.TabIndex = 8;
             // 
+            // pctEnginImage
+            // 
+            this.pctEnginImage.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
+            | System.Windows.Forms.AnchorStyles.Right)));
+            this.pctEnginImage.ErrorImage = global::UCGestionEngins.Properties.Resources.Default;
+            this.pctEnginImage.Image = global::UCGestionEngins.Properties.Resources.Default;
+            this.pctEnginImage.Location = new System.Drawing.Point(471, 32);
+            this.pctEnginImage.Name = "pctEnginImage";
+            this.pctEnginImage.Size = new System.Drawing.Size(297, 251);
+            this.pctEnginImage.SizeMode = System.Windows.Forms.PictureBoxSizeMode.StretchImage;
+            this.pctEnginImage.TabIndex = 9;
+            this.pctEnginImage.TabStop = false;
+            // 
             // EnginsDisplay
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(7F, 20F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
+            this.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(192)))), ((int)(((byte)(0)))), ((int)(((byte)(0)))));
+            this.Controls.Add(this.pctEnginImage);
             this.Controls.Add(this.strMission);
             this.Controls.Add(this.strPanne);
             this.Controls.Add(this.lblTitleMission);
@@ -154,6 +171,7 @@
             this.Name = "EnginsDisplay";
             this.Size = new System.Drawing.Size(787, 315);
             this.Load += new System.EventHandler(this.EnginsDisplay_Load);
+            ((System.ComponentModel.ISupportInitialize)(this.pctEnginImage)).EndInit();
             this.ResumeLayout(false);
             this.PerformLayout();
 
@@ -169,5 +187,6 @@
         private System.Windows.Forms.Label lblTitleMission;
         private Polygon.Star strPanne;
         private Polygon.Star strMission;
+        private System.Windows.Forms.PictureBox pctEnginImage;
     }
 }

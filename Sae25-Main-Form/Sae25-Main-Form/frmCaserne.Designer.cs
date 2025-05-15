@@ -44,9 +44,9 @@
             // panelVolet
             // 
             this.panelVolet.AutoScroll = true;
-            this.panelVolet.Location = new System.Drawing.Point(315, 12);
+            this.panelVolet.Location = new System.Drawing.Point(302, 12);
             this.panelVolet.Name = "panelVolet";
-            this.panelVolet.Size = new System.Drawing.Size(1010, 629);
+            this.panelVolet.Size = new System.Drawing.Size(1003, 647);
             this.panelVolet.TabIndex = 2;
             // 
             // panelNavigation
@@ -123,10 +123,11 @@
             | System.Windows.Forms.AnchorStyles.Left) 
             | System.Windows.Forms.AnchorStyles.Right)));
             this.picBoxCaserne.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Center;
+            this.picBoxCaserne.Cursor = System.Windows.Forms.Cursors.Default;
             this.picBoxCaserne.Image = ((System.Drawing.Image)(resources.GetObject("picBoxCaserne.Image")));
-            this.picBoxCaserne.Location = new System.Drawing.Point(-81, -1);
+            this.picBoxCaserne.Location = new System.Drawing.Point(-3, -1);
             this.picBoxCaserne.Name = "picBoxCaserne";
-            this.picBoxCaserne.Size = new System.Drawing.Size(1260, 712);
+            this.picBoxCaserne.Size = new System.Drawing.Size(1337, 678);
             this.picBoxCaserne.SizeMode = System.Windows.Forms.PictureBoxSizeMode.StretchImage;
             this.picBoxCaserne.TabIndex = 0;
             this.picBoxCaserne.TabStop = false;
@@ -134,7 +135,7 @@
             // frmCaserne
             // 
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.None;
-            this.ClientSize = new System.Drawing.Size(1337, 653);
+            this.ClientSize = new System.Drawing.Size(1327, 671);
             this.Controls.Add(this.panelNavigation);
             this.Controls.Add(this.panelVolet);
             this.Controls.Add(this.picBoxCaserne);

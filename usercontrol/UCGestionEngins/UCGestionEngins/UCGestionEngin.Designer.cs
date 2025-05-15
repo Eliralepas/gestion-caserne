@@ -31,22 +31,20 @@
             this.lblTitleCaserne = new System.Windows.Forms.Label();
             this.cbxChoixCaserne = new System.Windows.Forms.ComboBox();
             this.pnlGestionEngin = new System.Windows.Forms.Panel();
-            this.pnlCaserneChoice = new System.Windows.Forms.Panel();
-            this.pnlDisplayEngin = new System.Windows.Forms.Panel();
             this.pnlButton = new System.Windows.Forms.Panel();
-            this.btnNext = new System.Windows.Forms.Button();
-            this.btnLast = new System.Windows.Forms.Button();
-            this.btnFirst = new System.Windows.Forms.Button();
             this.btnPrevious = new System.Windows.Forms.Button();
+            this.btnFirst = new System.Windows.Forms.Button();
+            this.btnLast = new System.Windows.Forms.Button();
+            this.btnNext = new System.Windows.Forms.Button();
+            this.pnlDisplayEngin = new System.Windows.Forms.Panel();
+            this.pnlCaserneChoice = new System.Windows.Forms.Panel();
             this.pnlGestionEngin.SuspendLayout();
-            this.pnlCaserneChoice.SuspendLayout();
             this.pnlButton.SuspendLayout();
+            this.pnlCaserneChoice.SuspendLayout();
             this.SuspendLayout();
             // 
             // lblTitleCaserne
             // 
-            this.lblTitleCaserne.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left) 
-            | System.Windows.Forms.AnchorStyles.Right)));
             this.lblTitleCaserne.AutoSize = true;
             this.lblTitleCaserne.Font = new System.Drawing.Font("Arial Narrow", 13.8F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.lblTitleCaserne.Location = new System.Drawing.Point(64, 21);
@@ -61,7 +59,7 @@
             this.cbxChoixCaserne.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
             this.cbxChoixCaserne.FormattingEnabled = true;
             this.cbxChoixCaserne.Location = new System.Drawing.Point(222, 25);
-            this.cbxChoixCaserne.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
+            this.cbxChoixCaserne.Margin = new System.Windows.Forms.Padding(2);
             this.cbxChoixCaserne.Name = "cbxChoixCaserne";
             this.cbxChoixCaserne.Size = new System.Drawing.Size(187, 21);
             this.cbxChoixCaserne.TabIndex = 1;
@@ -75,32 +73,10 @@
             this.pnlGestionEngin.Controls.Add(this.pnlCaserneChoice);
             this.pnlGestionEngin.Dock = System.Windows.Forms.DockStyle.Fill;
             this.pnlGestionEngin.Location = new System.Drawing.Point(0, 0);
-            this.pnlGestionEngin.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
+            this.pnlGestionEngin.Margin = new System.Windows.Forms.Padding(2);
             this.pnlGestionEngin.Name = "pnlGestionEngin";
             this.pnlGestionEngin.Size = new System.Drawing.Size(551, 509);
             this.pnlGestionEngin.TabIndex = 2;
-            // 
-            // pnlCaserneChoice
-            // 
-            this.pnlCaserneChoice.BackColor = System.Drawing.Color.Silver;
-            this.pnlCaserneChoice.Controls.Add(this.cbxChoixCaserne);
-            this.pnlCaserneChoice.Controls.Add(this.lblTitleCaserne);
-            this.pnlCaserneChoice.Dock = System.Windows.Forms.DockStyle.Top;
-            this.pnlCaserneChoice.Location = new System.Drawing.Point(0, 0);
-            this.pnlCaserneChoice.Name = "pnlCaserneChoice";
-            this.pnlCaserneChoice.Size = new System.Drawing.Size(551, 73);
-            this.pnlCaserneChoice.TabIndex = 2;
-            // 
-            // pnlDisplayEngin
-            // 
-            this.pnlDisplayEngin.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
-            | System.Windows.Forms.AnchorStyles.Left) 
-            | System.Windows.Forms.AnchorStyles.Right)));
-            this.pnlDisplayEngin.BackColor = System.Drawing.SystemColors.GradientActiveCaption;
-            this.pnlDisplayEngin.Location = new System.Drawing.Point(1, 79);
-            this.pnlDisplayEngin.Name = "pnlDisplayEngin";
-            this.pnlDisplayEngin.Size = new System.Drawing.Size(550, 316);
-            this.pnlDisplayEngin.TabIndex = 3;
             // 
             // pnlButton
             // 
@@ -115,18 +91,31 @@
             this.pnlButton.Size = new System.Drawing.Size(551, 108);
             this.pnlButton.TabIndex = 4;
             // 
-            // btnNext
+            // btnPrevious
             // 
-            this.btnNext.Location = new System.Drawing.Point(334, 12);
-            this.btnNext.Name = "btnNext";
-            this.btnNext.Size = new System.Drawing.Size(100, 80);
-            this.btnNext.TabIndex = 0;
-            this.btnNext.Text = ">";
-            this.btnNext.UseVisualStyleBackColor = true;
-            this.btnNext.Click += new System.EventHandler(this.btnNext_Click);
+            this.btnPrevious.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Left)));
+            this.btnPrevious.Location = new System.Drawing.Point(128, 12);
+            this.btnPrevious.Name = "btnPrevious";
+            this.btnPrevious.Size = new System.Drawing.Size(100, 80);
+            this.btnPrevious.TabIndex = 3;
+            this.btnPrevious.Text = "<";
+            this.btnPrevious.UseVisualStyleBackColor = true;
+            this.btnPrevious.Click += new System.EventHandler(this.btnPrevious_Click);
+            // 
+            // btnFirst
+            // 
+            this.btnFirst.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Left)));
+            this.btnFirst.Location = new System.Drawing.Point(13, 12);
+            this.btnFirst.Name = "btnFirst";
+            this.btnFirst.Size = new System.Drawing.Size(100, 80);
+            this.btnFirst.TabIndex = 2;
+            this.btnFirst.Text = "<<";
+            this.btnFirst.UseVisualStyleBackColor = true;
+            this.btnFirst.Click += new System.EventHandler(this.btnFirst_Click);
             // 
             // btnLast
             // 
+            this.btnLast.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Right)));
             this.btnLast.Location = new System.Drawing.Point(440, 12);
             this.btnLast.Name = "btnLast";
             this.btnLast.Size = new System.Drawing.Size(100, 80);
@@ -135,25 +124,38 @@
             this.btnLast.UseVisualStyleBackColor = true;
             this.btnLast.Click += new System.EventHandler(this.btnLast_Click);
             // 
-            // btnFirst
+            // btnNext
             // 
-            this.btnFirst.Location = new System.Drawing.Point(39, 12);
-            this.btnFirst.Name = "btnFirst";
-            this.btnFirst.Size = new System.Drawing.Size(100, 80);
-            this.btnFirst.TabIndex = 2;
-            this.btnFirst.Text = "<<";
-            this.btnFirst.UseVisualStyleBackColor = true;
-            this.btnFirst.Click += new System.EventHandler(this.btnFirst_Click);
+            this.btnNext.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Right)));
+            this.btnNext.Location = new System.Drawing.Point(334, 12);
+            this.btnNext.Name = "btnNext";
+            this.btnNext.Size = new System.Drawing.Size(100, 80);
+            this.btnNext.TabIndex = 0;
+            this.btnNext.Text = ">";
+            this.btnNext.UseVisualStyleBackColor = true;
+            this.btnNext.Click += new System.EventHandler(this.btnNext_Click);
             // 
-            // btnPrevious
+            // pnlDisplayEngin
             // 
-            this.btnPrevious.Location = new System.Drawing.Point(154, 12);
-            this.btnPrevious.Name = "btnPrevious";
-            this.btnPrevious.Size = new System.Drawing.Size(100, 80);
-            this.btnPrevious.TabIndex = 3;
-            this.btnPrevious.Text = "<";
-            this.btnPrevious.UseVisualStyleBackColor = true;
-            this.btnPrevious.Click += new System.EventHandler(this.btnPrevious_Click);
+            this.pnlDisplayEngin.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
+            | System.Windows.Forms.AnchorStyles.Left) 
+            | System.Windows.Forms.AnchorStyles.Right)));
+            this.pnlDisplayEngin.BackColor = System.Drawing.SystemColors.GradientActiveCaption;
+            this.pnlDisplayEngin.Location = new System.Drawing.Point(1, 79);
+            this.pnlDisplayEngin.Name = "pnlDisplayEngin";
+            this.pnlDisplayEngin.Size = new System.Drawing.Size(550, 316);
+            this.pnlDisplayEngin.TabIndex = 3;
+            // 
+            // pnlCaserneChoice
+            // 
+            this.pnlCaserneChoice.BackColor = System.Drawing.Color.Silver;
+            this.pnlCaserneChoice.Controls.Add(this.cbxChoixCaserne);
+            this.pnlCaserneChoice.Controls.Add(this.lblTitleCaserne);
+            this.pnlCaserneChoice.Dock = System.Windows.Forms.DockStyle.Top;
+            this.pnlCaserneChoice.Location = new System.Drawing.Point(0, 0);
+            this.pnlCaserneChoice.Name = "pnlCaserneChoice";
+            this.pnlCaserneChoice.Size = new System.Drawing.Size(551, 73);
+            this.pnlCaserneChoice.TabIndex = 2;
             // 
             // UCGestionEngin
             // 
@@ -161,14 +163,14 @@
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.BackColor = System.Drawing.SystemColors.MenuText;
             this.Controls.Add(this.pnlGestionEngin);
-            this.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
+            this.Margin = new System.Windows.Forms.Padding(2);
             this.Name = "UCGestionEngin";
             this.Size = new System.Drawing.Size(551, 509);
             this.Load += new System.EventHandler(this.UCGestionEngin_Load);
             this.pnlGestionEngin.ResumeLayout(false);
+            this.pnlButton.ResumeLayout(false);
             this.pnlCaserneChoice.ResumeLayout(false);
             this.pnlCaserneChoice.PerformLayout();
-            this.pnlButton.ResumeLayout(false);
             this.ResumeLayout(false);
 
         }
