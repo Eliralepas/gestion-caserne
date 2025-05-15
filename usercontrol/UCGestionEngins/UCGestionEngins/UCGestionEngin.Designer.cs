@@ -50,15 +50,15 @@
             this.lblTitleCaserne.Location = new System.Drawing.Point(64, 21);
             this.lblTitleCaserne.Margin = new System.Windows.Forms.Padding(2, 0, 2, 0);
             this.lblTitleCaserne.Name = "lblTitleCaserne";
-            this.lblTitleCaserne.Size = new System.Drawing.Size(154, 23);
+            this.lblTitleCaserne.Size = new System.Drawing.Size(162, 23);
             this.lblTitleCaserne.TabIndex = 0;
-            this.lblTitleCaserne.Text = "Choix de la carserne";
+            this.lblTitleCaserne.Text = "Choix de la carserne :";
             // 
             // cbxChoixCaserne
             // 
             this.cbxChoixCaserne.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
             this.cbxChoixCaserne.FormattingEnabled = true;
-            this.cbxChoixCaserne.Location = new System.Drawing.Point(222, 25);
+            this.cbxChoixCaserne.Location = new System.Drawing.Point(231, 25);
             this.cbxChoixCaserne.Margin = new System.Windows.Forms.Padding(2);
             this.cbxChoixCaserne.Name = "cbxChoixCaserne";
             this.cbxChoixCaserne.Size = new System.Drawing.Size(187, 21);
@@ -67,7 +67,7 @@
             // 
             // pnlGestionEngin
             // 
-            this.pnlGestionEngin.BackColor = System.Drawing.SystemColors.HotTrack;
+            this.pnlGestionEngin.BackColor = System.Drawing.Color.Red;
             this.pnlGestionEngin.Controls.Add(this.pnlButton);
             this.pnlGestionEngin.Controls.Add(this.pnlDisplayEngin);
             this.pnlGestionEngin.Controls.Add(this.pnlCaserneChoice);
@@ -80,7 +80,7 @@
             // 
             // pnlButton
             // 
-            this.pnlButton.BackColor = System.Drawing.SystemColors.Info;
+            this.pnlButton.BackColor = System.Drawing.Color.Silver;
             this.pnlButton.Controls.Add(this.btnPrevious);
             this.pnlButton.Controls.Add(this.btnFirst);
             this.pnlButton.Controls.Add(this.btnLast);
@@ -94,6 +94,8 @@
             // btnPrevious
             // 
             this.btnPrevious.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Left)));
+            this.btnPrevious.Cursor = System.Windows.Forms.Cursors.Hand;
+            this.btnPrevious.Font = new System.Drawing.Font("MS PGothic", 48F, System.Drawing.FontStyle.Bold);
             this.btnPrevious.Location = new System.Drawing.Point(128, 12);
             this.btnPrevious.Name = "btnPrevious";
             this.btnPrevious.Size = new System.Drawing.Size(100, 80);
@@ -105,6 +107,8 @@
             // btnFirst
             // 
             this.btnFirst.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Left)));
+            this.btnFirst.Cursor = System.Windows.Forms.Cursors.Hand;
+            this.btnFirst.Font = new System.Drawing.Font("MS PGothic", 36F, System.Drawing.FontStyle.Bold);
             this.btnFirst.Location = new System.Drawing.Point(13, 12);
             this.btnFirst.Name = "btnFirst";
             this.btnFirst.Size = new System.Drawing.Size(100, 80);
@@ -116,6 +120,8 @@
             // btnLast
             // 
             this.btnLast.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Right)));
+            this.btnLast.Cursor = System.Windows.Forms.Cursors.Hand;
+            this.btnLast.Font = new System.Drawing.Font("MS PGothic", 36F, System.Drawing.FontStyle.Bold);
             this.btnLast.Location = new System.Drawing.Point(440, 12);
             this.btnLast.Name = "btnLast";
             this.btnLast.Size = new System.Drawing.Size(100, 80);
@@ -127,6 +133,8 @@
             // btnNext
             // 
             this.btnNext.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Right)));
+            this.btnNext.Cursor = System.Windows.Forms.Cursors.Hand;
+            this.btnNext.Font = new System.Drawing.Font("MS PGothic", 48F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.btnNext.Location = new System.Drawing.Point(334, 12);
             this.btnNext.Name = "btnNext";
             this.btnNext.Size = new System.Drawing.Size(100, 80);
@@ -140,15 +148,15 @@
             this.pnlDisplayEngin.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
             | System.Windows.Forms.AnchorStyles.Left) 
             | System.Windows.Forms.AnchorStyles.Right)));
-            this.pnlDisplayEngin.BackColor = System.Drawing.SystemColors.GradientActiveCaption;
-            this.pnlDisplayEngin.Location = new System.Drawing.Point(1, 79);
+            this.pnlDisplayEngin.BackColor = System.Drawing.SystemColors.Desktop;
+            this.pnlDisplayEngin.Location = new System.Drawing.Point(0, 79);
             this.pnlDisplayEngin.Name = "pnlDisplayEngin";
-            this.pnlDisplayEngin.Size = new System.Drawing.Size(550, 316);
+            this.pnlDisplayEngin.Size = new System.Drawing.Size(551, 316);
             this.pnlDisplayEngin.TabIndex = 3;
             // 
             // pnlCaserneChoice
             // 
-            this.pnlCaserneChoice.BackColor = System.Drawing.Color.Silver;
+            this.pnlCaserneChoice.BackColor = System.Drawing.Color.Snow;
             this.pnlCaserneChoice.Controls.Add(this.cbxChoixCaserne);
             this.pnlCaserneChoice.Controls.Add(this.lblTitleCaserne);
             this.pnlCaserneChoice.Dock = System.Windows.Forms.DockStyle.Top;
@@ -161,7 +169,7 @@
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.BackColor = System.Drawing.SystemColors.MenuText;
+            this.BackColor = System.Drawing.Color.Transparent;
             this.Controls.Add(this.pnlGestionEngin);
             this.Margin = new System.Windows.Forms.Padding(2);
             this.Name = "UCGestionEngin";
