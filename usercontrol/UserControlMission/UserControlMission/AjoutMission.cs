@@ -28,18 +28,16 @@ namespace UserControlMission
         {
             InitializeComponent();
             monDs = ds;
-            ChargementCbo(monDs.Tables["NatureSinistre"], "id", "libelle", cboNature);
-            ChargementCbo(monDs.Tables["Caserne"], "id", "nom", cboCaserne);
+            ChargementCbo(monDs.Tables["NatureSinistre"], "libelle", "id", cboNature);
+            ChargementCbo(monDs.Tables["Caserne"], "nom", "id", cboCaserne);
 
             //le numéro + date de la prochaine mission
             nextId = monDs.Tables["Mission"].Rows.Count + 1;
             date = DateTime.Now.ToString("yyyy-MM-dd HH:mm:ss");
 
-            lblNumMission.Text = lblNumMission.Text + nextId.ToString();
-            lblDate.Text += date.ToString();
+            lblNumMission.Text = "Mission n°"+ nextId.ToString();
+            lblDate.Text = "déclenchée le : " + date;
         }
-
-        //Ajout de contrainte
 
         private void txtCP_KeyPress(object sender, KeyPressEventArgs e)
         {
@@ -66,6 +64,13 @@ namespace UserControlMission
             c.ValueMember = col2;
         }
 
+        /*
+         * lblNumMission.Text = "Mission n°" + nextId.ToString();
+            date = DateTime.Now.ToString("dd-MM-yyyy HH:mm:ss");
+            lblDate.Text = "déclenchée le : " + date;
+            initialiser();
+         */
+
         private void btnValider_Click(object sender, EventArgs e)
         {
             // Ajout dans maTableLocal local mais pas directement dans la base de données
@@ -85,21 +90,16 @@ namespace UserControlMission
             //Ajout de la ligne
             monDs.Tables["Mission"].Rows.Add(row);
 
-            //Nouvelle mission avec une nouvelle Date et Heure
-            nextId++;
-            lblNumMission.Text = "Mission n°" + nextId.ToString();
-            date = DateTime.Now.ToString("dd-MM-yyyy HH:mm:ss");
-            lblDate.Text = "déclenchée le : " + date;
-            initialiser();
             btnAnnuler.Visible = false;
             btnValider.Visible = false;
 
             //UC gried view
-
             grpMob.Visible = true;
-
-            DataTable dtEngin = remplissageEngin(monDs, idSinistre, idCaserne); 
+            DataTable dtEngin = remplissageEngin(monDs, idSinistre, idCaserne);
             UC_MobilisationEnginPompier dgvEngin = new UC_MobilisationEnginPompier(dtEngin);
+            //ajout dans le grp box
+            grpMob.Controls.Add(dgvEngin);
+
         }
 
         private void btnAnnuler_Click(object sender, EventArgs e)
@@ -117,39 +117,39 @@ namespace UserControlMission
             cboNature.SelectedIndex = -1;
         }
 
-        
-        private DataTable remplissageEngin(DataSet monDs, int idSinistre, int idCaserne)
+        //créer une table pour stockage des types des diff engins qui sont nécessaires à la mission(avoir le numéro et le type)
+        private DataTable enginMission(DataSet monDs, int idSinistre, int idCaserne)
         {
             DataRow[] tab = monDs.Tables["Necessiter"].Select("idNatureSinistre = " + idSinistre);
-
-            //créer une table pour stockage des types des diff engins (avoir le numéro et le type)
             DataTable dtEngins = new DataTable();
             dtEngins.Columns.Add("Type d'engin");
             dtEngins.Columns.Add("nombre", typeof(int));
 
-            string typeEngin;
-            int nombre=0;
             foreach (DataRow ligne in tab)
             {
-                typeEngin = ligne["codeTypeEngin"].ToString();
-                nombre = Convert.ToInt32(ligne["nombre"]);
+                string typeEngin = ligne["codeTypeEngin"].ToString();
+                int nombre = Convert.ToInt32(ligne["nombre"]);
                 // Ajouter dans la table
                 dtEngins.Rows.Add(typeEngin, nombre);
             }
+            return dtEngins;
+        }
+
+        
+        private DataTable remplissageEngin(DataSet monDs, int idSinistre, int idCaserne)
+        {
+            DataTable dtEngins = enginMission(monDs, idSinistre, idCaserne);
 
             /*
              * mtn engin de la caserne selectionnée
              * Si l’un des engins requis n’est pas disponible dans la caserne choisie initialement,
-             * on attribuera la mission à l’une des trois autres casernes.
-             * 
-             * Tables qui changent : Engin (en mission) : Fait
-             *                       Ajout ligne dans Partir avec : Fait                    
+             * on attribuera la mission à l’une des trois autres casernes.               
             */
             
             DataTable dt = new DataTable();
             dt.Columns.Add("Type d'engin");
             dt.Columns.Add("Numéro", typeof(int));
-            int numero=0;
+            int numero = 0;
             foreach (DataRow lg1 in dtEngins.Rows)
             {
                 string tpengin = lg1["Type d'engin"].ToString();
@@ -158,9 +158,9 @@ namespace UserControlMission
                     "AND idCaserne = " + idCaserne +
                     "AND enMission = 0 " +
                     "AND enPanne = 0 ");
-                for (int i=0; i<nombre; i++)
+                for (int i=0; i< lignes.Length; i++)
                 {
-                    //choisi le nombre de véhicule
+                    //choisi le num du véhicule et le type -> le rajoute à la datatable dt
                     numero = Convert.ToInt32(lignes[i]["numero"]);
                     dt.Rows.Add(tpengin, numero);
 
@@ -177,27 +177,65 @@ namespace UserControlMission
                 }
 
                 //Ajout ligne dans Partir avec : idcaserne, codeTypeEngin, numeroEngin, idMission
-                monDs.Tables["PartirAvec"].Rows.Add(idCaserne, tpengin, numero, nextId);
+                monDs.Tables["PartirAvec"].Rows.Add(idCaserne, tpengin, numero, nextId, null);
             }
+
 
 
             return dt;
 
         }
 
-
-        /*
-         * Tables a utiliser : Embarquer 
-         * 
-         * Les tables à modifier: Mobiliser 
-         * 
-         * 
-         * 
-        */
-
         private DataTable remplissagePompier(DataSet monDs, int idSinistre, int idCaserne) 
         {
             DataTable dtPomp = new DataTable();
+
+            DataTable dtEngins = enginMission(monDs, idSinistre, idCaserne);
+
+            //Stockage des hab pour chaque engin nécessaire à la mission
+            DataTable tab = new DataTable();
+            tab.Columns.Add("Type d'engin");
+            tab.Columns.Add("idHabilitation");
+            tab.Columns.Add("nombre", typeof(int));
+
+            //habilitation a stocker
+            List<int> listHab = new List<int>();
+
+            foreach (DataRow dr in dtEngins.Rows) 
+            {
+                //parcourir la table quel engin est relié à quelle habilitation
+                foreach (DataRow dr1 in monDs.Tables["Embarquer"].Rows)
+                {
+                    if (dr1["codeTypeEngin"] == dr["Type d'engin"])
+                    {
+                        listHab.Add(Convert.ToInt32(dr1["idHabilitation"]));
+                    }
+                }
+            }
+
+            //les matricules qui sont affcetés à la caserne idCaserne
+            foreach (DataRow dr2 in monDs.Tables["Affectation"].Rows) 
+            {
+                if ( Convert.ToInt32(dr2["idCaserne"]) == idCaserne)
+                {
+                    // voir si la matricule a passer l'habilitation dans la table Passer
+                    foreach(DataRow dr3 in monDs.Tables["Passer"].Rows)
+                    {
+                        if (dr2["matriculePompier"] == dr3["matriculePompier"])
+                        {
+                            //list hab à tester puis le mettre dans la table (par rapport aux nombres de hab nécessaire)
+                        }
+                    }
+                }
+            }
+            
+            
+            foreach (int elem in listHab) 
+            {
+
+            }
+
+
             return dtPomp;
         }
 
