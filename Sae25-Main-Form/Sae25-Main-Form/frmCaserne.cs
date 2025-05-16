@@ -166,10 +166,10 @@ namespace Sae25_Main_Form
                     DataRow newRow = dtMissions.NewRow(); //Créer une nouvelle ligne
                     //Récupérer l'ID de la mission
                     newRow["MissionID"] = Convert.ToInt32(row["id"]); 
-                    //Récupérer la caserne
-                    newRow["Caserne"] = monDs.Tables["Caserne"].Select("id = " + row["idCaserne"].ToString());
-                    //Récupérer la nature de la mission
-                    newRow["Nature"] = monDs.Tables["NatureSinistre"].Select("id = " + row["idNatureSinistre"].ToString());
+                    //Récupérer le nom de la caserne
+                    newRow["Caserne"] = monDs.Tables["Caserne"].Select("id = " + row["idCaserne"].ToString())[0]["nom"].ToString();
+                    //Récupérer le nom de la nature de la mission
+                    newRow["Nature"] = monDs.Tables["NatureSinistre"].Select("id = " + row["idNatureSinistre"].ToString())[0]["libelle"].ToString();
                     //Récupérer le motif de la mission
                     newRow["Motif"] = row["motifAppel"].ToString();
                     //Récupérer la date de début
