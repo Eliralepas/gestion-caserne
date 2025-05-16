@@ -38,6 +38,10 @@
     <Reference Include="NavigationBarUserControl">
       <HintPath>..\..\usercontrol\NavigationBarUserControl\NavigationBarUserControl\bin\Debug\NavigationBarUserControl.dll</HintPath>
     </Reference>
+    <Reference Include="Polygon, Version=1.0.0.0, Culture=neutral, processorArchitecture=MSIL">
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>..\..\usercontrol\Rectangle\Rectangle\bin\Debug\Polygon.dll</HintPath>
+    </Reference>
     <Reference Include="System">
       <HintPath>..\..\..\..\..\..\Program Files (x86)\Reference Assemblies\Microsoft\Framework\.NETFramework\v4.7.2\System.dll</HintPath>
     </Reference>

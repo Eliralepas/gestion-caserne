@@ -250,12 +250,7 @@ namespace UC_Statistique
             string command = $@"SELECT H.libelle,H.id
                                 FROM Habilitation H;";
 
-            /*
-             P.nom , P.prenom
-             LEFT JOIN Passer Pa ON Pa.idHabilitation = H.id
-                                LEFT JOIN Pompier P ON Pa.matriculePompier = P.matricule
-                                ORDER BY H.id
-            */
+           
             SQLiteDataReader data = executeDataReaderCommand(command);
             while (data.Read())
             {
