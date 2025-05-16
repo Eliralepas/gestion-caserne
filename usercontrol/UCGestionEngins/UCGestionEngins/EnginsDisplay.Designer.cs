@@ -44,10 +44,11 @@
             // 
             this.lblEnginTitle.AutoSize = true;
             this.lblEnginTitle.Font = new System.Drawing.Font("Arial Narrow", 18F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.lblEnginTitle.ForeColor = System.Drawing.Color.White;
             this.lblEnginTitle.Location = new System.Drawing.Point(22, 29);
             this.lblEnginTitle.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
             this.lblEnginTitle.Name = "lblEnginTitle";
-            this.lblEnginTitle.Size = new System.Drawing.Size(166, 29);
+            this.lblEnginTitle.Size = new System.Drawing.Size(214, 35);
             this.lblEnginTitle.TabIndex = 1;
             this.lblEnginTitle.Text = "Identifiant Engin : ";
             // 
@@ -55,9 +56,10 @@
             // 
             this.lblCodeEngin.AutoSize = true;
             this.lblCodeEngin.Font = new System.Drawing.Font("Arial Narrow", 18F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.lblCodeEngin.ForeColor = System.Drawing.Color.White;
             this.lblCodeEngin.Location = new System.Drawing.Point(204, 29);
             this.lblCodeEngin.Name = "lblCodeEngin";
-            this.lblCodeEngin.Size = new System.Drawing.Size(167, 29);
+            this.lblCodeEngin.Size = new System.Drawing.Size(211, 35);
             this.lblCodeEngin.TabIndex = 2;
             this.lblCodeEngin.Text = "Display Text Here";
             // 
@@ -65,9 +67,10 @@
             // 
             this.lblTitleDate.AutoSize = true;
             this.lblTitleDate.Font = new System.Drawing.Font("Arial Narrow", 18F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.lblTitleDate.ForeColor = System.Drawing.Color.White;
             this.lblTitleDate.Location = new System.Drawing.Point(22, 68);
             this.lblTitleDate.Name = "lblTitleDate";
-            this.lblTitleDate.Size = new System.Drawing.Size(176, 29);
+            this.lblTitleDate.Size = new System.Drawing.Size(224, 35);
             this.lblTitleDate.TabIndex = 3;
             this.lblTitleDate.Text = "Date d\'acquisition :";
             // 
@@ -75,9 +78,10 @@
             // 
             this.lblDate.AutoSize = true;
             this.lblDate.Font = new System.Drawing.Font("Arial Narrow", 18F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.lblDate.ForeColor = System.Drawing.Color.White;
             this.lblDate.Location = new System.Drawing.Point(204, 68);
             this.lblDate.Name = "lblDate";
-            this.lblDate.Size = new System.Drawing.Size(167, 29);
+            this.lblDate.Size = new System.Drawing.Size(211, 35);
             this.lblDate.TabIndex = 4;
             this.lblDate.Text = "Display Text Here";
             // 
@@ -85,10 +89,11 @@
             // 
             this.lblTitlePanne.AutoSize = true;
             this.lblTitlePanne.Font = new System.Drawing.Font("Arial Narrow", 18F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.lblTitlePanne.ForeColor = System.Drawing.Color.White;
             this.lblTitlePanne.Location = new System.Drawing.Point(91, 236);
             this.lblTitlePanne.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
             this.lblTitlePanne.Name = "lblTitlePanne";
-            this.lblTitlePanne.Size = new System.Drawing.Size(107, 29);
+            this.lblTitlePanne.Size = new System.Drawing.Size(136, 35);
             this.lblTitlePanne.TabIndex = 5;
             this.lblTitlePanne.Text = "En panne :";
             // 
@@ -96,10 +101,11 @@
             // 
             this.lblTitleMission.AutoSize = true;
             this.lblTitleMission.Font = new System.Drawing.Font("Arial Narrow", 18F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.lblTitleMission.ForeColor = System.Drawing.Color.White;
             this.lblTitleMission.Location = new System.Drawing.Point(85, 140);
             this.lblTitleMission.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
             this.lblTitleMission.Name = "lblTitleMission";
-            this.lblTitleMission.Size = new System.Drawing.Size(118, 29);
+            this.lblTitleMission.Size = new System.Drawing.Size(148, 35);
             this.lblTitleMission.TabIndex = 6;
             this.lblTitleMission.Text = "En mission :";
             // 
@@ -154,9 +160,9 @@
             // 
             // EnginsDisplay
             // 
-            this.AutoScaleDimensions = new System.Drawing.SizeF(7F, 20F);
+            this.AutoScaleDimensions = new System.Drawing.SizeF(9F, 23F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(192)))), ((int)(((byte)(0)))), ((int)(((byte)(0)))));
+            this.BackColor = System.Drawing.Color.DarkRed;
             this.Controls.Add(this.pctEnginImage);
             this.Controls.Add(this.strMission);
             this.Controls.Add(this.strPanne);
