@@ -48,6 +48,8 @@
             this.label2 = new System.Windows.Forms.Label();
             this.label1 = new System.Windows.Forms.Label();
             this.grpMob = new System.Windows.Forms.GroupBox();
+            this.panel2 = new System.Windows.Forms.Panel();
+            this.panel3 = new System.Windows.Forms.Panel();
             this.label3 = new System.Windows.Forms.Label();
             this.label4 = new System.Windows.Forms.Label();
             this.grpDecision.SuspendLayout();
@@ -110,7 +112,7 @@
             this.grpDecision.Margin = new System.Windows.Forms.Padding(2, 4, 2, 4);
             this.grpDecision.Name = "grpDecision";
             this.grpDecision.Padding = new System.Windows.Forms.Padding(2, 4, 2, 4);
-            this.grpDecision.Size = new System.Drawing.Size(956, 131);
+            this.grpDecision.Size = new System.Drawing.Size(963, 131);
             this.grpDecision.TabIndex = 1;
             this.grpDecision.TabStop = false;
             this.grpDecision.Text = "Décisions du régulateurs";
@@ -222,10 +224,10 @@
             this.btnAnnuler.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
             | System.Windows.Forms.AnchorStyles.Left) 
             | System.Windows.Forms.AnchorStyles.Right)));
-            this.btnAnnuler.Location = new System.Drawing.Point(558, 506);
+            this.btnAnnuler.Location = new System.Drawing.Point(514, 506);
             this.btnAnnuler.Margin = new System.Windows.Forms.Padding(2, 3, 2, 3);
             this.btnAnnuler.Name = "btnAnnuler";
-            this.btnAnnuler.Size = new System.Drawing.Size(149, 36);
+            this.btnAnnuler.Size = new System.Drawing.Size(216, 36);
             this.btnAnnuler.TabIndex = 19;
             this.btnAnnuler.Text = "Annuler";
             this.btnAnnuler.UseVisualStyleBackColor = true;
@@ -239,7 +241,7 @@
             this.btnValider.Location = new System.Drawing.Point(745, 506);
             this.btnValider.Margin = new System.Windows.Forms.Padding(2, 3, 2, 3);
             this.btnValider.Name = "btnValider";
-            this.btnValider.Size = new System.Drawing.Size(209, 36);
+            this.btnValider.Size = new System.Drawing.Size(216, 36);
             this.btnValider.TabIndex = 20;
             this.btnValider.Text = "Constituer équipe";
             this.btnValider.UseVisualStyleBackColor = true;
@@ -265,7 +267,7 @@
             this.grpInfo.Margin = new System.Windows.Forms.Padding(2, 3, 2, 3);
             this.grpInfo.Name = "grpInfo";
             this.grpInfo.Padding = new System.Windows.Forms.Padding(2, 3, 2, 3);
-            this.grpInfo.Size = new System.Drawing.Size(956, 259);
+            this.grpInfo.Size = new System.Drawing.Size(963, 259);
             this.grpInfo.TabIndex = 22;
             this.grpInfo.TabStop = false;
             this.grpInfo.Text = "Informations usager";
@@ -297,6 +299,8 @@
             this.grpMob.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
             | System.Windows.Forms.AnchorStyles.Left) 
             | System.Windows.Forms.AnchorStyles.Right)));
+            this.grpMob.Controls.Add(this.panel3);
+            this.grpMob.Controls.Add(this.panel2);
             this.grpMob.Controls.Add(this.label3);
             this.grpMob.Controls.Add(this.label4);
             this.grpMob.Font = new System.Drawing.Font("Arial", 12F);
@@ -305,11 +309,25 @@
             this.grpMob.Margin = new System.Windows.Forms.Padding(2, 4, 2, 4);
             this.grpMob.Name = "grpMob";
             this.grpMob.Padding = new System.Windows.Forms.Padding(2, 4, 2, 4);
-            this.grpMob.Size = new System.Drawing.Size(956, 265);
+            this.grpMob.Size = new System.Drawing.Size(963, 320);
             this.grpMob.TabIndex = 19;
             this.grpMob.TabStop = false;
             this.grpMob.Text = "Mobilisation des engins et pompiers";
             this.grpMob.Visible = false;
+            // 
+            // panel2
+            // 
+            this.panel2.Location = new System.Drawing.Point(498, 88);
+            this.panel2.Name = "panel2";
+            this.panel2.Size = new System.Drawing.Size(440, 216);
+            this.panel2.TabIndex = 18;
+            // 
+            // panel3
+            // 
+            this.panel3.Location = new System.Drawing.Point(22, 88);
+            this.panel3.Name = "panel3";
+            this.panel3.Size = new System.Drawing.Size(440, 216);
+            this.panel3.TabIndex = 19;
             // 
             // label3
             // 
@@ -348,7 +366,7 @@
             this.Font = new System.Drawing.Font("Arial", 10F);
             this.Margin = new System.Windows.Forms.Padding(2, 4, 2, 4);
             this.Name = "ucMission";
-            this.Size = new System.Drawing.Size(986, 1019);
+            this.Size = new System.Drawing.Size(993, 1019);
             this.grpDecision.ResumeLayout(false);
             this.grpDecision.PerformLayout();
             this.grpInfo.ResumeLayout(false);
@@ -383,5 +401,7 @@
         private System.Windows.Forms.GroupBox grpMob;
         private System.Windows.Forms.Label label3;
         private System.Windows.Forms.Label label4;
+        private System.Windows.Forms.Panel panel2;
+        private System.Windows.Forms.Panel panel3;
     }
 }
