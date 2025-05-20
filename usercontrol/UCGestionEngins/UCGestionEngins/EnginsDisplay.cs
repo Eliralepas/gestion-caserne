@@ -26,10 +26,8 @@ namespace UCGestionEngins
             EnginsList = baseEngin;
             lblCodeEngin.DataBindings.Add("Text", EnginsList, "numero");
             lblDate.DataBindings.Add("Text", EnginsList, "dateReception");
-            //strMission.m_checkedColor = Color.Yellow;
-            //strMission.m_unCheckedColor = Color.White;
-            // strMission.DataBindings.Add("m_isChecked", EnginsList,"enMission");
-            strMission.DataBindings.Add("m_isChecked", EnginsList,"enMission");
+            chkEnPanne.DataBindings.Add("checked", EnginsList,"enPanne");
+            chkMission.DataBindings.Add("checked", EnginsList, "enMission");
 
         }
 
@@ -38,21 +36,8 @@ namespace UCGestionEngins
           
         }
 
-        public void refresh()
-        {
-            
-
-            //strMission.m_BackGroundColor =Convert.ToBoolean(currentEngin["enMission"]) ? Color.Yellow : Color.White;
-            //strPanne.m_BackGroundColor = Convert.ToBoolean(currentEngin["enPanne"]) ? Color.Yellow : Color.White;
-            //string codeType = currentEngin["codeTypeEngin"].ToString();
-
-            
-        }
-
-
         private int getPos()
         {
-            //refresh();
             return EnginsList.Position;
         }
 
