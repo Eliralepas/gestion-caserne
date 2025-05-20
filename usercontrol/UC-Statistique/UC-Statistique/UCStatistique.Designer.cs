@@ -172,7 +172,7 @@
             this.cbxCaserne.Name = "cbxCaserne";
             this.cbxCaserne.Size = new System.Drawing.Size(199, 30);
             this.cbxCaserne.TabIndex = 1;
-            this.cbxCaserne.SelectedIndexChanged += new System.EventHandler(this.cbxCaserne_SelectedIndexChanged);
+            this.cbxCaserne.SelectionChangeCommitted += new System.EventHandler(this.cbxCaserne_SelectedIndexChanged);
             // 
             // lblCaserne
             // 
@@ -237,7 +237,7 @@
             this.cbxHabilitation.Name = "cbxHabilitation";
             this.cbxHabilitation.Size = new System.Drawing.Size(530, 30);
             this.cbxHabilitation.TabIndex = 0;
-            this.cbxHabilitation.SelectedIndexChanged += new System.EventHandler(this.cbxHabilitation_SelectedIndexChanged);
+            this.cbxHabilitation.SelectionChangeCommitted += new System.EventHandler(this.cbxHabilitation_SelectedIndexChanged);
             // 
             // flpHabilitation
             // 

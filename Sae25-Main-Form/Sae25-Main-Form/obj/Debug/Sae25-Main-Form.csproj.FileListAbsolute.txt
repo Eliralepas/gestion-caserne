@@ -25,6 +25,9 @@ C:\Users\miaou\Desktop\SAE25\Sae25-Main-Form\Sae25-Main-Form\bin\Debug\UC-Tablea
 C:\Users\Diego\source\repos\sae-caserne\Sae25-Main-Form\Sae25-Main-Form\bin\Debug\NavigationBarUserControl.dll
 C:\Users\Diego\source\repos\sae-caserne\Sae25-Main-Form\Sae25-Main-Form\bin\Debug\UC-TableauDeBord.dll
 C:\Users\Diego\source\repos\sae-caserne\Sae25-Main-Form\Sae25-Main-Form\bin\Debug\Polygon.dll
+C:\Users\Diego\source\repos\sae-caserne\Sae25-Main-Form\Sae25-Main-Form\bin\Debug\NavigationBarUserControl.pdb
+C:\Users\Diego\source\repos\sae-caserne\Sae25-Main-Form\Sae25-Main-Form\bin\Debug\UC-TableauDeBord.pdb
+C:\Users\Diego\source\repos\sae-caserne\Sae25-Main-Form\Sae25-Main-Form\bin\Debug\Polygon.pdb
 C:\Users\Diego\source\repos\sae-caserne\Sae25-Main-Form\Sae25-Main-Form\obj\Debug\Sae25-Ma.85EEC115.Up2Date
 C:\Users\Diego\source\repos\sae-caserne\Sae25-Main-Form\Sae25-Main-Form\bin\Debug\UC-Mission.dll
 C:\Users\Diego\source\repos\sae-caserne\Sae25-Main-Form\Sae25-Main-Form\bin\Debug\UC-Mission.pdb
@@ -42,4 +45,4 @@ C:\Users\Diego\source\repos\sae-caserne\Sae25-Main-Form\Sae25-Main-Form\bin\Debu
 C:\Users\Diego\source\repos\sae-caserne\Sae25-Main-Form\Sae25-Main-Form\bin\Debug\UC-Statistique.pdb
 C:\Users\miaou\Desktop\SAE25\Sae25-Main-Form\Sae25-Main-Form\bin\Debug\UCGestionEngins.dll
 C:\Users\miaou\Desktop\SAE25\Sae25-Main-Form\Sae25-Main-Form\bin\Debug\UCGestionEngins.pdb
-C:\Users\Diego\Source\Repos\sae-caserne\Sae25-Main-Form\Sae25-Main-Form\bin\Debug\UCGestionEngins.dll
+C:\Users\miaou\Desktop\SAE25\Sae25-Main-Form\Sae25-Main-Form\bin\Debug\Polygon.pdb

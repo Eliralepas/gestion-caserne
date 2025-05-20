@@ -13,8 +13,28 @@ namespace Polygon
     public partial class Star : Circle
     {
         private float m_rotation;
+        private Color checkedColor;
+        private Color unCheckedColor;
 
         public float m_Rotation { get { return m_rotation; } set { m_rotation = value;refreshPolygon(); } }
+        private Boolean _isChecked;
+
+        public Boolean m_isChecked
+        {
+            get { return _isChecked; }
+            
+            set
+            {
+                _isChecked = value;
+                changeChecked();
+            }
+        }
+
+        public Color m_checkedColor { get { return checkedColor; } set { checkedColor = value; } }
+        public Color m_unCheckedColor { get { return unCheckedColor; } set { unCheckedColor = value; } }
+
+
+
         public Star() : base()
         {
             m_nbSommet = 5;
@@ -31,6 +51,31 @@ namespace Polygon
             m_rotation = 60;
             InitializeComponent();
         }
+
+
+        private void changeChecked()
+        {
+            if(_isChecked)
+            {
+                m_BackGroundColor = checkedColor;
+            }
+            else
+            {
+                m_BackGroundColor = unCheckedColor;
+            }
+        }
+
+        protected override void refreshPolygon()
+        {
+            this.BackColor = Color.FromArgb(0, 255, 255, 255);
+            GeneratePolygonPoint();
+            GenerateText();
+            Invalidate();
+        }
+
+
+        
+
 
         protected override void GeneratePolygonPoint()
         {

@@ -33,7 +33,8 @@
     <WarningLevel>4</WarningLevel>
   </PropertyGroup>
   <ItemGroup>
-    <Reference Include="Polygon">
+    <Reference Include="Polygon, Version=1.0.0.0, Culture=neutral, processorArchitecture=MSIL">
+      <SpecificVersion>False</SpecificVersion>
       <HintPath>..\..\Rectangle\Rectangle\bin\Debug\Polygon.dll</HintPath>
     </Reference>
     <Reference Include="System" />

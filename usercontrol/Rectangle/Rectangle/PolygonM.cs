@@ -62,7 +62,7 @@ namespace Polygon
             Invalidate();
         }
 
-        protected void refreshPolygon()
+        protected virtual void refreshPolygon()
         {
             this.BackColor = Color.FromArgb(0, 255, 255, 255);
             GeneratePolygonPoint();
