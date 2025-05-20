@@ -15,12 +15,11 @@ using System.Data.SqlClient;
 
 namespace UC_Statistique
 {
- 
-
-    public partial class UCStatistique: UserControl
+    public partial class UCStatistique : UserControl
     {
-        private SQLiteConnection _con;//connection utilisé pour récupere les statistiques
+        private SQLiteConnection _con; // connection utilisé pour récupere les statistiques
         private Color[] colors = new Color[] { Color.Blue, Color.Green, Color.Red, Color.Yellow, Color.Purple, Color.Black, Color.Fuchsia };
+
         public UCStatistique()
         {
             InitializeComponent();
@@ -28,20 +27,20 @@ namespace UC_Statistique
 
         public UCStatistique(SQLiteConnection con) : this()
         {
-            if (con.State != ConnectionState.Open)
+            if(con.State != ConnectionState.Open)
             {
-                throw new ArgumentException("Connection dois être ouverte");
+                throw new ArgumentException("La connexion doit être ouverte");
             }
             _con = con;
-            tabStatistique.SelectedTab = tabPage1; 
-            tabStatistique_SelectedIndexChanged(this, EventArgs.Empty);//Déclechement automatique pour que ça charge de base la premiere page;
+            tabStatistique.SelectedTab = tabPage1;
+            tabStatistique_SelectedIndexChanged(this, EventArgs.Empty); // Déclenchement automatique pour charger la première page
             cbxCaserne.Focus();
         }
 
         private void tabStatistique_SelectedIndexChanged(object sender, EventArgs e)
         {
-            if (_con == null) return;
-            switch (tabStatistique.SelectedTab)
+            if(_con == null) return;
+            switch(tabStatistique.SelectedTab)
             {
                 case var tab when tab == tabPage1:
                     loadCaserne();
@@ -63,48 +62,48 @@ namespace UC_Statistique
         private SQLiteDataReader executeDataReaderCommand(string command)
         {
             SQLiteCommand cmd = new SQLiteCommand(command, _con);
-            
-            return cmd.ExecuteReader(); ;
+            return cmd.ExecuteReader();
         }
 
-
-
-
-        /**Statistique Relatif a la caserne choisis*/
+        /** Statistique Relatif a la caserne choisie */
         private void loadCaserne()
-        {//on load toute les casernes de la bases dans la comboBox
-          try{
-                cbxCaserne.Items.Clear();
-                string command = "Select [id] ,[nom] FROM Caserne;";
-                SQLiteDataReader dataRead = executeDataReaderCommand(command);
-                while (dataRead.Read())
-                {
-                    cbxCaserne.Items.Add(new ItemCombo(dataRead.GetInt32(0), dataRead.GetString(1)));
-                }
-            }
-          catch (Exception ex){
-                MessageBox.Show(ex.Message);
-          }
+        {
+            try
+            {
+                cbxCaserne.DataSource = null;
+                string command = "SELECT [id] AS Id, [nom] AS Nom FROM Caserne;";
+                SQLiteDataAdapter adapter = new SQLiteDataAdapter(command, _con);
+                DataTable dt = new DataTable();
+                adapter.Fill(dt);
 
+                cbxCaserne.DataSource = dt;
+                cbxCaserne.DisplayMember = "Nom";
+                cbxCaserne.ValueMember = "Id";
+            }
+            catch(Exception ex)
+            {
+                MessageBox.Show(ex.Message);
+            }
         }
 
         private void cbxCaserne_SelectedIndexChanged(object sender, EventArgs e)
         {
-            if (cbxCaserne.SelectedIndex == -1)
-            {
-                return;
-            }
+            if(cbxCaserne.SelectedIndex == -1) return;
             loadEnginPerHour();
             loadMostUsedEngin();
         }
+
         private void loadEnginPerHour()
         {
-            ItemCombo selected = (ItemCombo)cbxCaserne.SelectedItem;
+            if(cbxCaserne.SelectedValue == null) return;
+
+            int selectedId = Convert.ToInt32(cbxCaserne.SelectedValue);
             flpHistogram.Controls.Clear();
+
             try
             {
                 string command = $@"
-                    SELECT E.codeTypeEngin,E.numero,
+                    SELECT E.codeTypeEngin, E.numero,
                     ROUND(SUM((julianday(M.dateHeureRetour) - julianday(M.dateHeureDepart)) * 24), 2) AS cumul_heures                     
                     FROM Engin E
                     JOIN Partiravec P ON E.idCaserne = P.idCaserne 
@@ -113,30 +112,28 @@ namespace UC_Statistique
                     JOIN Mission M ON P.idMission = M.id
                     WHERE E.idCaserne = @idMission 
                     AND M.dateHeureRetour IS NOT NULL 
-                    GROUP BY  E.codeTypeEngin, E.numero 
+                    GROUP BY E.codeTypeEngin, E.numero 
                     ORDER BY cumul_heures DESC;";
 
                 SQLiteCommand cmd = new SQLiteCommand(command, _con);
-                cmd.Parameters.AddWithValue("@idMission", selected.Id);
+                cmd.Parameters.AddWithValue("@idMission", selectedId);
                 SQLiteDataReader dataReader = cmd.ExecuteReader();
-
 
                 float maxValue = 0;
                 Dictionary<string, float> EnginPerHour = new Dictionary<string, float>();
-                while (dataReader.Read())
+                while(dataReader.Read())
                 {
                     string engin = dataReader.GetString(0) + " " + dataReader.GetInt32(1).ToString();
                     float heures = dataReader.GetFloat(2);
-                    if (heures > maxValue) maxValue = heures;
+                    if(heures > maxValue) maxValue = heures;
                     EnginPerHour.Add(engin, heures);
                 }
-                foreach (KeyValuePair<string, float> eph in EnginPerHour)
+                foreach(KeyValuePair<string, float> eph in EnginPerHour)
                 {
-                    flpHistogram.Controls.Add(new histogram(eph.Key, eph.Value, maxValue,"heure Cumulé : "));
-
+                    flpHistogram.Controls.Add(new histogram(eph.Key, eph.Value, maxValue, "heure Cumulé : "));
                 }
             }
-            catch (Exception ex)
+            catch(Exception ex)
             {
                 MessageBox.Show(ex.Message);
             }
@@ -146,62 +143,65 @@ namespace UC_Statistique
         {
             pnlCamembert.Controls.Clear();
             flpLegende.Controls.Clear();
-            ItemCombo selected = (ItemCombo)cbxCaserne.SelectedItem;
-            string command = $@"SELECT E.codeTypeEngin,count(*)
+            if(cbxCaserne.SelectedValue == null) return;
+
+            int selectedId = Convert.ToInt32(cbxCaserne.SelectedValue);
+            string command = $@"SELECT E.codeTypeEngin, count(*)
                                 FROM Engin E
-                                JOIN PartirAvec P on P.codeTypeEngin = E.codeTypeEngin AND E.numero = P.numeroEngin AND P.idCaserne = E.idCaserne
-                                WHERE P.idCaserne = {selected.Id}
+                                JOIN PartirAvec P on P.codeTypeEngin = E.codeTypeEngin 
+                                AND E.numero = P.numeroEngin 
+                                AND P.idCaserne = E.idCaserne
+                                WHERE P.idCaserne = @caserneId
                                 GROUP BY E.codeTypeEngin 
                                 ORDER BY COUNT() DESC;";
 
-            SQLiteDataReader data = executeDataReaderCommand(command);
+            SQLiteCommand cmd = new SQLiteCommand(command, _con);
+            cmd.Parameters.AddWithValue("@caserneId", selectedId);
+            SQLiteDataReader data = cmd.ExecuteReader();
+
             Dictionary<string, int> values = new Dictionary<string, int>();
-            
-            for (int i = 0; i < 4 && data.Read(); i++)//on ne garde que les 4 plus utilisé 
+            int i = 0;
+            while(data.Read() && i < 4) // on ne garde que les 4 plus utilisés
             {
-                values.Add(data.GetString(0),data.GetInt32(1));
-                legende l =  new legende($"{data.GetString(0)} : {data.GetInt32(1)}", colors[i]);
+                values.Add(data.GetString(0), data.GetInt32(1));
+                legende l = new legende($"{data.GetString(0)} : {data.GetInt32(1)}", colors[i]);
                 flpLegende.Controls.Add(l);
+                i++;
             }
+
             Color[] selectedColor = new Color[values.Count];
             Array.Copy(colors, selectedColor, values.Count);
-            PartionedCircle camenbert = new PartionedCircle(values,colors);
-            camenbert.Dock = DockStyle.Fill;
-            pnlCamembert.Controls.Add(camenbert);
-
+            PartionedCircle camembert = new PartionedCircle(values, colors);
+            camembert.Dock = DockStyle.Fill;
+            pnlCamembert.Controls.Add(camembert);
         }
-        //Statistique relatif au intervention
-        
+
+        // Statistique relatif aux interventions
         private void loadInterventionStat()
         {
             flpSinistreStat.Controls.Clear();
-            string command = $@"SELECT ns.libelle,Count(*) from NatureSinistre ns
+            string command = $@"SELECT ns.libelle, Count(*) 
+                             FROM NatureSinistre ns
                              JOIN Mission M ON M.idNatureSinistre = ns.id
-                              GROUP BY ns.id;";
+                             GROUP BY ns.id;";
             SQLiteDataReader data = executeDataReaderCommand(command);
-
 
             float maxValue = 0;
             Dictionary<string, float> EnginPerHour = new Dictionary<string, float>();
-            while (data.Read())
+            while(data.Read())
             {
                 string sinistre = data.GetString(0);
                 float nbIntervention = data.GetFloat(1);
-                if (nbIntervention > maxValue) maxValue = nbIntervention;
+                if(nbIntervention > maxValue) maxValue = nbIntervention;
                 EnginPerHour.Add(sinistre, nbIntervention);
             }
-            foreach (KeyValuePair<string, float> eph in EnginPerHour)
+            foreach(KeyValuePair<string, float> eph in EnginPerHour)
             {
-                flpSinistreStat.Controls.Add(new histogram(eph.Key, eph.Value, maxValue,"Nombre de Siniste : "));
-
+                flpSinistreStat.Controls.Add(new histogram(eph.Key, eph.Value, maxValue, "Nombre de Sinistres : "));
             }
-
-
         }
 
-
-        /*Statistique relatif au Habilitation*/
-
+        /* Statistique relatif aux Habilitation */
         private void loadHabilitation()
         {
             loadMostUsedHabilitation();
@@ -212,79 +212,74 @@ namespace UC_Statistique
         {
             pnlGrapheHabit.Controls.Clear();
             flpLegendHabi.Controls.Clear();
-            string command = $@"SELECT h.libelle ,Count(m.idMission)
+            string command = $@"SELECT h.libelle, Count(m.idMission)
                                 FROM Habilitation h
                                 JOIN Mobiliser m ON h.id = m.idHabilitation
                                 GROUP BY h.libelle
-                                ORDER by COUNT(m.idMission) DESC ";
+                                ORDER by COUNT(m.idMission) DESC";
 
             Dictionary<string, int> values = new Dictionary<string, int>();
             SQLiteDataReader data = executeDataReaderCommand(command);
             int i = 0;
             while(data.Read())
             {
-                if (i > colors.Length-1) i = 0;
+                if(i > colors.Length - 1) i = 0;
                 values.Add(data.GetString(0), data.GetInt32(1));
                 legende l = new legende($"{data.GetString(0)} : {data.GetInt32(1)}", colors[i]);
                 flpLegendHabi.Controls.Add(l);
                 i++;
             }
-            Color[] selectedColor = new Color[values.Count];
-            if (values.Count > colors.Length)
-            {
-                selectedColor = colors;
-            }
-            else
-            {
-                Array.Copy(colors, selectedColor, values.Count);
-            }
-            PartionedCircle camenbert = new PartionedCircle(values, colors);
-            camenbert.Dock = DockStyle.Fill;
-            camenbert.m_EdgeSize = 0;
-            pnlGrapheHabit.Controls.Add(camenbert);
 
+            PartionedCircle camembert = new PartionedCircle(values, colors);
+            camembert.Dock = DockStyle.Fill;
+            camembert.m_EdgeSize = 0;
+            pnlGrapheHabit.Controls.Add(camembert);
         }
+
         private void loadPompierPerHabilitation()
         {
-            cbxHabilitation.Items.Clear();
-            string command = $@"SELECT H.libelle,H.id
-                                FROM Habilitation H;";
+            cbxHabilitation.DataSource = null;
+            string command = $@"SELECT H.id AS Id, H.libelle AS Nom FROM Habilitation H;";
 
-           
-            SQLiteDataReader data = executeDataReaderCommand(command);
-            while (data.Read())
-            {
-                string hability = data.GetString(0);
-                int habilityId = data.GetInt32(1);
-                ItemCombo item = new ItemCombo(habilityId, hability);
-                cbxHabilitation.Items.Add(item);
-            }
+            SQLiteDataAdapter adapter = new SQLiteDataAdapter(command, _con);
+            DataTable dt = new DataTable();
+            adapter.Fill(dt);
 
+            cbxHabilitation.DataSource = dt;
+            cbxHabilitation.DisplayMember = "Nom";
+            cbxHabilitation.ValueMember = "Id";
         }
 
         private void cbxHabilitation_SelectedIndexChanged(object sender, EventArgs e)
         {
+            if(cbxHabilitation.SelectedValue == null) return;
+
             flpHabilitation.Controls.Clear();
-            int idSelected = ((ItemCombo)cbxHabilitation.SelectedItem).Id;
-            string command = $@"SELECT P.nom , P.prenom
+            int selectedId = Convert.ToInt32(cbxCaserne.SelectedValue);
+
+            string command = $@"SELECT P.nom, P.prenom
                                 FROM Pompier P
                                 JOIN Passer Pa ON Pa.matriculePompier = P.matricule
-                                WHERE Pa.idHabilitation = {idSelected}
+                                WHERE Pa.idHabilitation = @habId
                                 ORDER BY P.nom";
-            SQLiteDataReader data = executeDataReaderCommand(command);
-            while (data.Read())
+
+            SQLiteCommand cmd = new SQLiteCommand(command, _con);
+            cmd.Parameters.AddWithValue("@habId", selectedId);
+            SQLiteDataReader data = cmd.ExecuteReader();
+
+            while(data.Read())
             {
                 Label Pompier = new Label();
                 Pompier.Text = $"{data.GetString(0)} {data.GetString(1)}";
                 flpHabilitation.Controls.Add(Pompier);
             }
-            if (flpHabilitation.Controls.Count == 0)
+
+            if(flpHabilitation.Controls.Count == 0)
             {
                 Label empty = new Label();
-                empty.Text = $"Pas de Pompier ayant cette habilitation";
+                empty.Text = "Aucun pompier n'a cette habilitation";
                 flpHabilitation.Controls.Add(empty);
             }
         }
     }
-
 }

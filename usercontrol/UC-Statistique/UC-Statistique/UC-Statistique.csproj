@@ -72,7 +72,6 @@
     <Compile Include="histogram.Designer.cs">
       <DependentUpon>histogram.cs</DependentUpon>
     </Compile>
-    <Compile Include="ItemCombo.cs" />
     <Compile Include="legende.cs">
       <SubType>UserControl</SubType>
     </Compile>
