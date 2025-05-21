@@ -89,6 +89,7 @@ namespace UC_Statistique
         private void cbxCaserne_SelectedIndexChanged(object sender, EventArgs e)
         {
             if(cbxCaserne.SelectedIndex == -1) return;
+            
             loadEnginPerHour();
             loadMostUsedEngin();
         }
