@@ -184,11 +184,34 @@ namespace UserControlMission
             return true;
         }
 
+        private DataRow[] pompierCaserne(int idCaserne)
+        {
+            DataRow[] pompier = monDs.Tables["Affection"].Select($"idCaserne = {idCaserne}");
+            return pompier;
+        }
+
+        //trier liste de tableau
+        private List<int[]> trierTab(List<int[]> liste)
+        {
+            List<int[]> res = new List<int[]>();
+            foreach (int[] row in liste)
+            {
+                // compter le nombre de fois que le matricule aparait 
+                // premier index --> matricule
+                // deuxieme index --> hab
+
+
+            }
+
+            return res;
+        }
+
         private bool tryPompier(int idCaserne, DataTable enginNecessaire)
         {
             // Liste des pompiers déjà affectés pour éviter les doublons,
             // un pompier ne peut pas être mobilisé deux fois pour deux types d'engins différents
             List<int> pompiersUtilises = new List<int>();
+            List<int[]> habpompier = new List<int[]>();
 
             foreach (DataRow engin in enginNecessaire.Rows)
             {
@@ -204,6 +227,8 @@ namespace UserControlMission
                     //Après avoir l'habilitation, regarder dans la table Passer les idPompier qui ont passé cette habilitation
                     int idhab = Convert.ToInt32(habilitation["idHabilitation"]);
                     DataRow[] pompierhab = monDs.Tables["Passer"].Select($"idHabilitation = {idhab}");
+
+                   
 
                     foreach (DataRow pompier in pompierhab)
                     {
@@ -341,8 +366,6 @@ namespace UserControlMission
 
             return dtPompiersMobilises;
         }
-
-
 
         private void btnAnnuler_Click(object sender, EventArgs e)
         {
