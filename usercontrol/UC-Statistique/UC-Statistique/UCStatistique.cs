@@ -255,7 +255,7 @@ namespace UC_Statistique
             if(cbxHabilitation.SelectedValue == null) return;
 
             flpHabilitation.Controls.Clear();
-            int selectedId = Convert.ToInt32(cbxCaserne.SelectedValue);
+            int selectedId = Convert.ToInt32(cbxHabilitation.SelectedValue);
 
             string command = $@"SELECT P.nom, P.prenom
                                 FROM Pompier P
