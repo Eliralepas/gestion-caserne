@@ -84,6 +84,7 @@ namespace Sae25_Main_Form
             {
                 tableauDeBord = new UC_TableauDeBord.TableauDeBord(); //Instancier le volet de tableau de bord
                 tableauDeBord.ajouterMissionBD = AjouterMissionBD; //Lier la méthode d'ajout de mission à la base de données
+                tableauDeBord.getEnginsMission = getEnginsMission; //Lier la méthode de récupération des engins de la mission
                 DataTable dtMissions = CreerTableMission(); //Créer une table de missions au bon format
                 RemplirTableMission(dtMissions); //Remplir la table de missions
                 tableauDeBord.LoadMissions(dtMissions);
@@ -180,16 +181,35 @@ namespace Sae25_Main_Form
                         newRow["DateFin"] = DBNull.Value; //Mettre la date de fin à null
                     }
                     else
-                        newRow["DateFin"] = DateTime.Parse(row["dateHeureRetour"].ToString()); 
-
-                    newRow["EstEnCours"] = Convert.ToInt32(row["terminee"]); //Récupérer l'état de la mission
+                    {
+                        newRow["DateFin"] = DateTime.Parse(row["dateHeureRetour"].ToString());
+                    }
+                    newRow["EstEnCours"] = !Convert.ToBoolean(row["terminee"]); //Récupérer l'état de la mission
 
                     dtMissions.Rows.Add(newRow); //Ajouter la nouvelle ligne à la table de données
                 }
             }
         }
 
-        private void AjouterMissionBD(UC_Mission.Mission mission, string compteRendu)
+        private DataTable getEnginsMission(int idMission)
+        {
+            if (monDs != null)
+            {
+                DataTable dt = monDs.Tables["PartirAvec"]; //Récupérer la table des engins
+                DataTable dtEnginsMission = dt.Clone(); //Cloner la structure de la table des engins
+                foreach (DataRow row in dt.Rows) //Parcourir les lignes de la table des engins
+                {
+                    if (Convert.ToInt32(row["idMission"]) == idMission) //Vérifier si l'ID de la mission correspond
+                    {
+                        dtEnginsMission.ImportRow(row); //Importer la ligne dans la nouvelle table
+                    }
+                }
+                return dtEnginsMission; //Retourner la table des engins de la mission
+            }
+            return null; //Retourner null si le DataSet est vide
+        }
+
+        private void AjouterMissionBD(UC_Mission.Mission mission, string compteRendu, DataTable enginsEnPanne)
         {
             // Logique pour ajouter une mission à la base de données
             MessageBox.Show("Mission ajoutée à la base de données : Mission n°" + mission.MissionID + "\nCompte rendu: " + compteRendu); //Afficher un message de confirmation
@@ -204,6 +224,10 @@ namespace Sae25_Main_Form
                 Création d'une commande SQL pour insérer la mission:
                 "INSERT INTO Missions VALUES (mission.MissionID, mission.DateDebut, mission.DateFin, mission.MotifMission, AdresseMission, CodePostalMission, VilleMission, mission.EstEnCours, IdNatureSinistre, IdCaserne);"
                 Insertion de la mission dans la table des missions
+
+                Mettre à jour le statut "En panne" et "Em mission" de chaque engin faisant partie de la mission
+                
+                Mettre à jour le statut "En mission" de chaque pompier faisant partie de la mission
                 Supprimer la mission du dataset local
             Fin
             */

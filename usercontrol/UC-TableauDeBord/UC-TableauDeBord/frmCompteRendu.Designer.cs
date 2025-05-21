@@ -1,6 +1,6 @@
 ﻿namespace UC_TableauDeBord
 {
-    partial class frmTerminerMission
+    partial class frmCompteRendu
     {
         /// <summary>
         /// Required designer variable.
@@ -80,7 +80,7 @@
             this.btnAnnuler.UseVisualStyleBackColor = true;
             this.btnAnnuler.Click += new System.EventHandler(this.btnAnnuler_Click);
             // 
-            // frmTerminerMission
+            // frmCompteRendu
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(9F, 19F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
@@ -92,8 +92,8 @@
             this.Controls.Add(this.txtCompteRendu);
             this.Font = new System.Drawing.Font("Arial", 10F);
             this.Margin = new System.Windows.Forms.Padding(3, 4, 3, 4);
-            this.Name = "frmTerminerMission";
-            this.Text = "Terminer mission";
+            this.Name = "frmCompteRendu";
+            this.Text = "Compte rendu";
             this.ResumeLayout(false);
             this.PerformLayout();
 
