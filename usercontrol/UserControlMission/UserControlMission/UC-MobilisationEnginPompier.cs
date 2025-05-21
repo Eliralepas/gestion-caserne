@@ -16,12 +16,13 @@ namespace UserControlMission
         public UC_MobilisationEnginPompier(DataTable dt)
         {
             InitializeComponent();
-            dtgMob.DataSource = dt;
+            
         }
 
         private void UC_MobilisationEnginPompier_Load(object sender, EventArgs e)
         {
 
         }
+
     }
 }

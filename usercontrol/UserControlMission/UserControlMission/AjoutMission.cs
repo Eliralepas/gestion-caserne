@@ -137,7 +137,7 @@ namespace UserControlMission
         {
             // Ajout d'une nouvelle ligne dans la table Mission de monDs
             DataRow row = monDs.Tables["Mission"].NewRow();
-            row["id"] = nextId;
+            row["id"] = Convert.ToInt32(nextId);
             row["dateHeureDepart"] = date;
             row["motifAppel"] = txtMotif.Text;
             row["adresse"] = txtRue.Text;
@@ -145,9 +145,9 @@ namespace UserControlMission
             row["ville"] = txtVille.Text;
             row["terminee"] = 0;
             int idSinistre = Convert.ToInt32(cboNature.SelectedValue);
-            row["idNatureSinistre"] = idSinistre;
+            row["idNatureSinistre"] = Convert.ToInt32(idSinistre);
             int idCaserne = Convert.ToInt32(cboCaserne.SelectedValue);
-            row["idCaserne"] = idCaserne;
+            row["idCaserne"] = Convert.ToInt32(idCaserne);
 
             //Ajout de la ligne
             monDs.Tables["Mission"].Rows.Add(row);
@@ -193,8 +193,7 @@ namespace UserControlMission
             foreach (DataRow engin in enginNecessaire.Rows)
             {
                 string codeTypeEngin = engin["codeTypeEngin"].ToString();
-                int nombreRequis = Convert.ToInt32(engin["nombre"]);
-                int nombreTrouve = 0;
+                int nbLigne = 0;
 
                 // Récupère les habilitations pour ce type d'engin
                 DataRow[] habilites = monDs.Tables["Embarquer"].Select($"codeTypeEngin = '{codeTypeEngin}'");
@@ -202,28 +201,28 @@ namespace UserControlMission
                 // Filtrons ceux appartenant à la caserne ET qui ne sont pas encore utilisés
                 foreach (DataRow habilitation in habilites)
                 {
-                    int idPompier = Convert.ToInt32(habilitation["idPompier"]);
+                    //Après avoir l'habilitation, regarder dans la table Passer les idPompier qui ont passé cette habilitation
+                    int idhab = Convert.ToInt32(habilitation["idHabilitation"]);
+                    DataRow[] pompierhab = monDs.Tables["Passer"].Select($"idHabilitation = {idhab}");
 
-                    // Vérifier que ce pompier appartient bien à la caserne + pas en mission, ni en congé
-                    DataRow[] pompierInfo = monDs.Tables["Pompier"].Select($"idPompier = {idPompier} AND idCaserne = {idCaserne} AND enMission = 0 AND enConge = 0");
-
-                    if (pompierInfo.Length > 0 && !pompiersUtilises.Contains(idPompier))
+                    foreach (DataRow pompier in pompierhab)
                     {
-                        pompiersUtilises.Add(idPompier);
-                        nombreTrouve++;
+                        int idPompier = Convert.ToInt32(pompier["idPompier"]);
 
-                        // On a trouvé assez de pompiers pour ce type d'engin
-                        if (nombreTrouve == nombreRequis)
+                        // Vérifier que ce pompier appartient bien à la caserne + pas en mission, ni en congé
+                        DataRow[] pompierInfo = monDs.Tables["Pompier"].Select($"idPompier = {idPompier} AND idCaserne = {idCaserne} AND enMission = 0 AND enConge = 0");
+                        nbLigne = pompierInfo.Length;
+                        if (nbLigne > 0 && !pompiersUtilises.Contains(idPompier))
                         {
-                            break;
+                            pompiersUtilises.Add(idPompier);
+                        }
+                        // Pas du tout de pompiers habilités disponibles pour ce type d'engin
+                        if (nbLigne == 0)
+                        {
+                            return false;
                         }
                     }
-                }
 
-                // Pas du tout de pompiers habilités disponibles pour ce type d'engin
-                if (nombreTrouve == 0)
-                {
-                    return false;
                 }
             }
 
@@ -342,7 +341,6 @@ namespace UserControlMission
 
             return dtPompiersMobilises;
         }
-
 
 
 
