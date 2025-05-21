@@ -31,9 +31,6 @@
             this.tabStatistique = new System.Windows.Forms.TabControl();
             this.tabPage1 = new System.Windows.Forms.TabPage();
             this.grpEngins = new System.Windows.Forms.GroupBox();
-            this.pnlMostUsedEngin = new System.Windows.Forms.Panel();
-            this.flpLegende = new System.Windows.Forms.FlowLayoutPanel();
-            this.pnlCamembert = new System.Windows.Forms.Panel();
             this.flpHistogram = new System.Windows.Forms.FlowLayoutPanel();
             this.lblTitleMostUsedEngin = new System.Windows.Forms.Label();
             this.lblTitleEnginPerHour = new System.Windows.Forms.Label();
@@ -49,10 +46,10 @@
             this.flpLegendHabi = new System.Windows.Forms.FlowLayoutPanel();
             this.pnlGrapheHabit = new System.Windows.Forms.Panel();
             this.lblTitleHabilitation = new System.Windows.Forms.Label();
+            this.flpMostUsedEngin = new System.Windows.Forms.FlowLayoutPanel();
             this.tabStatistique.SuspendLayout();
             this.tabPage1.SuspendLayout();
             this.grpEngins.SuspendLayout();
-            this.pnlMostUsedEngin.SuspendLayout();
             this.tabPage2.SuspendLayout();
             this.tabPage3.SuspendLayout();
             this.pnlHabilitation.SuspendLayout();
@@ -89,7 +86,7 @@
             // 
             // grpEngins
             // 
-            this.grpEngins.Controls.Add(this.pnlMostUsedEngin);
+            this.grpEngins.Controls.Add(this.flpMostUsedEngin);
             this.grpEngins.Controls.Add(this.flpHistogram);
             this.grpEngins.Controls.Add(this.lblTitleMostUsedEngin);
             this.grpEngins.Controls.Add(this.lblTitleEnginPerHour);
@@ -105,49 +102,21 @@
             this.grpEngins.TabStop = false;
             this.grpEngins.Text = "Statistique reltives au Engins";
             // 
-            // pnlMostUsedEngin
-            // 
-            this.pnlMostUsedEngin.Controls.Add(this.flpLegende);
-            this.pnlMostUsedEngin.Controls.Add(this.pnlCamembert);
-            this.pnlMostUsedEngin.Location = new System.Drawing.Point(24, 120);
-            this.pnlMostUsedEngin.Margin = new System.Windows.Forms.Padding(2);
-            this.pnlMostUsedEngin.Name = "pnlMostUsedEngin";
-            this.pnlMostUsedEngin.Size = new System.Drawing.Size(506, 475);
-            this.pnlMostUsedEngin.TabIndex = 5;
-            // 
-            // flpLegende
-            // 
-            this.flpLegende.AutoScroll = true;
-            this.flpLegende.Dock = System.Windows.Forms.DockStyle.Bottom;
-            this.flpLegende.Location = new System.Drawing.Point(0, 371);
-            this.flpLegende.Name = "flpLegende";
-            this.flpLegende.Size = new System.Drawing.Size(506, 104);
-            this.flpLegende.TabIndex = 1;
-            this.flpLegende.WrapContents = false;
-            // 
-            // pnlCamembert
-            // 
-            this.pnlCamembert.Dock = System.Windows.Forms.DockStyle.Top;
-            this.pnlCamembert.Location = new System.Drawing.Point(0, 0);
-            this.pnlCamembert.Name = "pnlCamembert";
-            this.pnlCamembert.Size = new System.Drawing.Size(506, 365);
-            this.pnlCamembert.TabIndex = 0;
-            // 
             // flpHistogram
             // 
             this.flpHistogram.AutoScroll = true;
             this.flpHistogram.AutoScrollMargin = new System.Drawing.Size(100, 0);
-            this.flpHistogram.Location = new System.Drawing.Point(546, 120);
+            this.flpHistogram.Location = new System.Drawing.Point(24, 105);
             this.flpHistogram.Margin = new System.Windows.Forms.Padding(2);
             this.flpHistogram.Name = "flpHistogram";
-            this.flpHistogram.Size = new System.Drawing.Size(430, 314);
+            this.flpHistogram.Size = new System.Drawing.Size(952, 230);
             this.flpHistogram.TabIndex = 4;
             this.flpHistogram.WrapContents = false;
             // 
             // lblTitleMostUsedEngin
             // 
             this.lblTitleMostUsedEngin.AutoSize = true;
-            this.lblTitleMostUsedEngin.Location = new System.Drawing.Point(152, 90);
+            this.lblTitleMostUsedEngin.Location = new System.Drawing.Point(395, 337);
             this.lblTitleMostUsedEngin.Margin = new System.Windows.Forms.Padding(2, 0, 2, 0);
             this.lblTitleMostUsedEngin.Name = "lblTitleMostUsedEngin";
             this.lblTitleMostUsedEngin.Size = new System.Drawing.Size(247, 22);
@@ -157,7 +126,7 @@
             // lblTitleEnginPerHour
             // 
             this.lblTitleEnginPerHour.AutoSize = true;
-            this.lblTitleEnginPerHour.Location = new System.Drawing.Point(658, 90);
+            this.lblTitleEnginPerHour.Location = new System.Drawing.Point(435, 81);
             this.lblTitleEnginPerHour.Margin = new System.Windows.Forms.Padding(2, 0, 2, 0);
             this.lblTitleEnginPerHour.Name = "lblTitleEnginPerHour";
             this.lblTitleEnginPerHour.Size = new System.Drawing.Size(166, 22);
@@ -286,6 +255,15 @@
             this.lblTitleHabilitation.TabIndex = 6;
             this.lblTitleHabilitation.Text = "Habilitation les plus solicités";
             // 
+            // flpMostUsedEngin
+            // 
+            this.flpMostUsedEngin.AutoScroll = true;
+            this.flpMostUsedEngin.Location = new System.Drawing.Point(24, 362);
+            this.flpMostUsedEngin.Name = "flpMostUsedEngin";
+            this.flpMostUsedEngin.Size = new System.Drawing.Size(951, 236);
+            this.flpMostUsedEngin.TabIndex = 0;
+            this.flpMostUsedEngin.WrapContents = false;
+            // 
             // UCStatistique
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 22F);
@@ -301,7 +279,6 @@
             this.tabPage1.ResumeLayout(false);
             this.grpEngins.ResumeLayout(false);
             this.grpEngins.PerformLayout();
-            this.pnlMostUsedEngin.ResumeLayout(false);
             this.tabPage2.ResumeLayout(false);
             this.tabPage2.PerformLayout();
             this.tabPage3.ResumeLayout(false);
@@ -323,9 +300,6 @@
         private System.Windows.Forms.FlowLayoutPanel flpHistogram;
         private System.Windows.Forms.Label lblTitleMostUsedEngin;
         private System.Windows.Forms.Label lblTitleEnginPerHour;
-        private System.Windows.Forms.Panel pnlMostUsedEngin;
-        private System.Windows.Forms.Panel pnlCamembert;
-        private System.Windows.Forms.FlowLayoutPanel flpLegende;
         private System.Windows.Forms.Label lblTitleIntervention;
         private System.Windows.Forms.FlowLayoutPanel flpSinistreStat;
         private System.Windows.Forms.Panel pnlHabilitation;
@@ -334,5 +308,6 @@
         private System.Windows.Forms.Label lblTitleHabilitation;
         private System.Windows.Forms.FlowLayoutPanel flpHabilitation;
         private System.Windows.Forms.ComboBox cbxHabilitation;
+        private System.Windows.Forms.FlowLayoutPanel flpMostUsedEngin;
     }
 }
