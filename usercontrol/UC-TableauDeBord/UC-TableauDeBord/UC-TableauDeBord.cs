@@ -12,7 +12,8 @@ using UC_Mission;
 namespace UC_TableauDeBord
 {
 
-    public delegate void AjouterMissionBD(UC_Mission.Mission mission, string compteRendu); //Déclaration de la signature du délégué pour ajouter une mission à la base de données
+    public delegate void AjouterMissionBD(UC_Mission.Mission mission, string compteRendu, DataTable enginsEnPanne); //Déclaration de la signature du délégué pour ajouter une mission à la base de données
+    public delegate DataTable GetEnginsMission(int idMission); //Déclaration de la signature du délégué pour récupérer les engins d'une mission
 
     public partial class TableauDeBord: UserControl
     {
@@ -31,6 +32,7 @@ namespace UC_TableauDeBord
 
         private List<UC_Mission.Mission> listMissions = new List<UC_Mission.Mission>(); //Liste des missions
         public AjouterMissionBD ajouterMissionBD; //Instance du délégué pour ajouter une mission à la base de données
+        public GetEnginsMission getEnginsMission; //Instance du délégué pour récupérer les engins d'une mission
         private bool switchCouleur = true; //Variable pour alterner les couleurs des missions
         private Color couleurSecondaire = Color.FromArgb(234,234,234);
 
@@ -84,17 +86,31 @@ namespace UC_TableauDeBord
 
         private void TerminerMission(object sender, EventArgs e, int idMission)
         {
-            frmTerminerMission frm = new frmTerminerMission(); //Création d'une nouvelle instance de la fenêtre de terminaison de mission
+            frmCompteRendu frm = new frmCompteRendu(); //Création d'une nouvelle instance de la fenêtre de terminaison de mission
             if (frm.ShowDialog() == DialogResult.OK) //Affichage de la fenêtre et gestion de la fermeture du formulaire
             {
                 UC_Mission.Mission mission = (UC_Mission.Mission)sender; //Récupération de la mission sélectionnée
                 mission.Terminer(); //La mission n'est plus en cours, ajout automatique de la date de fin à la mission sélectionnée
                 if (ajouterMissionBD != null) //Si le délégué n'est pas nul
                 {
-                    ajouterMissionBD(mission, frm.CompteRendu); //Appel du délégué pour ajouter la mission à la base de données
+                    DataTable enginsEnPanne = getEnginsEnPanne(idMission); //Récupération des engins en panne
+                    ajouterMissionBD(mission, frm.CompteRendu, enginsEnPanne); //Appel du délégué pour ajouter la mission à la base de données
                 }
                 DisplayMissions(); //Appel de la méthode pour afficher les missions
             }
+        }
+
+        private DataTable getEnginsEnPanne(int idMission)
+        {
+            DataTable enginsEnPanne = new DataTable(); //Création d'un DataTable pour stocker les engins en panne
+            frmPanneEngins frm = new frmPanneEngins(); //Création d'une nouvelle instance de la fenêtre de panne d'engins
+            frm.Remplir(getEnginsMission(idMission)); //Remplissage de la fenêtre avec les engins de la mission
+            if (frm.ShowDialog() == DialogResult.OK) //Affichage de la fenêtre et gestion de la fermeture du formulaire
+            {
+                //Récupération des engins sélectionnés dans le formulaire
+                enginsEnPanne = frm.getEnginsEnPanne(); //Appel de la méthode pour récupérer les engins en panne
+            }
+            return enginsEnPanne; //Retourne le DataTable
         }
 
         private void switchCouleurMission(UC_Mission.Mission mission)

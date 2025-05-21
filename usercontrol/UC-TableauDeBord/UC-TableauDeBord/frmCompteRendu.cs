@@ -10,9 +10,9 @@ using System.Windows.Forms;
 
 namespace UC_TableauDeBord
 {
-    public partial class frmTerminerMission: Form
+    public partial class frmCompteRendu: Form
     {
-        public frmTerminerMission()
+        public frmCompteRendu()
         {
             InitializeComponent();
         }
