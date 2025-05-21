@@ -30,6 +30,7 @@
         {
             this.lblVehicule = new System.Windows.Forms.Label();
             this.rectValue = new Polygon.Rectangle();
+            this.lblValue = new System.Windows.Forms.Label();
             this.SuspendLayout();
             // 
             // lblVehicule
@@ -46,9 +47,9 @@
             // rectValue
             // 
             this.rectValue.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(0)))), ((int)(((byte)(255)))), ((int)(((byte)(255)))), ((int)(((byte)(255)))));
-            this.rectValue.Location = new System.Drawing.Point(3, 2);
-            this.rectValue.m_BackGroundColor = System.Drawing.Color.Black;
-            this.rectValue.m_EdgeColor = System.Drawing.Color.Black;
+            this.rectValue.Location = new System.Drawing.Point(3, 57);
+            this.rectValue.m_BackGroundColor = System.Drawing.Color.Yellow;
+            this.rectValue.m_EdgeColor = System.Drawing.Color.Yellow;
             this.rectValue.m_EdgeSize = 2;
             this.rectValue.m_FontColor = System.Drawing.Color.White;
             this.rectValue.m_NBSommet = 4;
@@ -62,12 +63,27 @@
             this.rectValue.MouseEnter += new System.EventHandler(this.histogram_MouseEnter);
             this.rectValue.MouseLeave += new System.EventHandler(this.histogram_MouseLeave);
             // 
+            // lblValue
+            // 
+            this.lblValue.AutoSize = true;
+            this.lblValue.BackColor = System.Drawing.SystemColors.Control;
+            this.lblValue.Font = new System.Drawing.Font("Arial Narrow", 10.8F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.lblValue.ForeColor = System.Drawing.Color.Black;
+            this.lblValue.Location = new System.Drawing.Point(3, 19);
+            this.lblValue.Name = "lblValue";
+            this.lblValue.Size = new System.Drawing.Size(50, 22);
+            this.lblValue.TabIndex = 3;
+            this.lblValue.Text = "10000";
+            // 
             // histogram
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 16F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
+            this.BackColor = System.Drawing.Color.Red;
+            this.Controls.Add(this.lblValue);
             this.Controls.Add(this.rectValue);
             this.Controls.Add(this.lblVehicule);
+            this.ForeColor = System.Drawing.Color.White;
             this.Margin = new System.Windows.Forms.Padding(4);
             this.Name = "histogram";
             this.Size = new System.Drawing.Size(109, 256);
@@ -82,5 +98,6 @@
 
         private System.Windows.Forms.Label lblVehicule;
         private Polygon.Rectangle rectValue;
+        private System.Windows.Forms.Label lblValue;
     }
 }
