@@ -112,14 +112,14 @@
             this.pnlMostUsedEngin.Location = new System.Drawing.Point(24, 120);
             this.pnlMostUsedEngin.Margin = new System.Windows.Forms.Padding(2);
             this.pnlMostUsedEngin.Name = "pnlMostUsedEngin";
-            this.pnlMostUsedEngin.Size = new System.Drawing.Size(506, 424);
+            this.pnlMostUsedEngin.Size = new System.Drawing.Size(506, 475);
             this.pnlMostUsedEngin.TabIndex = 5;
             // 
             // flpLegende
             // 
             this.flpLegende.AutoScroll = true;
             this.flpLegende.Dock = System.Windows.Forms.DockStyle.Bottom;
-            this.flpLegende.Location = new System.Drawing.Point(0, 320);
+            this.flpLegende.Location = new System.Drawing.Point(0, 371);
             this.flpLegende.Name = "flpLegende";
             this.flpLegende.Size = new System.Drawing.Size(506, 104);
             this.flpLegende.TabIndex = 1;
@@ -130,7 +130,7 @@
             this.pnlCamembert.Dock = System.Windows.Forms.DockStyle.Top;
             this.pnlCamembert.Location = new System.Drawing.Point(0, 0);
             this.pnlCamembert.Name = "pnlCamembert";
-            this.pnlCamembert.Size = new System.Drawing.Size(506, 314);
+            this.pnlCamembert.Size = new System.Drawing.Size(506, 365);
             this.pnlCamembert.TabIndex = 0;
             // 
             // flpHistogram
