@@ -10,6 +10,9 @@ using System.Threading.Tasks;
 using System.Windows.Forms;
 using System.Data.SQLite;
 using UC_Statistique;
+using UC_Mission;
+using System.Net;
+using System.Reflection;
 
 
 namespace Sae25_Main_Form
@@ -30,7 +33,7 @@ namespace Sae25_Main_Form
         {
             con = Connexion.Connec; //Récupérer la connexion à la base de données
             monDs = MesDatas.DsGlobal; //Récupérer le DataSet global
-            try //Ouvrir la connexion à la base de données
+            try
             {
                 DataTable schemaTable = con.GetSchema("Tables"); //Récupérer le schéma de la base de données
                 foreach (DataRow row in schemaTable.Rows) //Parcourir les lignes du schéma
@@ -213,24 +216,40 @@ namespace Sae25_Main_Form
         {
             // Logique pour ajouter une mission à la base de données
             MessageBox.Show("Mission ajoutée à la base de données : Mission n°" + mission.MissionID + "\nCompte rendu: " + compteRendu); //Afficher un message de confirmation
-            /* Pseudo code pour insérer la mission dans la base de données
-            Début
-                Connexion à la base de données
-                AdresseMission = (récupération de l'adresse de la mission dans le DataSet local);
-                CodePostalMission = (récupération du code postal de la mission dans le DataSet local);
-                VilleMission = (récupération de la ville de la mission dans le DataSet local);
-                IdNatureSinistre = (récupération de l'id du sinistre dans le DataSet local);
-                IdCaserne = (récupération de l'id de la caserne de la mission dans le DataSet local);
-                Création d'une commande SQL pour insérer la mission:
-                "INSERT INTO Missions VALUES (mission.MissionID, mission.DateDebut, mission.DateFin, mission.MotifMission, AdresseMission, CodePostalMission, VilleMission, mission.EstEnCours, IdNatureSinistre, IdCaserne);"
-                Insertion de la mission dans la table des missions
-
-                Mettre à jour le statut "En panne" et "Em mission" de chaque engin faisant partie de la mission
-                
-                Mettre à jour le statut "En mission" de chaque pompier faisant partie de la mission
-                Supprimer la mission du dataset local
-            Fin
-            */
+            int idMission = mission.MissionID; //Récupérer l'ID de la mission
+            //Récupération des informations de la mission
+            DataRow drMission = monDs.Tables["Mission"].Select("id = " + idMission.ToString())[0]; //Récupérer la ligne de la mission dans le DataSet local
+            string AdresseMission = drMission["adresse"].ToString(); //Récupération de l'adresse de la mission dans le DataSet local
+            string CodePostalMission = drMission["cp"].ToString();//Récupération du code postal de la mission dans le DataSet local
+            string VilleMission = drMission["ville"].ToString(); //Récupération de la ville de la mission dans le DataSet local
+            int IdNatureSinistre = Convert.ToInt32(drMission["idNatureSinistre"]); //Récupération de l'id du sinistre dans le DataSet local
+            int IdCaserne = Convert.ToInt32(drMission["idCaserne"]); //Récupération de l'id de la caserne de la mission dans le DataSet local
+            //Echappement de l'apostrophe
+            mission.MotifMission = mission.MotifMission.Replace("'", " "); //Remplacer les apostrophes par des espaces
+            AdresseMission = AdresseMission.Replace("'", " "); //Remplacer les apostrophes par des espaces
+            compteRendu = compteRendu.Replace("'", " "); //Remplacer les apostrophes par des espaces
+            //Création d'une commande SQL pour insérer la mission:
+            try
+            {
+                string requete = "INSERT INTO Mission (id, dateHeureDepart, dateHeureRetour, motifAppel, adresse, cp, ville, terminee, compteRendu, idNatureSinistre, idCaserne)" +
+                    " VALUES " +
+                    "(" + idMission.ToString() + ",'" + mission.DateDebut + "','" + mission.DateFin + "','" + mission.MotifMission + "','" + AdresseMission + 
+                    "','" + CodePostalMission + "','" + VilleMission + "', 1,'" + compteRendu+ "'," + IdNatureSinistre.ToString() + "," + IdCaserne.ToString() + ");";
+                //Définir la commande SQL
+                MessageBox.Show(requete); //Afficher la requête SQL
+                SQLiteCommand cmd = new SQLiteCommand(requete, con);
+                //Insertion de la mission dans la table des missions
+                cmd.ExecuteNonQuery();
+            }
+            catch(Exception ex)
+            {
+                MessageBox.Show("Erreur lors de l'ajout de la mission à la base de données"); //Afficher un message d'erreur
+                MessageBox.Show(ex.ToString()); //Afficher l'erreur
+            }
+            //Mettre à jour le statut "En panne" et "En mission" de chaque engin faisant partie de la mission
+            
+            //Mettre à jour le statut "En mission" de chaque pompier faisant partie de la mission
+            //Supprimer la mission du dataset local
         }
     }
 }
