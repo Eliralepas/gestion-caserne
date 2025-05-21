@@ -44,6 +44,10 @@ namespace Sae25_Main_Form
                 }
             }
             catch { } //Gérer les exceptions
+            finally
+            {
+                con.Close();
+            }
 
             //Initialiser les boutons de navigation et définir leurs tags
             btn1.Tag = "tabBord";
@@ -62,6 +66,7 @@ namespace Sae25_Main_Form
 
         private void NavigationButtonClick(object sender, EventArgs e)
         {
+            con.Close();
             panelVolet.Visible = true; //Rendre le panneau de volet visible
             panelVolet.Controls.Clear(); //Vider le panneau de volet avant d'ajouter un nouveau contrôle
             switch (((UCButton)sender).Tag) //Vérifier le tag du bouton cliqué
@@ -99,6 +104,8 @@ namespace Sae25_Main_Form
         {
             if (tabStat == null) //Vérifier si le tableau de statistiques n'existe pas
             {
+                con = Connexion.Connec;
+                con.Open();
                 tabStat = new UCStatistique(con); //Instancier le volet de statistiques
                 tabStat.Dock = DockStyle.Fill;
             }

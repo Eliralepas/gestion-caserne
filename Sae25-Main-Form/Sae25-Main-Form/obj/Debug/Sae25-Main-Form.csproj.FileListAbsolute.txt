@@ -48,3 +48,4 @@ C:\Users\miaou\Desktop\SAE25\Sae25-Main-Form\Sae25-Main-Form\bin\Debug\Polygon.p
 C:\Users\Diego\Source\Repos\sae-caserne\Sae25-Main-Form\Sae25-Main-Form\bin\Debug\UCGestionEngins.dll
 C:\Users\Diego\Source\Repos\sae-caserne\Sae25-Main-Form\Sae25-Main-Form\bin\Debug\UC-PanneEngins.dll
 C:\Users\Diego\Source\Repos\sae-caserne\Sae25-Main-Form\Sae25-Main-Form\bin\Debug\UC-PanneEngins.pdb
+C:\Users\miaou\Desktop\SAE25\Sae25-Main-Form\Sae25-Main-Form\bin\Debug\UC-PanneEngins.dll
