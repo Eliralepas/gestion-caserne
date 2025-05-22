@@ -93,24 +93,24 @@ namespace UC_TableauDeBord
                 mission.Terminer(); //La mission n'est plus en cours, ajout automatique de la date de fin à la mission sélectionnée
                 if (ajouterMissionBD != null) //Si le délégué n'est pas nul
                 {
-                    DataTable enginsEnPanne = getEnginsEnPanne(idMission); //Récupération des engins en panne
-                    ajouterMissionBD(mission, frm.CompteRendu, enginsEnPanne); //Appel du délégué pour ajouter la mission à la base de données
+                    DataTable engins = getEngins(idMission); //Récupération des engins
+                    ajouterMissionBD(mission, frm.CompteRendu, engins); //Appel du délégué pour ajouter la mission à la base de données
                 }
                 DisplayMissions(); //Appel de la méthode pour afficher les missions
             }
         }
 
-        private DataTable getEnginsEnPanne(int idMission)
+        private DataTable getEngins(int idMission)
         {
-            DataTable enginsEnPanne = new DataTable(); //Création d'un DataTable pour stocker les engins en panne
+            DataTable engins = new DataTable(); //Création d'un DataTable pour stocker les engins de la mission
             frmPanneEngins frm = new frmPanneEngins(); //Création d'une nouvelle instance de la fenêtre de panne d'engins
             frm.Remplir(getEnginsMission(idMission)); //Remplissage de la fenêtre avec les engins de la mission
             if (frm.ShowDialog() == DialogResult.OK) //Affichage de la fenêtre et gestion de la fermeture du formulaire
             {
                 //Récupération des engins sélectionnés dans le formulaire
-                enginsEnPanne = frm.getEnginsEnPanne(); //Appel de la méthode pour récupérer les engins en panne
+                engins = frm.getEngins(); //Appel de la méthode pour récupérer les engins en panne
             }
-            return enginsEnPanne; //Retourne le DataTable
+            return engins; //Retourne le DataTable
         }
 
         private void switchCouleurMission(UC_Mission.Mission mission)

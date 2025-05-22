@@ -33,18 +33,16 @@ namespace UC_TableauDeBord
             }
         }
 
-        public DataTable getEnginsEnPanne()
+        public DataTable getEngins()
         {
             //Création d'un DataTable pour stocker les engins en panne
             DataTable dt = new DataTable();
-            dt.Columns.Add("Type", typeof(string)); //Ajout de la colonne type
-            dt.Columns.Add("Numero", typeof(int)); //Ajout de la colonne numero
+            dt.Columns.Add("Type", typeof(string));     //Ajout de la colonne type
+            dt.Columns.Add("Numero", typeof(int));      //Ajout de la colonne numero
+            dt.Columns.Add("EnPanne", typeof(bool));    //Ajout de la colonne en panne
             foreach (UC_PanneEngins.PanneEngins engin in panelEngins.Controls.OfType<UC_PanneEngins.PanneEngins>())
             {
-                if (engin.EnPanne)
-                {
-                    dt.Rows.Add(engin.Type, engin.Numero); //Ajout de la ligne avec le type et le numero de l'engin
-                }
+                dt.Rows.Add(engin.Type, engin.Numero, engin.EnPanne); //Ajout de la ligne avec le type, le numero et le statut en panne de l'engin
             }
             return dt; //Retourne le DataTable
         }
