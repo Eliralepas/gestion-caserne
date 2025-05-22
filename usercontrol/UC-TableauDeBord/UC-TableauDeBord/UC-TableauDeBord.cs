@@ -12,7 +12,7 @@ using UC_Mission;
 namespace UC_TableauDeBord
 {
 
-    public delegate void AjouterMissionBD(UC_Mission.Mission mission, string compteRendu, DataTable enginsEnPanne); //Déclaration de la signature du délégué pour ajouter une mission à la base de données
+    public delegate void AjouterMissionBD(Mission mission, string compteRendu, DataTable enginsEnPanne); //Déclaration de la signature du délégué pour ajouter une mission à la base de données
     public delegate DataTable GetEnginsMission(int idMission); //Déclaration de la signature du délégué pour récupérer les engins d'une mission
 
     public partial class TableauDeBord: UserControl
@@ -20,17 +20,17 @@ namespace UC_TableauDeBord
         public TableauDeBord()
         {
             InitializeComponent();
-            UC_Mission.Mission mission1 = new UC_Mission.Mission(1, "A", "Chépa", "Feur", DateTime.Now, DateTime.Now.AddDays(2));
-            UC_Mission.Mission mission2 = new UC_Mission.Mission(2, "B", "Chépa", "Feur", DateTime.Now);
-            UC_Mission.Mission mission3 = new UC_Mission.Mission(3, "C", "Chépa", "Feur", DateTime.Now);
-            UC_Mission.Mission mission4 = new UC_Mission.Mission(4, "D", "Chépa", "Feur", DateTime.Now);
+            Mission mission1 = new Mission(1, "A", "Chépa", "Feur", DateTime.Now, DateTime.Now.AddDays(2));
+            Mission mission2 = new Mission(2, "B", "Chépa", "Feur", DateTime.Now);
+            Mission mission3 = new Mission(3, "C", "Chépa", "Feur", DateTime.Now);
+            Mission mission4 = new Mission(4, "D", "Chépa", "Feur", DateTime.Now);
             AddMission(mission1);
             AddMission(mission2);
             AddMission(mission3);
             AddMission(mission4);
         }
 
-        private List<UC_Mission.Mission> listMissions = new List<UC_Mission.Mission>(); //Liste des missions
+        private List<Mission> listMissions = new List<Mission>(); //Liste des missions
         public AjouterMissionBD ajouterMissionBD; //Instance du délégué pour ajouter une mission à la base de données
         public GetEnginsMission getEnginsMission; //Instance du délégué pour récupérer les engins d'une mission
         private bool switchCouleur = true; //Variable pour alterner les couleurs des missions
@@ -41,7 +41,7 @@ namespace UC_TableauDeBord
             listMissions.Clear(); //Vider la liste avant de la remplir
             foreach (DataRow dr in dt.Rows)
             {
-                UC_Mission.Mission mission = new UC_Mission.Mission(dr); //Création d'une nouvelle mission à partir de la ligne du DataTable
+                Mission mission = new Mission(dr); //Création d'une nouvelle mission à partir de la ligne du DataTable
                 switchCouleurMission(mission); //Appel de la méthode pour alterner la couleur de la mission
                 mission.terminerMission += TerminerMission; //Ajout de l'événement pour terminer la mission
                 listMissions.Add(mission); //Ajout de la mission à la liste
@@ -49,7 +49,7 @@ namespace UC_TableauDeBord
             DisplayMissions(); //Appel de la méthode pour afficher les missions
         }
 
-        public void AddMission(UC_Mission.Mission mission)
+        public void AddMission(Mission mission)
         {
             listMissions.Add(mission); //Ajout de la mission à la liste
             switchCouleurMission(mission); //Appel de la méthode pour alterner la couleur de la mission
@@ -57,7 +57,7 @@ namespace UC_TableauDeBord
             DisplayMissions(); //Appel de la méthode pour afficher les missions
         }
 
-        public void RemoveMission(UC_Mission.Mission mission)
+        public void RemoveMission(Mission mission)
         {
             listMissions.Remove(mission); //Suppression de la mission de la liste
             DisplayMissions(); //Appel de la méthode pour afficher les missions
@@ -68,7 +68,7 @@ namespace UC_TableauDeBord
             panelMissions.Controls.Clear(); //Vider le panel avant d'ajouter les missions
             int top = 6; //Position en hauteur de la première mission
             int left = 30; //Position en largeur de la première mission
-            foreach (UC_Mission.Mission mission in listMissions)
+            foreach (Mission mission in listMissions)
             {
                 if (!ckbEnCours.Checked || (ckbEnCours.Checked && mission.EstEnCours)) //Si la checkbox n'est pas cochée, ou que la checkbox est cochée et que la mission est en cours : on affiche la mission
                 {
@@ -89,7 +89,7 @@ namespace UC_TableauDeBord
             frmCompteRendu frm = new frmCompteRendu(); //Création d'une nouvelle instance de la fenêtre de terminaison de mission
             if (frm.ShowDialog() == DialogResult.OK) //Affichage de la fenêtre et gestion de la fermeture du formulaire
             {
-                UC_Mission.Mission mission = (UC_Mission.Mission)sender; //Récupération de la mission sélectionnée
+                Mission mission = (Mission)sender; //Récupération de la mission sélectionnée
                 mission.Terminer(); //La mission n'est plus en cours, ajout automatique de la date de fin à la mission sélectionnée
                 if (ajouterMissionBD != null) //Si le délégué n'est pas nul
                 {
