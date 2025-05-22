@@ -1,20 +1,28 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.ComponentModel;
-using System.Drawing;
 using System.Data;
+using System.Drawing;
 using System.Linq;
+using System.Reflection;
 using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
 
 namespace UserControlMission
 {
-    public partial class UserControl1: UserControl
+    public partial class UC_MobilisationEnginPompier : UserControl
     {
-        public UserControl1()
+        public UC_MobilisationEnginPompier(DataTable dt)
         {
             InitializeComponent();
+            
         }
+
+        private void UC_MobilisationEnginPompier_Load(object sender, EventArgs e)
+        {
+
+        }
+
     }
 }
