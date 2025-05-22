@@ -70,6 +70,9 @@
     <Reference Include="UCGestionEngins">
       <HintPath>..\..\usercontrol\UCGestionEngins\UCGestionEngins\bin\Debug\UCGestionEngins.dll</HintPath>
     </Reference>
+    <Reference Include="UserControlMission">
+      <HintPath>..\..\usercontrol\UserControlMission\UserControlMission\bin\Debug\UserControlMission.dll</HintPath>
+    </Reference>
   </ItemGroup>
   <ItemGroup>
     <Compile Include="Connexion.cs" />

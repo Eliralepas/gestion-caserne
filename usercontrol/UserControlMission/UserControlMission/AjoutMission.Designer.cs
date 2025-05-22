@@ -48,10 +48,11 @@
             this.label2 = new System.Windows.Forms.Label();
             this.label1 = new System.Windows.Forms.Label();
             this.grpMob = new System.Windows.Forms.GroupBox();
-            this.panel2 = new System.Windows.Forms.Panel();
             this.panel3 = new System.Windows.Forms.Panel();
+            this.panel2 = new System.Windows.Forms.Panel();
             this.label3 = new System.Windows.Forms.Label();
             this.label4 = new System.Windows.Forms.Label();
+            this.btnNvMission = new System.Windows.Forms.Button();
             this.grpDecision.SuspendLayout();
             this.grpInfo.SuspendLayout();
             this.grpMob.SuspendLayout();
@@ -315,19 +316,19 @@
             this.grpMob.Text = "Mobilisation des engins et pompiers";
             this.grpMob.Visible = false;
             // 
-            // panel2
-            // 
-            this.panel2.Location = new System.Drawing.Point(498, 88);
-            this.panel2.Name = "panel2";
-            this.panel2.Size = new System.Drawing.Size(440, 216);
-            this.panel2.TabIndex = 18;
-            // 
             // panel3
             // 
             this.panel3.Location = new System.Drawing.Point(22, 88);
             this.panel3.Name = "panel3";
             this.panel3.Size = new System.Drawing.Size(440, 216);
             this.panel3.TabIndex = 19;
+            // 
+            // panel2
+            // 
+            this.panel2.Location = new System.Drawing.Point(498, 88);
+            this.panel2.Name = "panel2";
+            this.panel2.Size = new System.Drawing.Size(440, 216);
+            this.panel2.TabIndex = 18;
             // 
             // label3
             // 
@@ -351,11 +352,27 @@
             this.label4.TabIndex = 15;
             this.label4.Text = "Engins mobilisés";
             // 
+            // btnNvMission
+            // 
+            this.btnNvMission.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
+            | System.Windows.Forms.AnchorStyles.Left) 
+            | System.Windows.Forms.AnchorStyles.Right)));
+            this.btnNvMission.Location = new System.Drawing.Point(745, 969);
+            this.btnNvMission.Margin = new System.Windows.Forms.Padding(2, 3, 2, 3);
+            this.btnNvMission.Name = "btnNvMission";
+            this.btnNvMission.Size = new System.Drawing.Size(216, 36);
+            this.btnNvMission.TabIndex = 23;
+            this.btnNvMission.Text = "Nouvelle mission";
+            this.btnNvMission.UseVisualStyleBackColor = true;
+            this.btnNvMission.Visible = false;
+            this.btnNvMission.Click += new System.EventHandler(this.btnNvMission_Click);
+            // 
             // ucMission
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(11F, 23F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.BackColor = System.Drawing.Color.DarkRed;
+            this.Controls.Add(this.btnNvMission);
             this.Controls.Add(this.grpMob);
             this.Controls.Add(this.grpInfo);
             this.Controls.Add(this.btnValider);
@@ -403,5 +420,6 @@
         private System.Windows.Forms.Label label4;
         private System.Windows.Forms.Panel panel2;
         private System.Windows.Forms.Panel panel3;
+        private System.Windows.Forms.Button btnNvMission;
     }
 }

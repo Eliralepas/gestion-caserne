@@ -85,6 +85,13 @@ namespace UserControlMission
             else
             {
                 initialiser();
+                if (!(tryEngin(idSinistre, idCaserne))){
+                    MessageBox.Show("Il n'y a pas assez d'engins pour la mission.");
+                }
+                else
+                { 
+                    MessageBox.Show("Il n'y a pas assez de pompiers ayant les habilitations nécessaires pour cette mission.");
+                }
             }
 
             //UC gried view
@@ -94,6 +101,7 @@ namespace UserControlMission
             UC_MobilisationEnginPompier dgvEngin = new UC_MobilisationEnginPompier(dtEngin);
             //ajout dans le grp box
             grpMob.Controls.Add(dgvEngin);
+            btnNvMission.Visible = true;
 
         }
 
@@ -280,11 +288,11 @@ namespace UserControlMission
             foreach (DataRow engin in enginHab.Rows)
             {
                 int idHabilitation = Convert.ToInt32(engin["idHabilitation"]);
-                int nombre = Convert.ToInt32(engin["nombre"]);
+                // on veut minimum un pompier par engin (équipe incomplète)
                 int nbTrouve = 0;
                 foreach (int[] tab in listePompierNecessaire)
                 {
-                    if (tab[1] == idHabilitation && !listePompier.Contains(tab[1]) && nbTrouve < nombre)
+                    if (tab[1] == idHabilitation && !listePompier.Contains(tab[1]) && nbTrouve < 1)
                     {
                         nbTrouve++;
                         listePompier.Add(tab[1]);
@@ -410,6 +418,21 @@ namespace UserControlMission
             txtMotif.Text = String.Empty;
             cboCaserne.SelectedIndex = -1;
             cboNature.SelectedIndex = -1;
+        }
+
+        private void btnNvMission_Click(object sender, EventArgs e)
+        {
+            btnNvMission.Visible = false;
+            btnValider.Visible= true;
+            btnAnnuler.Visible = true;
+
+            initialiser();
+
+            nextId++;
+            date = DateTime.Now.ToString("yyyy-MM-dd HH:mm:ss");
+
+            lblNumMission.Text = "Mission n°" + nextId.ToString();
+            lblDate.Text = "déclenchée le : " + date;
         }
     }
 }
