@@ -10,9 +10,9 @@ using System.Windows.Forms;
 
 namespace UC_TableauDeBord
 {
-    public partial class frmTerminerMission: Form
+    public partial class frmCompteRendu: Form
     {
-        public frmTerminerMission()
+        public frmCompteRendu()
         {
             InitializeComponent();
         }
@@ -30,8 +30,8 @@ namespace UC_TableauDeBord
 
         private void btnValider_Click(object sender, EventArgs e)
         {
-            compteRendu = txtCompteRendu.Text; //Récupération du compte rendu
-            DialogResult = DialogResult.OK; //Fermer la fenêtre avec le résultat OK
+            compteRendu = txtCompteRendu.Text;  //Récupération du compte rendu
+            DialogResult = DialogResult.OK;     //Fermer la fenêtre avec le résultat OK
         }
 
         private void btnAnnuler_Click(object sender, EventArgs e)

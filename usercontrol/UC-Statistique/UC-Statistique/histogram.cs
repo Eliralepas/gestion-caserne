@@ -13,8 +13,6 @@ namespace UC_Statistique
         private int _baseHeight;
         private int _basetop;
         private bool leave = false;
-        private string libelleToolTip = "";
-
         public histogram()
         {
             InitializeComponent();
@@ -25,7 +23,6 @@ namespace UC_Statistique
             _nom = nom;
             _hour = hour;
             _max = max;
-            libelleToolTip = tooltip;
         }
 
         private void histogram_Load(object sender, EventArgs e)
@@ -33,12 +30,21 @@ namespace UC_Statistique
             if (this.Height <= 0 || _max <= 0) return;
 
             lblVehicule.Text = _nom;
-            lblVehicule.Top = this.Height - 20;
-            this.Width = lblVehicule.Width + 20;
+            lblVehicule.Top = this.Height - 30;
+            
+            
+
+            lblValue.Text = "Nombre : "+_hour.ToString();
+            lblValue.Top =+ 20;
+           
+
+
+            this.Width = lblVehicule.Width< lblValue.Width ? lblValue.Width+20:lblVehicule.Width+20;
+
             lblVehicule.Left = this.Width / 2 - lblVehicule.Width / 2 + 10;
+            lblValue.Left = this.Width / 2 - lblValue.Width / 2;
 
-
-            int availableHeight = this.Height -50- lblVehicule.Height;
+            int availableHeight = this.Height -50- lblVehicule.Height-lblValue.Height;
             rectValue.Height = (int)(availableHeight * (_hour / _max))>10? (int)(availableHeight * (_hour / _max)): (50-(int)_hour*2);
 
             _baseHeight = rectValue.Height;
@@ -46,13 +52,6 @@ namespace UC_Statistique
             rectValue.Left = this.Width / 2 - rectValue.Width / 2;
             rectValue.Top = this.Height - lblVehicule.Height - rectValue.Height - 20;
             _basetop = rectValue.Top;
-
-
-            ToolTip valueToolTip = new ToolTip();
-            valueToolTip.AutoPopDelay = 0;
-            valueToolTip.IsBalloon = true;
-            valueToolTip.SetToolTip(rectValue, libelleToolTip + _hour.ToString());
-
         }
 
         private void histogram_MouseEnter(object sender, EventArgs e)

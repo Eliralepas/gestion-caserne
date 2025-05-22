@@ -100,7 +100,7 @@ namespace UC_Mission
             set
             {
                 motifMission = "--> " + value;
-                lblMotifMission.Text = motifMission;
+                txtMotifMission.Text = motifMission;
             }
         }
 
@@ -146,6 +146,7 @@ namespace UC_Mission
             set
             {
                 panelMission.BackColor = value; //On change la couleur du panel
+                txtMotifMission.BackColor = value; //On change la couleur du fond du textbox
             }
         }
 

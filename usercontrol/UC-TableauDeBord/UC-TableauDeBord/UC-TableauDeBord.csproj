@@ -43,13 +43,22 @@
     <Reference Include="UC-Mission">
       <HintPath>..\..\UC-Mission\UC-Mission\bin\Debug\UC-Mission.dll</HintPath>
     </Reference>
+    <Reference Include="UC-PanneEngins">
+      <HintPath>..\..\UC-PanneEngins\UC-PanneEngins\bin\Debug\UC-PanneEngins.dll</HintPath>
+    </Reference>
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="frmTerminerMission.cs">
+    <Compile Include="frmCompteRendu.cs">
       <SubType>Form</SubType>
     </Compile>
-    <Compile Include="frmTerminerMission.Designer.cs">
-      <DependentUpon>frmTerminerMission.cs</DependentUpon>
+    <Compile Include="frmCompteRendu.Designer.cs">
+      <DependentUpon>frmCompteRendu.cs</DependentUpon>
+    </Compile>
+    <Compile Include="frmPanneEngins.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="frmPanneEngins.Designer.cs">
+      <DependentUpon>frmPanneEngins.cs</DependentUpon>
     </Compile>
     <Compile Include="Properties\Resources.Designer.cs">
       <AutoGen>True</AutoGen>
@@ -66,8 +75,11 @@
     <Service Include="{94E38DFF-614B-4cbd-B67C-F211BB35CE8B}" />
   </ItemGroup>
   <ItemGroup>
-    <EmbeddedResource Include="frmTerminerMission.resx">
-      <DependentUpon>frmTerminerMission.cs</DependentUpon>
+    <EmbeddedResource Include="frmCompteRendu.resx">
+      <DependentUpon>frmCompteRendu.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="frmPanneEngins.resx">
+      <DependentUpon>frmPanneEngins.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="Properties\Resources.resx">
       <Generator>ResXFileCodeGenerator</Generator>
