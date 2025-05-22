@@ -13,6 +13,7 @@ using UC_Statistique;
 using UC_Mission;
 using System.Net;
 using System.Reflection;
+using UCGestionEngins;
 
 
 namespace Sae25_Main_Form
@@ -114,7 +115,7 @@ namespace Sae25_Main_Form
 
         private void LoadEngins()
         {
-            UCGestionEngins.UCGestionEngin uc = new UCGestionEngins.UCGestionEngin(monDs);
+            UCGestionEngin uc = new UCGestionEngin(monDs);
             uc.Dock = DockStyle.Fill;
 
             panelVolet.Controls.Add(uc);
@@ -219,44 +220,94 @@ namespace Sae25_Main_Form
             return null; //Retourner null si le DataSet est vide
         }
 
-        private void AjouterMissionBD(UC_Mission.Mission mission, string compteRendu, DataTable enginsEnPanne)
+        private void AjouterMissionBD(Mission mission, string compteRendu, DataTable engins)
         {
-            // Logique pour ajouter une mission à la base de données
-            MessageBox.Show("Mission ajoutée à la base de données : Mission n°" + mission.MissionID + "\nCompte rendu: " + compteRendu); //Afficher un message de confirmation
+            string requete = ""; //Initialiser la requête SQL
             int idMission = mission.MissionID; //Récupérer l'ID de la mission
-            //Récupération des informations de la mission
-            DataRow drMission = monDs.Tables["Mission"].Select("id = " + idMission.ToString())[0]; //Récupérer la ligne de la mission dans le DataSet local
-            string AdresseMission = drMission["adresse"].ToString(); //Récupération de l'adresse de la mission dans le DataSet local
-            string CodePostalMission = drMission["cp"].ToString();//Récupération du code postal de la mission dans le DataSet local
-            string VilleMission = drMission["ville"].ToString(); //Récupération de la ville de la mission dans le DataSet local
-            int IdNatureSinistre = Convert.ToInt32(drMission["idNatureSinistre"]); //Récupération de l'id du sinistre dans le DataSet local
-            int IdCaserne = Convert.ToInt32(drMission["idCaserne"]); //Récupération de l'id de la caserne de la mission dans le DataSet local
-            //Echappement de l'apostrophe
-            mission.MotifMission = mission.MotifMission.Replace("'", " "); //Remplacer les apostrophes par des espaces
-            AdresseMission = AdresseMission.Replace("'", " "); //Remplacer les apostrophes par des espaces
-            compteRendu = compteRendu.Replace("'", " "); //Remplacer les apostrophes par des espaces
-            //Création d'une commande SQL pour insérer la mission:
+            //Vérifier si la mission existe déjà
+            if (monDs.Tables["Mission"].Select("id = " + idMission.ToString()).Length > 0)
+            {
+                requete = UpdateMission(mission, compteRendu); //Appeler la méthode de mise à jour de mission
+            }
+            else 
+            {
+                requete = InsertionMission(mission, compteRendu); //Appeler la méthode d'insertion de mission
+            }
             try
             {
-                string requete = "INSERT INTO Mission (id, dateHeureDepart, dateHeureRetour, motifAppel, adresse, cp, ville, terminee, compteRendu, idNatureSinistre, idCaserne)" +
-                    " VALUES " +
-                    "(" + idMission.ToString() + ",'" + mission.DateDebut + "','" + mission.DateFin + "','" + mission.MotifMission + "','" + AdresseMission + 
-                    "','" + CodePostalMission + "','" + VilleMission + "', 1,'" + compteRendu+ "'," + IdNatureSinistre.ToString() + "," + IdCaserne.ToString() + ");";
-                //Définir la commande SQL
-                MessageBox.Show(requete); //Afficher la requête SQL
-                SQLiteCommand cmd = new SQLiteCommand(requete, con);
-                //Insertion de la mission dans la table des missions
-                cmd.ExecuteNonQuery();
+                con.Open();                                                     //Ouvrir la connexion à la base de données
+                SQLiteCommand cmdMission = new SQLiteCommand(requete, con);     //Définir la commande SQL
+                MessageBox.Show(requete);                                       //Afficher la requête SQL                                                                      
+                cmdMission.ExecuteNonQuery();                                   //Insertion de la mission dans la table des missions
+                //Récupérer la commande pour mettre à jour le statut "En panne" et "En mission" de chaque engin faisant partie de la mission
+                UpdateStatutEnginsMission(idMission, engins);
+                //Mettre à jour le statut "En mission" de chaque pompier faisant partie de la mission
+                UpdateStatutPompiersMission(idMission);
+                con.Close();                                                    //Fermer la connexion à la base de données
             }
-            catch(Exception ex)
+            catch (Exception ex)
             {
-                MessageBox.Show("Erreur lors de l'ajout de la mission à la base de données"); //Afficher un message d'erreur
+                MessageBox.Show("Erreur lors de l'ajout ou de la mise à jour de la mission dans la base de données"); //Afficher un message d'erreur
                 MessageBox.Show(ex.ToString()); //Afficher l'erreur
             }
+        }
+
+        private string InsertionMission(Mission mission, string compteRendu)
+        {
+            // Logique pour ajouter une mission à la base de données
+            int idMission = mission.MissionID; //Récupérer l'ID de la mission
+            MessageBox.Show("Mission ajoutée à la base de données : Mission n°" + idMission + "\nCompte rendu: " + compteRendu); //Afficher un message de confirmation
+            //Récupération des informations de la mission
+            DataRow drMission = monDs.Tables["Mission"].Select("id = " + idMission.ToString())[0];  //Récupérer la ligne de la mission dans le DataSet local
+            string AdresseMission = drMission["adresse"].ToString();                                //Récupération de l'adresse de la mission dans le DataSet local
+            string CodePostalMission = drMission["cp"].ToString();                                  //Récupération du code postal de la mission dans le DataSet local
+            string VilleMission = drMission["ville"].ToString();                                    //Récupération de la ville de la mission dans le DataSet local
+            int IdNatureSinistre = Convert.ToInt32(drMission["idNatureSinistre"]);                  //Récupération de l'id du sinistre dans le DataSet local
+            int IdCaserne = Convert.ToInt32(drMission["idCaserne"]);                                //Récupération de l'id de la caserne de la mission dans le DataSet local
+            //Echappement de l'apostrophe
+            mission.MotifMission = mission.MotifMission.Replace("'", " ");  //Remplacer les apostrophes par des espaces
+            AdresseMission = AdresseMission.Replace("'", " ");              //Remplacer les apostrophes par des espaces
+            compteRendu = compteRendu.Replace("'", " ");                    //Remplacer les apostrophes par des espaces
+
+            //Renvoyer la requête SQL pour insérer la mission
+            return "INSERT INTO Mission (id, dateHeureDepart, dateHeureRetour, motifAppel, adresse, cp, ville, terminee, compteRendu, idNatureSinistre, idCaserne)" +
+                " VALUES " +
+                "(" + idMission.ToString() + ",'" + mission.DateDebut + "','" + mission.DateFin + "','" + mission.MotifMission + "','" + AdresseMission +
+                "','" + CodePostalMission + "','" + VilleMission + "', 1,'" + compteRendu + "'," + IdNatureSinistre.ToString() + "," + IdCaserne.ToString() + ");";
+        }
+
+        private string UpdateMission(Mission mission, string compteRendu)
+        {
+            MessageBox.Show("La mission existe déjà dans la base de données"); //Afficher le message
+            //Renvoyer la requête SQL pour mettre à jour la mission
+            return "UPDATE Mission SET dateHeureRetour = '" + mission.DateFin + "', terminee = 1, compteRendu = '" + compteRendu + "' " +
+                    "WHERE id = " + mission.MissionID.ToString() + ";"; 
+        }
+
+        private void UpdateStatutEnginsMission(int idMission, DataTable engins)
+        {
             //Mettre à jour le statut "En panne" et "En mission" de chaque engin faisant partie de la mission
-            
+            foreach(DataRow row in engins.Rows) {
+                string codeTypeEngin = row["Type"].ToString();  //Récupérer le code type de l'engin
+                int numero = Convert.ToInt32(row["Numero"]);    //Récupérer le numero de l'engin
+                int enPanne = Convert.ToInt32(row["enPanne"]);  //Récupérer le statut "En panne" de l'engin
+                SQLiteCommand cmdEngin = new SQLiteCommand("UPDATE Engin SET enPanne = " + enPanne + ", enMission = 0 WHERE codeTypeEngin = " + codeTypeEngin + " AND numero = " + numero + ";", con);
+                cmdEngin.ExecuteNonQuery(); //Exécuter la commande SQL
+            }
+        }
+
+        private void UpdateStatutPompiersMission(int idMission)
+        {
             //Mettre à jour le statut "En mission" de chaque pompier faisant partie de la mission
-            //Supprimer la mission du dataset local
+            foreach(DataRow row in monDs.Tables["Mobiliser"].Rows) //Parcourir les lignes de la table "Mobiliser"
+            {
+                if (Convert.ToInt32(row["idMission"]) == idMission) //Vérifier si l'ID de la mission correspond
+                {
+                    int matriculePompier = Convert.ToInt32(row["matriculePompier"]); //Récupérer le matricule du pompier
+                    SQLiteCommand cmdPompier = new SQLiteCommand("UPDATE Pompier SET enMission = 0 WHERE matricule = " + matriculePompier + ";", con);
+                    cmdPompier.ExecuteNonQuery(); //Exécuter la commande SQL
+                }
+            }
         }
     }
 }
