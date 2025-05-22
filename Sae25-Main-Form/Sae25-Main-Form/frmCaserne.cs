@@ -67,7 +67,10 @@ namespace Sae25_Main_Form
 
         private void NavigationButtonClick(object sender, EventArgs e)
         {
-            con.Close();
+            if(con.State == ConnectionState.Open) //Vérifier si la connexion est ouverte
+            {
+                con.Close(); //Fermer la connexion
+            }
             panelVolet.Visible = true;          //Rendre le panneau de volet visible
             panelVolet.Controls.Clear();        //Vider le panneau de volet avant d'ajouter un nouveau contrôle
             switch (((UCButton)sender).Tag)     //Vérifier le tag du bouton cliqué

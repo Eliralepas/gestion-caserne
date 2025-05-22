@@ -26,7 +26,7 @@ namespace UC_TableauDeBord
             int left = 30;  //Position en largeur de l'élément
             foreach (DataRow dr in dt.Rows)
             {
-                UC_PanneEngins.PanneEngins engin = new UC_PanneEngins.PanneEngins(dr); //Création d'un nouveau user control PanneEngin à partir de la ligne du DataTable
+                PanneEngins engin = new PanneEngins(dr); //Création d'un nouveau user control PanneEngin à partir de la ligne du DataTable
                 engin.Location = new Point(left, top);  //Position de la mission
                 top += engin.Height + 10;               //Espace entre les missions
                 panelEngins.Controls.Add(engin);        //Ajout de chaque engin à la liste
@@ -40,7 +40,7 @@ namespace UC_TableauDeBord
             dt.Columns.Add("Type", typeof(string));     //Ajout de la colonne type
             dt.Columns.Add("Numero", typeof(int));      //Ajout de la colonne numero
             dt.Columns.Add("EnPanne", typeof(bool));    //Ajout de la colonne en panne
-            foreach (UC_PanneEngins.PanneEngins engin in panelEngins.Controls.OfType<UC_PanneEngins.PanneEngins>())
+            foreach (PanneEngins engin in panelEngins.Controls.OfType<PanneEngins>())
             {
                 dt.Rows.Add(engin.Type, engin.Numero, engin.EnPanne); //Ajout de la ligne avec le type, le numero et le statut en panne de l'engin
             }

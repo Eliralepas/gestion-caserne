@@ -20,14 +20,6 @@ namespace UC_TableauDeBord
         public TableauDeBord()
         {
             InitializeComponent();
-            Mission mission1 = new Mission(1, "A", "Chépa", "Feur", DateTime.Now, DateTime.Now.AddDays(2));
-            Mission mission2 = new Mission(2, "B", "Chépa", "Feur", DateTime.Now);
-            Mission mission3 = new Mission(3, "C", "Chépa", "Feur", DateTime.Now);
-            Mission mission4 = new Mission(4, "D", "Chépa", "Feur", DateTime.Now);
-            AddMission(mission1);
-            AddMission(mission2);
-            AddMission(mission3);
-            AddMission(mission4);
         }
 
         private List<Mission> listMissions = new List<Mission>();       //Liste des missions
@@ -113,7 +105,7 @@ namespace UC_TableauDeBord
             return engins; //Retourne le DataTable
         }
 
-        private void switchCouleurMission(UC_Mission.Mission mission)
+        private void switchCouleurMission(Mission mission)
         {
             switchCouleur = !switchCouleur; //Alterner la couleur
             if (switchCouleur)

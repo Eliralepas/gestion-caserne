@@ -28,29 +28,19 @@
         /// </summary>
         private void InitializeComponent()
         {
-            this.picBox = new System.Windows.Forms.PictureBox();
             this.lblMissionId = new System.Windows.Forms.Label();
             this.lblDateDebut = new System.Windows.Forms.Label();
             this.lblNatureMission = new System.Windows.Forms.Label();
-            this.lblMotifMission = new System.Windows.Forms.Label();
             this.lblCaserne = new System.Windows.Forms.Label();
             this.panelMission = new System.Windows.Forms.Panel();
             this.lblDateFin = new System.Windows.Forms.Label();
-            this.btnTerminerMission = new System.Windows.Forms.Button();
             this.btnCreerPdf = new System.Windows.Forms.Button();
-            ((System.ComponentModel.ISupportInitialize)(this.picBox)).BeginInit();
+            this.btnTerminerMission = new System.Windows.Forms.Button();
+            this.picBox = new System.Windows.Forms.PictureBox();
+            this.txtMotifMission = new System.Windows.Forms.RichTextBox();
             this.panelMission.SuspendLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.picBox)).BeginInit();
             this.SuspendLayout();
-            // 
-            // picBox
-            // 
-            this.picBox.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
-            this.picBox.Location = new System.Drawing.Point(20, 25);
-            this.picBox.Margin = new System.Windows.Forms.Padding(2);
-            this.picBox.Name = "picBox";
-            this.picBox.Size = new System.Drawing.Size(100, 100);
-            this.picBox.TabIndex = 0;
-            this.picBox.TabStop = false;
             // 
             // lblMissionId
             // 
@@ -83,16 +73,6 @@
             this.lblNatureMission.TabIndex = 4;
             this.lblNatureMission.Text = "Nature de la mission ";
             // 
-            // lblMotifMission
-            // 
-            this.lblMotifMission.AutoSize = true;
-            this.lblMotifMission.Location = new System.Drawing.Point(431, 73);
-            this.lblMotifMission.Margin = new System.Windows.Forms.Padding(2, 0, 2, 0);
-            this.lblMotifMission.Name = "lblMotifMission";
-            this.lblMotifMission.Size = new System.Drawing.Size(206, 23);
-            this.lblMotifMission.TabIndex = 5;
-            this.lblMotifMission.Text = "--> Motif de la mission";
-            // 
             // lblCaserne
             // 
             this.lblCaserne.AutoSize = true;
@@ -107,8 +87,8 @@
             // 
             this.panelMission.BackColor = System.Drawing.Color.White;
             this.panelMission.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
+            this.panelMission.Controls.Add(this.txtMotifMission);
             this.panelMission.Controls.Add(this.lblDateFin);
-            this.panelMission.Controls.Add(this.lblMotifMission);
             this.panelMission.Controls.Add(this.picBox);
             this.panelMission.Controls.Add(this.lblMissionId);
             this.panelMission.Controls.Add(this.lblNatureMission);
@@ -129,25 +109,52 @@
             this.lblDateFin.TabIndex = 6;
             this.lblDateFin.Text = "Fin le        :  ";
             // 
-            // btnTerminerMission
-            // 
-            this.btnTerminerMission.Location = new System.Drawing.Point(825, 6);
-            this.btnTerminerMission.Name = "btnTerminerMission";
-            this.btnTerminerMission.Size = new System.Drawing.Size(65, 65);
-            this.btnTerminerMission.TabIndex = 7;
-            this.btnTerminerMission.Text = "Terminer";
-            this.btnTerminerMission.UseVisualStyleBackColor = true;
-            this.btnTerminerMission.Click += new System.EventHandler(this.btnTerminerMission_Click);
-            // 
             // btnCreerPdf
             // 
+            this.btnCreerPdf.BackgroundImage = global::UC_Mission.Properties.Resources.imagePDF;
+            this.btnCreerPdf.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Stretch;
             this.btnCreerPdf.Location = new System.Drawing.Point(825, 74);
             this.btnCreerPdf.Name = "btnCreerPdf";
             this.btnCreerPdf.Size = new System.Drawing.Size(65, 65);
             this.btnCreerPdf.TabIndex = 8;
-            this.btnCreerPdf.Text = "PDF";
             this.btnCreerPdf.UseVisualStyleBackColor = true;
             this.btnCreerPdf.Click += new System.EventHandler(this.btnCreerPdf_Click);
+            // 
+            // btnTerminerMission
+            // 
+            this.btnTerminerMission.BackgroundImage = global::UC_Mission.Properties.Resources.imageValider;
+            this.btnTerminerMission.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Stretch;
+            this.btnTerminerMission.Location = new System.Drawing.Point(825, 6);
+            this.btnTerminerMission.Name = "btnTerminerMission";
+            this.btnTerminerMission.Size = new System.Drawing.Size(65, 65);
+            this.btnTerminerMission.TabIndex = 7;
+            this.btnTerminerMission.UseVisualStyleBackColor = true;
+            this.btnTerminerMission.Click += new System.EventHandler(this.btnTerminerMission_Click);
+            // 
+            // picBox
+            // 
+            this.picBox.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
+            this.picBox.Image = global::UC_Mission.Properties.Resources.imageSirene;
+            this.picBox.Location = new System.Drawing.Point(20, 25);
+            this.picBox.Margin = new System.Windows.Forms.Padding(2);
+            this.picBox.Name = "picBox";
+            this.picBox.Size = new System.Drawing.Size(100, 100);
+            this.picBox.SizeMode = System.Windows.Forms.PictureBoxSizeMode.StretchImage;
+            this.picBox.TabIndex = 0;
+            this.picBox.TabStop = false;
+            // 
+            // txtMotifMission
+            // 
+            this.txtMotifMission.BackColor = System.Drawing.Color.White;
+            this.txtMotifMission.BorderStyle = System.Windows.Forms.BorderStyle.None;
+            this.txtMotifMission.ForeColor = System.Drawing.Color.DarkRed;
+            this.txtMotifMission.Location = new System.Drawing.Point(432, 51);
+            this.txtMotifMission.Name = "txtMotifMission";
+            this.txtMotifMission.ReadOnly = true;
+            this.txtMotifMission.ShortcutsEnabled = false;
+            this.txtMotifMission.Size = new System.Drawing.Size(329, 87);
+            this.txtMotifMission.TabIndex = 8;
+            this.txtMotifMission.Text = "--> Motif de la mission";
             // 
             // Mission
             // 
@@ -160,9 +167,9 @@
             this.Margin = new System.Windows.Forms.Padding(5, 6, 5, 6);
             this.Name = "Mission";
             this.Size = new System.Drawing.Size(900, 150);
-            ((System.ComponentModel.ISupportInitialize)(this.picBox)).EndInit();
             this.panelMission.ResumeLayout(false);
             this.panelMission.PerformLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.picBox)).EndInit();
             this.ResumeLayout(false);
 
         }
@@ -173,11 +180,11 @@
         private System.Windows.Forms.Label lblMissionId;
         private System.Windows.Forms.Label lblDateDebut;
         private System.Windows.Forms.Label lblNatureMission;
-        private System.Windows.Forms.Label lblMotifMission;
         private System.Windows.Forms.Label lblCaserne;
         private System.Windows.Forms.Panel panelMission;
         private System.Windows.Forms.Button btnTerminerMission;
         private System.Windows.Forms.Label lblDateFin;
         private System.Windows.Forms.Button btnCreerPdf;
+        private System.Windows.Forms.RichTextBox txtMotifMission;
     }
 }
