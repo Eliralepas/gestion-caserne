@@ -32,16 +32,16 @@ namespace Sae25_Main_Form
 
         private void frmCaserne_Load(object sender, EventArgs e)
         {
-            con = Connexion.Connec; //Récupérer la connexion à la base de données
-            monDs = MesDatas.DsGlobal; //Récupérer le DataSet global
+            con = Connexion.Connec;     //Récupérer la connexion à la base de données
+            monDs = MesDatas.DsGlobal;  //Récupérer le DataSet global
             try
             {
-                DataTable schemaTable = con.GetSchema("Tables"); //Récupérer le schéma de la base de données
-                foreach (DataRow row in schemaTable.Rows) //Parcourir les lignes du schéma
+                DataTable schemaTable = con.GetSchema("Tables");    //Récupérer le schéma de la base de données
+                foreach (DataRow row in schemaTable.Rows)           //Parcourir les lignes du schéma
                 {
-                    string nomTable = row[2].ToString(); //Récupérer le nom de la table
-                    SQLiteDataAdapter da = new SQLiteDataAdapter("Select * From " + nomTable, con); //Créer un adaptateur de données
-                    da.Fill(monDs, nomTable); //Remplir le DataSet avec les données de la table
+                    string nomTable = row[2].ToString();                                                //Récupérer le nom de la table
+                    SQLiteDataAdapter da = new SQLiteDataAdapter("Select * From " + nomTable, con);     //Créer un adaptateur de données
+                    da.Fill(monDs, nomTable);                                                           //Remplir le DataSet avec les données de la table
                 }
             }
             catch { } //Gérer les exceptions
@@ -58,19 +58,19 @@ namespace Sae25_Main_Form
             btn4.Tag = "dummy";
             btn5.Tag = "tabStat";
 
-            foreach (UCButton btn in panelNavigation.Controls.OfType<UCButton>()) //Lier les boutons de navigation
+            foreach (UCButton btn in panelNavigation.Controls.OfType<UCButton>())   //Lier les boutons de navigation
             {
-                btn.ButtonClicked += NavigationButtonClick; //Lier l'événement de clic du bouton
+                btn.ButtonClicked += NavigationButtonClick;                         //Lier l'événement de clic du bouton
             }
-            panelVolet.Visible = false; //Rendre le panneau de volet invisible au départ
+            panelVolet.Visible = false;                                             //Rendre le panneau de volet invisible au départ
         }
 
         private void NavigationButtonClick(object sender, EventArgs e)
         {
             con.Close();
-            panelVolet.Visible = true; //Rendre le panneau de volet visible
-            panelVolet.Controls.Clear(); //Vider le panneau de volet avant d'ajouter un nouveau contrôle
-            switch (((UCButton)sender).Tag) //Vérifier le tag du bouton cliqué
+            panelVolet.Visible = true;          //Rendre le panneau de volet visible
+            panelVolet.Controls.Clear();        //Vider le panneau de volet avant d'ajouter un nouveau contrôle
+            switch (((UCButton)sender).Tag)     //Vérifier le tag du bouton cliqué
             {
                 case ("tabBord"):
                     LoadTableauDeBord();
@@ -83,19 +83,17 @@ namespace Sae25_Main_Form
                     break;
                 
             }
-            //*faire la logique de clique une fois que on a tout les volet
-
         }
 
         private void LoadTableauDeBord()
         {
             if (tableauDeBord == null) //Si le tableau de bord n'existe pas
             {
-                tableauDeBord = new UC_TableauDeBord.TableauDeBord(); //Instancier le volet de tableau de bord
-                tableauDeBord.ajouterMissionBD = AjouterMissionBD; //Lier la méthode d'ajout de mission à la base de données
-                tableauDeBord.getEnginsMission = getEnginsMission; //Lier la méthode de récupération des engins de la mission
-                DataTable dtMissions = CreerTableMission(); //Créer une table de missions au bon format
-                RemplirTableMission(dtMissions); //Remplir la table de missions
+                tableauDeBord = new UC_TableauDeBord.TableauDeBord();   //Instancier le volet de tableau de bord
+                tableauDeBord.ajouterMissionBD = AjouterMissionBD;      //Lier la méthode d'ajout de mission à la base de données
+                tableauDeBord.getEnginsMission = getEnginsMission;      //Lier la méthode de récupération des engins de la mission
+                DataTable dtMissions = CreerTableMission();             //Créer une table de missions au bon format
+                RemplirTableMission(dtMissions);                        //Remplir la table de missions
                 tableauDeBord.LoadMissions(dtMissions);
             }
             panelVolet.Controls.Add(tableauDeBord); //Ajouter le tableau de bord au panneau
@@ -107,10 +105,10 @@ namespace Sae25_Main_Form
             {
                 con = Connexion.Connec;
                 con.Open();
-                tabStat = new UCStatistique(con); //Instancier le volet de statistiques
+                tabStat = new UCStatistique(con);   //Instancier le volet de statistiques
                 tabStat.Dock = DockStyle.Fill;
             }
-            panelVolet.Controls.Add(tabStat); //Ajouter le tableau de statistiques au panneau
+            panelVolet.Controls.Add(tabStat);       //Ajouter le tableau de statistiques au panneau
         }
 
         private void LoadEngins()
@@ -126,15 +124,15 @@ namespace Sae25_Main_Form
         {
             if (monDs != null)
             {
-                DataTable dtMissions = new DataTable(); //Créer une nouvelle table de données
+                DataTable dtMissions = new DataTable();         //Créer une nouvelle table de données
                 for(int i = 0; i < 7; i++)
                 {
-                    DataColumn column = new DataColumn(); //Créer une nouvelle colonne
+                    DataColumn column = new DataColumn();       //Créer une nouvelle colonne
                     switch (i)
                     {
                         case 0:
-                            column.ColumnName = "MissionID"; //Nom de la colonne
-                            column.DataType = typeof(int); //Type de données
+                            column.ColumnName = "MissionID";    //Nom de la colonne
+                            column.DataType = typeof(int);      //Type de données
                             break;
                         case 1:
                             column.ColumnName = "Caserne";
@@ -172,10 +170,10 @@ namespace Sae25_Main_Form
         {
             if (monDs != null)
             {
-                DataTable dt = monDs.Tables["Mission"]; //Récupérer la table des missions
-                foreach (DataRow row in dt.Rows) //Parcourir les lignes de la table
+                DataTable dt = monDs.Tables["Mission"];     //Récupérer la table des missions
+                foreach (DataRow row in dt.Rows)            //Parcourir les lignes de la table
                 {
-                    DataRow newRow = dtMissions.NewRow(); //Créer une nouvelle ligne
+                    DataRow newRow = dtMissions.NewRow();   //Créer une nouvelle ligne
                     //Récupérer l'ID de la mission
                     newRow["MissionID"] = Convert.ToInt32(row["id"]); 
                     //Récupérer le nom de la caserne
@@ -187,9 +185,9 @@ namespace Sae25_Main_Form
                     //Récupérer la date de début
                     newRow["DateDebut"] = DateTime.Parse(row["dateHeureDepart"].ToString());
                     //Récupérer la date de fin
-                    if (row["dateHeureRetour"] == DBNull.Value) //Vérifier si la date de retour est nulle
+                    if (row["dateHeureRetour"] == DBNull.Value)     //Vérifier si la date de retour est nulle
                     {
-                        newRow["DateFin"] = DBNull.Value; //Mettre la date de fin à null
+                        newRow["DateFin"] = DBNull.Value;           //Mettre la date de fin à null
                     }
                     else
                     {
@@ -206,13 +204,13 @@ namespace Sae25_Main_Form
         {
             if (monDs != null)
             {
-                DataTable dt = monDs.Tables["PartirAvec"]; //Récupérer la table des engins
-                DataTable dtEnginsMission = dt.Clone(); //Cloner la structure de la table des engins
-                foreach (DataRow row in dt.Rows) //Parcourir les lignes de la table des engins
+                DataTable dt = monDs.Tables["PartirAvec"];              //Récupérer la table des engins
+                DataTable dtEnginsMission = dt.Clone();                 //Cloner la structure de la table des engins
+                foreach (DataRow row in dt.Rows)                        //Parcourir les lignes de la table des engins
                 {
                     if (Convert.ToInt32(row["idMission"]) == idMission) //Vérifier si l'ID de la mission correspond
                     {
-                        dtEnginsMission.ImportRow(row); //Importer la ligne dans la nouvelle table
+                        dtEnginsMission.ImportRow(row);                 //Importer la ligne dans la nouvelle table
                     }
                 }
                 return dtEnginsMission; //Retourner la table des engins de la mission
@@ -222,16 +220,16 @@ namespace Sae25_Main_Form
 
         private void AjouterMissionBD(Mission mission, string compteRendu, DataTable engins)
         {
-            string requete = ""; //Initialiser la requête SQL
-            int idMission = mission.MissionID; //Récupérer l'ID de la mission
+            string requete = "";                //Initialiser la requête SQL
+            int idMission = mission.MissionID;  //Récupérer l'ID de la mission
             //Vérifier si la mission existe déjà
             if (monDs.Tables["Mission"].Select("id = " + idMission.ToString()).Length > 0)
             {
-                requete = UpdateMission(mission, compteRendu); //Appeler la méthode de mise à jour de mission
+                requete = UpdateMission(mission, compteRendu);      //Appeler la méthode de mise à jour de mission
             }
             else 
             {
-                requete = InsertionMission(mission, compteRendu); //Appeler la méthode d'insertion de mission
+                requete = InsertionMission(mission, compteRendu);   //Appeler la méthode d'insertion de mission
             }
             try
             {
