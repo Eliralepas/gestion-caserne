@@ -23,6 +23,8 @@ namespace UserControlMission
         DataSet monDs;
         int nextId = 0;
         String date;
+        List<int[]> pompIdHab;
+        DataTable dtEngin;
 
         public ucMission(DataSet ds)
         {
@@ -78,6 +80,7 @@ namespace UserControlMission
             {
                 remplirMission();
                 remplissageEngin(idSinistre, idCaserne);
+                remplissagePompier(idCaserne, enginNecessaire);
             }
             else
             {
@@ -110,27 +113,6 @@ namespace UserControlMission
                 dtEngins.Rows.Add(typeEngin, nombre);
             }
             return dtEngins;
-        }
-
-        // Stockage des types des diff habilitations nécessaires à la mission en fonction de l'engin
-        private DataTable habilitationNecessaire(DataTable enginNecessaire)
-        {
-            DataTable habilitationNecessaire = new DataTable();
-            habilitationNecessaire.Columns.Add("TypeEngin");
-            habilitationNecessaire.Columns.Add("idHab", typeof(int));
-            habilitationNecessaire.Columns.Add("nombre", typeof(int));
-            foreach (DataRow dr in enginNecessaire.Rows)
-            {
-                DataRow[] dt = monDs.Tables["Embarquer"].Select("codeTypeEngin = '" + dr["TypeEngin"] + "'");
-                foreach (DataRow ligne in dt)
-                {
-                    string type = ligne["codeTypeEngin"].ToString();
-                    int idHab = Convert.ToInt32(ligne["idHabilitation"]);
-                    int nb = Convert.ToInt32(ligne["nombre"]);
-                    habilitationNecessaire.Rows.Add(type, idHab, nb);
-                }
-            }
-            return habilitationNecessaire;
         }
 
         private void remplirMission()
@@ -184,75 +166,137 @@ namespace UserControlMission
             return true;
         }
 
-        private DataRow[] pompierCaserne(int idCaserne)
-        {
-            DataRow[] pompier = monDs.Tables["Affection"].Select($"idCaserne = {idCaserne}");
-            return pompier;
-        }
-
         //trier liste de tableau
         private List<int[]> trierTab(List<int[]> liste)
         {
-            List<int[]> res = new List<int[]>();
-            foreach (int[] row in liste)
+            //Stocker les matricules uniques
+            List<int> matricule = new List<int>();
+            for (int j=0; j<liste.Count; j++)
             {
-                // compter le nombre de fois que le matricule aparait 
-                // premier index --> matricule
-                // deuxieme index --> hab
-
-
+                int matriculeUnique = liste[j][0];
+                if (!matricule.Contains(matriculeUnique))
+                {
+                    matricule.Add(matriculeUnique);
+                }
             }
 
+            //Stocker dans une liste la fréquence d'apprition des matricules
+            List<int[]> frequence = new List<int[]>();
+            for (int k =0; k<matricule.Count; k++)
+            {
+                int idmat = matricule[k];
+                int nb = 0;
+                for (int j=0; j<liste.Count; j++)
+                {
+                    if (liste[j][0] == idmat)
+                    {
+                        nb++;
+                    }
+                }
+                int[] x = new int[] {idmat, nb};
+                frequence.Add(x);
+            }
+
+            //Trier la liste de fréquence par nombre d'apparition
+            List<int[]> trier = new List<int[]>();
+            for (int p=0; p < frequence.Count; p++)
+            {
+                int[] courant = frequence[p];
+                int h = 0;
+                while (h<trier.Count && trier[h][1] < courant[1])
+                {
+                    h++;
+                }
+                trier.Insert(h, courant);
+            }
+
+            //Puis enfin trier la liste de base 
+            List<int[]> res = new List<int[]>();
+            for (int i=0; i<trier.Count; i++)
+            {
+                foreach (int[] dr in liste)
+                {
+                    if (trier[i][0] == dr[0])
+                    {
+                        res.Add(dr);
+                    }
+                }
+            }
             return res;
         }
 
         private bool tryPompier(int idCaserne, DataTable enginNecessaire)
         {
-            // Liste des pompiers déjà affectés pour éviter les doublons,
-            // un pompier ne peut pas être mobilisé deux fois pour deux types d'engins différents
-            List<int> pompiersUtilises = new List<int>();
-            List<int[]> habpompier = new List<int[]>();
+            //Liste de pompier attribué a un véhicule pour éviter les doublons
+            List<int> listePompier= new List<int>();
+
+            //Liste de pompier qui pourraient participer à la mission 
+            List<int[]> listePompierNecessaire = new List<int[]>(); 
+
+            DataTable enginHab = new DataTable();
+            enginHab.Columns.Add("codeTypeEngin", typeof(string));
+            enginHab.Columns.Add("idHabilitation", typeof(int));
+            enginHab.Columns.Add("nombre", typeof(int));
 
             foreach (DataRow engin in enginNecessaire.Rows)
             {
                 string codeTypeEngin = engin["codeTypeEngin"].ToString();
-                int nbLigne = 0;
 
                 // Récupère les habilitations pour ce type d'engin
                 DataRow[] habilites = monDs.Tables["Embarquer"].Select($"codeTypeEngin = '{codeTypeEngin}'");
 
+                enginHab.Rows.Add(habilites);
+
                 // Filtrons ceux appartenant à la caserne ET qui ne sont pas encore utilisés
+                
                 foreach (DataRow habilitation in habilites)
                 {
                     //Après avoir l'habilitation, regarder dans la table Passer les idPompier qui ont passé cette habilitation
                     int idhab = Convert.ToInt32(habilitation["idHabilitation"]);
                     DataRow[] pompierhab = monDs.Tables["Passer"].Select($"idHabilitation = {idhab}");
 
-                   
+                    // Récuprer les pompiers qui sont dans la caserne
 
                     foreach (DataRow pompier in pompierhab)
                     {
                         int idPompier = Convert.ToInt32(pompier["idPompier"]);
-
-                        // Vérifier que ce pompier appartient bien à la caserne + pas en mission, ni en congé
-                        DataRow[] pompierInfo = monDs.Tables["Pompier"].Select($"idPompier = {idPompier} AND idCaserne = {idCaserne} AND enMission = 0 AND enConge = 0");
-                        nbLigne = pompierInfo.Length;
-                        if (nbLigne > 0 && !pompiersUtilises.Contains(idPompier))
+                        DataRow[] pompierCaserne = monDs.Tables["Affectation"].Select($"idCaserne = {idCaserne} AND matriculePompier = {idPompier}");
+                        foreach (DataRow pompierTrier in pompierCaserne) 
                         {
-                            pompiersUtilises.Add(idPompier);
-                        }
-                        // Pas du tout de pompiers habilités disponibles pour ce type d'engin
-                        if (nbLigne == 0)
-                        {
-                            return false;
+                            int[] ligne = new int[] { idPompier, idhab };
+                            listePompierNecessaire.Add(ligne); 
                         }
                     }
 
                 }
             }
 
+            dtEngin = enginHab;
+
+            //Trier la liste des pompiers ayant le moins d'habilitations au plus
+            listePompierNecessaire = trierTab(listePompierNecessaire);
+            pompIdHab = listePompierNecessaire;
             // Tous les engins ont suffisamment de pompiers habilités
-            return true;
+            foreach (DataRow engin in enginHab.Rows)
+            {
+                int idHabilitation = Convert.ToInt32(engin["idHabilitation"]);
+                int nombre = Convert.ToInt32(engin["nombre"]);
+                int nbTrouve = 0;
+                foreach (int[] tab in listePompierNecessaire)
+                {
+                    if (tab[1] == idHabilitation && !listePompier.Contains(tab[1]) && nbTrouve < nombre)
+                    {
+                        nbTrouve++;
+                        listePompier.Add(tab[1]);
+                    }
+                }
+                if (nbTrouve == 0) 
+                {
+                    return false;
+                }
+            }
+
+                return true;
         }
 
 
@@ -296,76 +340,61 @@ namespace UserControlMission
 
         }
 
-        private DataTable remplissagePompier(int idCaserne, int idMission, DataTable enginsNecessaires)
+        private DataTable remplissagePompier(int idCaserne, DataTable enginsNecessaires)
         {
             DataTable dtPompiersMobilises = new DataTable();
             dtPompiersMobilises.Columns.Add("Matricule", typeof(int));
             dtPompiersMobilises.Columns.Add("idHabilitation", typeof(int));
+            List<int> listePompier = new List<int>();
 
-            // Récupère les habilitations nécessaires
-            DataTable dtHabsNecessaires = habilitationNecessaire(enginsNecessaires);
-
-            // Liste des pompiers déjà affectés (éviter double attribution)
-            List<int> pompiersDejaPris = new List<int>();
-
-            foreach (DataRow habRow in dtHabsNecessaires.Rows)
+            foreach (DataRow engin in dtEngin.Rows)
             {
-                string typeEngin = habRow["TypeEngin"].ToString();
-                int idHab = Convert.ToInt32(habRow["idHab"]);
-                int nbRequis = Convert.ToInt32(habRow["nombre"]);
-
-                // Cherche les pompiers disponibles (dans la caserne, pas en congé ni en mission)
-                DataRow[] pompiers = monDs.Tables["Pompier"].Select(
-                    $"idCaserne = {idCaserne} AND enMission = 0 AND enConge = 0");
-
-                int nbAffectes = 0;
-
-                foreach (DataRow pompier in pompiers)
+                int idHabilitation = Convert.ToInt32(engin["idHabilitation"]);
+                int nombre = Convert.ToInt32(engin["nombre"]);
+                int nbTrouve = 0;
+                foreach (int[] tab in pompIdHab)
                 {
-                    int matricule = Convert.ToInt32(pompier["matricule"]);
-
-                    if (pompiersDejaPris.Contains(matricule))
-                        continue;
-
-                    // Vérifie que le pompier a l’habilitation requise
-                    DataRow[] habilitations = monDs.Tables["Posseder"].Select(
-                        $"matricule = {matricule} AND idHabilitation = {idHab}");
-
-                    if (habilitations.Length > 0)
+                    if (tab[1] == idHabilitation && !listePompier.Contains(tab[1]) && nbTrouve<nombre)
                     {
-                        // Ajouter dans dtPompiersMobilises
-                        dtPompiersMobilises.Rows.Add(matricule, idHab);
-
-                        // Ajouter dans Mobiliser (matricule, idHabilitation, idMission)
-                        DataRow drMobiliser = monDs.Tables["Mobiliser"].NewRow();
-                        drMobiliser["matricule"] = matricule;
-                        drMobiliser["idHabilitation"] = idHab;
-                        drMobiliser["idMission"] = idMission;
-
-                        monDs.Tables["Mobiliser"].Rows.Add(drMobiliser);
-
-                        // Marquer comme en mission
-                        pompier["enMission"] = 1;
-
-                        // Marquer comme utilisé
-                        pompiersDejaPris.Add(matricule);
-
-                        nbAffectes++;
-
-                        if (nbAffectes == nbRequis)
-                            break;
+                        nbTrouve++;
+                        listePompier.Add(tab[1]);
+                        dtPompiersMobilises.Rows.Add(tab[1],idHabilitation);
                     }
-                }
-
-                if (nbAffectes < nbRequis)
-                {
-                    MessageBox.Show($"Mission annulée : pas assez de pompiers avec l'habilitation {idHab} pour l'engin {typeEngin}.");
-                    return null;
                 }
             }
 
+            //mettre en mission les pompiers dans mon DataSet
+            foreach(DataRow pompierMission in monDs.Tables["Pompier"].Rows)
+            {
+                int matricule = Convert.ToInt32(pompierMission["matricule"]);
+                for (int i=0; i<listePompier.Count; i++)
+                {
+                    if (matricule == listePompier[i])
+                    {
+                        pompierMission["enMission"] = 1;
+                    }
+                }
+            }
+
+            remplirMobiliser(dtPompiersMobilises);
+
             return dtPompiersMobilises;
         }
+
+        private void remplirMobiliser (DataTable dtPompierMobilise)
+        {
+            // ajout des lignes dans la table mobiliser
+            foreach(DataRow dr in dtPompierMobilise.Rows)
+            {
+                DataRow ligne = monDs.Tables["Mobiliser"].NewRow();
+                ligne["matriculePompier"] = Convert.ToInt32(dr["Matricule"]);
+                ligne["idMission"] = Convert.ToInt32(nextId);
+                ligne["idHabilitation"] = Convert.ToInt32(dr["idHabilitation"]);
+
+                monDs.Tables["Mobiliser"].Rows.Add(ligne);
+            }
+        }
+
 
         private void btnAnnuler_Click(object sender, EventArgs e)
         {
