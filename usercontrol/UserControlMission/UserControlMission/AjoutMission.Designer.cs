@@ -48,8 +48,8 @@
             this.label2 = new System.Windows.Forms.Label();
             this.label1 = new System.Windows.Forms.Label();
             this.grpMob = new System.Windows.Forms.GroupBox();
-            this.panel3 = new System.Windows.Forms.Panel();
-            this.panel2 = new System.Windows.Forms.Panel();
+            this.pnlEngin = new System.Windows.Forms.Panel();
+            this.pnlPompier = new System.Windows.Forms.Panel();
             this.label3 = new System.Windows.Forms.Label();
             this.label4 = new System.Windows.Forms.Label();
             this.btnNvMission = new System.Windows.Forms.Button();
@@ -64,19 +64,17 @@
             this.txtMotif.Margin = new System.Windows.Forms.Padding(2, 4, 2, 4);
             this.txtMotif.Multiline = true;
             this.txtMotif.Name = "txtMotif";
-            this.txtMotif.Size = new System.Drawing.Size(363, 159);
+            this.txtMotif.Size = new System.Drawing.Size(363, 95);
             this.txtMotif.TabIndex = 4;
             // 
             // lblNumMission
             // 
-            this.lblNumMission.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
-            | System.Windows.Forms.AnchorStyles.Left) 
-            | System.Windows.Forms.AnchorStyles.Right)));
+            this.lblNumMission.Anchor = System.Windows.Forms.AnchorStyles.None;
             this.lblNumMission.AutoSize = true;
             this.lblNumMission.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(100)))), ((int)(((byte)(20)))), ((int)(((byte)(0)))));
             this.lblNumMission.Font = new System.Drawing.Font("Arial", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.lblNumMission.ForeColor = System.Drawing.Color.White;
-            this.lblNumMission.Location = new System.Drawing.Point(33, 26);
+            this.lblNumMission.Location = new System.Drawing.Point(33, 25);
             this.lblNumMission.Margin = new System.Windows.Forms.Padding(2, 0, 2, 0);
             this.lblNumMission.Name = "lblNumMission";
             this.lblNumMission.Size = new System.Drawing.Size(136, 29);
@@ -85,13 +83,11 @@
             // 
             // lblDate
             // 
-            this.lblDate.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
-            | System.Windows.Forms.AnchorStyles.Left) 
-            | System.Windows.Forms.AnchorStyles.Right)));
+            this.lblDate.Anchor = System.Windows.Forms.AnchorStyles.None;
             this.lblDate.AutoSize = true;
             this.lblDate.Font = new System.Drawing.Font("Arial", 9F);
             this.lblDate.ForeColor = System.Drawing.Color.White;
-            this.lblDate.Location = new System.Drawing.Point(651, 52);
+            this.lblDate.Location = new System.Drawing.Point(635, 31);
             this.lblDate.Margin = new System.Windows.Forms.Padding(2, 0, 2, 0);
             this.lblDate.Name = "lblDate";
             this.lblDate.Size = new System.Drawing.Size(134, 21);
@@ -100,20 +96,18 @@
             // 
             // grpDecision
             // 
-            this.grpDecision.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
-            | System.Windows.Forms.AnchorStyles.Left) 
-            | System.Windows.Forms.AnchorStyles.Right)));
+            this.grpDecision.Anchor = System.Windows.Forms.AnchorStyles.None;
             this.grpDecision.Controls.Add(this.cboCaserne);
             this.grpDecision.Controls.Add(this.cboNature);
             this.grpDecision.Controls.Add(this.lblCaserne);
             this.grpDecision.Controls.Add(this.lblNatSin);
             this.grpDecision.Font = new System.Drawing.Font("Arial", 12F);
             this.grpDecision.ForeColor = System.Drawing.Color.White;
-            this.grpDecision.Location = new System.Drawing.Point(16, 368);
+            this.grpDecision.Location = new System.Drawing.Point(519, 77);
             this.grpDecision.Margin = new System.Windows.Forms.Padding(2, 4, 2, 4);
             this.grpDecision.Name = "grpDecision";
             this.grpDecision.Padding = new System.Windows.Forms.Padding(2, 4, 2, 4);
-            this.grpDecision.Size = new System.Drawing.Size(963, 131);
+            this.grpDecision.Size = new System.Drawing.Size(460, 224);
             this.grpDecision.TabIndex = 1;
             this.grpDecision.TabStop = false;
             this.grpDecision.Text = "Décisions du régulateurs";
@@ -122,7 +116,7 @@
             // 
             this.cboCaserne.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
             this.cboCaserne.FormattingEnabled = true;
-            this.cboCaserne.Location = new System.Drawing.Point(486, 65);
+            this.cboCaserne.Location = new System.Drawing.Point(22, 141);
             this.cboCaserne.Margin = new System.Windows.Forms.Padding(2, 3, 2, 3);
             this.cboCaserne.Name = "cboCaserne";
             this.cboCaserne.Size = new System.Drawing.Size(394, 35);
@@ -142,7 +136,7 @@
             // 
             this.lblCaserne.AutoSize = true;
             this.lblCaserne.Font = new System.Drawing.Font("Arial", 10F);
-            this.lblCaserne.Location = new System.Drawing.Point(482, 32);
+            this.lblCaserne.Location = new System.Drawing.Point(18, 108);
             this.lblCaserne.Margin = new System.Windows.Forms.Padding(2, 0, 2, 0);
             this.lblCaserne.Name = "lblCaserne";
             this.lblCaserne.Size = new System.Drawing.Size(185, 23);
@@ -162,7 +156,7 @@
             // 
             // txtCP
             // 
-            this.txtCP.Location = new System.Drawing.Point(517, 183);
+            this.txtCP.Location = new System.Drawing.Point(33, 331);
             this.txtCP.Margin = new System.Windows.Forms.Padding(2, 4, 2, 4);
             this.txtCP.Name = "txtCP";
             this.txtCP.Size = new System.Drawing.Size(116, 35);
@@ -171,7 +165,7 @@
             // 
             // txtVille
             // 
-            this.txtVille.Location = new System.Drawing.Point(701, 183);
+            this.txtVille.Location = new System.Drawing.Point(217, 331);
             this.txtVille.Margin = new System.Windows.Forms.Padding(2, 4, 2, 4);
             this.txtVille.Name = "txtVille";
             this.txtVille.Size = new System.Drawing.Size(215, 35);
@@ -180,7 +174,7 @@
             // 
             // txtRue
             // 
-            this.txtRue.Location = new System.Drawing.Point(517, 113);
+            this.txtRue.Location = new System.Drawing.Point(33, 261);
             this.txtRue.Margin = new System.Windows.Forms.Padding(2, 4, 2, 4);
             this.txtRue.Name = "txtRue";
             this.txtRue.Size = new System.Drawing.Size(399, 35);
@@ -191,7 +185,7 @@
             // 
             this.lblVille.AutoSize = true;
             this.lblVille.Font = new System.Drawing.Font("Arial", 10F);
-            this.lblVille.Location = new System.Drawing.Point(697, 156);
+            this.lblVille.Location = new System.Drawing.Point(213, 304);
             this.lblVille.Margin = new System.Windows.Forms.Padding(2, 0, 2, 0);
             this.lblVille.Name = "lblVille";
             this.lblVille.Size = new System.Drawing.Size(46, 23);
@@ -202,7 +196,7 @@
             // 
             this.lblCP.AutoSize = true;
             this.lblCP.Font = new System.Drawing.Font("Arial", 10F);
-            this.lblCP.Location = new System.Drawing.Point(513, 156);
+            this.lblCP.Location = new System.Drawing.Point(29, 304);
             this.lblCP.Margin = new System.Windows.Forms.Padding(2, 0, 2, 0);
             this.lblCP.Name = "lblCP";
             this.lblCP.Size = new System.Drawing.Size(116, 23);
@@ -213,7 +207,7 @@
             // 
             this.lblRue.AutoSize = true;
             this.lblRue.Font = new System.Drawing.Font("Arial", 10F);
-            this.lblRue.Location = new System.Drawing.Point(513, 86);
+            this.lblRue.Location = new System.Drawing.Point(29, 234);
             this.lblRue.Margin = new System.Windows.Forms.Padding(2, 0, 2, 0);
             this.lblRue.Name = "lblRue";
             this.lblRue.Size = new System.Drawing.Size(45, 23);
@@ -222,10 +216,8 @@
             // 
             // btnAnnuler
             // 
-            this.btnAnnuler.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
-            | System.Windows.Forms.AnchorStyles.Left) 
-            | System.Windows.Forms.AnchorStyles.Right)));
-            this.btnAnnuler.Location = new System.Drawing.Point(514, 506);
+            this.btnAnnuler.Anchor = System.Windows.Forms.AnchorStyles.None;
+            this.btnAnnuler.Location = new System.Drawing.Point(514, 431);
             this.btnAnnuler.Margin = new System.Windows.Forms.Padding(2, 3, 2, 3);
             this.btnAnnuler.Name = "btnAnnuler";
             this.btnAnnuler.Size = new System.Drawing.Size(216, 36);
@@ -236,10 +228,8 @@
             // 
             // btnValider
             // 
-            this.btnValider.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
-            | System.Windows.Forms.AnchorStyles.Left) 
-            | System.Windows.Forms.AnchorStyles.Right)));
-            this.btnValider.Location = new System.Drawing.Point(745, 506);
+            this.btnValider.Anchor = System.Windows.Forms.AnchorStyles.None;
+            this.btnValider.Location = new System.Drawing.Point(745, 431);
             this.btnValider.Margin = new System.Windows.Forms.Padding(2, 3, 2, 3);
             this.btnValider.Name = "btnValider";
             this.btnValider.Size = new System.Drawing.Size(216, 36);
@@ -250,9 +240,7 @@
             // 
             // grpInfo
             // 
-            this.grpInfo.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
-            | System.Windows.Forms.AnchorStyles.Left) 
-            | System.Windows.Forms.AnchorStyles.Right)));
+            this.grpInfo.Anchor = System.Windows.Forms.AnchorStyles.None;
             this.grpInfo.Controls.Add(this.label2);
             this.grpInfo.Controls.Add(this.txtCP);
             this.grpInfo.Controls.Add(this.label1);
@@ -264,11 +252,11 @@
             this.grpInfo.Controls.Add(this.lblRue);
             this.grpInfo.Font = new System.Drawing.Font("Arial", 12F);
             this.grpInfo.ForeColor = System.Drawing.Color.White;
-            this.grpInfo.Location = new System.Drawing.Point(16, 78);
+            this.grpInfo.Location = new System.Drawing.Point(16, 77);
             this.grpInfo.Margin = new System.Windows.Forms.Padding(2, 3, 2, 3);
             this.grpInfo.Name = "grpInfo";
             this.grpInfo.Padding = new System.Windows.Forms.Padding(2, 3, 2, 3);
-            this.grpInfo.Size = new System.Drawing.Size(963, 259);
+            this.grpInfo.Size = new System.Drawing.Size(462, 390);
             this.grpInfo.TabIndex = 22;
             this.grpInfo.TabStop = false;
             this.grpInfo.Text = "Informations usager";
@@ -277,7 +265,7 @@
             // 
             this.label2.AutoSize = true;
             this.label2.Font = new System.Drawing.Font("Arial", 10F);
-            this.label2.Location = new System.Drawing.Point(513, 49);
+            this.label2.Location = new System.Drawing.Point(29, 211);
             this.label2.Margin = new System.Windows.Forms.Padding(2, 0, 2, 0);
             this.label2.Name = "label2";
             this.label2.Size = new System.Drawing.Size(178, 23);
@@ -297,16 +285,14 @@
             // 
             // grpMob
             // 
-            this.grpMob.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
-            | System.Windows.Forms.AnchorStyles.Left) 
-            | System.Windows.Forms.AnchorStyles.Right)));
-            this.grpMob.Controls.Add(this.panel3);
-            this.grpMob.Controls.Add(this.panel2);
+            this.grpMob.Anchor = System.Windows.Forms.AnchorStyles.None;
+            this.grpMob.Controls.Add(this.pnlEngin);
+            this.grpMob.Controls.Add(this.pnlPompier);
             this.grpMob.Controls.Add(this.label3);
             this.grpMob.Controls.Add(this.label4);
             this.grpMob.Font = new System.Drawing.Font("Arial", 12F);
             this.grpMob.ForeColor = System.Drawing.Color.White;
-            this.grpMob.Location = new System.Drawing.Point(16, 564);
+            this.grpMob.Location = new System.Drawing.Point(16, 491);
             this.grpMob.Margin = new System.Windows.Forms.Padding(2, 4, 2, 4);
             this.grpMob.Name = "grpMob";
             this.grpMob.Padding = new System.Windows.Forms.Padding(2, 4, 2, 4);
@@ -316,19 +302,19 @@
             this.grpMob.Text = "Mobilisation des engins et pompiers";
             this.grpMob.Visible = false;
             // 
-            // panel3
+            // pnlEngin
             // 
-            this.panel3.Location = new System.Drawing.Point(22, 88);
-            this.panel3.Name = "panel3";
-            this.panel3.Size = new System.Drawing.Size(440, 216);
-            this.panel3.TabIndex = 19;
+            this.pnlEngin.Location = new System.Drawing.Point(22, 88);
+            this.pnlEngin.Name = "pnlEngin";
+            this.pnlEngin.Size = new System.Drawing.Size(440, 216);
+            this.pnlEngin.TabIndex = 19;
             // 
-            // panel2
+            // pnlPompier
             // 
-            this.panel2.Location = new System.Drawing.Point(498, 88);
-            this.panel2.Name = "panel2";
-            this.panel2.Size = new System.Drawing.Size(440, 216);
-            this.panel2.TabIndex = 18;
+            this.pnlPompier.Location = new System.Drawing.Point(498, 88);
+            this.pnlPompier.Name = "pnlPompier";
+            this.pnlPompier.Size = new System.Drawing.Size(440, 216);
+            this.pnlPompier.TabIndex = 18;
             // 
             // label3
             // 
@@ -354,10 +340,8 @@
             // 
             // btnNvMission
             // 
-            this.btnNvMission.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
-            | System.Windows.Forms.AnchorStyles.Left) 
-            | System.Windows.Forms.AnchorStyles.Right)));
-            this.btnNvMission.Location = new System.Drawing.Point(745, 969);
+            this.btnNvMission.Anchor = System.Windows.Forms.AnchorStyles.None;
+            this.btnNvMission.Location = new System.Drawing.Point(745, 829);
             this.btnNvMission.Margin = new System.Windows.Forms.Padding(2, 3, 2, 3);
             this.btnNvMission.Name = "btnNvMission";
             this.btnNvMission.Size = new System.Drawing.Size(216, 36);
@@ -383,7 +367,7 @@
             this.Font = new System.Drawing.Font("Arial", 10F);
             this.Margin = new System.Windows.Forms.Padding(2, 4, 2, 4);
             this.Name = "ucMission";
-            this.Size = new System.Drawing.Size(993, 1019);
+            this.Size = new System.Drawing.Size(993, 895);
             this.grpDecision.ResumeLayout(false);
             this.grpDecision.PerformLayout();
             this.grpInfo.ResumeLayout(false);
@@ -418,8 +402,8 @@
         private System.Windows.Forms.GroupBox grpMob;
         private System.Windows.Forms.Label label3;
         private System.Windows.Forms.Label label4;
-        private System.Windows.Forms.Panel panel2;
-        private System.Windows.Forms.Panel panel3;
+        private System.Windows.Forms.Panel pnlPompier;
+        private System.Windows.Forms.Panel pnlEngin;
         private System.Windows.Forms.Button btnNvMission;
     }
 }

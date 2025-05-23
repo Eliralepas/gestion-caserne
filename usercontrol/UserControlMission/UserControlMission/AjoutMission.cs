@@ -23,8 +23,11 @@ namespace UserControlMission
         DataSet monDs;
         int nextId = 0;
         String date;
+
+
         List<int[]> pompIdHab;
         DataTable dtEngin;
+        bool equipeCompletePossible;
 
         public ucMission(DataSet ds)
         {
@@ -98,9 +101,8 @@ namespace UserControlMission
             grpMob.Visible = true;
 
             DataTable dtEngin = remplissageEngin(idSinistre, idCaserne);
-            UC_MobilisationEnginPompier dgvEngin = new UC_MobilisationEnginPompier(dtEngin);
+
             //ajout dans le grp box
-            grpMob.Controls.Add(dgvEngin);
             btnNvMission.Visible = true;
 
         }
@@ -235,11 +237,8 @@ namespace UserControlMission
 
         private bool tryPompier(int idCaserne, DataTable enginNecessaire)
         {
-            //Liste de pompier attribué a un véhicule pour éviter les doublons
-            List<int> listePompier= new List<int>();
-
             //Liste de pompier qui pourraient participer à la mission 
-            List<int[]> listePompierNecessaire = new List<int[]>(); 
+            List<int[]> listePompierNecessaire = new List<int[]>();
 
             DataTable enginHab = new DataTable();
             enginHab.Columns.Add("codeTypeEngin", typeof(string));
@@ -256,7 +255,7 @@ namespace UserControlMission
                 enginHab.Rows.Add(habilites);
 
                 // Filtrons ceux appartenant à la caserne ET qui ne sont pas encore utilisés
-                
+
                 foreach (DataRow habilitation in habilites)
                 {
                     //Après avoir l'habilitation, regarder dans la table Passer les idPompier qui ont passé cette habilitation
@@ -265,14 +264,14 @@ namespace UserControlMission
 
                     // Récuprer les pompiers qui sont dans la caserne
 
-                    foreach (DataRow pompier in pompierhab)
+                    foreach (DataRow pomp in pompierhab)
                     {
-                        int idPompier = Convert.ToInt32(pompier["idPompier"]);
+                        int idPompier = Convert.ToInt32(pomp["idPompier"]);
                         DataRow[] pompierCaserne = monDs.Tables["Affectation"].Select($"idCaserne = {idCaserne} AND matriculePompier = {idPompier}");
-                        foreach (DataRow pompierTrier in pompierCaserne) 
+                        foreach (DataRow pompierTrier in pompierCaserne)
                         {
                             int[] ligne = new int[] { idPompier, idhab };
-                            listePompierNecessaire.Add(ligne); 
+                            listePompierNecessaire.Add(ligne);
                         }
                     }
 
@@ -281,31 +280,83 @@ namespace UserControlMission
 
             dtEngin = enginHab;
 
-            //Trier la liste des pompiers ayant le moins d'habilitations au plus
+            // Trier la liste des pompiers par nombre croissant d'habilitations
             listePompierNecessaire = trierTab(listePompierNecessaire);
             pompIdHab = listePompierNecessaire;
-            // Tous les engins ont suffisamment de pompiers habilités
-            foreach (DataRow engin in enginHab.Rows)
+
+            bool equipeCompletePossible = true;
+
+            //Liste de pompier attribué a un véhicule pour éviter les doublons
+            List<int> listePompier = new List<int>();
+
+            // Vérifie si on peut envoyer une équipe complète
+            int i = 0;
+            while (i < enginHab.Rows.Count && equipeCompletePossible)
             {
+                DataRow engin = enginHab.Rows[i];   // Stocker dans un DataRow 
                 int idHabilitation = Convert.ToInt32(engin["idHabilitation"]);
-                // on veut minimum un pompier par engin (équipe incomplète)
-                int nbTrouve = 0;
-                foreach (int[] tab in listePompierNecessaire)
+                int nombreRequis = Convert.ToInt32(engin["nombre"]);
+                int nombreAttribués = 0;
+
+                int j = 0;
+                while (j < listePompierNecessaire.Count && nombreAttribués < nombreRequis)
                 {
-                    if (tab[1] == idHabilitation && !listePompier.Contains(tab[1]) && nbTrouve < 1)
+                    int[] tab = listePompierNecessaire[j];
+                    if (tab[1] == idHabilitation && !listePompier.Contains(tab[0]))
                     {
-                        nbTrouve++;
-                        listePompier.Add(tab[1]);
+                        listePompier.Add(tab[0]);
+                        nombreAttribués++;
                     }
+                    j++;
                 }
-                if (nbTrouve == 0) 
+
+                if (nombreAttribués < nombreRequis)
                 {
-                    return false;
+                    equipeCompletePossible = false;
                 }
+
+                i++;
             }
 
-                return true;
+            if (equipeCompletePossible)
+            {
+                return true; // Équipe complète possible
+            }
+
+            // Sinon, tentative d’équipe incomplète : 1 pompier minimum par habilitation
+            listePompier.Clear();
+
+            i = 0;
+            bool equipeMinimumPossible = true;
+            while (i < enginHab.Rows.Count && equipeMinimumPossible)
+            {
+                DataRow engin = enginHab.Rows[i];
+                int idHabilitation = Convert.ToInt32(engin["idHabilitation"]);
+                bool trouve = false;
+
+                int j = 0;
+                while (j < listePompierNecessaire.Count && !trouve)
+                {
+                    int[] tab = listePompierNecessaire[j];
+                    if (tab[1] == idHabilitation && !listePompier.Contains(tab[0]))
+                    {
+                        listePompier.Add(tab[0]);
+                        trouve = true;
+                    }
+                    j++;
+                }
+
+                if (!trouve)
+                {
+                    equipeMinimumPossible = false;
+                }
+
+                i++;
+            }
+
+            return equipeMinimumPossible;
         }
+
 
 
         private DataTable remplissageEngin(int idSinistre, int idCaserne)
@@ -313,8 +364,8 @@ namespace UserControlMission
             DataTable enginNecessaire = enginMission(idSinistre);
 
             DataTable dt = new DataTable();
-            dt.Columns.Add("Type d'engin");
-            dt.Columns.Add("Numéro", typeof(int));
+            dt.Columns.Add("TypeEngin");
+            dt.Columns.Add("Numero", typeof(int));
             foreach (DataRow dr in enginNecessaire.Rows)
             {
                 string typeEngin = dr["codeTypeEngin"].ToString();
@@ -355,10 +406,11 @@ namespace UserControlMission
             dtPompiersMobilises.Columns.Add("idHabilitation", typeof(int));
             List<int> listePompier = new List<int>();
 
+
             foreach (DataRow engin in dtEngin.Rows)
             {
                 int idHabilitation = Convert.ToInt32(engin["idHabilitation"]);
-                int nombre = Convert.ToInt32(engin["nombre"]);
+                int nombre = equipeCompletePossible ? Convert.ToInt32(engin["nombre"]) : 1;
                 int nbTrouve = 0;
                 foreach (int[] tab in pompIdHab)
                 {
@@ -403,6 +455,36 @@ namespace UserControlMission
             }
         }
 
+        private void generationUC(int idSinistre, int idCaserne)
+        {
+            DataTable Engin = remplissageEngin(idSinistre, idCaserne);
+            DataTable Pompier = remplissagePompier(idCaserne, enginMission(idSinistre));
+            foreach (DataRow dr in Engin.Rows) 
+            {
+                string code = "Type d'engin : " + dr["TypeEngin"].ToString();
+                string id = "Numéro de l'engin : " + dr["Numero"].ToString();
+
+                UC_MobilisationEnginPompier engin = new UC_MobilisationEnginPompier(code, id);
+
+                pnlEngin.Controls.Add(engin);
+                engin.AutoSize = true;
+                engin.Height = engin.Height + 5;
+            }
+
+            foreach (DataRow dr in Pompier.Rows)
+            {
+                string matricule= "Matricule du pompier : " + dr["Matricule"].ToString();
+                string id = "L'habilitation associée : " + dr["idHabilitation"].ToString();
+
+                UC_MobilisationEnginPompier pompier = new UC_MobilisationEnginPompier(matricule, id);
+
+                pnlEngin.Controls.Add(pompier);
+                pompier.AutoSize = true;
+                pompier.Height = pompier.Height + 5;
+            }
+
+        }
+
 
         private void btnAnnuler_Click(object sender, EventArgs e)
         {
@@ -426,6 +508,9 @@ namespace UserControlMission
             btnValider.Visible= true;
             btnAnnuler.Visible = true;
 
+            grpMob.Visible = false;
+            grpMob.Controls.Clear();
+
             initialiser();
 
             nextId++;
@@ -434,5 +519,7 @@ namespace UserControlMission
             lblNumMission.Text = "Mission n°" + nextId.ToString();
             lblDate.Text = "déclenchée le : " + date;
         }
+
+       
     }
 }

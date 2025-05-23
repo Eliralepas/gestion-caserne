@@ -13,15 +13,12 @@ namespace UserControlMission
 {
     public partial class UC_MobilisationEnginPompier : UserControl
     {
-        public UC_MobilisationEnginPompier(DataTable dt)
+        public UC_MobilisationEnginPompier(string premierChamp, string deuxiemeChamp)
         {
             InitializeComponent();
+            lblCode.Text = premierChamp;
+            lblId.Text = deuxiemeChamp;
             
-        }
-
-        private void UC_MobilisationEnginPompier_Load(object sender, EventArgs e)
-        {
-
         }
 
     }
