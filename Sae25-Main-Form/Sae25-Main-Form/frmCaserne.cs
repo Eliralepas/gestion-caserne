@@ -104,10 +104,9 @@ namespace Sae25_Main_Form
 
         private void LoadStatistique()
         {
+            con.Open(); //Ouvrir la connexion à la base de données
             if (tabStat == null) //Vérifier si le tableau de statistiques n'existe pas
-            {
-                con = Connexion.Connec;
-                con.Open();
+            {   
                 tabStat = new UCStatistique(con);   //Instancier le volet de statistiques
                 tabStat.Dock = DockStyle.Fill;
             }
