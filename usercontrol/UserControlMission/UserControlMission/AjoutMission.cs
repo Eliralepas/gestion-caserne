@@ -473,7 +473,7 @@ namespace UserControlMission
                 engin.AutoSize = true;
                 engin.Height = haut;
                 engin.Left = left;
-                haut += 100;
+                haut += 150;
 
             }
             haut = 10;
@@ -488,7 +488,7 @@ namespace UserControlMission
                 pompier.AutoSize = true;
                 pompier.Height = haut;
                 pompier.Left = left;
-                haut += 100;
+                haut += 150;
             }
 
         }
