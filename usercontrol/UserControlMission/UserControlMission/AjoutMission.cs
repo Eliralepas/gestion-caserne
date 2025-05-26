@@ -84,6 +84,7 @@ namespace UserControlMission
                 remplirMission();
                 remplissageEngin(idSinistre, idCaserne);
                 remplissagePompier(idCaserne, enginNecessaire);
+                generationUC(idSinistre, idCaserne);
             }
             else
             {
@@ -459,6 +460,8 @@ namespace UserControlMission
         {
             DataTable Engin = remplissageEngin(idSinistre, idCaserne);
             DataTable Pompier = remplissagePompier(idCaserne, enginMission(idSinistre));
+            int haut = 10;
+            int left = 5;
             foreach (DataRow dr in Engin.Rows) 
             {
                 string code = "Type d'engin : " + dr["TypeEngin"].ToString();
@@ -468,9 +471,12 @@ namespace UserControlMission
 
                 pnlEngin.Controls.Add(engin);
                 engin.AutoSize = true;
-                engin.Height = engin.Height + 5;
-            }
+                engin.Height = haut;
+                engin.Left = left;
+                haut += 100;
 
+            }
+            haut = 10;
             foreach (DataRow dr in Pompier.Rows)
             {
                 string matricule= "Matricule du pompier : " + dr["Matricule"].ToString();
@@ -480,7 +486,9 @@ namespace UserControlMission
 
                 pnlEngin.Controls.Add(pompier);
                 pompier.AutoSize = true;
-                pompier.Height = pompier.Height + 5;
+                pompier.Height = haut;
+                pompier.Left = left;
+                haut += 100;
             }
 
         }
