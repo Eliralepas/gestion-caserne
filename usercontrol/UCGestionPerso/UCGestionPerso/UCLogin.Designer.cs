@@ -77,9 +77,9 @@
             // btnShowPwd
             // 
             this.btnShowPwd.Font = new System.Drawing.Font("Arial Rounded MT Bold", 18F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.btnShowPwd.Location = new System.Drawing.Point(458, 82);
+            this.btnShowPwd.Location = new System.Drawing.Point(458, 81);
             this.btnShowPwd.Name = "btnShowPwd";
-            this.btnShowPwd.Size = new System.Drawing.Size(55, 50);
+            this.btnShowPwd.Size = new System.Drawing.Size(51, 40);
             this.btnShowPwd.TabIndex = 4;
             this.btnShowPwd.Text = "👀";
             this.btnShowPwd.UseVisualStyleBackColor = true;

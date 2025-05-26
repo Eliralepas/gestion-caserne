@@ -19,15 +19,17 @@ namespace UCGestionPerso
         {
             InitializeComponent();
         }
+        int Isconnextion;
 
-        public UCLogin(SQLiteConnection con)
+        public UCLogin(SQLiteConnection con,ref int connexion)
         {
             InitializeComponent();
-            con = m_con;
+            m_con = con;
             if(m_con.State == ConnectionState.Closed)
             {
                 m_con.Open();
             }
+            Isconnextion = connexion;
         }
 
         private void button1_Click(object sender, EventArgs e)
@@ -40,6 +42,7 @@ namespace UCGestionPerso
             {
                 txtPwd.UseSystemPasswordChar = false;
             }
+            Isconnextion = 0;
         }
 
 
@@ -54,7 +57,7 @@ namespace UCGestionPerso
             SQLiteDataReader data =  cmd.ExecuteReader();
             while(data.Read())
             {
-
+                
             }
         }
 

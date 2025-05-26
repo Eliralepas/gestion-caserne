@@ -222,7 +222,7 @@ namespace UC_Statistique
             Dictionary<string, int> values = new Dictionary<string, int>();
             SQLiteDataReader data = executeDataReaderCommand(command);
             int i = 0;
-            while(data.Read())
+            while(data.Read()&&i<4)
             {
                 if(i > colors.Length - 1) i = 0;
                 values.Add(data.GetString(0), data.GetInt32(1));

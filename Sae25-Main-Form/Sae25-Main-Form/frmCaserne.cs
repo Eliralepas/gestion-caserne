@@ -21,10 +21,15 @@ namespace Sae25_Main_Form
             InitializeComponent();
         }
 
+
         UC_TableauDeBord.TableauDeBord tableauDeBord;
         UCStatistique tabStat;
+        UCGestionPerso.UCGestionPerso perso;
         SQLiteConnection con;
         DataSet monDs;
+
+
+        bool isLogged=false;
 
         private void frmCaserne_Load(object sender, EventArgs e)
         {
@@ -51,7 +56,7 @@ namespace Sae25_Main_Form
             btn1.buttonText = "Tableau de Bord";
             btn2.Tag = "dummy";
             btn3.Tag = "engins";
-            btn4.Tag = "dummy";
+            btn4.Tag = "perso";
             btn5.Tag = "tabStat";
 
             foreach (UCButton btn in panelNavigation.Controls.OfType<UCButton>()) //Lier les boutons de navigation
@@ -77,6 +82,9 @@ namespace Sae25_Main_Form
                 case ("engins"):
                     LoadEngins();
                     break;
+                case ("perso"):
+                    LoadPerso();
+                    break;
                 
             }
             //*faire la logique de clique une fois que on a tout les volet
@@ -97,6 +105,16 @@ namespace Sae25_Main_Form
             panelVolet.Controls.Add(tableauDeBord); //Ajouter le tableau de bord au panneau
         }
 
+
+
+        private void LoadPerso()
+        {
+
+            if(perso == null)
+            {
+                perso = new UCGestionPerso.UCGestionPerso(con);
+            }
+        }
         private void LoadStatistique()
         {
             if (tabStat == null) //Vérifier si le tableau de statistiques n'existe pas
