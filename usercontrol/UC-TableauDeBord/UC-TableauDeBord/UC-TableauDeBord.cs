@@ -38,12 +38,13 @@ namespace UC_TableauDeBord
                 mission.terminerMission += TerminerMission;     //Ajout de l'événement pour terminer la mission
                 listMissions.Add(mission);                      //Ajout de la mission à la liste
             }
+            TriParIdDecroissant(listMissions); //Tri des missions par ID décroissant
             DisplayMissions(); //Appel de la méthode pour afficher les missions
         }
 
         public void AddMission(Mission mission)
         {
-            listMissions.Add(mission);                  //Ajout de la mission à la liste
+            listMissions.Insert(0, mission);            //Ajout de la mission au début de la liste
             switchCouleurMission(mission);              //Appel de la méthode pour alterner la couleur de la mission
             mission.terminerMission += TerminerMission; //Ajout de l'événement pour terminer la mission
             DisplayMissions();                          //Appel de la méthode pour afficher les missions
@@ -53,6 +54,11 @@ namespace UC_TableauDeBord
         {
             listMissions.Remove(mission);   //Suppression de la mission de la liste
             DisplayMissions();              //Appel de la méthode pour afficher les missions
+        }
+
+        private void TriParIdDecroissant(List<Mission> missions)
+        {
+            missions.Sort((x, y) => y.MissionID.CompareTo(x.MissionID)); //Tri des missions par ID décroissant
         }
 
         public void DisplayMissions()
