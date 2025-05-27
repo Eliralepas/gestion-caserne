@@ -304,6 +304,7 @@
             // 
             // pnlEngin
             // 
+            this.pnlEngin.AutoScroll = true;
             this.pnlEngin.Location = new System.Drawing.Point(22, 88);
             this.pnlEngin.Name = "pnlEngin";
             this.pnlEngin.Size = new System.Drawing.Size(407, 216);
@@ -311,6 +312,7 @@
             // 
             // pnlPompier
             // 
+            this.pnlPompier.AutoScroll = true;
             this.pnlPompier.Location = new System.Drawing.Point(459, 88);
             this.pnlPompier.Name = "pnlPompier";
             this.pnlPompier.Size = new System.Drawing.Size(404, 216);

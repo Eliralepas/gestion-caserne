@@ -88,6 +88,19 @@ namespace UserControlMission
                 remplissageEngin(idSinistre, idCaserne);
                 remplissagePompier(idCaserne, enginNecessaire);
                 generationUC(idSinistre, idCaserne);
+
+                //UC gried view
+                grpMob.Visible = true;
+                //ajout dans le grp box
+                btnNvMission.Visible = true;
+
+                //mettre tout a enabled = false
+                txtMotif.Enabled = false;
+                txtRue.Enabled = false;
+                txtVille.Enabled = false;
+                txtCP.Enabled = false;
+                cboCaserne.Enabled = false;
+                cboNature.Enabled = false;
             }
             else
             {
@@ -100,14 +113,6 @@ namespace UserControlMission
                     MessageBox.Show("Il n'y a pas assez de pompiers ayant les habilitations nécessaires pour cette mission.");
                 }
             }
-
-            //UC gried view
-            grpMob.Visible = true;
-
-            DataTable dtEngin = remplissageEngin(idSinistre, idCaserne);
-
-            //ajout dans le grp box
-            btnNvMission.Visible = true;
 
         }
 
@@ -149,7 +154,6 @@ namespace UserControlMission
             //Ajout de la ligne
             monDs.Tables["Mission"].Rows.Add(row);
 
-            MessageBox.Show("mission remplis");
             //Après avoir valider rendre les boutons pas visible 
             btnAnnuler.Visible = false;
             btnValider.Visible = false;
@@ -175,7 +179,6 @@ namespace UserControlMission
                 if (enginsDispo.Length < nbMinEngin)
                 {
                     // Pas assez d'engins disponibles
-                    MessageBox.Show("Il n'y a pas assez d'engins disponibles");
                     return false;
                 }
             }
@@ -373,9 +376,7 @@ namespace UserControlMission
         
         private DataTable remplissageEngin(int idSinistre, int idCaserne)
         {
-            MessageBox.Show("1");
             DataTable enginNecessaire = enginMission(idSinistre);
-            MessageBox.Show("89");
             DataTable dt = new DataTable();
             dt.Columns.Add("TypeEngin");
             dt.Columns.Add("Numero", typeof(int));
@@ -388,8 +389,12 @@ namespace UserControlMission
                 DataRow[] enginsDispo = monDs.Tables["Engin"].Select(
                     $"idCaserne = {idCaserne} AND codeTypeEngin = '{typeEngin}' AND enMission = 0 AND enPanne = 0");
 
+                int nbEnginDispo = enginsDispo.Length;
+
+                int res = (nbEnginDispo < nbMinEngin) ? nbEnginDispo : nbMinEngin;
+
                 // Choisir les nbMinEngin premiers engins
-                for (int i = 0; i < nbMinEngin; i++)
+                for (int i = 0; i < res; i++)
                 {
                     // Ajout dans dt
                     dt.Rows.Add(typeEngin, enginsDispo[i]["numero"]);
@@ -408,8 +413,6 @@ namespace UserControlMission
                 }
 
             }
-
-            MessageBox.Show("remplissage engin");
             return dt;
 
         }
@@ -429,11 +432,11 @@ namespace UserControlMission
                 int nbTrouve = 0;
                 foreach (int[] tab in pompIdHab)
                 {
-                    if (tab[1] == idHabilitation && !listePompier.Contains(tab[1]) && nbTrouve<nombre)
+                    if (tab[1] == idHabilitation && !listePompier.Contains(tab[0]) && nbTrouve<nombre)
                     {
                         nbTrouve++;
-                        listePompier.Add(tab[1]);
-                        dtPompiersMobilises.Rows.Add(tab[1],idHabilitation);
+                        listePompier.Add(tab[0]);
+                        dtPompiersMobilises.Rows.Add(tab[0],idHabilitation);
                     }
                 }
             }
@@ -475,7 +478,7 @@ namespace UserControlMission
         {
             DataTable Engin = remplissageEngin(idSinistre, idCaserne);
             DataTable Pompier = remplissagePompier(idCaserne, enginMission(idSinistre));
-            int haut = 10;
+            int top = 10;
             int left = 5;
             foreach (DataRow dr in Engin.Rows) 
             {
@@ -484,15 +487,14 @@ namespace UserControlMission
 
                 UC_MobilisationEnginPompier engin = new UC_MobilisationEnginPompier(code, id);
 
-                engin.Height = haut;
+                engin.Top = top;
                 engin.Left = left;
                 engin.AutoSize = true;
-                pnlEngin.Controls.Add(engin);
-                
-                haut += 150;
 
+                pnlEngin.Controls.Add(engin);
+                top += engin.Height + 10;
             }
-            haut = 10;
+            top = 10;
             foreach (DataRow dr in Pompier.Rows)
             {
                 string matricule= "Matricule du pompier : " + dr["Matricule"].ToString();
@@ -500,11 +502,12 @@ namespace UserControlMission
 
                 UC_MobilisationEnginPompier pompier = new UC_MobilisationEnginPompier(matricule, id);
 
-                pompier.AutoSize = true;
-                pompier.Height = haut;
+                pompier.Top = top;
                 pompier.Left = left;
-                pnlEngin.Controls.Add(pompier);
-                haut += 150;
+                pompier.AutoSize = true;
+
+                pnlPompier.Controls.Add(pompier);
+                top += pompier.Height + 10;
             }
 
         }
@@ -533,7 +536,15 @@ namespace UserControlMission
             btnAnnuler.Visible = true;
 
             grpMob.Visible = false;
-            grpMob.Controls.Clear();
+            pnlEngin.Controls.Clear();
+            pnlPompier.Controls.Clear();
+
+            txtMotif.Enabled = true;
+            txtRue.Enabled = true;
+            txtVille.Enabled = true;
+            txtCP.Enabled = true;
+            cboCaserne.Enabled = true;
+            cboNature.Enabled = true;
 
             initialiser();
 
