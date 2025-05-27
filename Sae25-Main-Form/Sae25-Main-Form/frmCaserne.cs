@@ -9,6 +9,7 @@ using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
 using System.Data.SQLite;
+using UC_TableauDeBord;
 using UC_Statistique;
 using UC_Mission;
 using System.Net;
@@ -25,7 +26,8 @@ namespace Sae25_Main_Form
             InitializeComponent();
         }
 
-        UC_TableauDeBord.TableauDeBord tableauDeBord;
+        TableauDeBord tableauDeBord;
+        UCGestionEngin gestionEngin;
         UCStatistique tabStat;
         SQLiteConnection con;
         DataSet monDs;
@@ -115,10 +117,12 @@ namespace Sae25_Main_Form
 
         private void LoadEngins()
         {
-            UCGestionEngin uc = new UCGestionEngin(monDs);
-            uc.Dock = DockStyle.Fill;
-
-            panelVolet.Controls.Add(uc);
+            if (gestionEngin == null) //Vérifier si le volet de gestion des engins n'existe pas
+            {
+                gestionEngin = new UCGestionEngin(monDs); //Instancier le volet de gestion des engins
+                gestionEngin.Dock = DockStyle.Fill; //
+            }
+            panelVolet.Controls.Add(gestionEngin);
         }
 
 

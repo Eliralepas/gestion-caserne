@@ -62,7 +62,7 @@
             this.tabStatistique.Controls.Add(this.tabPage3);
             this.tabStatistique.Cursor = System.Windows.Forms.Cursors.Hand;
             this.tabStatistique.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.tabStatistique.Font = new System.Drawing.Font("Arial", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.tabStatistique.Font = new System.Drawing.Font("Arial", 12F);
             this.tabStatistique.Location = new System.Drawing.Point(0, 0);
             this.tabStatistique.Margin = new System.Windows.Forms.Padding(3, 4, 3, 4);
             this.tabStatistique.Name = "tabStatistique";
@@ -76,11 +76,11 @@
             // 
             this.tabPage1.Controls.Add(this.grpEngins);
             this.tabPage1.Font = new System.Drawing.Font("Arial", 12F, System.Drawing.FontStyle.Bold);
-            this.tabPage1.Location = new System.Drawing.Point(4, 33);
+            this.tabPage1.Location = new System.Drawing.Point(4, 32);
             this.tabPage1.Margin = new System.Windows.Forms.Padding(3, 4, 3, 4);
             this.tabPage1.Name = "tabPage1";
             this.tabPage1.Padding = new System.Windows.Forms.Padding(3, 4, 3, 4);
-            this.tabPage1.Size = new System.Drawing.Size(984, 610);
+            this.tabPage1.Size = new System.Drawing.Size(984, 611);
             this.tabPage1.TabIndex = 0;
             this.tabPage1.Text = "Engins";
             this.tabPage1.UseVisualStyleBackColor = true;
@@ -101,7 +101,7 @@
             this.grpEngins.Margin = new System.Windows.Forms.Padding(3, 4, 3, 4);
             this.grpEngins.Name = "grpEngins";
             this.grpEngins.Padding = new System.Windows.Forms.Padding(3, 4, 3, 4);
-            this.grpEngins.Size = new System.Drawing.Size(978, 602);
+            this.grpEngins.Size = new System.Drawing.Size(978, 603);
             this.grpEngins.TabIndex = 0;
             this.grpEngins.TabStop = false;
             this.grpEngins.Text = "Statistiques relatives aux engins";
@@ -164,9 +164,10 @@
             // lblCaserne
             // 
             this.lblCaserne.AutoSize = true;
+            this.lblCaserne.Font = new System.Drawing.Font("Arial", 12F);
             this.lblCaserne.Location = new System.Drawing.Point(319, 41);
             this.lblCaserne.Name = "lblCaserne";
-            this.lblCaserne.Size = new System.Drawing.Size(107, 24);
+            this.lblCaserne.Size = new System.Drawing.Size(102, 23);
             this.lblCaserne.TabIndex = 0;
             this.lblCaserne.Text = "Caserne : ";
             // 
@@ -177,11 +178,11 @@
             this.tabPage2.Controls.Add(this.lblTitleIntervention);
             this.tabPage2.Font = new System.Drawing.Font("Arial", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.tabPage2.ForeColor = System.Drawing.Color.Black;
-            this.tabPage2.Location = new System.Drawing.Point(4, 33);
+            this.tabPage2.Location = new System.Drawing.Point(4, 32);
             this.tabPage2.Margin = new System.Windows.Forms.Padding(3, 4, 3, 4);
             this.tabPage2.Name = "tabPage2";
             this.tabPage2.Padding = new System.Windows.Forms.Padding(3, 4, 3, 4);
-            this.tabPage2.Size = new System.Drawing.Size(984, 610);
+            this.tabPage2.Size = new System.Drawing.Size(984, 611);
             this.tabPage2.TabIndex = 1;
             this.tabPage2.Text = "Intervention";
             // 
@@ -190,7 +191,7 @@
             this.flpSinistreStat.AutoScroll = true;
             this.flpSinistreStat.BackColor = System.Drawing.Color.DarkRed;
             this.flpSinistreStat.Dock = System.Windows.Forms.DockStyle.Bottom;
-            this.flpSinistreStat.Location = new System.Drawing.Point(3, 102);
+            this.flpSinistreStat.Location = new System.Drawing.Point(3, 103);
             this.flpSinistreStat.Margin = new System.Windows.Forms.Padding(5, 3, 3, 3);
             this.flpSinistreStat.Name = "flpSinistreStat";
             this.flpSinistreStat.Size = new System.Drawing.Size(978, 504);
