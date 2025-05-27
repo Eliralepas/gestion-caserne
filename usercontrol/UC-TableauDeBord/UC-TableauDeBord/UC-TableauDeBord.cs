@@ -62,18 +62,13 @@ namespace UC_TableauDeBord
             int left = 30;                  //Position en largeur de la première mission
             foreach (Mission mission in listMissions)
             {
-                if (!ckbEnCours.Checked || (ckbEnCours.Checked && mission.EstEnCours)) //Si la checkbox n'est pas cochée, ou que la checkbox est cochée et que la mission est en cours : on affiche la mission
+                if (!sckbEnCours.Checked || (sckbEnCours.Checked && mission.EstEnCours)) //Si la checkbox n'est pas cochée, ou que la checkbox est cochée et que la mission est en cours : on affiche la mission
                 {
                     mission.Location = new Point(left, top);    //Position de la mission
                     panelMissions.Controls.Add(mission);        //Ajout de la mission au panel
                     top += mission.Height + 10;                 //Espace entre les missions
                 }
             }
-        }
-
-        private void ckbEnCours_CheckedChanged(object sender, EventArgs e)
-        {
-            DisplayMissions(); //Appel de la méthode pour afficher les missions
         }
 
         private void TerminerMission(object sender, EventArgs e, int idMission)
@@ -112,6 +107,11 @@ namespace UC_TableauDeBord
             {
                 mission.Couleur = couleurSecondaire; //Couleur grise
             }
+        }
+
+        private void sckbEnCours_CheckedChanged(object sender, EventArgs e)
+        {
+            DisplayMissions(); //Appel de la méthode pour afficher les missions
         }
     }
 }

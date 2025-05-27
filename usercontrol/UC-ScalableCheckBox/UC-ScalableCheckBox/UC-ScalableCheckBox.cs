@@ -3,9 +3,13 @@ using System.Windows.Forms;
 
 namespace UC_ScalableCheckBox
 {
+    public delegate void CheckedChangedEventHandler(object sender, EventArgs e);
+
     public partial class ScalableCheckBox : UserControl
     {
         private bool isChecked = false;
+        public event CheckedChangedEventHandler CheckedChanged;
+
         public ScalableCheckBox()
         {
             InitializeComponent();
@@ -14,6 +18,7 @@ namespace UC_ScalableCheckBox
         private void panel_Click(object sender, EventArgs e)
         {
             Checked = !Checked; //Inverser l'état de la case à cocher
+            CheckedChanged(sender, e); // Déclencher l'événement CheckedChanged
         }
 
         public bool Checked

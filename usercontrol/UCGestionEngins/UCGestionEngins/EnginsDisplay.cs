@@ -21,9 +21,8 @@ namespace UCGestionEngins
             EnginsList = baseEngin;
             lblCodeEngin.DataBindings.Add("Text", EnginsList, "numero");
             lblDate.DataBindings.Add("Text", EnginsList, "dateReception");
-            chkEnPanne.DataBindings.Add("checked", EnginsList,"enPanne");
-            chkMission.DataBindings.Add("checked", EnginsList, "enMission");
-
+            chkEnPanne.DataBindings.Add("Checked", EnginsList,"enPanne");
+            chkEnMission.DataBindings.Add("Checked", EnginsList, "enMission");
         }
 
         private void EnginsDisplay_Load(object sender, EventArgs e)

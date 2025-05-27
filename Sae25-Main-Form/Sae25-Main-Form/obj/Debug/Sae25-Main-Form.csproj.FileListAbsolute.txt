@@ -73,3 +73,5 @@ C:\Users\Diego\source\repos\sae-caserne\Sae25-Main-Form\Sae25-Main-Form\obj\Debu
 C:\Users\Diego\source\repos\sae-caserne\Sae25-Main-Form\Sae25-Main-Form\obj\Debug\Sae25-Ma.85EEC115.Up2Date
 C:\Users\Diego\source\repos\sae-caserne\Sae25-Main-Form\Sae25-Main-Form\obj\Debug\Sae25-Main-Form.exe
 C:\Users\Diego\source\repos\sae-caserne\Sae25-Main-Form\Sae25-Main-Form\obj\Debug\Sae25-Main-Form.pdb
+C:\Users\Diego\Source\Repos\sae-caserne\Sae25-Main-Form\Sae25-Main-Form\bin\Debug\UC-ScalableCheckBox.dll
+C:\Users\Diego\Source\Repos\sae-caserne\Sae25-Main-Form\Sae25-Main-Form\bin\Debug\UC-ScalableCheckBox.pdb

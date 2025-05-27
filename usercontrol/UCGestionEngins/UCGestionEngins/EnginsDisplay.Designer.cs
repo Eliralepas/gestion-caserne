@@ -36,9 +36,9 @@
             this.lblTitlePanne = new System.Windows.Forms.Label();
             this.lblTitleMission = new System.Windows.Forms.Label();
             this.pctEnginImage = new System.Windows.Forms.PictureBox();
-            this.chkMission = new System.Windows.Forms.CheckBox();
-            this.chkEnPanne = new System.Windows.Forms.CheckBox();
             this.timer = new System.Windows.Forms.Timer(this.components);
+            this.chkEnPanne = new UC_ScalableCheckBox.ScalableCheckBox();
+            this.chkEnMission = new UC_ScalableCheckBox.ScalableCheckBox();
             ((System.ComponentModel.ISupportInitialize)(this.pctEnginImage)).BeginInit();
             this.SuspendLayout();
             // 
@@ -118,27 +118,35 @@
             this.pctEnginImage.TabIndex = 9;
             this.pctEnginImage.TabStop = false;
             // 
-            // chkMission
-            // 
-            this.chkMission.AutoSize = true;
-            this.chkMission.Location = new System.Drawing.Point(240, 152);
-            this.chkMission.Name = "chkMission";
-            this.chkMission.Size = new System.Drawing.Size(18, 17);
-            this.chkMission.TabIndex = 10;
-            this.chkMission.UseVisualStyleBackColor = true;
-            // 
-            // chkEnPanne
-            // 
-            this.chkEnPanne.AutoSize = true;
-            this.chkEnPanne.Location = new System.Drawing.Point(240, 248);
-            this.chkEnPanne.Name = "chkEnPanne";
-            this.chkEnPanne.Size = new System.Drawing.Size(18, 17);
-            this.chkEnPanne.TabIndex = 11;
-            this.chkEnPanne.UseVisualStyleBackColor = true;
-            // 
             // timer
             // 
             this.timer.Tick += new System.EventHandler(this.timer_Tick);
+            // 
+            // chkEnPanne
+            // 
+            this.chkEnPanne.AutoSizeMode = System.Windows.Forms.AutoSizeMode.GrowAndShrink;
+            this.chkEnPanne.BackColor = System.Drawing.Color.White;
+            this.chkEnPanne.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
+            this.chkEnPanne.Checked = false;
+            this.chkEnPanne.Location = new System.Drawing.Point(237, 228);
+            this.chkEnPanne.Margin = new System.Windows.Forms.Padding(0);
+            this.chkEnPanne.Name = "chkEnPanne";
+            this.chkEnPanne.ReadOnly = true;
+            this.chkEnPanne.Size = new System.Drawing.Size(50, 50);
+            this.chkEnPanne.TabIndex = 13;
+            // 
+            // chkEnMission
+            // 
+            this.chkEnMission.AutoSizeMode = System.Windows.Forms.AutoSizeMode.GrowAndShrink;
+            this.chkEnMission.BackColor = System.Drawing.Color.White;
+            this.chkEnMission.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
+            this.chkEnMission.Checked = false;
+            this.chkEnMission.Location = new System.Drawing.Point(237, 130);
+            this.chkEnMission.Margin = new System.Windows.Forms.Padding(0);
+            this.chkEnMission.Name = "chkEnMission";
+            this.chkEnMission.ReadOnly = true;
+            this.chkEnMission.Size = new System.Drawing.Size(50, 50);
+            this.chkEnMission.TabIndex = 12;
             // 
             // EnginsDisplay
             // 
@@ -146,7 +154,7 @@
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(192)))), ((int)(((byte)(0)))), ((int)(((byte)(0)))));
             this.Controls.Add(this.chkEnPanne);
-            this.Controls.Add(this.chkMission);
+            this.Controls.Add(this.chkEnMission);
             this.Controls.Add(this.pctEnginImage);
             this.Controls.Add(this.lblTitleMission);
             this.Controls.Add(this.lblTitlePanne);
@@ -174,8 +182,8 @@
         private System.Windows.Forms.Label lblTitlePanne;
         private System.Windows.Forms.Label lblTitleMission;
         private System.Windows.Forms.PictureBox pctEnginImage;
-        private System.Windows.Forms.CheckBox chkMission;
-        private System.Windows.Forms.CheckBox chkEnPanne;
         private System.Windows.Forms.Timer timer;
+        private UC_ScalableCheckBox.ScalableCheckBox chkEnMission;
+        private UC_ScalableCheckBox.ScalableCheckBox chkEnPanne;
     }
 }

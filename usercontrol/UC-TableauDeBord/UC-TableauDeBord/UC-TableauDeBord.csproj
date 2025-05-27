@@ -46,6 +46,9 @@
     <Reference Include="UC-PanneEngins">
       <HintPath>..\..\UC-PanneEngins\UC-PanneEngins\bin\Debug\UC-PanneEngins.dll</HintPath>
     </Reference>
+    <Reference Include="UC-ScalableCheckBox">
+      <HintPath>..\..\UC-ScalableCheckBox\UC-ScalableCheckBox\bin\Debug\UC-ScalableCheckBox.dll</HintPath>
+    </Reference>
   </ItemGroup>
   <ItemGroup>
     <Compile Include="frmCompteRendu.cs">

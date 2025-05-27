@@ -29,9 +29,10 @@
         private void InitializeComponent()
         {
             this.lblTableauDeBord = new System.Windows.Forms.Label();
-            this.ckbEnCours = new System.Windows.Forms.CheckBox();
             this.panelMissions = new System.Windows.Forms.Panel();
             this.lblBarre = new System.Windows.Forms.Label();
+            this.lblEnCours = new System.Windows.Forms.Label();
+            this.sckbEnCours = new UC_ScalableCheckBox.ScalableCheckBox();
             this.SuspendLayout();
             // 
             // lblTableauDeBord
@@ -49,20 +50,6 @@
             this.lblTableauDeBord.TabIndex = 0;
             this.lblTableauDeBord.Text = "Tableau de bord";
             this.lblTableauDeBord.TextAlign = System.Drawing.ContentAlignment.TopCenter;
-            // 
-            // ckbEnCours
-            // 
-            this.ckbEnCours.AutoSize = true;
-            this.ckbEnCours.BackColor = System.Drawing.SystemColors.Control;
-            this.ckbEnCours.Font = new System.Drawing.Font("Arial", 13.8F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.ckbEnCours.ForeColor = System.Drawing.Color.DarkRed;
-            this.ckbEnCours.Location = new System.Drawing.Point(32, 29);
-            this.ckbEnCours.Name = "ckbEnCours";
-            this.ckbEnCours.Size = new System.Drawing.Size(134, 31);
-            this.ckbEnCours.TabIndex = 1;
-            this.ckbEnCours.Text = "En cours";
-            this.ckbEnCours.UseVisualStyleBackColor = false;
-            this.ckbEnCours.CheckedChanged += new System.EventHandler(this.ckbEnCours_CheckedChanged);
             // 
             // panelMissions
             // 
@@ -83,13 +70,38 @@
             this.lblBarre.TabIndex = 5;
             this.lblBarre.Text = "                                  ";
             // 
+            // lblEnCours
+            // 
+            this.lblEnCours.AutoSize = true;
+            this.lblEnCours.Font = new System.Drawing.Font("Arial", 16F, System.Drawing.FontStyle.Bold);
+            this.lblEnCours.ForeColor = System.Drawing.Color.DarkRed;
+            this.lblEnCours.Location = new System.Drawing.Point(87, 20);
+            this.lblEnCours.Name = "lblEnCours";
+            this.lblEnCours.Size = new System.Drawing.Size(132, 32);
+            this.lblEnCours.TabIndex = 7;
+            this.lblEnCours.Text = "En cours";
+            // 
+            // sckbEnCours
+            // 
+            this.sckbEnCours.AutoSizeMode = System.Windows.Forms.AutoSizeMode.GrowAndShrink;
+            this.sckbEnCours.BackColor = System.Drawing.Color.Transparent;
+            this.sckbEnCours.Checked = false;
+            this.sckbEnCours.Location = new System.Drawing.Point(34, 10);
+            this.sckbEnCours.Margin = new System.Windows.Forms.Padding(0);
+            this.sckbEnCours.Name = "sckbEnCours";
+            this.sckbEnCours.ReadOnly = false;
+            this.sckbEnCours.Size = new System.Drawing.Size(50, 50);
+            this.sckbEnCours.TabIndex = 8;
+            this.sckbEnCours.CheckedChanged += new UC_ScalableCheckBox.CheckedChangedEventHandler(this.sckbEnCours_CheckedChanged);
+            // 
             // TableauDeBord
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(13F, 26F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
+            this.Controls.Add(this.sckbEnCours);
+            this.Controls.Add(this.lblEnCours);
             this.Controls.Add(this.lblBarre);
             this.Controls.Add(this.panelMissions);
-            this.Controls.Add(this.ckbEnCours);
             this.Controls.Add(this.lblTableauDeBord);
             this.Font = new System.Drawing.Font("Arial", 14F);
             this.Margin = new System.Windows.Forms.Padding(5);
@@ -103,8 +115,9 @@
         #endregion
 
         private System.Windows.Forms.Label lblTableauDeBord;
-        private System.Windows.Forms.CheckBox ckbEnCours;
         private System.Windows.Forms.Panel panelMissions;
         private System.Windows.Forms.Label lblBarre;
+        private System.Windows.Forms.Label lblEnCours;
+        private UC_ScalableCheckBox.ScalableCheckBox sckbEnCours;
     }
 }
