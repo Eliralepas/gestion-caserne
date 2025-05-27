@@ -48,8 +48,8 @@
             // 
             this.rectValue.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(0)))), ((int)(((byte)(255)))), ((int)(((byte)(255)))), ((int)(((byte)(255)))));
             this.rectValue.Location = new System.Drawing.Point(3, 24);
-            this.rectValue.m_BackGroundColor = System.Drawing.Color.Yellow;
-            this.rectValue.m_EdgeColor = System.Drawing.Color.Yellow;
+            this.rectValue.m_BackGroundColor = System.Drawing.Color.PaleGoldenrod;
+            this.rectValue.m_EdgeColor = System.Drawing.Color.PaleGoldenrod;
             this.rectValue.m_EdgeSize = 2;
             this.rectValue.m_FontColor = System.Drawing.Color.White;
             this.rectValue.m_NBSommet = 4;
