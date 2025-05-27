@@ -35,7 +35,7 @@ namespace UserControlMission
             monDs = ds;
             ChargementCbo(monDs.Tables["NatureSinistre"], "libelle", "id", cboNature);
             ChargementCbo(monDs.Tables["Caserne"], "nom", "id", cboCaserne);
-
+            
             //le numéro + date de la prochaine mission
             nextId = monDs.Tables["Mission"].Rows.Count + 1;
             date = DateTime.Now.ToString("yyyy-MM-dd HH:mm:ss");
@@ -59,7 +59,7 @@ namespace UserControlMission
         {
             e.Handled = true;
             if (e.KeyChar == (char)Keys.Enter || e.KeyChar == (char)Keys.Back || Char.IsLetter(e.KeyChar)) { e.Handled = false; }
-            if (txtVille.SelectionStart != 0 && e.KeyChar == ' ') { e.Handled = false; }
+            if (txtVille.SelectionStart != 0 && e.KeyChar == (char)Keys.Space) { e.Handled = false; }
             if (e.KeyChar == '-' && txtVille.SelectionStart != 0) { e.Handled = false; }
         }
 
@@ -71,15 +71,18 @@ namespace UserControlMission
             c.ValueMember = col2;
         }
 
+
         private void btnValider_Click(object sender, EventArgs e)
-        {
+        { 
+            
             // Si la mission peut être exécuter (même si l'équipe incomplète alors remplir la table Mission de mon DataSet)
 
             int idCaserne = Convert.ToInt32(cboCaserne.SelectedValue);
             int idSinistre = Convert.ToInt32(cboNature.SelectedValue);
-            DataTable enginNecessaire = enginMission(idSinistre);
+            DataTable enginNecessaire = enginMission(idSinistre);;
 
-            if (tryEngin(idSinistre, idCaserne) && tryPompier(idCaserne, enginNecessaire))
+            if (tryEngin(idSinistre, idCaserne)
+                && tryPompier(idCaserne, enginNecessaire))
             {
                 remplirMission();
                 remplissageEngin(idSinistre, idCaserne);
@@ -126,6 +129,7 @@ namespace UserControlMission
             return dtEngins;
         }
 
+        
         private void remplirMission()
         {
             // Ajout d'une nouvelle ligne dans la table Mission de monDs
@@ -145,10 +149,13 @@ namespace UserControlMission
             //Ajout de la ligne
             monDs.Tables["Mission"].Rows.Add(row);
 
+            MessageBox.Show("mission remplis");
             //Après avoir valider rendre les boutons pas visible 
             btnAnnuler.Visible = false;
             btnValider.Visible = false;
+            btnNvMission.Visible = true;
         }
+        
 
 
         private bool tryEngin(int idSinistre, int idCaserne)
@@ -176,6 +183,8 @@ namespace UserControlMission
             // Tous les engins requis sont dispo
             return true;
         }
+
+        
 
         //trier liste de tableau
         private List<int[]> trierTab(List<int[]> liste)
@@ -235,7 +244,9 @@ namespace UserControlMission
             }
             return res;
         }
+        
 
+        
         private bool tryPompier(int idCaserne, DataTable enginNecessaire)
         {
             //Liste de pompier qui pourraient participer à la mission 
@@ -252,8 +263,10 @@ namespace UserControlMission
 
                 // Récupère les habilitations pour ce type d'engin
                 DataRow[] habilites = monDs.Tables["Embarquer"].Select($"codeTypeEngin = '{codeTypeEngin}'");
-
-                enginHab.Rows.Add(habilites);
+                foreach (DataRow hab in habilites)
+                {
+                    enginHab.ImportRow(hab);
+                }
 
                 // Filtrons ceux appartenant à la caserne ET qui ne sont pas encore utilisés
 
@@ -267,7 +280,7 @@ namespace UserControlMission
 
                     foreach (DataRow pomp in pompierhab)
                     {
-                        int idPompier = Convert.ToInt32(pomp["idPompier"]);
+                        int idPompier = Convert.ToInt32(pomp["matriculePompier"]);
                         DataRow[] pompierCaserne = monDs.Tables["Affectation"].Select($"idCaserne = {idCaserne} AND matriculePompier = {idPompier}");
                         foreach (DataRow pompierTrier in pompierCaserne)
                         {
@@ -357,13 +370,12 @@ namespace UserControlMission
 
             return equipeMinimumPossible;
         }
-
-
-
+        
         private DataTable remplissageEngin(int idSinistre, int idCaserne)
         {
+            MessageBox.Show("1");
             DataTable enginNecessaire = enginMission(idSinistre);
-
+            MessageBox.Show("89");
             DataTable dt = new DataTable();
             dt.Columns.Add("TypeEngin");
             dt.Columns.Add("Numero", typeof(int));
@@ -396,10 +408,12 @@ namespace UserControlMission
                 }
 
             }
+
+            MessageBox.Show("remplissage engin");
             return dt;
 
         }
-
+        
         private DataTable remplissagePompier(int idCaserne, DataTable enginsNecessaires)
         {
             DataTable dtPompiersMobilises = new DataTable();
@@ -441,7 +455,7 @@ namespace UserControlMission
 
             return dtPompiersMobilises;
         }
-
+        
         private void remplirMobiliser (DataTable dtPompierMobilise)
         {
             // ajout des lignes dans la table mobiliser
@@ -455,6 +469,7 @@ namespace UserControlMission
                 monDs.Tables["Mobiliser"].Rows.Add(ligne);
             }
         }
+        
 
         private void generationUC(int idSinistre, int idCaserne)
         {
@@ -469,10 +484,11 @@ namespace UserControlMission
 
                 UC_MobilisationEnginPompier engin = new UC_MobilisationEnginPompier(code, id);
 
-                pnlEngin.Controls.Add(engin);
-                engin.AutoSize = true;
                 engin.Height = haut;
                 engin.Left = left;
+                engin.AutoSize = true;
+                pnlEngin.Controls.Add(engin);
+                
                 haut += 150;
 
             }
@@ -484,15 +500,14 @@ namespace UserControlMission
 
                 UC_MobilisationEnginPompier pompier = new UC_MobilisationEnginPompier(matricule, id);
 
-                pnlEngin.Controls.Add(pompier);
                 pompier.AutoSize = true;
                 pompier.Height = haut;
                 pompier.Left = left;
+                pnlEngin.Controls.Add(pompier);
                 haut += 150;
             }
 
         }
-
 
         private void btnAnnuler_Click(object sender, EventArgs e)
         {
@@ -510,6 +525,7 @@ namespace UserControlMission
             cboNature.SelectedIndex = -1;
         }
 
+        
         private void btnNvMission_Click(object sender, EventArgs e)
         {
             btnNvMission.Visible = false;
@@ -527,7 +543,7 @@ namespace UserControlMission
             lblNumMission.Text = "Mission n°" + nextId.ToString();
             lblDate.Text = "déclenchée le : " + date;
         }
-
+        
        
     }
 }

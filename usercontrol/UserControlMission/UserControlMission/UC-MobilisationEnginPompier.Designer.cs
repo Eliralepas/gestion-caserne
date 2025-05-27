@@ -46,7 +46,7 @@
             // lblId
             // 
             this.lblId.AutoSize = true;
-            this.lblId.Location = new System.Drawing.Point(16, 85);
+            this.lblId.Location = new System.Drawing.Point(16, 64);
             this.lblId.Name = "lblId";
             this.lblId.Size = new System.Drawing.Size(62, 23);
             this.lblId.TabIndex = 1;
@@ -54,7 +54,7 @@
             // 
             // ptbMobiliser
             // 
-            this.ptbMobiliser.Location = new System.Drawing.Point(280, 21);
+            this.ptbMobiliser.Location = new System.Drawing.Point(154, 3);
             this.ptbMobiliser.Name = "ptbMobiliser";
             this.ptbMobiliser.Size = new System.Drawing.Size(115, 98);
             this.ptbMobiliser.TabIndex = 2;
@@ -64,14 +64,14 @@
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(11F, 23F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.BackColor = System.Drawing.Color.WhiteSmoke;
+            this.BackColor = System.Drawing.Color.IndianRed;
             this.Controls.Add(this.ptbMobiliser);
             this.Controls.Add(this.lblId);
             this.Controls.Add(this.lblCode);
             this.Font = new System.Drawing.Font("Arial", 10F);
             this.Margin = new System.Windows.Forms.Padding(4);
             this.Name = "UC_MobilisationEnginPompier";
-            this.Size = new System.Drawing.Size(420, 139);
+            this.Size = new System.Drawing.Size(284, 118);
             ((System.ComponentModel.ISupportInitialize)(this.ptbMobiliser)).EndInit();
             this.ResumeLayout(false);
             this.PerformLayout();

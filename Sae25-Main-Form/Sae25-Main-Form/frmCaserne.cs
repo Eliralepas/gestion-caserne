@@ -14,6 +14,7 @@ using UC_Mission;
 using System.Net;
 using System.Reflection;
 using UCGestionEngins;
+using UserControlMission;
 
 
 namespace Sae25_Main_Form
@@ -26,6 +27,7 @@ namespace Sae25_Main_Form
         }
 
         UC_TableauDeBord.TableauDeBord tableauDeBord;
+        ucMission ajoutMission;
         UCStatistique tabStat;
         SQLiteConnection con;
         DataSet monDs;
@@ -53,7 +55,7 @@ namespace Sae25_Main_Form
             //Initialiser les boutons de navigation et définir leurs tags
             btn1.Tag = "tabBord";
             btn1.buttonText = "Tableau de Bord";
-            btn2.Tag = "dummy";
+            btn2.Tag = "nvMission";
             btn3.Tag = "engins";
             btn4.Tag = "dummy";
             btn5.Tag = "tabStat";
@@ -84,10 +86,21 @@ namespace Sae25_Main_Form
                 case ("engins"):
                     LoadEngins();
                     break;
+                case ("nvMission"):
+                    LoadAjoutMission();
+                    break;
                 
             }
         }
 
+        private void LoadAjoutMission()
+        {
+            if (monDs != null)  //Vérifier si monDs n'est pas vide
+            {
+                ajoutMission = new ucMission(monDs);    //Instancier le volet 2 (Ajout de mission)
+            }
+            panelVolet.Controls.Add(ajoutMission);
+        }
         private void LoadTableauDeBord()
         {
             if (tableauDeBord == null) //Si le tableau de bord n'existe pas
