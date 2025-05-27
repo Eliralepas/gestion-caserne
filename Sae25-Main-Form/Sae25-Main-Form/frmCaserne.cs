@@ -310,5 +310,11 @@ namespace Sae25_Main_Form
                 }
             }
         }
+
+        private void btnQuitter_Click(object sender, EventArgs e)
+        {
+            con.Close(); //Fermer la connexion à la base de données
+            Application.Exit(); //Quitter l'application
+        }
     }
 }

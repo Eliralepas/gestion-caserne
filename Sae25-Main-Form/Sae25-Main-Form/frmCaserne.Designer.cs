@@ -37,6 +37,7 @@
             this.btn2 = new NavigationBarUserControl.UCButton();
             this.btn3 = new NavigationBarUserControl.UCButton();
             this.picBoxCaserne = new System.Windows.Forms.PictureBox();
+            this.btnQuitter = new System.Windows.Forms.Button();
             this.panelNavigation.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.picBoxCaserne)).BeginInit();
             this.SuspendLayout();
@@ -52,6 +53,7 @@
             // panelNavigation
             // 
             this.panelNavigation.BackColor = System.Drawing.Color.DarkRed;
+            this.panelNavigation.Controls.Add(this.btnQuitter);
             this.panelNavigation.Controls.Add(this.btn5);
             this.panelNavigation.Controls.Add(this.btn1);
             this.panelNavigation.Controls.Add(this.btn4);
@@ -132,6 +134,19 @@
             this.picBoxCaserne.TabIndex = 0;
             this.picBoxCaserne.TabStop = false;
             // 
+            // btnQuitter
+            // 
+            this.btnQuitter.AutoSize = true;
+            this.btnQuitter.Font = new System.Drawing.Font("Arial", 18.2F, System.Drawing.FontStyle.Bold);
+            this.btnQuitter.ForeColor = System.Drawing.Color.DarkRed;
+            this.btnQuitter.Location = new System.Drawing.Point(77, 561);
+            this.btnQuitter.Name = "btnQuitter";
+            this.btnQuitter.Size = new System.Drawing.Size(124, 46);
+            this.btnQuitter.TabIndex = 5;
+            this.btnQuitter.Text = "Quitter";
+            this.btnQuitter.UseVisualStyleBackColor = true;
+            this.btnQuitter.Click += new System.EventHandler(this.btnQuitter_Click);
+            // 
             // frmCaserne
             // 
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.None;
@@ -146,6 +161,7 @@
             this.Text = "Quoi ?!  Les soldats du feur";
             this.Load += new System.EventHandler(this.frmCaserne_Load);
             this.panelNavigation.ResumeLayout(false);
+            this.panelNavigation.PerformLayout();
             ((System.ComponentModel.ISupportInitialize)(this.picBoxCaserne)).EndInit();
             this.ResumeLayout(false);
 
@@ -161,6 +177,7 @@
         private NavigationBarUserControl.UCButton btn1;
         private System.Windows.Forms.Panel panelVolet;
         private System.Windows.Forms.Panel panelNavigation;
+        private System.Windows.Forms.Button btnQuitter;
     }
 }
 
