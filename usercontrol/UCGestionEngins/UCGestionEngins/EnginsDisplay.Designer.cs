@@ -28,6 +28,7 @@
         /// </summary>
         private void InitializeComponent()
         {
+            this.components = new System.ComponentModel.Container();
             this.lblEnginTitle = new System.Windows.Forms.Label();
             this.lblCodeEngin = new System.Windows.Forms.Label();
             this.lblTitleDate = new System.Windows.Forms.Label();
@@ -37,6 +38,7 @@
             this.pctEnginImage = new System.Windows.Forms.PictureBox();
             this.chkMission = new System.Windows.Forms.CheckBox();
             this.chkEnPanne = new System.Windows.Forms.CheckBox();
+            this.timer = new System.Windows.Forms.Timer(this.components);
             ((System.ComponentModel.ISupportInitialize)(this.pctEnginImage)).BeginInit();
             this.SuspendLayout();
             // 
@@ -134,6 +136,10 @@
             this.chkEnPanne.TabIndex = 11;
             this.chkEnPanne.UseVisualStyleBackColor = true;
             // 
+            // timer
+            // 
+            this.timer.Tick += new System.EventHandler(this.timer_Tick);
+            // 
             // EnginsDisplay
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(9F, 23F);
@@ -170,5 +176,6 @@
         private System.Windows.Forms.PictureBox pctEnginImage;
         private System.Windows.Forms.CheckBox chkMission;
         private System.Windows.Forms.CheckBox chkEnPanne;
+        private System.Windows.Forms.Timer timer;
     }
 }

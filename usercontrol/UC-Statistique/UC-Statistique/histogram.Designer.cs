@@ -37,7 +37,7 @@
             // 
             this.lblVehicule.AutoSize = true;
             this.lblVehicule.Font = new System.Drawing.Font("Arial Narrow", 14.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.lblVehicule.Location = new System.Drawing.Point(16, 215);
+            this.lblVehicule.Location = new System.Drawing.Point(16, 147);
             this.lblVehicule.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
             this.lblVehicule.Name = "lblVehicule";
             this.lblVehicule.Size = new System.Drawing.Size(68, 29);
@@ -47,18 +47,18 @@
             // rectValue
             // 
             this.rectValue.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(0)))), ((int)(((byte)(255)))), ((int)(((byte)(255)))), ((int)(((byte)(255)))));
-            this.rectValue.Location = new System.Drawing.Point(3, 57);
-            this.rectValue.m_BackGroundColor = System.Drawing.Color.Yellow;
-            this.rectValue.m_EdgeColor = System.Drawing.Color.Yellow;
+            this.rectValue.Location = new System.Drawing.Point(3, 24);
+            this.rectValue.m_BackGroundColor = System.Drawing.Color.PaleGoldenrod;
+            this.rectValue.m_EdgeColor = System.Drawing.Color.PaleGoldenrod;
             this.rectValue.m_EdgeSize = 2;
             this.rectValue.m_FontColor = System.Drawing.Color.White;
             this.rectValue.m_NBSommet = 4;
-            this.rectValue.m_Size = new System.Drawing.Size(81, 135);
+            this.rectValue.m_Size = new System.Drawing.Size(81, 121);
             this.rectValue.m_Text = null;
             this.rectValue.m_TextFont = null;
             this.rectValue.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
             this.rectValue.Name = "rectValue";
-            this.rectValue.Size = new System.Drawing.Size(81, 135);
+            this.rectValue.Size = new System.Drawing.Size(81, 121);
             this.rectValue.TabIndex = 2;
             this.rectValue.MouseEnter += new System.EventHandler(this.histogram_MouseEnter);
             this.rectValue.MouseLeave += new System.EventHandler(this.histogram_MouseLeave);
@@ -69,7 +69,7 @@
             this.lblValue.BackColor = System.Drawing.SystemColors.Control;
             this.lblValue.Font = new System.Drawing.Font("Arial Narrow", 10.8F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.lblValue.ForeColor = System.Drawing.Color.Black;
-            this.lblValue.Location = new System.Drawing.Point(3, 19);
+            this.lblValue.Location = new System.Drawing.Point(17, 0);
             this.lblValue.Name = "lblValue";
             this.lblValue.Size = new System.Drawing.Size(50, 22);
             this.lblValue.TabIndex = 3;
@@ -79,14 +79,14 @@
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 16F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.BackColor = System.Drawing.Color.Red;
+            this.BackColor = System.Drawing.Color.DarkRed;
             this.Controls.Add(this.lblValue);
             this.Controls.Add(this.rectValue);
             this.Controls.Add(this.lblVehicule);
             this.ForeColor = System.Drawing.Color.White;
             this.Margin = new System.Windows.Forms.Padding(4);
             this.Name = "histogram";
-            this.Size = new System.Drawing.Size(109, 256);
+            this.Size = new System.Drawing.Size(109, 178);
             this.Load += new System.EventHandler(this.histogram_Load);
             this.MouseLeave += new System.EventHandler(this.histogram_MouseLeave_1);
             this.ResumeLayout(false);

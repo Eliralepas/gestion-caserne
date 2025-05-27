@@ -104,22 +104,23 @@ namespace UC_Statistique
             try
             {
                 string command = $@"
-                    SELECT E.codeTypeEngin, E.numero,
-                    ROUND(SUM((julianday(M.dateHeureRetour) - julianday(M.dateHeureDepart)) * 24), 2) AS cumul_heures                     
-                    FROM Engin E
-                    JOIN Partiravec P ON E.idCaserne = P.idCaserne 
-                    AND E.codeTypeEngin = P.codeTypeEngin 
-                    AND E.numero = P.numeroEngin 
-                    JOIN Mission M ON P.idMission = M.id
-                    WHERE E.idCaserne = @idMission 
-                    AND M.dateHeureRetour IS NOT NULL 
-                    GROUP BY E.codeTypeEngin, E.numero 
-                    ORDER BY cumul_heures DESC;";
+                                SELECT E.codeTypeEngin, E.numero,
+                                IFNULL(ROUND(SUM((julianday(M.dateHeureRetour) - julianday(M.dateHeureDepart)) * 24), 2),0) AS cumul_heures
+                                FROM Engin E
+                                LEFT JOIN Partiravec P 
+                                ON E.idCaserne = P.idCaserne 
+                                AND E.codeTypeEngin = P.codeTypeEngin 
+                                AND E.numero = P.numeroEngin 
+                                LEFT JOIN Mission M 
+                                ON P.idMission = M.id
+                                WHERE E.idCaserne = @idCaserne
+                                GROUP BY E.codeTypeEngin, E.numero
+                                ORDER BY cumul_heures DESC;";
 
                 SQLiteCommand cmd = new SQLiteCommand(command, _con);
-                cmd.Parameters.AddWithValue("@idMission", selectedId);
+                cmd.Parameters.AddWithValue("@idCaserne", selectedId);
                 SQLiteDataReader dataReader = cmd.ExecuteReader();
-
+                
                 float maxValue = 0;
                 Dictionary<string, float> EnginPerHour = new Dictionary<string, float>();
                 while(dataReader.Read())
@@ -142,39 +143,40 @@ namespace UC_Statistique
 
         private void loadMostUsedEngin()
         {
-            pnlCamembert.Controls.Clear();
-            flpLegende.Controls.Clear();
+            flpMostUsedEngin.Controls.Clear();
             if(cbxCaserne.SelectedValue == null) return;
 
             int selectedId = Convert.ToInt32(cbxCaserne.SelectedValue);
-            string command = $@"SELECT E.codeTypeEngin, count(*)
+            string command = $@"SELECT 
+                                E.codeTypeEngin,
+                                E.numero,
+                                COUNT(P.idMission) AS nbMissions
                                 FROM Engin E
-                                JOIN PartirAvec P on P.codeTypeEngin = E.codeTypeEngin 
-                                AND E.numero = P.numeroEngin 
+                                LEFT JOIN PartirAvec P 
+                                ON P.codeTypeEngin = E.codeTypeEngin 
+                                AND P.numeroEngin = E.numero 
                                 AND P.idCaserne = E.idCaserne
-                                WHERE P.idCaserne = @caserneId
-                                GROUP BY E.codeTypeEngin 
-                                ORDER BY COUNT() DESC;";
+                                WHERE E.idCaserne = 1
+                                GROUP BY E.codeTypeEngin, E.numero
+                                ORDER BY nbMissions DESC;";
 
             SQLiteCommand cmd = new SQLiteCommand(command, _con);
             cmd.Parameters.AddWithValue("@caserneId", selectedId);
             SQLiteDataReader data = cmd.ExecuteReader();
 
-            Dictionary<string, int> values = new Dictionary<string, int>();
-            int i = 0;
-            while(data.Read() && i < 4) // on ne garde que les 4 plus utilisés
+            Dictionary<string, float> values = new Dictionary<string, float>();
+            float mostUsed = 0;
+            while(data.Read())
             {
-                values.Add(data.GetString(0), data.GetInt32(1));
-                legende l = new legende($"{data.GetString(0)} : {data.GetInt32(1)}", colors[i]);
-                flpLegende.Controls.Add(l);
-                i++;
+                string engin = data.GetString(0) + " " + data.GetInt32(1).ToString();
+                float heures = data.GetFloat(2);
+                if(heures > mostUsed) mostUsed = heures;
+                values.Add(engin, heures);
             }
-
-            Color[] selectedColor = new Color[values.Count];
-            Array.Copy(colors, selectedColor, values.Count);
-            PartionedCircle camembert = new PartionedCircle(values, colors);
-            camembert.Dock = DockStyle.Fill;
-            pnlCamembert.Controls.Add(camembert);
+            foreach(KeyValuePair<string, float> eph in values)
+            {
+                flpMostUsedEngin.Controls.Add(new histogram(eph.Key, eph.Value, mostUsed, "heure Cumulé : "));
+            }
         }
 
         // Statistique relatif aux interventions

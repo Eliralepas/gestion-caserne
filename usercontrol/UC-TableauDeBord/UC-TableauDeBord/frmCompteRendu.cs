@@ -30,8 +30,8 @@ namespace UC_TableauDeBord
 
         private void btnValider_Click(object sender, EventArgs e)
         {
-            compteRendu = txtCompteRendu.Text; //Récupération du compte rendu
-            DialogResult = DialogResult.OK; //Fermer la fenêtre avec le résultat OK
+            compteRendu = txtCompteRendu.Text;  //Récupération du compte rendu
+            DialogResult = DialogResult.OK;     //Fermer la fenêtre avec le résultat OK
         }
 
         private void btnAnnuler_Click(object sender, EventArgs e)

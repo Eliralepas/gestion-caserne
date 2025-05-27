@@ -22,29 +22,27 @@ namespace UC_TableauDeBord
 
         public void Remplir(DataTable dt)
         {
-            int top = 6; //Position en hauteur du premier élément
-            int left = 30; //Position en largeur de l'élément
+            int top = 6;    //Position en hauteur du premier élément
+            int left = 30;  //Position en largeur de l'élément
             foreach (DataRow dr in dt.Rows)
             {
-                UC_PanneEngins.PanneEngins engin = new UC_PanneEngins.PanneEngins(dr); //Création d'un nouveau user control PanneEngin à partir de la ligne du DataTable
-                engin.Location = new Point(left, top); //Position de la mission
-                top += engin.Height + 10; //Espace entre les missions
-                panelEngins.Controls.Add(engin); //Ajout de chaque engin à la liste
+                PanneEngins engin = new PanneEngins(dr); //Création d'un nouveau user control PanneEngin à partir de la ligne du DataTable
+                engin.Location = new Point(left, top);  //Position de la mission
+                top += engin.Height + 10;               //Espace entre les missions
+                panelEngins.Controls.Add(engin);        //Ajout de chaque engin à la liste
             }
         }
 
-        public DataTable getEnginsEnPanne()
+        public DataTable getEngins()
         {
             //Création d'un DataTable pour stocker les engins en panne
             DataTable dt = new DataTable();
-            dt.Columns.Add("Type", typeof(string)); //Ajout de la colonne type
-            dt.Columns.Add("Numero", typeof(int)); //Ajout de la colonne numero
-            foreach (UC_PanneEngins.PanneEngins engin in panelEngins.Controls.OfType<UC_PanneEngins.PanneEngins>())
+            dt.Columns.Add("Type", typeof(string));     //Ajout de la colonne type
+            dt.Columns.Add("Numero", typeof(int));      //Ajout de la colonne numero
+            dt.Columns.Add("EnPanne", typeof(bool));    //Ajout de la colonne en panne
+            foreach (PanneEngins engin in panelEngins.Controls.OfType<PanneEngins>())
             {
-                if (engin.EnPanne)
-                {
-                    dt.Rows.Add(engin.Type, engin.Numero); //Ajout de la ligne avec le type et le numero de l'engin
-                }
+                dt.Rows.Add(engin.Type, engin.Numero, engin.EnPanne); //Ajout de la ligne avec le type, le numero et le statut en panne de l'engin
             }
             return dt; //Retourne le DataTable
         }

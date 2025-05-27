@@ -1,11 +1,6 @@
 ﻿using System;
-using System.Collections.Generic;
-using System.ComponentModel;
 using System.Data;
 using System.Drawing;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 using System.Windows.Forms;
 
 namespace UCGestionEngins
@@ -39,7 +34,8 @@ namespace UCGestionEngins
 
         private void refreshImage()
         {
-
+            Visible = false;
+            timer.Start();
             DataRowView currentEngin = (DataRowView)EnginsList.Current;
             string codeType = currentEngin["codeTypeEngin"].ToString();
             var varimg = Properties.Resources.ResourceManager.GetObject(codeType);
@@ -51,7 +47,6 @@ namespace UCGestionEngins
             {
                 pctEnginImage.Image = Properties.Resources.Default;
             }
-
         }
 
         private int getPos()
@@ -89,6 +84,10 @@ namespace UCGestionEngins
             return getPos();    
         }
 
-
+        private void timer_Tick(object sender, EventArgs e)
+        {
+            Visible = true;
+            timer.Stop();
+        }
     }
 }

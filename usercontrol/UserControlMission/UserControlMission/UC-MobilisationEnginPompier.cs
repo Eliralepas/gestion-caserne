@@ -1,20 +1,25 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.ComponentModel;
-using System.Drawing;
 using System.Data;
+using System.Drawing;
 using System.Linq;
+using System.Reflection;
 using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
 
 namespace UserControlMission
 {
-    public partial class UserControl1: UserControl
+    public partial class UC_MobilisationEnginPompier : UserControl
     {
-        public UserControl1()
+        public UC_MobilisationEnginPompier(string premierChamp, string deuxiemeChamp)
         {
             InitializeComponent();
+            lblCode.Text = premierChamp;
+            lblId.Text = deuxiemeChamp;
+            
         }
+
     }
 }
