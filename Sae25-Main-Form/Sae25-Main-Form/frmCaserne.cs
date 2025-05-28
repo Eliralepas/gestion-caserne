@@ -9,6 +9,7 @@ using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
 using System.Data.SQLite;
+using UC_TableauDeBord;
 using UC_Statistique;
 using UC_Mission;
 using System.Net;
@@ -26,8 +27,9 @@ namespace Sae25_Main_Form
             InitializeComponent();
         }
 
-        UC_TableauDeBord.TableauDeBord tableauDeBord;
-        ucMission ajoutMission;
+        TableauDeBord tableauDeBord;
+        UCGestionEngin gestionEngin;
+        ucMission ajoutMission
         UCStatistique tabStat;
         SQLiteConnection con;
         DataSet monDs;
@@ -128,10 +130,12 @@ namespace Sae25_Main_Form
 
         private void LoadEngins()
         {
-            UCGestionEngin uc = new UCGestionEngin(monDs);
-            uc.Dock = DockStyle.Fill;
-
-            panelVolet.Controls.Add(uc);
+            if (gestionEngin == null) //Vérifier si le volet de gestion des engins n'existe pas
+            {
+                gestionEngin = new UCGestionEngin(monDs); //Instancier le volet de gestion des engins
+                gestionEngin.Dock = DockStyle.Fill; //
+            }
+            panelVolet.Controls.Add(gestionEngin);
         }
 
 
@@ -142,6 +146,7 @@ namespace Sae25_Main_Form
                 DataTable dtMissions = new DataTable();         //Créer une nouvelle table de données
                 for(int i = 0; i < 7; i++)
                 {
+                 
                     DataColumn column = new DataColumn();       //Créer une nouvelle colonne
                     switch (i)
                     {
@@ -321,6 +326,12 @@ namespace Sae25_Main_Form
                     cmdPompier.ExecuteNonQuery(); //Exécuter la commande SQL
                 }
             }
+        }
+
+        private void btnQuitter_Click(object sender, EventArgs e)
+        {
+            con.Close(); //Fermer la connexion à la base de données
+            Application.Exit(); //Quitter l'application
         }
     }
 }

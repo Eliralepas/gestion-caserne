@@ -47,6 +47,9 @@
     <Reference Include="System.Net.Http" />
     <Reference Include="System.Windows.Forms" />
     <Reference Include="System.Xml" />
+    <Reference Include="UC-ScalableCheckBox">
+      <HintPath>..\..\UC-ScalableCheckBox\UC-ScalableCheckBox\bin\Debug\UC-ScalableCheckBox.dll</HintPath>
+    </Reference>
   </ItemGroup>
   <ItemGroup>
     <Compile Include="EnginsDisplay.cs">

@@ -27,3 +27,5 @@ C:\Users\Diego\source\repos\sae-caserne\usercontrol\UC-TableauDeBord\UC-TableauD
 C:\Users\Diego\source\repos\sae-caserne\usercontrol\UC-TableauDeBord\UC-TableauDeBord\bin\Debug\UC-PanneEngins.pdb
 C:\Users\Diego\source\repos\sae-caserne\usercontrol\UC-TableauDeBord\UC-TableauDeBord\obj\Debug\UC_TableauDeBord.frmCompteRendu.resources
 C:\Users\Diego\source\repos\sae-caserne\usercontrol\UC-TableauDeBord\UC-TableauDeBord\obj\Debug\UC_TableauDeBord.frmPanneEngins.resources
+C:\Users\Diego\source\repos\sae-caserne\usercontrol\UC-TableauDeBord\UC-TableauDeBord\bin\Debug\UC-ScalableCheckBox.dll
+C:\Users\Diego\source\repos\sae-caserne\usercontrol\UC-TableauDeBord\UC-TableauDeBord\bin\Debug\UC-ScalableCheckBox.pdb

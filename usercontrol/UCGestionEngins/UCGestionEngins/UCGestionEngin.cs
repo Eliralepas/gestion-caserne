@@ -66,9 +66,6 @@ namespace UCGestionEngins
             display.First();
             setPrevious(false);
             setNext(true);
-
-
-
         }
 
 

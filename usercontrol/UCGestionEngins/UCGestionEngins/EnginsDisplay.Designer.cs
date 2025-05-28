@@ -28,6 +28,7 @@
         /// </summary>
         private void InitializeComponent()
         {
+            this.components = new System.ComponentModel.Container();
             this.lblEnginTitle = new System.Windows.Forms.Label();
             this.lblCodeEngin = new System.Windows.Forms.Label();
             this.lblTitleDate = new System.Windows.Forms.Label();
@@ -35,71 +36,72 @@
             this.lblTitlePanne = new System.Windows.Forms.Label();
             this.lblTitleMission = new System.Windows.Forms.Label();
             this.pctEnginImage = new System.Windows.Forms.PictureBox();
-            this.chkMission = new System.Windows.Forms.CheckBox();
-            this.chkEnPanne = new System.Windows.Forms.CheckBox();
+            this.timer = new System.Windows.Forms.Timer(this.components);
+            this.chkEnPanne = new UC_ScalableCheckBox.ScalableCheckBox();
+            this.chkEnMission = new UC_ScalableCheckBox.ScalableCheckBox();
             ((System.ComponentModel.ISupportInitialize)(this.pctEnginImage)).BeginInit();
             this.SuspendLayout();
             // 
             // lblEnginTitle
             // 
             this.lblEnginTitle.AutoSize = true;
-            this.lblEnginTitle.Font = new System.Drawing.Font("Arial Narrow", 18F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.lblEnginTitle.Font = new System.Drawing.Font("Arial", 16F);
             this.lblEnginTitle.Location = new System.Drawing.Point(22, 29);
             this.lblEnginTitle.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
             this.lblEnginTitle.Name = "lblEnginTitle";
-            this.lblEnginTitle.Size = new System.Drawing.Size(214, 35);
+            this.lblEnginTitle.Size = new System.Drawing.Size(148, 32);
             this.lblEnginTitle.TabIndex = 1;
-            this.lblEnginTitle.Text = "Identifiant Engin : ";
+            this.lblEnginTitle.Text = "Identifiant :";
             // 
             // lblCodeEngin
             // 
             this.lblCodeEngin.AutoSize = true;
-            this.lblCodeEngin.Font = new System.Drawing.Font("Arial Narrow", 18F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.lblCodeEngin.Location = new System.Drawing.Point(204, 29);
+            this.lblCodeEngin.Font = new System.Drawing.Font("Arial", 16F);
+            this.lblCodeEngin.Location = new System.Drawing.Point(273, 29);
             this.lblCodeEngin.Name = "lblCodeEngin";
-            this.lblCodeEngin.Size = new System.Drawing.Size(211, 35);
+            this.lblCodeEngin.Size = new System.Drawing.Size(42, 32);
             this.lblCodeEngin.TabIndex = 2;
-            this.lblCodeEngin.Text = "Display Text Here";
+            this.lblCodeEngin.Text = "ID";
             // 
             // lblTitleDate
             // 
             this.lblTitleDate.AutoSize = true;
-            this.lblTitleDate.Font = new System.Drawing.Font("Arial Narrow", 18F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.lblTitleDate.Font = new System.Drawing.Font("Arial", 16F);
             this.lblTitleDate.Location = new System.Drawing.Point(22, 68);
             this.lblTitleDate.Name = "lblTitleDate";
-            this.lblTitleDate.Size = new System.Drawing.Size(224, 35);
+            this.lblTitleDate.Size = new System.Drawing.Size(245, 32);
             this.lblTitleDate.TabIndex = 3;
             this.lblTitleDate.Text = "Date d\'acquisition :";
             // 
             // lblDate
             // 
             this.lblDate.AutoSize = true;
-            this.lblDate.Font = new System.Drawing.Font("Arial Narrow", 18F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.lblDate.Location = new System.Drawing.Point(204, 68);
+            this.lblDate.Font = new System.Drawing.Font("Arial", 16F);
+            this.lblDate.Location = new System.Drawing.Point(273, 68);
             this.lblDate.Name = "lblDate";
-            this.lblDate.Size = new System.Drawing.Size(211, 35);
+            this.lblDate.Size = new System.Drawing.Size(72, 32);
             this.lblDate.TabIndex = 4;
-            this.lblDate.Text = "Display Text Here";
+            this.lblDate.Text = "Date";
             // 
             // lblTitlePanne
             // 
             this.lblTitlePanne.AutoSize = true;
-            this.lblTitlePanne.Font = new System.Drawing.Font("Arial Narrow", 18F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.lblTitlePanne.Location = new System.Drawing.Point(91, 236);
+            this.lblTitlePanne.Font = new System.Drawing.Font("Arial", 16F);
+            this.lblTitlePanne.Location = new System.Drawing.Point(91, 237);
             this.lblTitlePanne.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
             this.lblTitlePanne.Name = "lblTitlePanne";
-            this.lblTitlePanne.Size = new System.Drawing.Size(136, 35);
+            this.lblTitlePanne.Size = new System.Drawing.Size(146, 32);
             this.lblTitlePanne.TabIndex = 5;
             this.lblTitlePanne.Text = "En panne :";
             // 
             // lblTitleMission
             // 
             this.lblTitleMission.AutoSize = true;
-            this.lblTitleMission.Font = new System.Drawing.Font("Arial Narrow", 18F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.lblTitleMission.Location = new System.Drawing.Point(85, 140);
+            this.lblTitleMission.Font = new System.Drawing.Font("Arial", 16F);
+            this.lblTitleMission.Location = new System.Drawing.Point(74, 139);
             this.lblTitleMission.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
             this.lblTitleMission.Name = "lblTitleMission";
-            this.lblTitleMission.Size = new System.Drawing.Size(148, 35);
+            this.lblTitleMission.Size = new System.Drawing.Size(163, 32);
             this.lblTitleMission.TabIndex = 6;
             this.lblTitleMission.Text = "En mission :";
             // 
@@ -116,31 +118,42 @@
             this.pctEnginImage.TabIndex = 9;
             this.pctEnginImage.TabStop = false;
             // 
-            // chkMission
+            // timer
             // 
-            this.chkMission.AutoSize = true;
-            this.chkMission.Location = new System.Drawing.Point(240, 152);
-            this.chkMission.Name = "chkMission";
-            this.chkMission.Size = new System.Drawing.Size(18, 17);
-            this.chkMission.TabIndex = 10;
-            this.chkMission.UseVisualStyleBackColor = true;
+            this.timer.Tick += new System.EventHandler(this.timer_Tick);
             // 
             // chkEnPanne
             // 
-            this.chkEnPanne.AutoSize = true;
-            this.chkEnPanne.Location = new System.Drawing.Point(240, 248);
+            this.chkEnPanne.AutoSizeMode = System.Windows.Forms.AutoSizeMode.GrowAndShrink;
+            this.chkEnPanne.BackColor = System.Drawing.Color.White;
+            this.chkEnPanne.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
+            this.chkEnPanne.Checked = false;
+            this.chkEnPanne.Location = new System.Drawing.Point(237, 228);
+            this.chkEnPanne.Margin = new System.Windows.Forms.Padding(0);
             this.chkEnPanne.Name = "chkEnPanne";
-            this.chkEnPanne.Size = new System.Drawing.Size(18, 17);
-            this.chkEnPanne.TabIndex = 11;
-            this.chkEnPanne.UseVisualStyleBackColor = true;
+            this.chkEnPanne.ReadOnly = true;
+            this.chkEnPanne.Size = new System.Drawing.Size(50, 50);
+            this.chkEnPanne.TabIndex = 13;
+            // 
+            // chkEnMission
+            // 
+            this.chkEnMission.AutoSizeMode = System.Windows.Forms.AutoSizeMode.GrowAndShrink;
+            this.chkEnMission.BackColor = System.Drawing.Color.White;
+            this.chkEnMission.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
+            this.chkEnMission.Checked = false;
+            this.chkEnMission.Location = new System.Drawing.Point(237, 130);
+            this.chkEnMission.Margin = new System.Windows.Forms.Padding(0);
+            this.chkEnMission.Name = "chkEnMission";
+            this.chkEnMission.ReadOnly = true;
+            this.chkEnMission.Size = new System.Drawing.Size(50, 50);
+            this.chkEnMission.TabIndex = 12;
             // 
             // EnginsDisplay
             // 
-            this.AutoScaleDimensions = new System.Drawing.SizeF(9F, 23F);
-            this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
+            this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.None;
             this.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(192)))), ((int)(((byte)(0)))), ((int)(((byte)(0)))));
             this.Controls.Add(this.chkEnPanne);
-            this.Controls.Add(this.chkMission);
+            this.Controls.Add(this.chkEnMission);
             this.Controls.Add(this.pctEnginImage);
             this.Controls.Add(this.lblTitleMission);
             this.Controls.Add(this.lblTitlePanne);
@@ -148,7 +161,7 @@
             this.Controls.Add(this.lblTitleDate);
             this.Controls.Add(this.lblCodeEngin);
             this.Controls.Add(this.lblEnginTitle);
-            this.Font = new System.Drawing.Font("Arial Narrow", 11.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.Font = new System.Drawing.Font("Arial", 12F);
             this.Margin = new System.Windows.Forms.Padding(4, 5, 4, 5);
             this.Name = "EnginsDisplay";
             this.Size = new System.Drawing.Size(787, 315);
@@ -168,7 +181,8 @@
         private System.Windows.Forms.Label lblTitlePanne;
         private System.Windows.Forms.Label lblTitleMission;
         private System.Windows.Forms.PictureBox pctEnginImage;
-        private System.Windows.Forms.CheckBox chkMission;
-        private System.Windows.Forms.CheckBox chkEnPanne;
+        private System.Windows.Forms.Timer timer;
+        private UC_ScalableCheckBox.ScalableCheckBox chkEnMission;
+        private UC_ScalableCheckBox.ScalableCheckBox chkEnPanne;
     }
 }
