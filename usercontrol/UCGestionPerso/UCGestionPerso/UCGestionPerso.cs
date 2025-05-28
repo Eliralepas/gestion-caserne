@@ -11,26 +11,84 @@ using System.Data.SQLite;
 
 namespace UCGestionPerso
 {
-    public delegate void validateLogin(Dictionary<String, String> KeyLogin);
-    public partial class UCGestionPerso: UserControl
+    public delegate void validateLogin(Dictionary<string, string> KeyLogin);
+
+    public partial class UCGestionPerso : UserControl
     {
         SQLiteConnection _con;
         UCLogin login;
+
+
+        private UCRichButton Selected;
+        public bool Connected
+        {
+            get { return login != null && login.Connected; }
+            set { if(login != null) login.Connected = value; }
+        }
+
+        public validateLogin validateLoginDel;
+
         public UCGestionPerso()
         {
             InitializeComponent();
         }
 
-        public validateLogin validateLoginDel;
-
-        public UCGestionPerso(SQLiteConnection con)
+        public UCGestionPerso(SQLiteConnection con) : base()
         {
+            InitializeComponent();
             _con = con;
             login = new UCLogin();
-            
+
+            if(con.State == ConnectionState.Closed)
+            {
+                throw new Exception("Illegal argument : La connexion doit être ouverte 😒");
+            }
         }
-        
+
+        private void UCGestionPerso_Load(object sender, EventArgs e)
+        {
+            try
+            {
+                string caserneCommand = "SELECT nom, id FROM Caserne";
+                SQLiteCommand cmd = new SQLiteCommand(caserneCommand, _con);
+                SQLiteDataReader data = cmd.ExecuteReader();
+
+                while(data.Read())
+                {
+                    string nom = data.GetString(0);
+                    string id = data.GetValue(1).ToString();
+
+                    UCRichButton btn = new UCRichButton(nom);
+                    btn.Tag = id;
+                    btn.clickReturnTag += btnClick;
+
+                    flpCaserne.Controls.Add(btn);
+                }
+            }
+            catch(Exception ex)
+            {
+                MessageBox.Show(ex.ToString());
+            }
+        }
+
+        private void btnClick(UCRichButton clicked,object tag)
+        {
+            if(Selected != null)
+            {
+                Selected.isSelected = false;
+                Selected.BackColor = Color.White;
+            }
+            clicked.isSelected = true;
+            Selected = clicked;
+            refreshPompier();
+
+        }
 
 
+        private void refreshPompier()
+        {
+            flpPompier.Controls.Clear();
+            string cmdPompier = $@"Select ";
+        }
     }
 }

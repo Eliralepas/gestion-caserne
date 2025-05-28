@@ -31,10 +31,6 @@ namespace Sae25_Main_Form
         UCGestionPerso.UCGestionPerso perso;
         SQLiteConnection con;
         DataSet monDs;
-
-
-        bool isLogged=false;
-
         private void frmCaserne_Load(object sender, EventArgs e)
         {
             con = Connexion.Connec;     //Récupérer la connexion à la base de données
@@ -114,11 +110,17 @@ namespace Sae25_Main_Form
 
         private void LoadPerso()
         {
+            if(con.State == ConnectionState.Closed)
+            {
+                con.Open();
+            }
 
             if(perso == null)
             {
                 perso = new UCGestionPerso.UCGestionPerso(con);
+                perso.Dock = DockStyle.Fill;    
             }
+            panelVolet.Controls.Add(perso);
         }
         private void LoadStatistique()
         {

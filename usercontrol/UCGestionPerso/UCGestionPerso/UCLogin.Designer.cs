@@ -34,6 +34,7 @@
             this.txtPwd = new System.Windows.Forms.TextBox();
             this.btnShowPwd = new System.Windows.Forms.Button();
             this.btnValider = new System.Windows.Forms.Button();
+            this.btnCancel = new System.Windows.Forms.Button();
             this.SuspendLayout();
             // 
             // txtUser
@@ -48,7 +49,7 @@
             // lblTitleUser
             // 
             this.lblTitleUser.AutoSize = true;
-            this.lblTitleUser.Location = new System.Drawing.Point(44, 50);
+            this.lblTitleUser.Location = new System.Drawing.Point(15, 50);
             this.lblTitleUser.Margin = new System.Windows.Forms.Padding(5, 0, 5, 0);
             this.lblTitleUser.Name = "lblTitleUser";
             this.lblTitleUser.Size = new System.Drawing.Size(151, 18);
@@ -58,7 +59,7 @@
             // lblTitlePwd
             // 
             this.lblTitlePwd.AutoSize = true;
-            this.lblTitlePwd.Location = new System.Drawing.Point(44, 95);
+            this.lblTitlePwd.Location = new System.Drawing.Point(15, 95);
             this.lblTitlePwd.Name = "lblTitlePwd";
             this.lblTitlePwd.Size = new System.Drawing.Size(127, 18);
             this.lblTitlePwd.TabIndex = 2;
@@ -87,7 +88,7 @@
             // 
             // btnValider
             // 
-            this.btnValider.Location = new System.Drawing.Point(248, 125);
+            this.btnValider.Location = new System.Drawing.Point(211, 125);
             this.btnValider.Name = "btnValider";
             this.btnValider.Size = new System.Drawing.Size(152, 35);
             this.btnValider.TabIndex = 5;
@@ -95,11 +96,21 @@
             this.btnValider.UseVisualStyleBackColor = true;
             this.btnValider.Click += new System.EventHandler(this.btnValider_Click);
             // 
+            // btnCancel
+            // 
+            this.btnCancel.Location = new System.Drawing.Point(369, 125);
+            this.btnCancel.Name = "btnCancel";
+            this.btnCancel.Size = new System.Drawing.Size(151, 35);
+            this.btnCancel.TabIndex = 6;
+            this.btnCancel.Text = "Annuler";
+            this.btnCancel.UseVisualStyleBackColor = true;
+            // 
             // UCLogin
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(10F, 18F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.BackColor = System.Drawing.SystemColors.ControlDark;
+            this.Controls.Add(this.btnCancel);
             this.Controls.Add(this.btnValider);
             this.Controls.Add(this.btnShowPwd);
             this.Controls.Add(this.txtPwd);
@@ -123,5 +134,6 @@
         private System.Windows.Forms.TextBox txtPwd;
         private System.Windows.Forms.Button btnShowPwd;
         private System.Windows.Forms.Button btnValider;
+        private System.Windows.Forms.Button btnCancel;
     }
 }

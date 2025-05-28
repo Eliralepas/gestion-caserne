@@ -73,3 +73,7 @@ C:\Users\Diego\source\repos\sae-caserne\Sae25-Main-Form\Sae25-Main-Form\obj\Debu
 C:\Users\Diego\source\repos\sae-caserne\Sae25-Main-Form\Sae25-Main-Form\obj\Debug\Sae25-Ma.85EEC115.Up2Date
 C:\Users\Diego\source\repos\sae-caserne\Sae25-Main-Form\Sae25-Main-Form\obj\Debug\Sae25-Main-Form.exe
 C:\Users\Diego\source\repos\sae-caserne\Sae25-Main-Form\Sae25-Main-Form\obj\Debug\Sae25-Main-Form.pdb
+C:\Users\miaou\Desktop\SAE25\Sae25-Main-Form\Sae25-Main-Form\bin\Debug\UCGestionPerso.dll
+C:\Users\miaou\Desktop\SAE25\Sae25-Main-Form\Sae25-Main-Form\bin\Debug\UserControlMission.dll
+C:\Users\miaou\Desktop\SAE25\Sae25-Main-Form\Sae25-Main-Form\bin\Debug\UCGestionPerso.pdb
+C:\Users\miaou\Desktop\SAE25\Sae25-Main-Form\Sae25-Main-Form\bin\Debug\UserControlMission.pdb

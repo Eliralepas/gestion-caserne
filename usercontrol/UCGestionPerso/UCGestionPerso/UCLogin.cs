@@ -15,13 +15,15 @@ namespace UCGestionPerso
     {
 
         SQLiteConnection m_con;
+
         public UCLogin()
         {
             InitializeComponent();
         }
-        int Isconnextion;
+        bool _connected;
+        public bool Connected { get { return _connected; }  set { _connected = value; } }
 
-        public UCLogin(SQLiteConnection con,ref int connexion)
+        public UCLogin(SQLiteConnection con)
         {
             InitializeComponent();
             m_con = con;
@@ -29,7 +31,6 @@ namespace UCGestionPerso
             {
                 m_con.Open();
             }
-            Isconnextion = connexion;
         }
 
         private void button1_Click(object sender, EventArgs e)
@@ -42,7 +43,6 @@ namespace UCGestionPerso
             {
                 txtPwd.UseSystemPasswordChar = false;
             }
-            Isconnextion = 0;
         }
 
 
