@@ -29,7 +29,7 @@ namespace Sae25_Main_Form
 
         TableauDeBord tableauDeBord;
         UCGestionEngin gestionEngin;
-        ucMission ajoutMission;
+        UserControlMission.ucMission ajoutMission;
         UCStatistique tabStat;
         SQLiteConnection con;
         DataSet monDs;
