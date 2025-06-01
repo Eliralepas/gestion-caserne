@@ -84,11 +84,84 @@ namespace UCGestionPerso
 
         }
 
+        private void btnClickPompier(UCRichButton clicked,object tag)
+        {
+            if (Selected != null)
+            {
+                Selected.isSelected = false;
+                Selected.BackColor = Color.White;
+            }
+            clicked.isSelected = true;
+            Selected = clicked;
+            formPompier();
+        }
+
 
         private void refreshPompier()
         {
-            flpPompier.Controls.Clear();
-            string cmdPompier = $@"Select ";
+            try
+            {
+                flpPompier.Controls.Clear();
+                string cmdPompier = $@"SELECT matriculePompier FROM Affectation WHERE idCaserne = {Selected.Tag}";
+                SQLiteCommand cd = new SQLiteCommand(cmdPompier, _con);
+                SQLiteDataReader dr = cd.ExecuteReader();
+
+                while (dr.Read())
+                {
+                    int id = dr.GetInt32(0);
+                    string cmdNom = $@"SELECT CONCAT(prenom, ' ', nom) FROM Pompier WHERE matricule = {id}";
+                    SQLiteCommand cd1 = new SQLiteCommand(cmdNom, _con);
+                    string nom = (string) cd1.ExecuteScalar();
+
+                    UCRichButton btn = new UCRichButton(nom, id.ToString());
+                    btn.Tag = id;
+                    btn.clickReturnTag += btnClickPompier;
+
+                    flpPompier.Controls.Add(btn);
+                }
+                dr.Close();
+            }
+            catch (InvalidOperationException err)
+            {
+                MessageBox.Show("Erreur : connexion fermée !");
+            }
+            catch (SQLiteException err)
+            {
+                MessageBox.Show("Erreur dans la requête SQL !");
+            }
+            finally { }
+        }
+
+        private void formPompier()
+        {
+            try
+            {
+                grpIdentite.Visible = true;
+                grpContact.Visible = true;
+                lblMatricule.Visible = true;
+
+                int id = Convert.ToInt32(Selected.Tag);
+                lblMatricule.Text += id;
+
+                if (login.Connected)
+                {
+
+                }
+            }
+            catch (InvalidOperationException err)
+            {
+                MessageBox.Show("Erreur : connexion fermée !");
+            }
+            catch (SQLiteException err)
+            {
+                MessageBox.Show("Erreur dans la requête SQL !");
+            }
+            finally { }
+        }
+
+        private void btnInfo_Click(object sender, EventArgs e)
+        {
+
         }
     }
 }

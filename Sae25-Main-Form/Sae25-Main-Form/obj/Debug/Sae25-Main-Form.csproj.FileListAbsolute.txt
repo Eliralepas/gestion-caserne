@@ -77,3 +77,7 @@ C:\Users\miaou\Desktop\SAE25\Sae25-Main-Form\Sae25-Main-Form\bin\Debug\UCGestion
 C:\Users\miaou\Desktop\SAE25\Sae25-Main-Form\Sae25-Main-Form\bin\Debug\UserControlMission.dll
 C:\Users\miaou\Desktop\SAE25\Sae25-Main-Form\Sae25-Main-Form\bin\Debug\UCGestionPerso.pdb
 C:\Users\miaou\Desktop\SAE25\Sae25-Main-Form\Sae25-Main-Form\bin\Debug\UserControlMission.pdb
+C:\Users\elira\OneDrive\Desktop\SAE\Sae25-Main-Form\Sae25-Main-Form\bin\Debug\UCGestionPerso.dll
+C:\Users\elira\OneDrive\Desktop\SAE\Sae25-Main-Form\Sae25-Main-Form\bin\Debug\UserControlMission.dll
+C:\Users\elira\OneDrive\Desktop\SAE\Sae25-Main-Form\Sae25-Main-Form\bin\Debug\UserControlMission.pdb
+C:\Users\elira\OneDrive\Desktop\SAE\Sae25-Main-Form\Sae25-Main-Form\bin\Debug\UCGestionPerso.pdb
