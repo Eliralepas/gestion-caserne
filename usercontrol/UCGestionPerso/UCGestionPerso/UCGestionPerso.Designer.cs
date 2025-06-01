@@ -31,45 +31,45 @@
             this.flpCaserne = new System.Windows.Forms.FlowLayoutPanel();
             this.flpPompier = new System.Windows.Forms.FlowLayoutPanel();
             this.pnlInfo = new System.Windows.Forms.Panel();
-            this.grpIdentite = new System.Windows.Forms.GroupBox();
-            this.btnChanger = new System.Windows.Forms.Button();
-            this.btnInfo = new System.Windows.Forms.Button();
-            this.grpCaserne = new System.Windows.Forms.GroupBox();
-            this.btnCreate = new System.Windows.Forms.Button();
-            this.label1 = new System.Windows.Forms.Label();
-            this.label3 = new System.Windows.Forms.Label();
-            this.label2 = new System.Windows.Forms.Label();
-            this.label8 = new System.Windows.Forms.Label();
-            this.label4 = new System.Windows.Forms.Label();
-            this.rdbPro = new System.Windows.Forms.RadioButton();
-            this.rdbVolontaire = new System.Windows.Forms.RadioButton();
-            this.grpContact = new System.Windows.Forms.GroupBox();
-            this.label5 = new System.Windows.Forms.Label();
-            this.label6 = new System.Windows.Forms.Label();
-            this.pictureBox1 = new System.Windows.Forms.PictureBox();
-            this.txtNom = new System.Windows.Forms.TextBox();
-            this.txtPrenom = new System.Windows.Forms.TextBox();
-            this.txtDateNaissance = new System.Windows.Forms.TextBox();
-            this.txtTel = new System.Windows.Forms.TextBox();
-            this.txtBip = new System.Windows.Forms.TextBox();
-            this.label7 = new System.Windows.Forms.Label();
-            this.label9 = new System.Windows.Forms.Label();
-            this.label10 = new System.Windows.Forms.Label();
-            this.rtbHab = new System.Windows.Forms.RichTextBox();
-            this.textBox1 = new System.Windows.Forms.TextBox();
-            this.button1 = new System.Windows.Forms.Button();
-            this.label11 = new System.Windows.Forms.Label();
-            this.rtbAffec = new System.Windows.Forms.RichTextBox();
-            this.txtGradeCode = new System.Windows.Forms.TextBox();
-            this.cboGrade = new System.Windows.Forms.ComboBox();
-            this.cboCaserne = new System.Windows.Forms.ComboBox();
             this.lblMatricule = new System.Windows.Forms.Label();
+            this.grpCaserne = new System.Windows.Forms.GroupBox();
             this.chbConge = new System.Windows.Forms.CheckBox();
+            this.cboCaserne = new System.Windows.Forms.ComboBox();
+            this.cboGrade = new System.Windows.Forms.ComboBox();
+            this.txtGradeCode = new System.Windows.Forms.TextBox();
+            this.rtbAffec = new System.Windows.Forms.RichTextBox();
+            this.label11 = new System.Windows.Forms.Label();
+            this.rtbHab = new System.Windows.Forms.RichTextBox();
+            this.label10 = new System.Windows.Forms.Label();
+            this.label9 = new System.Windows.Forms.Label();
+            this.label7 = new System.Windows.Forms.Label();
+            this.button1 = new System.Windows.Forms.Button();
+            this.grpContact = new System.Windows.Forms.GroupBox();
+            this.txtBip = new System.Windows.Forms.TextBox();
+            this.txtTel = new System.Windows.Forms.TextBox();
+            this.pictureBox1 = new System.Windows.Forms.PictureBox();
+            this.label6 = new System.Windows.Forms.Label();
+            this.btnChanger = new System.Windows.Forms.Button();
+            this.label5 = new System.Windows.Forms.Label();
+            this.grpIdentite = new System.Windows.Forms.GroupBox();
+            this.txtDateNaissance = new System.Windows.Forms.TextBox();
+            this.txtPrenom = new System.Windows.Forms.TextBox();
+            this.txtNom = new System.Windows.Forms.TextBox();
+            this.rdbVolontaire = new System.Windows.Forms.RadioButton();
+            this.rdbPro = new System.Windows.Forms.RadioButton();
+            this.label4 = new System.Windows.Forms.Label();
+            this.label8 = new System.Windows.Forms.Label();
+            this.label2 = new System.Windows.Forms.Label();
+            this.label3 = new System.Windows.Forms.Label();
+            this.label1 = new System.Windows.Forms.Label();
+            this.btnInfo = new System.Windows.Forms.Button();
+            this.btnCreate = new System.Windows.Forms.Button();
+            this.txtSexe = new System.Windows.Forms.TextBox();
             this.pnlInfo.SuspendLayout();
-            this.grpIdentite.SuspendLayout();
             this.grpCaserne.SuspendLayout();
             this.grpContact.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).BeginInit();
+            this.grpIdentite.SuspendLayout();
             this.SuspendLayout();
             // 
             // flpCaserne
@@ -110,55 +110,17 @@
             this.pnlInfo.Size = new System.Drawing.Size(510, 620);
             this.pnlInfo.TabIndex = 2;
             // 
-            // grpIdentite
+            // lblMatricule
             // 
-            this.grpIdentite.Controls.Add(this.textBox1);
-            this.grpIdentite.Controls.Add(this.txtDateNaissance);
-            this.grpIdentite.Controls.Add(this.txtPrenom);
-            this.grpIdentite.Controls.Add(this.txtNom);
-            this.grpIdentite.Controls.Add(this.rdbVolontaire);
-            this.grpIdentite.Controls.Add(this.rdbPro);
-            this.grpIdentite.Controls.Add(this.label4);
-            this.grpIdentite.Controls.Add(this.label8);
-            this.grpIdentite.Controls.Add(this.label2);
-            this.grpIdentite.Controls.Add(this.label3);
-            this.grpIdentite.Controls.Add(this.label1);
-            this.grpIdentite.Font = new System.Drawing.Font("Arial", 13F);
-            this.grpIdentite.ForeColor = System.Drawing.SystemColors.ControlText;
-            this.grpIdentite.Location = new System.Drawing.Point(14, 31);
-            this.grpIdentite.Name = "grpIdentite";
-            this.grpIdentite.Size = new System.Drawing.Size(246, 288);
-            this.grpIdentite.TabIndex = 0;
-            this.grpIdentite.TabStop = false;
-            this.grpIdentite.Text = "Identité";
-            this.grpIdentite.Visible = false;
-            // 
-            // btnChanger
-            // 
-            this.btnChanger.Enabled = false;
-            this.btnChanger.Font = new System.Drawing.Font("Arial", 10F);
-            this.btnChanger.ForeColor = System.Drawing.SystemColors.ControlText;
-            this.btnChanger.Location = new System.Drawing.Point(71, 245);
-            this.btnChanger.Name = "btnChanger";
-            this.btnChanger.Size = new System.Drawing.Size(138, 32);
-            this.btnChanger.TabIndex = 0;
-            this.btnChanger.Text = "Sauvegarder";
-            this.btnChanger.UseVisualStyleBackColor = true;
-            this.btnChanger.Visible = false;
-            // 
-            // btnInfo
-            // 
-            this.btnInfo.Enabled = false;
-            this.btnInfo.Font = new System.Drawing.Font("Arial", 10F);
-            this.btnInfo.ForeColor = System.Drawing.SystemColors.GrayText;
-            this.btnInfo.Location = new System.Drawing.Point(292, 325);
-            this.btnInfo.Name = "btnInfo";
-            this.btnInfo.Size = new System.Drawing.Size(195, 32);
-            this.btnInfo.TabIndex = 1;
-            this.btnInfo.Text = "Plus d\'informations";
-            this.btnInfo.UseVisualStyleBackColor = true;
-            this.btnInfo.Visible = false;
-            this.btnInfo.Click += new System.EventHandler(this.btnInfo_Click);
+            this.lblMatricule.AutoSize = true;
+            this.lblMatricule.Font = new System.Drawing.Font("Arial", 14F);
+            this.lblMatricule.ForeColor = System.Drawing.Color.Black;
+            this.lblMatricule.Location = new System.Drawing.Point(174, 0);
+            this.lblMatricule.Name = "lblMatricule";
+            this.lblMatricule.Size = new System.Drawing.Size(134, 32);
+            this.lblMatricule.TabIndex = 19;
+            this.lblMatricule.Text = "Matricule ";
+            this.lblMatricule.Visible = false;
             // 
             // grpCaserne
             // 
@@ -182,97 +144,123 @@
             this.grpCaserne.Text = " Carrière";
             this.grpCaserne.Visible = false;
             // 
-            // btnCreate
+            // chbConge
             // 
-            this.btnCreate.Location = new System.Drawing.Point(3, 554);
-            this.btnCreate.Name = "btnCreate";
-            this.btnCreate.Size = new System.Drawing.Size(215, 71);
-            this.btnCreate.TabIndex = 0;
-            this.btnCreate.Text = "Nouveau Pompier";
-            this.btnCreate.UseVisualStyleBackColor = true;
+            this.chbConge.AutoSize = true;
+            this.chbConge.Font = new System.Drawing.Font("Arial", 10F);
+            this.chbConge.Location = new System.Drawing.Point(10, 226);
+            this.chbConge.Name = "chbConge";
+            this.chbConge.Size = new System.Drawing.Size(116, 27);
+            this.chbConge.TabIndex = 26;
+            this.chbConge.Text = "en congé";
+            this.chbConge.UseVisualStyleBackColor = true;
             // 
-            // label1
+            // cboCaserne
             // 
-            this.label1.AutoSize = true;
-            this.label1.Font = new System.Drawing.Font("Arial", 10F);
-            this.label1.ForeColor = System.Drawing.Color.Black;
-            this.label1.Location = new System.Drawing.Point(6, 47);
-            this.label1.Name = "label1";
-            this.label1.Size = new System.Drawing.Size(68, 23);
-            this.label1.TabIndex = 1;
-            this.label1.Text = "Nom : ";
+            this.cboCaserne.Enabled = false;
+            this.cboCaserne.Font = new System.Drawing.Font("Arial", 9F);
+            this.cboCaserne.FormattingEnabled = true;
+            this.cboCaserne.Location = new System.Drawing.Point(211, 69);
+            this.cboCaserne.Name = "cboCaserne";
+            this.cboCaserne.Size = new System.Drawing.Size(255, 29);
+            this.cboCaserne.TabIndex = 25;
             // 
-            // label3
+            // cboGrade
             // 
-            this.label3.AutoSize = true;
-            this.label3.Font = new System.Drawing.Font("Arial", 10F);
-            this.label3.ForeColor = System.Drawing.Color.Black;
-            this.label3.Location = new System.Drawing.Point(6, 93);
-            this.label3.Name = "label3";
-            this.label3.Size = new System.Drawing.Size(96, 23);
-            this.label3.TabIndex = 3;
-            this.label3.Text = "Prénom : ";
+            this.cboGrade.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
+            this.cboGrade.Font = new System.Drawing.Font("Arial", 9F);
+            this.cboGrade.FormattingEnabled = true;
+            this.cboGrade.Location = new System.Drawing.Point(211, 36);
+            this.cboGrade.Name = "cboGrade";
+            this.cboGrade.Size = new System.Drawing.Size(255, 29);
+            this.cboGrade.TabIndex = 24;
             // 
-            // label2
+            // txtGradeCode
             // 
-            this.label2.AutoSize = true;
-            this.label2.Font = new System.Drawing.Font("Arial", 10F);
-            this.label2.ForeColor = System.Drawing.Color.Black;
-            this.label2.Location = new System.Drawing.Point(6, 134);
-            this.label2.Name = "label2";
-            this.label2.Size = new System.Drawing.Size(78, 23);
-            this.label2.TabIndex = 4;
-            this.label2.Text = "Sexe :  ";
+            this.txtGradeCode.Enabled = false;
+            this.txtGradeCode.Font = new System.Drawing.Font("Arial", 9F);
+            this.txtGradeCode.Location = new System.Drawing.Point(98, 37);
+            this.txtGradeCode.Name = "txtGradeCode";
+            this.txtGradeCode.ReadOnly = true;
+            this.txtGradeCode.Size = new System.Drawing.Size(91, 28);
+            this.txtGradeCode.TabIndex = 19;
             // 
-            // label8
+            // rtbAffec
             // 
-            this.label8.AutoSize = true;
-            this.label8.Font = new System.Drawing.Font("Arial", 10F);
-            this.label8.ForeColor = System.Drawing.Color.Black;
-            this.label8.Location = new System.Drawing.Point(6, 177);
-            this.label8.Name = "label8";
-            this.label8.Size = new System.Drawing.Size(98, 23);
-            this.label8.TabIndex = 9;
-            this.label8.Text = "Né(e) le : ";
+            this.rtbAffec.Font = new System.Drawing.Font("Arial", 9F);
+            this.rtbAffec.Location = new System.Drawing.Point(211, 169);
+            this.rtbAffec.Name = "rtbAffec";
+            this.rtbAffec.ReadOnly = true;
+            this.rtbAffec.Size = new System.Drawing.Size(255, 59);
+            this.rtbAffec.TabIndex = 23;
+            this.rtbAffec.Text = "";
             // 
-            // label4
+            // label11
             // 
-            this.label4.AutoSize = true;
-            this.label4.Font = new System.Drawing.Font("Arial", 10F);
-            this.label4.ForeColor = System.Drawing.Color.Black;
-            this.label4.Location = new System.Drawing.Point(6, 217);
-            this.label4.Name = "label4";
-            this.label4.Size = new System.Drawing.Size(78, 23);
-            this.label4.TabIndex = 10;
-            this.label4.Text = "Status :";
+            this.label11.AutoSize = true;
+            this.label11.Font = new System.Drawing.Font("Arial", 10F);
+            this.label11.ForeColor = System.Drawing.Color.Black;
+            this.label11.Location = new System.Drawing.Point(6, 169);
+            this.label11.Name = "label11";
+            this.label11.Size = new System.Drawing.Size(195, 23);
+            this.label11.TabIndex = 22;
+            this.label11.Text = "Affectations passés :";
             // 
-            // rdbPro
+            // rtbHab
             // 
-            this.rdbPro.AutoSize = true;
-            this.rdbPro.Enabled = false;
-            this.rdbPro.Font = new System.Drawing.Font("Arial", 10F);
-            this.rdbPro.ForeColor = System.Drawing.Color.Black;
-            this.rdbPro.Location = new System.Drawing.Point(98, 217);
-            this.rdbPro.Name = "rdbPro";
-            this.rdbPro.Size = new System.Drawing.Size(143, 27);
-            this.rdbPro.TabIndex = 13;
-            this.rdbPro.TabStop = true;
-            this.rdbPro.Text = "Professionel";
-            this.rdbPro.UseVisualStyleBackColor = true;
+            this.rtbHab.Font = new System.Drawing.Font("Arial", 9F);
+            this.rtbHab.Location = new System.Drawing.Point(211, 104);
+            this.rtbHab.Name = "rtbHab";
+            this.rtbHab.ReadOnly = true;
+            this.rtbHab.Size = new System.Drawing.Size(255, 59);
+            this.rtbHab.TabIndex = 21;
+            this.rtbHab.Text = "";
             // 
-            // rdbVolontaire
+            // label10
             // 
-            this.rdbVolontaire.AutoSize = true;
-            this.rdbVolontaire.Enabled = false;
-            this.rdbVolontaire.Font = new System.Drawing.Font("Arial", 10F);
-            this.rdbVolontaire.ForeColor = System.Drawing.Color.Black;
-            this.rdbVolontaire.Location = new System.Drawing.Point(98, 250);
-            this.rdbVolontaire.Name = "rdbVolontaire";
-            this.rdbVolontaire.Size = new System.Drawing.Size(122, 27);
-            this.rdbVolontaire.TabIndex = 14;
-            this.rdbVolontaire.TabStop = true;
-            this.rdbVolontaire.Text = "Volontaire";
-            this.rdbVolontaire.UseVisualStyleBackColor = true;
+            this.label10.AutoSize = true;
+            this.label10.Font = new System.Drawing.Font("Arial", 10F);
+            this.label10.ForeColor = System.Drawing.Color.Black;
+            this.label10.Location = new System.Drawing.Point(6, 104);
+            this.label10.Name = "label10";
+            this.label10.Size = new System.Drawing.Size(127, 23);
+            this.label10.TabIndex = 20;
+            this.label10.Text = "Habilitations :";
+            // 
+            // label9
+            // 
+            this.label9.AutoSize = true;
+            this.label9.Font = new System.Drawing.Font("Arial", 10F);
+            this.label9.ForeColor = System.Drawing.Color.Black;
+            this.label9.Location = new System.Drawing.Point(6, 69);
+            this.label9.Name = "label9";
+            this.label9.Size = new System.Drawing.Size(102, 23);
+            this.label9.TabIndex = 19;
+            this.label9.Text = "Caserne : ";
+            // 
+            // label7
+            // 
+            this.label7.AutoSize = true;
+            this.label7.Font = new System.Drawing.Font("Arial", 10F);
+            this.label7.ForeColor = System.Drawing.Color.Black;
+            this.label7.Location = new System.Drawing.Point(6, 36);
+            this.label7.Name = "label7";
+            this.label7.Size = new System.Drawing.Size(78, 23);
+            this.label7.TabIndex = 18;
+            this.label7.Text = "Grade :";
+            // 
+            // button1
+            // 
+            this.button1.Enabled = false;
+            this.button1.Font = new System.Drawing.Font("Arial", 10F);
+            this.button1.ForeColor = System.Drawing.SystemColors.ControlText;
+            this.button1.Location = new System.Drawing.Point(349, 585);
+            this.button1.Name = "button1";
+            this.button1.Size = new System.Drawing.Size(138, 32);
+            this.button1.TabIndex = 20;
+            this.button1.Text = "Mettre à jour";
+            this.button1.UseVisualStyleBackColor = true;
+            this.button1.Visible = false;
             // 
             // grpContact
             // 
@@ -292,16 +280,31 @@
             this.grpContact.Text = "Contact";
             this.grpContact.Visible = false;
             // 
-            // label5
+            // txtBip
             // 
-            this.label5.AutoSize = true;
-            this.label5.Font = new System.Drawing.Font("Arial", 10F);
-            this.label5.ForeColor = System.Drawing.Color.Black;
-            this.label5.Location = new System.Drawing.Point(6, 118);
-            this.label5.Name = "label5";
-            this.label5.Size = new System.Drawing.Size(119, 23);
-            this.label5.TabIndex = 10;
-            this.label5.Text = "Téléphone : ";
+            this.txtBip.Enabled = false;
+            this.txtBip.Font = new System.Drawing.Font("Arial", 9F);
+            this.txtBip.Location = new System.Drawing.Point(10, 206);
+            this.txtBip.Name = "txtBip";
+            this.txtBip.Size = new System.Drawing.Size(132, 28);
+            this.txtBip.TabIndex = 19;
+            // 
+            // txtTel
+            // 
+            this.txtTel.Enabled = false;
+            this.txtTel.Font = new System.Drawing.Font("Arial", 9F);
+            this.txtTel.Location = new System.Drawing.Point(10, 144);
+            this.txtTel.Name = "txtTel";
+            this.txtTel.Size = new System.Drawing.Size(132, 28);
+            this.txtTel.TabIndex = 18;
+            // 
+            // pictureBox1
+            // 
+            this.pictureBox1.Location = new System.Drawing.Point(26, 36);
+            this.pictureBox1.Name = "pictureBox1";
+            this.pictureBox1.Size = new System.Drawing.Size(162, 79);
+            this.pictureBox1.TabIndex = 12;
+            this.pictureBox1.TabStop = false;
             // 
             // label6
             // 
@@ -314,196 +317,193 @@
             this.label6.TabIndex = 11;
             this.label6.Text = "Bip :";
             // 
-            // pictureBox1
+            // btnChanger
             // 
-            this.pictureBox1.Location = new System.Drawing.Point(26, 36);
-            this.pictureBox1.Name = "pictureBox1";
-            this.pictureBox1.Size = new System.Drawing.Size(151, 79);
-            this.pictureBox1.TabIndex = 12;
-            this.pictureBox1.TabStop = false;
+            this.btnChanger.Enabled = false;
+            this.btnChanger.Font = new System.Drawing.Font("Arial", 10F);
+            this.btnChanger.ForeColor = System.Drawing.SystemColors.ControlText;
+            this.btnChanger.Location = new System.Drawing.Point(71, 245);
+            this.btnChanger.Name = "btnChanger";
+            this.btnChanger.Size = new System.Drawing.Size(138, 32);
+            this.btnChanger.TabIndex = 0;
+            this.btnChanger.Text = "Sauvegarder";
+            this.btnChanger.UseVisualStyleBackColor = true;
+            this.btnChanger.Visible = false;
             // 
-            // txtNom
+            // label5
             // 
-            this.txtNom.Font = new System.Drawing.Font("Arial", 9F);
-            this.txtNom.Location = new System.Drawing.Point(98, 42);
-            this.txtNom.Name = "txtNom";
-            this.txtNom.ReadOnly = true;
-            this.txtNom.Size = new System.Drawing.Size(132, 28);
-            this.txtNom.TabIndex = 15;
+            this.label5.AutoSize = true;
+            this.label5.Font = new System.Drawing.Font("Arial", 10F);
+            this.label5.ForeColor = System.Drawing.Color.Black;
+            this.label5.Location = new System.Drawing.Point(6, 118);
+            this.label5.Name = "label5";
+            this.label5.Size = new System.Drawing.Size(119, 23);
+            this.label5.TabIndex = 10;
+            this.label5.Text = "Téléphone : ";
             // 
-            // txtPrenom
+            // grpIdentite
             // 
-            this.txtPrenom.Font = new System.Drawing.Font("Arial", 9F);
-            this.txtPrenom.Location = new System.Drawing.Point(98, 88);
-            this.txtPrenom.Name = "txtPrenom";
-            this.txtPrenom.ReadOnly = true;
-            this.txtPrenom.Size = new System.Drawing.Size(132, 28);
-            this.txtPrenom.TabIndex = 16;
+            this.grpIdentite.Controls.Add(this.txtSexe);
+            this.grpIdentite.Controls.Add(this.txtDateNaissance);
+            this.grpIdentite.Controls.Add(this.txtPrenom);
+            this.grpIdentite.Controls.Add(this.txtNom);
+            this.grpIdentite.Controls.Add(this.rdbVolontaire);
+            this.grpIdentite.Controls.Add(this.rdbPro);
+            this.grpIdentite.Controls.Add(this.label4);
+            this.grpIdentite.Controls.Add(this.label8);
+            this.grpIdentite.Controls.Add(this.label2);
+            this.grpIdentite.Controls.Add(this.label3);
+            this.grpIdentite.Controls.Add(this.label1);
+            this.grpIdentite.Font = new System.Drawing.Font("Arial", 13F);
+            this.grpIdentite.ForeColor = System.Drawing.SystemColors.ControlText;
+            this.grpIdentite.Location = new System.Drawing.Point(14, 31);
+            this.grpIdentite.Name = "grpIdentite";
+            this.grpIdentite.Size = new System.Drawing.Size(246, 288);
+            this.grpIdentite.TabIndex = 0;
+            this.grpIdentite.TabStop = false;
+            this.grpIdentite.Text = "Identité";
+            this.grpIdentite.Visible = false;
             // 
             // txtDateNaissance
             // 
+            this.txtDateNaissance.Enabled = false;
             this.txtDateNaissance.Font = new System.Drawing.Font("Arial", 9F);
             this.txtDateNaissance.Location = new System.Drawing.Point(98, 172);
             this.txtDateNaissance.Name = "txtDateNaissance";
-            this.txtDateNaissance.ReadOnly = true;
             this.txtDateNaissance.Size = new System.Drawing.Size(132, 28);
             this.txtDateNaissance.TabIndex = 17;
             // 
-            // txtTel
+            // txtPrenom
             // 
-            this.txtTel.Font = new System.Drawing.Font("Arial", 9F);
-            this.txtTel.Location = new System.Drawing.Point(10, 144);
-            this.txtTel.Name = "txtTel";
-            this.txtTel.ReadOnly = true;
-            this.txtTel.Size = new System.Drawing.Size(132, 28);
-            this.txtTel.TabIndex = 18;
+            this.txtPrenom.Enabled = false;
+            this.txtPrenom.Font = new System.Drawing.Font("Arial", 9F);
+            this.txtPrenom.Location = new System.Drawing.Point(98, 88);
+            this.txtPrenom.Name = "txtPrenom";
+            this.txtPrenom.Size = new System.Drawing.Size(132, 28);
+            this.txtPrenom.TabIndex = 16;
             // 
-            // txtBip
+            // txtNom
             // 
-            this.txtBip.Enabled = false;
-            this.txtBip.Font = new System.Drawing.Font("Arial", 9F);
-            this.txtBip.Location = new System.Drawing.Point(10, 206);
-            this.txtBip.Name = "txtBip";
-            this.txtBip.Size = new System.Drawing.Size(132, 28);
-            this.txtBip.TabIndex = 19;
+            this.txtNom.Enabled = false;
+            this.txtNom.Font = new System.Drawing.Font("Arial", 9F);
+            this.txtNom.Location = new System.Drawing.Point(98, 42);
+            this.txtNom.Name = "txtNom";
+            this.txtNom.Size = new System.Drawing.Size(132, 28);
+            this.txtNom.TabIndex = 15;
             // 
-            // label7
+            // rdbVolontaire
             // 
-            this.label7.AutoSize = true;
-            this.label7.Font = new System.Drawing.Font("Arial", 10F);
-            this.label7.ForeColor = System.Drawing.Color.Black;
-            this.label7.Location = new System.Drawing.Point(6, 36);
-            this.label7.Name = "label7";
-            this.label7.Size = new System.Drawing.Size(78, 23);
-            this.label7.TabIndex = 18;
-            this.label7.Text = "Grade :";
+            this.rdbVolontaire.AutoSize = true;
+            this.rdbVolontaire.Enabled = false;
+            this.rdbVolontaire.Font = new System.Drawing.Font("Arial", 10F);
+            this.rdbVolontaire.ForeColor = System.Drawing.Color.Black;
+            this.rdbVolontaire.Location = new System.Drawing.Point(98, 250);
+            this.rdbVolontaire.Name = "rdbVolontaire";
+            this.rdbVolontaire.Size = new System.Drawing.Size(122, 27);
+            this.rdbVolontaire.TabIndex = 14;
+            this.rdbVolontaire.TabStop = true;
+            this.rdbVolontaire.Text = "Volontaire";
+            this.rdbVolontaire.UseVisualStyleBackColor = true;
             // 
-            // label9
+            // rdbPro
             // 
-            this.label9.AutoSize = true;
-            this.label9.Font = new System.Drawing.Font("Arial", 10F);
-            this.label9.ForeColor = System.Drawing.Color.Black;
-            this.label9.Location = new System.Drawing.Point(6, 69);
-            this.label9.Name = "label9";
-            this.label9.Size = new System.Drawing.Size(102, 23);
-            this.label9.TabIndex = 19;
-            this.label9.Text = "Caserne : ";
+            this.rdbPro.AutoSize = true;
+            this.rdbPro.Enabled = false;
+            this.rdbPro.Font = new System.Drawing.Font("Arial", 10F);
+            this.rdbPro.ForeColor = System.Drawing.Color.Black;
+            this.rdbPro.Location = new System.Drawing.Point(98, 217);
+            this.rdbPro.Name = "rdbPro";
+            this.rdbPro.Size = new System.Drawing.Size(143, 27);
+            this.rdbPro.TabIndex = 13;
+            this.rdbPro.TabStop = true;
+            this.rdbPro.Text = "Professionel";
+            this.rdbPro.UseVisualStyleBackColor = true;
             // 
-            // label10
+            // label4
             // 
-            this.label10.AutoSize = true;
-            this.label10.Font = new System.Drawing.Font("Arial", 10F);
-            this.label10.ForeColor = System.Drawing.Color.Black;
-            this.label10.Location = new System.Drawing.Point(6, 104);
-            this.label10.Name = "label10";
-            this.label10.Size = new System.Drawing.Size(127, 23);
-            this.label10.TabIndex = 20;
-            this.label10.Text = "Habilitations :";
+            this.label4.AutoSize = true;
+            this.label4.Font = new System.Drawing.Font("Arial", 10F);
+            this.label4.ForeColor = System.Drawing.Color.Black;
+            this.label4.Location = new System.Drawing.Point(6, 217);
+            this.label4.Name = "label4";
+            this.label4.Size = new System.Drawing.Size(78, 23);
+            this.label4.TabIndex = 10;
+            this.label4.Text = "Status :";
             // 
-            // rtbHab
+            // label8
             // 
-            this.rtbHab.Font = new System.Drawing.Font("Arial", 9F);
-            this.rtbHab.Location = new System.Drawing.Point(211, 104);
-            this.rtbHab.Name = "rtbHab";
-            this.rtbHab.ReadOnly = true;
-            this.rtbHab.Size = new System.Drawing.Size(255, 59);
-            this.rtbHab.TabIndex = 21;
-            this.rtbHab.Text = "";
+            this.label8.AutoSize = true;
+            this.label8.Font = new System.Drawing.Font("Arial", 10F);
+            this.label8.ForeColor = System.Drawing.Color.Black;
+            this.label8.Location = new System.Drawing.Point(6, 177);
+            this.label8.Name = "label8";
+            this.label8.Size = new System.Drawing.Size(98, 23);
+            this.label8.TabIndex = 9;
+            this.label8.Text = "Né(e) le : ";
             // 
-            // textBox1
+            // label2
             // 
-            this.textBox1.Font = new System.Drawing.Font("Arial", 9F);
-            this.textBox1.Location = new System.Drawing.Point(98, 129);
-            this.textBox1.Name = "textBox1";
-            this.textBox1.ReadOnly = true;
-            this.textBox1.Size = new System.Drawing.Size(56, 28);
-            this.textBox1.TabIndex = 18;
+            this.label2.AutoSize = true;
+            this.label2.Font = new System.Drawing.Font("Arial", 10F);
+            this.label2.ForeColor = System.Drawing.Color.Black;
+            this.label2.Location = new System.Drawing.Point(6, 134);
+            this.label2.Name = "label2";
+            this.label2.Size = new System.Drawing.Size(78, 23);
+            this.label2.TabIndex = 4;
+            this.label2.Text = "Sexe :  ";
             // 
-            // button1
+            // label3
             // 
-            this.button1.Enabled = false;
-            this.button1.Font = new System.Drawing.Font("Arial", 10F);
-            this.button1.ForeColor = System.Drawing.SystemColors.ControlText;
-            this.button1.Location = new System.Drawing.Point(349, 585);
-            this.button1.Name = "button1";
-            this.button1.Size = new System.Drawing.Size(138, 32);
-            this.button1.TabIndex = 20;
-            this.button1.Text = "Mettre à jour";
-            this.button1.UseVisualStyleBackColor = true;
-            this.button1.Visible = false;
+            this.label3.AutoSize = true;
+            this.label3.Font = new System.Drawing.Font("Arial", 10F);
+            this.label3.ForeColor = System.Drawing.Color.Black;
+            this.label3.Location = new System.Drawing.Point(6, 93);
+            this.label3.Name = "label3";
+            this.label3.Size = new System.Drawing.Size(96, 23);
+            this.label3.TabIndex = 3;
+            this.label3.Text = "Prénom : ";
             // 
-            // label11
+            // label1
             // 
-            this.label11.AutoSize = true;
-            this.label11.Font = new System.Drawing.Font("Arial", 10F);
-            this.label11.ForeColor = System.Drawing.Color.Black;
-            this.label11.Location = new System.Drawing.Point(6, 169);
-            this.label11.Name = "label11";
-            this.label11.Size = new System.Drawing.Size(195, 23);
-            this.label11.TabIndex = 22;
-            this.label11.Text = "Affectations passés :";
+            this.label1.AutoSize = true;
+            this.label1.Font = new System.Drawing.Font("Arial", 10F);
+            this.label1.ForeColor = System.Drawing.Color.Black;
+            this.label1.Location = new System.Drawing.Point(6, 47);
+            this.label1.Name = "label1";
+            this.label1.Size = new System.Drawing.Size(68, 23);
+            this.label1.TabIndex = 1;
+            this.label1.Text = "Nom : ";
             // 
-            // rtbAffec
+            // btnInfo
             // 
-            this.rtbAffec.Font = new System.Drawing.Font("Arial", 9F);
-            this.rtbAffec.Location = new System.Drawing.Point(211, 169);
-            this.rtbAffec.Name = "rtbAffec";
-            this.rtbAffec.ReadOnly = true;
-            this.rtbAffec.Size = new System.Drawing.Size(255, 59);
-            this.rtbAffec.TabIndex = 23;
-            this.rtbAffec.Text = "";
+            this.btnInfo.Font = new System.Drawing.Font("Arial", 10F);
+            this.btnInfo.ForeColor = System.Drawing.SystemColors.GrayText;
+            this.btnInfo.Location = new System.Drawing.Point(292, 325);
+            this.btnInfo.Name = "btnInfo";
+            this.btnInfo.Size = new System.Drawing.Size(195, 32);
+            this.btnInfo.TabIndex = 1;
+            this.btnInfo.Text = "Plus d\'informations";
+            this.btnInfo.UseVisualStyleBackColor = true;
+            this.btnInfo.Visible = false;
+            this.btnInfo.Click += new System.EventHandler(this.btnInfo_Click);
             // 
-            // txtGradeCode
+            // btnCreate
             // 
-            this.txtGradeCode.Font = new System.Drawing.Font("Arial", 9F);
-            this.txtGradeCode.Location = new System.Drawing.Point(98, 37);
-            this.txtGradeCode.Name = "txtGradeCode";
-            this.txtGradeCode.ReadOnly = true;
-            this.txtGradeCode.Size = new System.Drawing.Size(91, 28);
-            this.txtGradeCode.TabIndex = 19;
+            this.btnCreate.Location = new System.Drawing.Point(3, 554);
+            this.btnCreate.Name = "btnCreate";
+            this.btnCreate.Size = new System.Drawing.Size(215, 71);
+            this.btnCreate.TabIndex = 0;
+            this.btnCreate.Text = "Nouveau Pompier";
+            this.btnCreate.UseVisualStyleBackColor = true;
             // 
-            // cboGrade
+            // txtSexe
             // 
-            this.cboGrade.Font = new System.Drawing.Font("Arial", 9F);
-            this.cboGrade.FormattingEnabled = true;
-            this.cboGrade.Location = new System.Drawing.Point(211, 36);
-            this.cboGrade.Name = "cboGrade";
-            this.cboGrade.Size = new System.Drawing.Size(255, 29);
-            this.cboGrade.TabIndex = 24;
-            this.cboGrade.Visible = false;
-            // 
-            // cboCaserne
-            // 
-            this.cboCaserne.Enabled = false;
-            this.cboCaserne.Font = new System.Drawing.Font("Arial", 9F);
-            this.cboCaserne.FormattingEnabled = true;
-            this.cboCaserne.Location = new System.Drawing.Point(211, 69);
-            this.cboCaserne.Name = "cboCaserne";
-            this.cboCaserne.Size = new System.Drawing.Size(255, 29);
-            this.cboCaserne.TabIndex = 25;
-            // 
-            // lblMatricule
-            // 
-            this.lblMatricule.AutoSize = true;
-            this.lblMatricule.Font = new System.Drawing.Font("Arial", 14F);
-            this.lblMatricule.ForeColor = System.Drawing.Color.Black;
-            this.lblMatricule.Location = new System.Drawing.Point(174, 0);
-            this.lblMatricule.Name = "lblMatricule";
-            this.lblMatricule.Size = new System.Drawing.Size(134, 32);
-            this.lblMatricule.TabIndex = 19;
-            this.lblMatricule.Text = "Matricule ";
-            this.lblMatricule.Visible = false;
-            // 
-            // chbConge
-            // 
-            this.chbConge.AutoSize = true;
-            this.chbConge.Font = new System.Drawing.Font("Arial", 10F);
-            this.chbConge.Location = new System.Drawing.Point(10, 226);
-            this.chbConge.Name = "chbConge";
-            this.chbConge.Size = new System.Drawing.Size(116, 27);
-            this.chbConge.TabIndex = 26;
-            this.chbConge.Text = "en congé";
-            this.chbConge.UseVisualStyleBackColor = true;
+            this.txtSexe.Enabled = false;
+            this.txtSexe.Font = new System.Drawing.Font("Arial", 9F);
+            this.txtSexe.Location = new System.Drawing.Point(98, 129);
+            this.txtSexe.Name = "txtSexe";
+            this.txtSexe.Size = new System.Drawing.Size(56, 28);
+            this.txtSexe.TabIndex = 18;
             // 
             // UCGestionPerso
             // 
@@ -521,13 +521,13 @@
             this.Load += new System.EventHandler(this.UCGestionPerso_Load);
             this.pnlInfo.ResumeLayout(false);
             this.pnlInfo.PerformLayout();
-            this.grpIdentite.ResumeLayout(false);
-            this.grpIdentite.PerformLayout();
             this.grpCaserne.ResumeLayout(false);
             this.grpCaserne.PerformLayout();
             this.grpContact.ResumeLayout(false);
             this.grpContact.PerformLayout();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).EndInit();
+            this.grpIdentite.ResumeLayout(false);
+            this.grpIdentite.PerformLayout();
             this.ResumeLayout(false);
 
         }
@@ -562,7 +562,6 @@
         private System.Windows.Forms.Label label10;
         private System.Windows.Forms.Label label9;
         private System.Windows.Forms.Label label7;
-        private System.Windows.Forms.TextBox textBox1;
         private System.Windows.Forms.Button button1;
         private System.Windows.Forms.RichTextBox rtbAffec;
         private System.Windows.Forms.Label label11;
@@ -571,5 +570,6 @@
         private System.Windows.Forms.TextBox txtGradeCode;
         private System.Windows.Forms.Label lblMatricule;
         private System.Windows.Forms.CheckBox chbConge;
+        private System.Windows.Forms.TextBox txtSexe;
     }
 }

@@ -8,6 +8,7 @@ using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
 using System.Data.SQLite;
+using System.Threading;
 
 namespace UCGestionPerso
 {
@@ -64,6 +65,8 @@ namespace UCGestionPerso
 
                     flpCaserne.Controls.Add(btn);
                 }
+
+                ChargercboGrade();
             }
             catch(Exception ex)
             {
@@ -121,13 +124,17 @@ namespace UCGestionPerso
                 }
                 dr.Close();
             }
-            catch (InvalidOperationException err)
+            catch (InvalidOperationException)
             {
                 MessageBox.Show("Erreur : connexion fermée !");
             }
-            catch (SQLiteException err)
+            catch (SQLiteException)
             {
                 MessageBox.Show("Erreur dans la requête SQL !");
+            }
+            catch (Exception err)
+            {
+                MessageBox.Show(err.ToString());
             }
             finally { }
         }
@@ -139,29 +146,91 @@ namespace UCGestionPerso
                 grpIdentite.Visible = true;
                 grpContact.Visible = true;
                 lblMatricule.Visible = true;
+                btnInfo.Visible = true;
 
                 int id = Convert.ToInt32(Selected.Tag);
-                lblMatricule.Text += id;
+                lblMatricule.Text = "Matricule "+id;
+
+                string requete = $@"SELECT * FROM Pompier WHERE matricule = {id}";
+                SQLiteCommand cd = new SQLiteCommand(requete, _con);
+                SQLiteDataReader dr = cd.ExecuteReader();
+                int enConge=-1;
+                string codeGrade="";
+                while (dr.Read())
+                {
+                    txtNom.Text = dr.GetString(1);
+                    txtPrenom.Text = dr.GetString(2);
+                    txtSexe.Text = dr.GetString(3);
+                    txtDateNaissance.Text = dr.GetString(4);
+                    string type = dr.GetString(5);
+                    if (type == "p")
+                    {
+                        rdbPro.Checked = true;
+                    }
+                    else if (type == "v")
+                    {
+                        rdbVolontaire.Checked = true;
+                    }
+                    txtTel.Text = dr.GetString(6);
+                    txtBip.Text = dr.GetInt32(7).ToString();
+                    enConge = dr.GetInt32(9);
+                    codeGrade = dr.GetString(10);
+                    txtGradeCode.Text = codeGrade;
+                }
+                dr.Close();
+                
+                cboGrade.SelectedValue = codeGrade;
 
                 if (login.Connected)
                 {
 
                 }
             }
-            catch (InvalidOperationException err)
+            catch (InvalidOperationException)
             {
                 MessageBox.Show("Erreur : connexion fermée !");
             }
-            catch (SQLiteException err)
+            catch (SQLiteException)
             {
                 MessageBox.Show("Erreur dans la requête SQL !");
+            }
+            catch (Exception err)
+            {
+                MessageBox.Show(err.ToString());
             }
             finally { }
         }
 
         private void btnInfo_Click(object sender, EventArgs e)
         {
+            grpCaserne.Visible = true;
+            btnInfo.Visible = false;
+        }
+        private void ChargementCbo(DataTable dt, String col1, String col2, ComboBox c)
+        {
+            c.Items.Clear();
+            c.DataSource = dt;
+            c.DisplayMember = col1;
+            c.ValueMember = col2;
+        }
 
+        private void ChargercboGrade()
+        {
+            string cmdGrade = $@"SELECT code, libelle FROM Grade";
+            SQLiteCommand cd1 = new SQLiteCommand(cmdGrade, _con);
+            SQLiteDataReader dr1 = cd1.ExecuteReader();
+            DataTable dt = new DataTable();
+            dt.Columns.Add("code");
+            dt.Columns.Add("libelle");
+            while (dr1.Read())
+            {
+                DataRow ligne = dt.NewRow();
+                ligne[0] = dr1.GetString(0);
+                ligne[1] = dr1.GetString(1);
+                dt.Rows.Add(ligne);
+            }
+            dr1.Close();
+            ChargementCbo(dt, "libelle", "code", cboGrade);
         }
     }
 }
