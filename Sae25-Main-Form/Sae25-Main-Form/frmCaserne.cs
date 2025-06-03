@@ -16,6 +16,9 @@ using System.Net;
 using System.Reflection;
 using UCGestionEngins;
 using UserControlMission;
+using System.IO;
+using iTextSharp.text.pdf;
+using iTextSharp.text;
 
 
 namespace Sae25_Main_Form
@@ -29,7 +32,7 @@ namespace Sae25_Main_Form
 
         TableauDeBord tableauDeBord;
         UCGestionEngin gestionEngin;
-        UserControlMission.ucMission ajoutMission;
+        ucMission ajoutMission;
         UCStatistique tabStat;
         SQLiteConnection con;
         DataSet monDs;
@@ -71,7 +74,7 @@ namespace Sae25_Main_Form
 
         private void NavigationButtonClick(object sender, EventArgs e)
         {
-            if(con.State == ConnectionState.Open) //Vérifier si la connexion est ouverte
+            if (con.State == ConnectionState.Open) //Vérifier si la connexion est ouverte
             {
                 con.Close(); //Fermer la connexion
             }
@@ -91,7 +94,7 @@ namespace Sae25_Main_Form
                 case ("nvMission"):
                     LoadAjoutMission();
                     break;
-                
+
             }
         }
 
@@ -110,6 +113,7 @@ namespace Sae25_Main_Form
                 tableauDeBord = new UC_TableauDeBord.TableauDeBord();   //Instancier le volet de tableau de bord
                 tableauDeBord.ajouterMissionBD = AjouterMissionBD;      //Lier la méthode d'ajout de mission à la base de données
                 tableauDeBord.getEnginsMission = getEnginsMission;      //Lier la méthode de récupération des engins de la mission
+                tableauDeBord.creerPdfMission = CreerPdfMission;        //Lier la méthode de création du PDF de la mission
                 DataTable dtMissions = CreerTableMission();             //Créer une table de missions au bon format
                 RemplirTableMission(dtMissions);                        //Remplir la table de missions
                 tableauDeBord.LoadMissions(dtMissions);
@@ -121,7 +125,7 @@ namespace Sae25_Main_Form
         {
             con.Open(); //Ouvrir la connexion à la base de données
             if (tabStat == null) //Vérifier si le tableau de statistiques n'existe pas
-            {   
+            {
                 tabStat = new UCStatistique(con);   //Instancier le volet de statistiques
                 tabStat.Dock = DockStyle.Fill;
             }
@@ -144,9 +148,9 @@ namespace Sae25_Main_Form
             if (monDs != null)
             {
                 DataTable dtMissions = new DataTable();         //Créer une nouvelle table de données
-                for(int i = 0; i < 7; i++)
+                for (int i = 0; i < 7; i++)
                 {
-                 
+
                     DataColumn column = new DataColumn();       //Créer une nouvelle colonne
                     switch (i)
                     {
@@ -195,7 +199,7 @@ namespace Sae25_Main_Form
                 {
                     DataRow newRow = dtMissions.NewRow();   //Créer une nouvelle ligne
                     //Récupérer l'ID de la mission
-                    newRow["MissionID"] = Convert.ToInt32(row["id"]); 
+                    newRow["MissionID"] = Convert.ToInt32(row["id"]);
                     //Récupérer le nom de la caserne
                     newRow["Caserne"] = monDs.Tables["Caserne"].Select("id = " + row["idCaserne"].ToString())[0]["nom"].ToString();
                     //Récupérer le nom de la nature de la mission
@@ -247,7 +251,7 @@ namespace Sae25_Main_Form
             {
                 requete = UpdateMission(mission, compteRendu);      //Appeler la méthode de mise à jour de mission
             }
-            else 
+            else
             {
                 requete = InsertionMission(mission, compteRendu);   //Appeler la méthode d'insertion de mission
             }
@@ -299,13 +303,13 @@ namespace Sae25_Main_Form
             MessageBox.Show("La mission existe déjà dans la base de données"); //Afficher le message
             //Renvoyer la requête SQL pour mettre à jour la mission
             return "UPDATE Mission SET dateHeureRetour = '" + mission.DateFin + "', terminee = 1, compteRendu = '" + compteRendu + "' " +
-                    "WHERE id = " + mission.MissionID.ToString() + ";"; 
+                    "WHERE id = " + mission.MissionID.ToString() + ";";
         }
 
         private void UpdateStatutEnginsMission(int idMission, DataTable engins)
         {
             //Mettre à jour le statut "En panne" et "En mission" de chaque engin faisant partie de la mission
-            foreach(DataRow row in engins.Rows) {
+            foreach (DataRow row in engins.Rows) {
                 string codeTypeEngin = row["Type"].ToString();  //Récupérer le code type de l'engin
                 int numero = Convert.ToInt32(row["Numero"]);    //Récupérer le numero de l'engin
                 int enPanne = Convert.ToInt32(row["enPanne"]);  //Récupérer le statut "En panne" de l'engin
@@ -317,7 +321,7 @@ namespace Sae25_Main_Form
         private void UpdateStatutPompiersMission(int idMission)
         {
             //Mettre à jour le statut "En mission" de chaque pompier faisant partie de la mission
-            foreach(DataRow row in monDs.Tables["Mobiliser"].Rows) //Parcourir les lignes de la table "Mobiliser"
+            foreach (DataRow row in monDs.Tables["Mobiliser"].Rows) //Parcourir les lignes de la table "Mobiliser"
             {
                 if (Convert.ToInt32(row["idMission"]) == idMission) //Vérifier si l'ID de la mission correspond
                 {
@@ -332,6 +336,89 @@ namespace Sae25_Main_Form
         {
             con.Close(); //Fermer la connexion à la base de données
             Application.Exit(); //Quitter l'application
+        }
+
+        public void CreerPdfMission(int idMission)
+        {
+            MessageBox.Show("Création du PDF pour la mission n°" + idMission); //Afficher un message de confirmation
+
+            DataRow drMission = monDs.Tables["Mission"].Select("id = " + idMission.ToString())[0];  //Récupérer la ligne de la mission dans le DataSet local
+
+            // Logique pour générer le PDF
+            try
+            {
+                // Chemin du fichier PDF à générer dans le dossier de l'utilisateur
+                string cheminFichier = Path.Combine(Environment.GetFolderPath(Environment.SpecialFolder.MyDocuments), "Mission_"+idMission+".pdf"); //Récupérer le chemin du dossier Documents
+
+                // Création du document PDF
+                Document document = new Document(PageSize.A4);
+                PdfWriter.GetInstance(document, new FileStream(cheminFichier, FileMode.Create));
+
+                // Ouvrir le document pour y écrire
+                document.Open();
+
+                // Ajouter du contenu
+                document.Add(new Paragraph("Rapport: Mission n°" + idMission));
+                document.Add(new Paragraph("Déclenchée le " + drMission["dateHeureDepart"].ToString())); //Indiquer la date de début de la mission
+                if (Convert.ToInt32(drMission["terminee"]) == 0)
+                {
+                    document.Add(new Paragraph("En cours ...")); // Indiquer que la mission est en cours
+                }
+                else
+                {
+                    document.Add(new Paragraph("Terminée le " + drMission["dateHeureRetour"].ToString())); // Indiquer la date de fin de la mission
+                }
+                document.Add(new Paragraph("------------------------------------------------------------"));
+                document.Add(new Paragraph("Nature de la mission : " + monDs.Tables["NatureSinistre"].Select("id = " + drMission["idNatureSinistre"].ToString())[0]["libelle"].ToString())); //Indiquer la nature de la mission
+                document.Add(new Paragraph("Motif de l'appel : " + drMission["motifAppel"].ToString())); //Indiquer le motif de l'appel
+                document.Add(new Paragraph("Adresse : " + drMission["adresse"].ToString())); //Indiquer l'adresse de la mission
+                document.Add(new Paragraph("Code Postal : " + drMission["cp"].ToString())); //Indiquer le code postal de la mission
+                document.Add(new Paragraph("Ville : " + drMission["ville"].ToString())); //Indiquer la ville de la mission
+                document.Add(new Paragraph("------------------------------------------------------------"));
+                document.Add(new Paragraph("Engins mobilisés :")); //Indiquer les engins mobilisés
+                DataTable enginsMission = getEnginsMission(idMission); //Récupérer les engins de la mission
+                if (enginsMission != null && enginsMission.Rows.Count > 0) //Vérifier si des engins sont mobilisés
+                {
+                    foreach (DataRow row in enginsMission.Rows) //Parcourir les lignes de la table des engins
+                    {
+                       document.Add(new Paragraph(" - " + row["codeTypeEngin"].ToString() + " n°" + row["numeroEngin"].ToString() + (Convert.ToInt32(monDs.Tables["Engin"].Select("idCaserne = " + row["idCaserne"].ToString() + " AND codeTypeEngin = " + row["codeTypeEngin"].ToString() + " AND numero = " + row["numeroEngin"])[0]["enPanne"]) == 1 ? " (En panne)" : ""))); //Indiquer le type et le numéro de l'engin
+                    }
+                }
+                else
+                {
+                    document.Add(new Paragraph("Aucun engin mobilisé pour cette mission.")); //Indiquer qu'aucun engin n'est mobilisé
+                }
+                document.Add(new Paragraph("------------------------------------------------------------"));
+                document.Add(new Paragraph("Caserne : " + monDs.Tables["Caserne"].Select("id = " + drMission["idCaserne"].ToString())[0]["nom"].ToString())); //Indiquer la caserne
+                document.Add(new Paragraph("------------------------------------------------------------"));
+                document.Add(new Paragraph("Pompiers mobilisés :")); //Indiquer les pompiers mobilisés
+                DataTable pompiersMission = monDs.Tables["Mobiliser"].Select("idMission = " + idMission.ToString()).CopyToDataTable(); //Récupérer les pompiers de la mission
+                if (pompiersMission != null && pompiersMission.Rows.Count > 0) //Vérifier si des pompiers sont mobilisés
+                {
+                    foreach (DataRow row in pompiersMission.Rows) //Parcourir les lignes de la table des pompiers
+                    {
+                        int matriculePompier = Convert.ToInt32(row["matriculePompier"]); //Récupérer le matricule du pompier
+                        string nomPompier = monDs.Tables["Pompier"].Select("matricule = " + matriculePompier.ToString())[0]["nom"].ToString(); //Récupérer le nom du pompier
+                        string prenomPompier = monDs.Tables["Pompier"].Select("matricule = " + matriculePompier.ToString())[0]["prenom"].ToString(); //Récupérer le prénom du pompier
+                        document.Add(new Paragraph(" - " + nomPompier + " " + prenomPompier)); //Indiquer le nom et le prénom du pompier
+                    }
+                }
+                else
+                {
+                    document.Add(new Paragraph("Aucun pompier mobilisé pour cette mission.")); //Indiquer qu'aucun pompier n'est mobilisé
+                }
+                document.Add(new Paragraph("------------------------------------------------------------"));
+                document.Add(new Paragraph("Compte rendu : " + drMission["compteRendu"].ToString())); //Indiquer le compte rendu de la mission
+
+                // Fermer le document
+                document.Close();
+
+                MessageBox.Show("PDF généré avec succès :\n" + cheminFichier, "Succès", MessageBoxButtons.OK, MessageBoxIcon.Information);
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show("Erreur : " + ex.Message);
+            }
         }
     }
 }

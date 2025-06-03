@@ -12,6 +12,7 @@ namespace UC_Mission
 {
 
     public delegate void TerminerMission(object sender, EventArgs e, int idMission); //Déclaration de la signature du délégué pour terminer une mission
+    public delegate void CreerPdfMission(int idMission); //Déclaration de la signature du délégué pour créer un PDF de la mission
 
     public partial class Mission: UserControl
     {
@@ -55,6 +56,7 @@ namespace UC_Mission
         }
 
         public TerminerMission terminerMission; //Instance du délégué pour terminer une mission
+        public CreerPdfMission creerPdfMission; //Instance du délégué pour créer un PDF de la mission
 
         private int idMission;
         private string nomCaserne;
@@ -167,7 +169,7 @@ namespace UC_Mission
 
         private void btnCreerPdf_Click(object sender, EventArgs e)
         {
-
+            creerPdfMission(MissionID); //On appelle le délégué pour créer un PDF de la mission
         }
     }
 }
