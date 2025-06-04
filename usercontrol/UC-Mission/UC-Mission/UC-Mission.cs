@@ -169,7 +169,10 @@ namespace UC_Mission
 
         private void btnCreerPdf_Click(object sender, EventArgs e)
         {
-            creerPdfMission(MissionID); //On appelle le délégué pour créer un PDF de la mission
+            if (creerPdfMission != null) //Si le délégué n'est pas nul
+            {
+                creerPdfMission(MissionID); //On appelle le délégué pour créer un PDF de la mission
+            }
         }
     }
 }

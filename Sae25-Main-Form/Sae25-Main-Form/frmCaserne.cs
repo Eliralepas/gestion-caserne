@@ -358,9 +358,16 @@ namespace Sae25_Main_Form
                 document.Open();
 
                 // Ajouter du contenu
-                document.Add(new Paragraph("Rapport: Mission n°" + idMission));
+                iTextSharp.text.Font fontTitre = new iTextSharp.text.Font(iTextSharp.text.Font.NORMAL, 20, iTextSharp.text.Font.BOLD); //Définir la police de caractère de titre
+                iTextSharp.text.Font fontNormal = new iTextSharp.text.Font(iTextSharp.text.Font.NORMAL, 10); //Définir la police de caractère normale
+                iTextSharp.text.Font fontSeparateur = new iTextSharp.text.Font(iTextSharp.text.Font.NORMAL, 60, iTextSharp.text.Font.NORMAL); //Définir la police de caractère pour le séparateur
+                Paragraph separateur = new Paragraph("——————————————", fontSeparateur); //Créer un paragraphe pour le séparateur
+
+                document.Add(new Paragraph("Rapport: Mission n°" + idMission, fontTitre)); //Ajouter le titre du rapport
+
                 document.Add(new Paragraph("Déclenchée le " + drMission["dateHeureDepart"].ToString())); //Indiquer la date de début de la mission
-                if (Convert.ToInt32(drMission["terminee"]) == 0)
+                
+                if (Convert.ToInt32(drMission["terminee"]) == 0) // Vérifier si la mission est en cours
                 {
                     document.Add(new Paragraph("En cours ...")); // Indiquer que la mission est en cours
                 }
@@ -368,52 +375,82 @@ namespace Sae25_Main_Form
                 {
                     document.Add(new Paragraph("Terminée le " + drMission["dateHeureRetour"].ToString())); // Indiquer la date de fin de la mission
                 }
-                document.Add(new Paragraph("------------------------------------------------------------"));
-                document.Add(new Paragraph("Nature de la mission : " + monDs.Tables["NatureSinistre"].Select("id = " + drMission["idNatureSinistre"].ToString())[0]["libelle"].ToString())); //Indiquer la nature de la mission
+
+                document.Add(separateur);
+
+                string natureMission = monDs.Tables["NatureSinistre"].Select("id = " + drMission["idNatureSinistre"].ToString())[0]["libelle"].ToString(); //Récupérer la nature de la mission
+                document.Add(new Paragraph("Nature de la mission : " + natureMission)); //Indiquer la nature de la mission
+                
                 document.Add(new Paragraph("Motif de l'appel : " + drMission["motifAppel"].ToString())); //Indiquer le motif de l'appel
-                document.Add(new Paragraph("Adresse : " + drMission["adresse"].ToString())); //Indiquer l'adresse de la mission
-                document.Add(new Paragraph("Code Postal : " + drMission["cp"].ToString())); //Indiquer le code postal de la mission
-                document.Add(new Paragraph("Ville : " + drMission["ville"].ToString())); //Indiquer la ville de la mission
-                document.Add(new Paragraph("------------------------------------------------------------"));
+                
+                string adresseMission = drMission["adresse"].ToString(); //Récupérer l'adresse de la mission
+                string codePostalMission = drMission["cp"].ToString(); //Récupérer le code postal de la mission
+                string villeMission = drMission["ville"].ToString(); //Récupérer la ville de la mission
+                document.Add(new Paragraph("Adresse : " + drMission["adresse"].ToString() + " " + codePostalMission + " " + villeMission)); //Indiquer l'adresse de la mission
+                
+                document.Add(separateur);
+                
                 document.Add(new Paragraph("Engins mobilisés :")); //Indiquer les engins mobilisés
+
                 DataTable enginsMission = getEnginsMission(idMission); //Récupérer les engins de la mission
                 if (enginsMission != null && enginsMission.Rows.Count > 0) //Vérifier si des engins sont mobilisés
                 {
                     foreach (DataRow row in enginsMission.Rows) //Parcourir les lignes de la table des engins
                     {
-                       document.Add(new Paragraph(" - " + row["codeTypeEngin"].ToString() + " n°" + row["numeroEngin"].ToString() + (Convert.ToInt32(monDs.Tables["Engin"].Select("idCaserne = " + row["idCaserne"].ToString() + " AND codeTypeEngin = " + row["codeTypeEngin"].ToString() + " AND numero = " + row["numeroEngin"])[0]["enPanne"]) == 1 ? " (En panne)" : ""))); //Indiquer le type et le numéro de l'engin
+                        string codeTypeEngin = row["codeTypeEngin"].ToString(); //Récupérer le code type de l'engin
+                        string numeroEngin = row["numeroEngin"].ToString(); //Récupérer le numéro de l'engin
+                        string idCaserne = row["idCaserne"].ToString(); //Récupérer l'ID de la caserne de l'engin
+                        string typeEngin = monDs.Tables["TypeEngin"].Select("code = '" + codeTypeEngin + "'")[0]["nom"].ToString(); //Récupérer le libellé du type d'engin
+                        int enPanne = Convert.ToInt32(monDs.Tables["Engin"].Select("idCaserne = " + idCaserne + " AND codeTypeEngin = '" + codeTypeEngin + "' AND numero = " + numeroEngin)[0]["enPanne"]); //Récupérer le statut "En panne" de l'engin
+                        string enPanneText = enPanne == 1 ? "Oui" : "Non"; //Indiquer si l'engin est en panne
+                        string reparationsEventuelles = monDs.Tables["PartirAvec"].Select("idCaserne = " + idCaserne + " AND codeTypeEngin = '" + codeTypeEngin + "' AND numeroEngin = '" + numeroEngin + "'" + " AND idMission = " + idMission)[0]["reparationsEventuelles"].ToString(); //Récupérer les réparations éventuelles de l'engin
+                        if (string.IsNullOrEmpty(reparationsEventuelles))
+                        {
+                            reparationsEventuelles = "Aucune réparation prévue"; //Indiquer qu'il n'y a pas de réparations prévues
+                        }
+                        document.Add(new Paragraph(" - " + typeEngin + " " + idCaserne + "-" + codeTypeEngin + "-" + numeroEngin + "(En panne: " + enPanneText + ", Réparations éventuelles: " + reparationsEventuelles + ")")); 
                     }
                 }
                 else
                 {
                     document.Add(new Paragraph("Aucun engin mobilisé pour cette mission.")); //Indiquer qu'aucun engin n'est mobilisé
                 }
-                document.Add(new Paragraph("------------------------------------------------------------"));
+
+                document.Add(separateur);
+
                 document.Add(new Paragraph("Caserne : " + monDs.Tables["Caserne"].Select("id = " + drMission["idCaserne"].ToString())[0]["nom"].ToString())); //Indiquer la caserne
-                document.Add(new Paragraph("------------------------------------------------------------"));
+                
+                document.Add(separateur);
+
                 document.Add(new Paragraph("Pompiers mobilisés :")); //Indiquer les pompiers mobilisés
+                
                 DataTable pompiersMission = monDs.Tables["Mobiliser"].Select("idMission = " + idMission.ToString()).CopyToDataTable(); //Récupérer les pompiers de la mission
                 if (pompiersMission != null && pompiersMission.Rows.Count > 0) //Vérifier si des pompiers sont mobilisés
                 {
                     foreach (DataRow row in pompiersMission.Rows) //Parcourir les lignes de la table des pompiers
                     {
-                        int matriculePompier = Convert.ToInt32(row["matriculePompier"]); //Récupérer le matricule du pompier
-                        string nomPompier = monDs.Tables["Pompier"].Select("matricule = " + matriculePompier.ToString())[0]["nom"].ToString(); //Récupérer le nom du pompier
-                        string prenomPompier = monDs.Tables["Pompier"].Select("matricule = " + matriculePompier.ToString())[0]["prenom"].ToString(); //Récupérer le prénom du pompier
-                        document.Add(new Paragraph(" - " + nomPompier + " " + prenomPompier)); //Indiquer le nom et le prénom du pompier
+                        string matriculePompier = Convert.ToInt32(row["matriculePompier"]).ToString(); //Récupérer le matricule du pompier
+                        string prenomPompier = monDs.Tables["Pompier"].Select("matricule = " + matriculePompier)[0]["prenom"].ToString(); //Récupérer le prénom du pompier
+                        string nomPompier = monDs.Tables["Pompier"].Select("matricule = " + matriculePompier)[0]["nom"].ToString(); //Récupérer le nom du pompier
+                        string codeGradePompier = monDs.Tables["Pompier"].Select("matricule = " + matriculePompier)[0]["codeGrade"].ToString(); //Récupérer le grade du pompier
+                        string gradePompier = monDs.Tables["Grade"].Select("code = '" + codeGradePompier + "'")[0]["libelle"].ToString(); //Récupérer le libellé du grade du pompier
+                        string idHabilitationPompier = monDs.Tables["Mobiliser"].Select("matriculePompier = " + matriculePompier + " AND idMission = " + idMission)[0]["idHabilitation"].ToString(); //Récupérer l'habilitation du pompier
+                        string habilitationPompier = monDs.Tables["Habilitation"].Select("id = " + idHabilitationPompier)[0]["libelle"].ToString(); //Récupérer le libellé de l'habilitation du pompier
+
+                        document.Add(new Paragraph(" - " + gradePompier + " " + prenomPompier + " " + nomPompier + " (" + habilitationPompier + ")")); //Indiquer le grade, le prénom, le nom et l'habilitation du pompier
                     }
                 }
                 else
                 {
                     document.Add(new Paragraph("Aucun pompier mobilisé pour cette mission.")); //Indiquer qu'aucun pompier n'est mobilisé
                 }
-                document.Add(new Paragraph("------------------------------------------------------------"));
-                document.Add(new Paragraph("Compte rendu : " + drMission["compteRendu"].ToString())); //Indiquer le compte rendu de la mission
+                document.Add(separateur);
+                document.Add(new Paragraph("Compte rendu : \n" + drMission["compteRendu"].ToString())); //Indiquer le compte rendu de la mission
 
                 // Fermer le document
                 document.Close();
 
-                MessageBox.Show("PDF généré avec succès :\n" + cheminFichier, "Succès", MessageBoxButtons.OK, MessageBoxIcon.Information);
+                MessageBox.Show("PDF généré avec succès :\n" + cheminFichier, "Succès");
             }
             catch (Exception ex)
             {
