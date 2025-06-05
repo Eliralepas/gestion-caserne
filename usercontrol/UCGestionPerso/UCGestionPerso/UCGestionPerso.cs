@@ -9,6 +9,7 @@ using System.Threading.Tasks;
 using System.Windows.Forms;
 using System.Data.SQLite;
 using System.Threading;
+using System.Globalization;
 
 namespace UCGestionPerso
 {
@@ -67,6 +68,7 @@ namespace UCGestionPerso
                 }
 
                 ChargercboGrade();
+                ChargercboCaserne();
             }
             catch(Exception ex)
             {
@@ -143,6 +145,7 @@ namespace UCGestionPerso
         {
             try
             {
+                InitPompierInfo();
                 grpIdentite.Visible = true;
                 grpContact.Visible = true;
                 lblMatricule.Visible = true;
@@ -154,14 +157,14 @@ namespace UCGestionPerso
                 string requete = $@"SELECT * FROM Pompier WHERE matricule = {id}";
                 SQLiteCommand cd = new SQLiteCommand(requete, _con);
                 SQLiteDataReader dr = cd.ExecuteReader();
-                int enConge=-1;
-                string codeGrade="";
+
+
                 while (dr.Read())
                 {
-                    txtNom.Text = dr.GetString(1);
-                    txtPrenom.Text = dr.GetString(2);
-                    txtSexe.Text = dr.GetString(3);
-                    txtDateNaissance.Text = dr.GetString(4);
+                    lblNom.Text = dr.GetString(1);
+                    lblPrenom.Text = dr.GetString(2);
+                    lblSexe.Text = dr.GetString(3);
+                    lblDateNaissance.Text = dr.GetString(4);
                     string type = dr.GetString(5);
                     if (type == "p")
                     {
@@ -171,15 +174,60 @@ namespace UCGestionPerso
                     {
                         rdbVolontaire.Checked = true;
                     }
-                    txtTel.Text = dr.GetString(6);
-                    txtBip.Text = dr.GetInt32(7).ToString();
-                    enConge = dr.GetInt32(9);
-                    codeGrade = dr.GetString(10);
+                    lblTel.Text = dr.GetString(6);
+                    lblBip.Text = dr.GetInt32(7).ToString();
+                    int enConge = dr.GetInt32(9);
+                    string codeGrade = dr.GetString(10);
                     txtGradeCode.Text = codeGrade;
+                    cboGrade.SelectedValue = codeGrade;
+                    if (enConge == 1) {
+                        chbConge.Checked = true;
+                    }
+
                 }
                 dr.Close();
+
+
+
+                string cmdCaserne = $@"SELECT * FROM Affectation WHERE matriculePompier = "+id+" ORDER BY dateA";
+                SQLiteCommand cd1 = new SQLiteCommand(cmdCaserne, _con);
+                SQLiteDataReader dr1 = cd1.ExecuteReader();
+
+                int idCaserne=0;
+
+                while (dr1.Read())
+                {
+                    string affectation = "";
+                    lblDateEmbauche.Text = "X";
+
+                    if (!dr1.IsDBNull(2))
+                    {
+                        DateTime dateNow = DateTime.Now;
+                        DateTime dateFin = DateTime.ParseExact(dr1.GetString(2), "yyyy-MM-dd", CultureInfo.InvariantCulture);
+
+                        int comp = DateTime.Compare(dateNow, dateFin);
+
+                        if (dr1.GetString(2) == null || comp > 0)
+                        {
+                            idCaserne = dr1.GetInt32(3);
+                            lblDateEmbauche.Text = dr1.GetString(1);
+
+                            affectation  += dr1.GetString(1);
+                        }
+                    }
+                    else
+                    {
+                        idCaserne = dr1.GetInt32(3);
+                        lblDateEmbauche.Text = dr1.GetString(1);
+                        affectation += dr1.GetString(1);
+                    }
+                    cboCaserne.SelectedValue = idCaserne;
+                    affectation += cboCaserne.Text;
+
+                    rtbAffec.Text += " " + affectation + "\n";
+                }
+                dr1.Close();
                 
-                cboGrade.SelectedValue = codeGrade;
 
                 if (login.Connected)
                 {
@@ -188,7 +236,7 @@ namespace UCGestionPerso
             }
             catch (InvalidOperationException)
             {
-                MessageBox.Show("Erreur : connexion fermée !");
+                MessageBox.Show("Erreur : la connexion est fermé !");
             }
             catch (SQLiteException)
             {
@@ -231,6 +279,57 @@ namespace UCGestionPerso
             }
             dr1.Close();
             ChargementCbo(dt, "libelle", "code", cboGrade);
+        }
+
+        private void ChargercboCaserne()
+        {
+            string cmdCaserne = $@"SELECT * FROM Caserne";
+            SQLiteCommand cd1 = new SQLiteCommand(cmdCaserne, _con);
+            SQLiteDataReader dr1 = cd1.ExecuteReader();
+            DataTable dt = new DataTable();
+            dt.Columns.Add("id");
+            dt.Columns.Add("nom");
+            while (dr1.Read())
+            {
+                DataRow ligne = dt.NewRow();
+                ligne[0] = dr1.GetInt32(0);
+                ligne[1] = dr1.GetString(1);
+                dt.Rows.Add(ligne);
+            }
+            dr1.Close();
+            ChargementCbo(dt, "nom", "id", cboCaserne);
+        }
+
+        private void InitPompierInfo()
+        {
+            
+            //Info
+            lblNom.Text = String.Empty;
+            lblPrenom.Text = String.Empty;
+            lblMatricule.Text = String.Empty;
+            lblSexe.Text = String.Empty;
+            lblDateNaissance.Text = String.Empty;
+            lblDateEmbauche.Text = String.Empty;
+            rdbPro.Checked = false;
+            rdbVolontaire.Checked = false;
+
+            //Contact
+            lblBip.Text = String.Empty;
+            lblTel.Text = String.Empty;
+
+            //Carrière
+            txtGradeCode.Text = String.Empty;
+            cboCaserne.SelectedIndex = -1;
+            cboGrade.SelectedIndex = -1;
+            rtbAffec.Text = String.Empty;
+            rtbHab.Text = String.Empty;
+            chbConge.Checked = false;
+
+        }
+
+        private void cboGrade_SelectedIndexChanged(object sender, EventArgs e)
+        {
+
         }
     }
 }
