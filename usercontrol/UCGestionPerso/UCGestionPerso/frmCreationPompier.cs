@@ -39,7 +39,7 @@ namespace UCGestionPerso
 
         private void btnAnnuler_Click(object sender, EventArgs e)
         {
-            DialogResult = DialogResult.Cancel;
+            DialogResult = DialogResult.Cancel; //Annuler
         }
     }
 }

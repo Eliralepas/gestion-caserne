@@ -188,7 +188,7 @@ namespace UCGestionPerso
                 dr.Close();
 
 
-
+                ///Affectations
                 string cmdCaserne = $@"SELECT * FROM Affectation WHERE matriculePompier = "+id+" ORDER BY dateA";
                 SQLiteCommand cd1 = new SQLiteCommand(cmdCaserne, _con);
                 SQLiteDataReader dr1 = cd1.ExecuteReader();
@@ -222,12 +222,26 @@ namespace UCGestionPerso
                         affectation += dr1.GetString(1);
                     }
                     cboCaserne.SelectedValue = idCaserne;
-                    affectation += cboCaserne.Text;
+                    affectation += " " + cboCaserne.Text;
 
-                    rtbAffec.Text += " " + affectation + "\n";
+                    rtbAffec.Text += affectation + "\n";
                 }
                 dr1.Close();
-                
+
+
+                ///Habilitations
+                string cmdHab = $@"SELECT * FROM Passer WHERE matriculePompier = {id}";
+                SQLiteCommand cd2 = new SQLiteCommand(cmdHab, _con);
+                SQLiteDataReader dr2 = cd2.ExecuteReader();
+
+                while (dr2.Read())
+                {
+                    string rq = $@"SELECT libelle FROM Habilitation WHERE id = {dr2.GetInt32(1)}";
+                    SQLiteCommand cm = new SQLiteCommand(rq, _con);
+                    string nom = (string) cm.ExecuteScalar();
+                    string hab = nom.Split('-')[0];
+                    rtbHab.Text += hab + " " + dr2.GetString(2) + "\n";
+                }
 
                 if (login.Connected)
                 {
