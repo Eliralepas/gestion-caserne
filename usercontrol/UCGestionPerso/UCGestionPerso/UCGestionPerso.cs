@@ -331,5 +331,16 @@ namespace UCGestionPerso
         {
 
         }
+
+        private void btnCreate_Click(object sender, EventArgs e)
+        {
+            /*if (!login.Connected)
+            {
+                MessageBox.Show("Vous devez être connecté pour pouvoir créer un pompier !");
+                //return;
+            }*/
+            frmCreationPompier creerPompier = new frmCreationPompier(_con);
+
+        }
     }
 }

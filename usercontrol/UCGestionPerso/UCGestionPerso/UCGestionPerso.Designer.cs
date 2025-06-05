@@ -45,6 +45,8 @@
             this.label7 = new System.Windows.Forms.Label();
             this.button1 = new System.Windows.Forms.Button();
             this.grpContact = new System.Windows.Forms.GroupBox();
+            this.lblBip = new System.Windows.Forms.Label();
+            this.lblTel = new System.Windows.Forms.Label();
             this.pictureBox1 = new System.Windows.Forms.PictureBox();
             this.label6 = new System.Windows.Forms.Label();
             this.btnChanger = new System.Windows.Forms.Button();
@@ -65,8 +67,6 @@
             this.label1 = new System.Windows.Forms.Label();
             this.btnInfo = new System.Windows.Forms.Button();
             this.btnCreate = new System.Windows.Forms.Button();
-            this.lblTel = new System.Windows.Forms.Label();
-            this.lblBip = new System.Windows.Forms.Label();
             this.pnlInfo.SuspendLayout();
             this.grpCaserne.SuspendLayout();
             this.grpContact.SuspendLayout();
@@ -287,6 +287,28 @@
             this.grpContact.TabStop = false;
             this.grpContact.Text = "Contact";
             this.grpContact.Visible = false;
+            // 
+            // lblBip
+            // 
+            this.lblBip.AutoSize = true;
+            this.lblBip.Font = new System.Drawing.Font("Arial", 10F);
+            this.lblBip.ForeColor = System.Drawing.Color.Black;
+            this.lblBip.Location = new System.Drawing.Point(10, 201);
+            this.lblBip.Name = "lblBip";
+            this.lblBip.Size = new System.Drawing.Size(16, 23);
+            this.lblBip.TabIndex = 27;
+            this.lblBip.Text = ".";
+            // 
+            // lblTel
+            // 
+            this.lblTel.AutoSize = true;
+            this.lblTel.Font = new System.Drawing.Font("Arial", 10F);
+            this.lblTel.ForeColor = System.Drawing.Color.Black;
+            this.lblTel.Location = new System.Drawing.Point(6, 138);
+            this.lblTel.Name = "lblTel";
+            this.lblTel.Size = new System.Drawing.Size(16, 23);
+            this.lblTel.TabIndex = 26;
+            this.lblTel.Text = ".";
             // 
             // pictureBox1
             // 
@@ -526,28 +548,7 @@
             this.btnCreate.TabIndex = 0;
             this.btnCreate.Text = "Nouveau Pompier";
             this.btnCreate.UseVisualStyleBackColor = true;
-            // 
-            // lblTel
-            // 
-            this.lblTel.AutoSize = true;
-            this.lblTel.Font = new System.Drawing.Font("Arial", 10F);
-            this.lblTel.ForeColor = System.Drawing.Color.Black;
-            this.lblTel.Location = new System.Drawing.Point(6, 138);
-            this.lblTel.Name = "lblTel";
-            this.lblTel.Size = new System.Drawing.Size(16, 23);
-            this.lblTel.TabIndex = 26;
-            this.lblTel.Text = ".";
-            // 
-            // lblBip
-            // 
-            this.lblBip.AutoSize = true;
-            this.lblBip.Font = new System.Drawing.Font("Arial", 10F);
-            this.lblBip.ForeColor = System.Drawing.Color.Black;
-            this.lblBip.Location = new System.Drawing.Point(10, 201);
-            this.lblBip.Name = "lblBip";
-            this.lblBip.Size = new System.Drawing.Size(16, 23);
-            this.lblBip.TabIndex = 27;
-            this.lblBip.Text = ".";
+            this.btnCreate.Click += new System.EventHandler(this.btnCreate_Click);
             // 
             // UCGestionPerso
             // 
