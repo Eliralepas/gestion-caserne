@@ -92,6 +92,7 @@ namespace UCGestionPerso
             else if (!rdbPro.Checked && !rdbVolontaire.Checked) { erp.SetError(rdbPro, "Veuillez choisir le type du pompier."); return; }
             else if (cboCaserne.SelectedIndex == -1) { erp.SetError(cboCaserne, "Veuillez choisir la caserne."); return; }
             else if (cboGrade.SelectedIndex == -1) { erp.SetError(cboGrade, "Veuillez choisir le grade."); return; }
+            else if (txtTel.Text != String.Empty && txtTel.Text.Length < 10) { erp.SetError(txtTel, "Veuillez entrez le numéro de téléphone."); return; }
 
             //creer pompier 
             TextInfo ti = CultureInfo.CurrentCulture.TextInfo;
