@@ -28,6 +28,7 @@
         /// </summary>
         private void InitializeComponent()
         {
+            this.components = new System.ComponentModel.Container();
             this.txtMotif = new System.Windows.Forms.TextBox();
             this.lblNumMission = new System.Windows.Forms.Label();
             this.lblDate = new System.Windows.Forms.Label();
@@ -53,9 +54,11 @@
             this.label3 = new System.Windows.Forms.Label();
             this.label4 = new System.Windows.Forms.Label();
             this.btnNvMission = new System.Windows.Forms.Button();
+            this.erp = new System.Windows.Forms.ErrorProvider(this.components);
             this.grpDecision.SuspendLayout();
             this.grpInfo.SuspendLayout();
             this.grpMob.SuspendLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.erp)).BeginInit();
             this.SuspendLayout();
             // 
             // txtMotif
@@ -353,6 +356,10 @@
             this.btnNvMission.Visible = false;
             this.btnNvMission.Click += new System.EventHandler(this.btnNvMission_Click);
             // 
+            // erp
+            // 
+            this.erp.ContainerControl = this;
+            // 
             // ucMission
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(11F, 23F);
@@ -376,6 +383,7 @@
             this.grpInfo.PerformLayout();
             this.grpMob.ResumeLayout(false);
             this.grpMob.PerformLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.erp)).EndInit();
             this.ResumeLayout(false);
             this.PerformLayout();
 
@@ -407,5 +415,6 @@
         private System.Windows.Forms.Panel pnlPompier;
         private System.Windows.Forms.Panel pnlEngin;
         private System.Windows.Forms.Button btnNvMission;
+        private System.Windows.Forms.ErrorProvider erp;
     }
 }

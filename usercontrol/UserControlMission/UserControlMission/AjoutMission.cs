@@ -74,6 +74,7 @@ namespace UserControlMission
 
         private void btnValider_Click(object sender, EventArgs e)
         { 
+
             
             // Si la mission peut être exécuter (même si l'équipe incomplète alors remplir la table Mission de mon DataSet)
 
@@ -531,6 +532,7 @@ namespace UserControlMission
         
         private void btnNvMission_Click(object sender, EventArgs e)
         {
+            erp.Clear();
             btnNvMission.Visible = false;
             btnValider.Visible= true;
             btnAnnuler.Visible = true;
