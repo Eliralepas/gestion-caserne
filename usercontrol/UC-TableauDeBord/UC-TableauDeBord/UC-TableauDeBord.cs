@@ -14,8 +14,9 @@ namespace UC_TableauDeBord
 
     public delegate void AjouterMissionBD(Mission mission, string compteRendu, DataTable enginsEnPanne); //Déclaration de la signature du délégué pour ajouter une mission à la base de données
     public delegate DataTable GetEnginsMission(int idMission); //Déclaration de la signature du délégué pour récupérer les engins d'une mission
+    public delegate void CreerPdfMission(int idMission); //Déclaration de la signature du délégué pour créer le PDF de la mission
 
-    public partial class TableauDeBord: UserControl
+    public partial class TableauDeBord : UserControl
     {
         public TableauDeBord()
         {
@@ -25,29 +26,35 @@ namespace UC_TableauDeBord
         private List<Mission> listMissions = new List<Mission>();       //Liste des missions
         public AjouterMissionBD ajouterMissionBD;                       //Instance du délégué pour ajouter une mission à la base de données
         public GetEnginsMission getEnginsMission;                       //Instance du délégué pour récupérer les engins d'une mission
+        public CreerPdfMission creerPdfMission;                         //Instance du délégué pour créer le PDF de la mission
         private bool switchCouleur = true;                              //Variable pour alterner les couleurs des missions
-        private Color couleurSecondaire = Color.FromArgb(234,234,234);  //Couleur grise pour les missions
+        private Color couleurSecondaire = Color.FromArgb(234, 234, 234);  //Couleur grise pour les missions
+
+        private Mission InitMission(DataRow dr)
+        {
+            Mission mission = new Mission(dr);          //Création d'une nouvelle mission à partir de la ligne du DataTable
+            switchCouleurMission(mission);              //Appel de la méthode pour alterner la couleur de la mission
+            mission.terminerMission = TerminerMission;  //Ajout de l'événement pour terminer la mission
+            mission.creerPdfMission = CreerPdfMission;  //Ajout de l'événement pour créer le PDF de la mission
+            return mission; //Retourne la mission créée
+        }
 
         public void LoadMissions(DataTable dt)
         {
             listMissions.Clear(); //Vider la liste avant de la remplir
             foreach (DataRow dr in dt.Rows)
             {
-                Mission mission = new Mission(dr);              //Création d'une nouvelle mission à partir de la ligne du DataTable
-                switchCouleurMission(mission);                  //Appel de la méthode pour alterner la couleur de la mission
-                mission.terminerMission += TerminerMission;     //Ajout de l'événement pour terminer la mission
-                listMissions.Add(mission);                      //Ajout de la mission à la liste
+                Mission mission = InitMission(dr);  //Création d'une nouvelle mission à partir de la ligne du DataTable
+                listMissions.Add(mission);          //Ajout de la mission à la liste
             }
-            TriParIdDecroissant(listMissions); //Tri des missions par ID décroissant
-            DisplayMissions(); //Appel de la méthode pour afficher les missions
+            TriParIdDecroissant(listMissions);  //Tri des missions par ID décroissant
+            DisplayMissions();                  //Appel de la méthode pour afficher les missions
         }
 
         public void AddMission(Mission mission)
         {
-            listMissions.Insert(0, mission);            //Ajout de la mission au début de la liste
-            switchCouleurMission(mission);              //Appel de la méthode pour alterner la couleur de la mission
-            mission.terminerMission += TerminerMission; //Ajout de l'événement pour terminer la mission
-            DisplayMissions();                          //Appel de la méthode pour afficher les missions
+            listMissions.Insert(0, mission);    //Ajout de la mission au début de la liste
+            DisplayMissions();                  //Appel de la méthode pour afficher les missions
         }
 
         public void RemoveMission(Mission mission)
@@ -118,6 +125,14 @@ namespace UC_TableauDeBord
         private void sckbEnCours_CheckedChanged(object sender, EventArgs e)
         {
             DisplayMissions(); //Appel de la méthode pour afficher les missions
+        }
+
+        private void CreerPdfMission(int idMission)
+        {
+            if (creerPdfMission != null) //Si le délégué n'est pas nul
+            {
+                creerPdfMission(idMission); //Appel du délégué pour créer le PDF de la mission
+            }
         }
     }
 }
