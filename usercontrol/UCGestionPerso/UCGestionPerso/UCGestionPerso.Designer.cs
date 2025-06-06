@@ -43,13 +43,12 @@
             this.label10 = new System.Windows.Forms.Label();
             this.label9 = new System.Windows.Forms.Label();
             this.label7 = new System.Windows.Forms.Label();
-            this.button1 = new System.Windows.Forms.Button();
+            this.btnChanger = new System.Windows.Forms.Button();
             this.grpContact = new System.Windows.Forms.GroupBox();
             this.lblBip = new System.Windows.Forms.Label();
             this.lblTel = new System.Windows.Forms.Label();
             this.pictureBox1 = new System.Windows.Forms.PictureBox();
             this.label6 = new System.Windows.Forms.Label();
-            this.btnChanger = new System.Windows.Forms.Button();
             this.label5 = new System.Windows.Forms.Label();
             this.grpIdentite = new System.Windows.Forms.GroupBox();
             this.lblDateEmbauche = new System.Windows.Forms.Label();
@@ -102,7 +101,7 @@
             this.pnlInfo.BackColor = System.Drawing.Color.Red;
             this.pnlInfo.Controls.Add(this.lblMatricule);
             this.pnlInfo.Controls.Add(this.grpCaserne);
-            this.pnlInfo.Controls.Add(this.button1);
+            this.pnlInfo.Controls.Add(this.btnChanger);
             this.pnlInfo.Controls.Add(this.grpContact);
             this.pnlInfo.Controls.Add(this.grpIdentite);
             this.pnlInfo.Controls.Add(this.btnInfo);
@@ -255,18 +254,18 @@
             this.label7.TabIndex = 18;
             this.label7.Text = "Grade :";
             // 
-            // button1
+            // btnChanger
             // 
-            this.button1.Enabled = false;
-            this.button1.Font = new System.Drawing.Font("Arial", 10F);
-            this.button1.ForeColor = System.Drawing.SystemColors.ControlText;
-            this.button1.Location = new System.Drawing.Point(349, 585);
-            this.button1.Name = "button1";
-            this.button1.Size = new System.Drawing.Size(138, 32);
-            this.button1.TabIndex = 20;
-            this.button1.Text = "Mettre à jour";
-            this.button1.UseVisualStyleBackColor = true;
-            this.button1.Visible = false;
+            this.btnChanger.Font = new System.Drawing.Font("Arial", 10F);
+            this.btnChanger.ForeColor = System.Drawing.SystemColors.ControlText;
+            this.btnChanger.Location = new System.Drawing.Point(349, 585);
+            this.btnChanger.Name = "btnChanger";
+            this.btnChanger.Size = new System.Drawing.Size(138, 32);
+            this.btnChanger.TabIndex = 20;
+            this.btnChanger.Text = "Mettre à jour";
+            this.btnChanger.UseVisualStyleBackColor = true;
+            this.btnChanger.Visible = false;
+            this.btnChanger.Click += new System.EventHandler(this.btnChanger_Click);
             // 
             // grpContact
             // 
@@ -274,7 +273,6 @@
             this.grpContact.Controls.Add(this.lblTel);
             this.grpContact.Controls.Add(this.pictureBox1);
             this.grpContact.Controls.Add(this.label6);
-            this.grpContact.Controls.Add(this.btnChanger);
             this.grpContact.Controls.Add(this.label5);
             this.grpContact.Font = new System.Drawing.Font("Arial", 13F);
             this.grpContact.ForeColor = System.Drawing.SystemColors.ControlText;
@@ -291,7 +289,7 @@
             this.lblBip.AutoSize = true;
             this.lblBip.Font = new System.Drawing.Font("Arial", 10F);
             this.lblBip.ForeColor = System.Drawing.Color.Black;
-            this.lblBip.Location = new System.Drawing.Point(10, 201);
+            this.lblBip.Location = new System.Drawing.Point(25, 254);
             this.lblBip.Name = "lblBip";
             this.lblBip.Size = new System.Drawing.Size(14, 19);
             this.lblBip.TabIndex = 27;
@@ -302,7 +300,7 @@
             this.lblTel.AutoSize = true;
             this.lblTel.Font = new System.Drawing.Font("Arial", 10F);
             this.lblTel.ForeColor = System.Drawing.Color.Black;
-            this.lblTel.Location = new System.Drawing.Point(6, 138);
+            this.lblTel.Location = new System.Drawing.Point(21, 198);
             this.lblTel.Name = "lblTel";
             this.lblTel.Size = new System.Drawing.Size(14, 19);
             this.lblTel.TabIndex = 26;
@@ -310,9 +308,9 @@
             // 
             // pictureBox1
             // 
-            this.pictureBox1.Location = new System.Drawing.Point(26, 36);
+            this.pictureBox1.Location = new System.Drawing.Point(25, 36);
             this.pictureBox1.Name = "pictureBox1";
-            this.pictureBox1.Size = new System.Drawing.Size(162, 79);
+            this.pictureBox1.Size = new System.Drawing.Size(163, 121);
             this.pictureBox1.TabIndex = 12;
             this.pictureBox1.TabStop = false;
             // 
@@ -321,31 +319,18 @@
             this.label6.AutoSize = true;
             this.label6.Font = new System.Drawing.Font("Arial", 10F);
             this.label6.ForeColor = System.Drawing.Color.Black;
-            this.label6.Location = new System.Drawing.Point(6, 178);
+            this.label6.Location = new System.Drawing.Point(21, 231);
             this.label6.Name = "label6";
             this.label6.Size = new System.Drawing.Size(43, 19);
             this.label6.TabIndex = 11;
             this.label6.Text = "Bip :";
-            // 
-            // btnChanger
-            // 
-            this.btnChanger.Enabled = false;
-            this.btnChanger.Font = new System.Drawing.Font("Arial", 10F);
-            this.btnChanger.ForeColor = System.Drawing.SystemColors.ControlText;
-            this.btnChanger.Location = new System.Drawing.Point(71, 245);
-            this.btnChanger.Name = "btnChanger";
-            this.btnChanger.Size = new System.Drawing.Size(138, 32);
-            this.btnChanger.TabIndex = 0;
-            this.btnChanger.Text = "Sauvegarder";
-            this.btnChanger.UseVisualStyleBackColor = true;
-            this.btnChanger.Visible = false;
             // 
             // label5
             // 
             this.label5.AutoSize = true;
             this.label5.Font = new System.Drawing.Font("Arial", 10F);
             this.label5.ForeColor = System.Drawing.Color.Black;
-            this.label5.Location = new System.Drawing.Point(6, 118);
+            this.label5.Location = new System.Drawing.Point(21, 178);
             this.label5.Name = "label5";
             this.label5.Size = new System.Drawing.Size(99, 19);
             this.label5.TabIndex = 10;
@@ -583,7 +568,6 @@
         private System.Windows.Forms.Button btnCreate;
         private System.Windows.Forms.GroupBox grpCaserne;
         private System.Windows.Forms.GroupBox grpIdentite;
-        private System.Windows.Forms.Button btnChanger;
         private System.Windows.Forms.Button btnInfo;
         private System.Windows.Forms.Label label8;
         private System.Windows.Forms.Label label2;
@@ -600,7 +584,7 @@
         private System.Windows.Forms.Label label10;
         private System.Windows.Forms.Label label9;
         private System.Windows.Forms.Label label7;
-        private System.Windows.Forms.Button button1;
+        private System.Windows.Forms.Button btnChanger;
         private System.Windows.Forms.RichTextBox rtbAffec;
         private System.Windows.Forms.Label label11;
         private System.Windows.Forms.ComboBox cboCaserne;

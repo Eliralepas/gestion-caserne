@@ -1,15 +1,16 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.ComponentModel;
-using System.Drawing;
 using System.Data;
+using System.Data.SqlClient;
+using System.Data.SQLite;
+using System.Drawing;
+using System.Globalization;
 using System.Linq;
 using System.Text;
+using System.Threading;
 using System.Threading.Tasks;
 using System.Windows.Forms;
-using System.Data.SQLite;
-using System.Threading;
-using System.Globalization;
 
 namespace UCGestionPerso
 {
@@ -20,6 +21,10 @@ namespace UCGestionPerso
         SQLiteConnection _con;
         UCLogin login;
 
+        int idCaserneInit;
+        string codeGradeInit;
+        bool dateF;
+        int enCongeInit;
 
         private UCRichButton Selected;
         public bool Connected
@@ -153,6 +158,7 @@ namespace UCGestionPerso
 
                 int id = Convert.ToInt32(Selected.Tag);
                 lblMatricule.Text = "Matricule "+id;
+                lblMatricule.Tag = id;
 
                 string requete = $@"SELECT * FROM Pompier WHERE matricule = {id}";
                 SQLiteCommand cd = new SQLiteCommand(requete, _con);
@@ -165,7 +171,9 @@ namespace UCGestionPerso
                     lblPrenom.Text = dr.GetString(2);
                     lblSexe.Text = dr.GetString(3);
                     lblDateNaissance.Text = dr.GetString(4);
+
                     string type = dr.GetString(5);
+
                     if (type == "p")
                     {
                         rdbPro.Checked = true;
@@ -174,16 +182,21 @@ namespace UCGestionPerso
                     {
                         rdbVolontaire.Checked = true;
                     }
+
                     lblTel.Text = dr.GetString(6);
                     lblBip.Text = dr.GetInt32(7).ToString();
                     int enConge = dr.GetInt32(9);
                     string codeGrade = dr.GetString(10);
+
                     txtGradeCode.Text = codeGrade;
+                    codeGradeInit = codeGrade;
                     cboGrade.SelectedValue = codeGrade;
+
                     if (enConge == 1) {
                         chbConge.Checked = true;
+                        enCongeInit = 1;
                     }
-
+                    lblDateEmbauche.Text = dr.GetString(11);
                 }
                 dr.Close();
 
@@ -198,10 +211,10 @@ namespace UCGestionPerso
                 while (dr1.Read())
                 {
                     string affectation = "";
-                    lblDateEmbauche.Text = "X";
-
                     if (!dr1.IsDBNull(2))
                     {
+                        dateF = true; //il existe une date fin
+
                         DateTime dateNow = DateTime.Now;
                         DateTime dateFin = DateTime.ParseExact(dr1.GetString(2), "yyyy-MM-dd", CultureInfo.InvariantCulture);
 
@@ -210,15 +223,13 @@ namespace UCGestionPerso
                         if (dr1.GetString(2) == null || comp > 0)
                         {
                             idCaserne = dr1.GetInt32(3);
-                            lblDateEmbauche.Text = dr1.GetString(1);
-
                             affectation  += dr1.GetString(1);
                         }
                     }
                     else
                     {
+                        dateF = false; 
                         idCaserne = dr1.GetInt32(3);
-                        lblDateEmbauche.Text = dr1.GetString(1);
                         affectation += dr1.GetString(1);
                     }
                     cboCaserne.SelectedValue = idCaserne;
@@ -227,7 +238,7 @@ namespace UCGestionPerso
                     rtbAffec.Text += affectation + "\n";
                 }
                 dr1.Close();
-
+                idCaserneInit = idCaserne;
 
                 ///Habilitations
                 string cmdHab = $@"SELECT * FROM Passer WHERE matriculePompier = {id}";
@@ -239,13 +250,18 @@ namespace UCGestionPerso
                     string rq = $@"SELECT libelle FROM Habilitation WHERE id = {dr2.GetInt32(1)}";
                     SQLiteCommand cm = new SQLiteCommand(rq, _con);
                     string nom = (string) cm.ExecuteScalar();
+                    
                     string hab = nom.Split('-')[0];
+
                     rtbHab.Text += hab + " " + dr2.GetString(2) + "\n";
                 }
 
-                if (login.Connected)
+                if (!login.Connected)
                 {
-
+                    btnChanger.Visible = true;
+                    cboCaserne.Enabled = true;
+                    cboGrade.Enabled = true;
+                    chbConge.Enabled = true;
                 }
             }
             catch (InvalidOperationException)
@@ -343,7 +359,10 @@ namespace UCGestionPerso
 
         private void cboGrade_SelectedIndexChanged(object sender, EventArgs e)
         {
-
+            if (cboGrade.SelectedIndex != -1)
+            {
+                txtGradeCode.Text = cboGrade.SelectedValue.ToString();
+            }
         }
 
         private void btnCreate_Click(object sender, EventArgs e)
@@ -353,8 +372,85 @@ namespace UCGestionPerso
                 MessageBox.Show("Vous devez être connecté pour pouvoir créer un pompier !");
                 //return;
             }*/
-            frmCreationPompier creerPompier = new frmCreationPompier(_con);
 
+            frmCreationPompier creerPompier = new frmCreationPompier(_con);
+            DialogResult res = creerPompier.ShowDialog();
+
+            if (res == DialogResult.OK) 
+            {
+                
+            }
+            else if (res == DialogResult.Cancel) { }
+        }
+
+        private void btnChanger_Click(object sender, EventArgs e)
+        {
+            SQLiteTransaction transaction = null;
+            transaction = _con.BeginTransaction();
+
+            try
+            {
+                int id = Convert.ToInt32(lblMatricule.Tag);
+
+                int enConge = 0;
+                if (chbConge.Checked)
+                {
+                    enConge = 1;
+                }
+
+                int idCaserne = Convert.ToInt32(cboCaserne.SelectedValue);
+                string codeGrade = txtGradeCode.Text;
+
+                if (codeGrade != codeGradeInit || enCongeInit!=enConge) 
+                {
+                    SQLiteCommand cmdTabPompier = new SQLiteCommand($@"UPDATE Pompier SET enConge = {enConge}, codeGrade = '{codeGrade}' WHERE matricule = {id}", _con, transaction);
+                    cmdTabPompier.ExecuteNonQuery();
+
+                    MessageBox.Show("Les données ont bien été mises à jour.");
+
+                    codeGradeInit = codeGrade;
+                    enCongeInit = enConge;
+                }
+
+                if (idCaserne != idCaserneInit)
+                {
+                    string date = DateTime.Now.ToString("yyyy-MM-dd", CultureInfo.InvariantCulture);
+                    if (!dateF)
+                    {
+                        SQLiteCommand cmdAffectation = new SQLiteCommand($@"UPDATE Affectation SET dateFin = '{date}' WHERE matriculePompier = {id} AND idCaserne = {idCaserneInit}", _con, transaction);
+                        cmdAffectation.ExecuteNonQuery();
+                    }
+                    idCaserneInit = idCaserne;
+
+                    SQLiteCommand cmdAffectationAdd = new SQLiteCommand($@"INSERT INTO Affectation (matriculePompier, dateA, idCaserne) VALUES ({id}, '{date}', {idCaserneInit})", _con, transaction);
+                    cmdAffectationAdd.ExecuteNonQuery();
+
+                    MessageBox.Show("Le pompier a bien été affecté à une caserne.");
+                }
+
+                transaction.Commit();
+            }
+            catch (SQLiteException ex)
+            {
+                if (ex.ResultCode == SQLiteErrorCode.Constraint)
+                {
+                    MessageBox.Show("Erreur : Vous ne pouvez pas affecter le pompier à une autre caserne le même jour!");
+                }
+                else
+                {
+                    MessageBox.Show("Erreur SQLite : " + ex.Message);
+                }
+            }
+            catch (Exception ex)
+            {
+                transaction.Rollback();
+                MessageBox.Show(ex.Message);
+                MessageBox.Show(ex.ToString());
+            }
+            finally
+            {
+                transaction.Dispose();
+            }
         }
     }
 }
