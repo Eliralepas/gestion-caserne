@@ -57,10 +57,39 @@ namespace UserControlMission
 
         private void txtVille_KeyPress(object sender, KeyPressEventArgs e)
         {
+            erp.Clear();
+            TextBox tb = sender as TextBox;
+            string texteActuel = tb.Text;
+            int pos = tb.SelectionStart;
+
             e.Handled = true;
-            if (e.KeyChar == (char)Keys.Enter || e.KeyChar == (char)Keys.Back || Char.IsLetter(e.KeyChar)) { e.Handled = false; }
-            if (txtVille.SelectionStart != 0 && e.KeyChar == (char)Keys.Space) { e.Handled = false; }
-            if (e.KeyChar == '-' && txtVille.SelectionStart != 0) { e.Handled = false; }
+
+            if (e.KeyChar == (char)Keys.Back)
+            {
+                e.Handled = false;
+            }
+
+            if (char.IsLetter(e.KeyChar))
+            {
+                e.Handled = false;
+            }
+
+            if (e.KeyChar == ' ' || e.KeyChar == '-')
+            {
+                e.Handled = false;
+
+                // Pas en premier caractère
+                if (pos == 0)
+                {
+                    e.Handled = true;
+                }
+
+                // Pas deux espaces/tirets consécutifs
+                if ((pos > 0 && (texteActuel[pos - 1] == ' ' || texteActuel[pos - 1] == '-')))
+                {
+                    e.Handled = true;
+                }
+            }
         }
 
         private void ChargementCbo(DataTable dt, String col1, String col2, ComboBox c)
@@ -74,8 +103,13 @@ namespace UserControlMission
 
         private void btnValider_Click(object sender, EventArgs e)
         { 
-
-            
+            //error provider 
+            if (txtCP.Text == String.Empty || (txtCP.Text != String.Empty && txtCP.Text.Length < 5)) { erp.SetError(txtCP, "Veuillez rentrez le code postal."); return; }
+            else if (txtRue.Text == String.Empty) { erp.SetError(txtRue, "Veuillez rentrez la rue."); return; }
+            else if (txtVille.Text == String.Empty) { erp.SetError(txtVille, "Veuillez rentrez la ville."); return; }
+            else if (txtMotif.Text == String.Empty) { erp.SetError(txtRue, "Veuillez rentrez le motif."); return; }
+            else if (cboCaserne.SelectedIndex==-1) { erp.SetError(cboCaserne, "Veuillez choisir la caserne."); return; }
+            else if (cboNature.SelectedIndex == -1) { erp.SetError(cboNature, "Veuillez choisir la nature du sinistre."); return; }
             // Si la mission peut être exécuter (même si l'équipe incomplète alors remplir la table Mission de mon DataSet)
 
             int idCaserne = Convert.ToInt32(cboCaserne.SelectedValue);
