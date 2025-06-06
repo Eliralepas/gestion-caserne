@@ -33,6 +33,7 @@ namespace UCGestionPerso
 
                 lblMatricule.Text += matricule;
                 lblMatricule.Tag = matricule;
+                lblBip.Text = matricule.ToString();
                 ChargercboCaserne();
                 ChargercboGrade();
 
@@ -46,6 +47,7 @@ namespace UCGestionPerso
 
         private void txtNom_KeyPress(object sender, KeyPressEventArgs e)
         {
+            erp.Clear();
             TextBox tb = sender as TextBox;
             string texteActuel = tb.Text;
             int pos = tb.SelectionStart;
@@ -82,6 +84,15 @@ namespace UCGestionPerso
 
         private void btnValider_Click(object sender, EventArgs e)
         {
+            //errorProvider (champ pas remplit)
+            erp.Clear();
+            if (txtNom.Text == String.Empty) { erp.SetError(txtNom, "Veuillez entrez le nom."); return; }
+            else if (txtPrenom.Text == String.Empty) { erp.SetError(txtPrenom, "Veuillez entrez le prénom."); return; }
+            else if (!rdbFemme.Checked && !rdbHomme.Checked) { erp.SetError(rdbHomme, "Veuillez choisir le sexe."); return; }
+            else if (!rdbPro.Checked && !rdbVolontaire.Checked) { erp.SetError(rdbPro, "Veuillez choisir le type du pompier."); return; }
+            else if (cboCaserne.SelectedIndex == -1) { erp.SetError(cboCaserne, "Veuillez choisir la caserne."); return; }
+            else if (cboGrade.SelectedIndex == -1) { erp.SetError(cboGrade, "Veuillez choisir le grade."); return; }
+
             //creer pompier 
             TextInfo ti = CultureInfo.CurrentCulture.TextInfo;
             string nom = ti.ToTitleCase(txtNom.Text.ToLower()); ;

@@ -61,6 +61,7 @@ namespace UCGestionPerso
         {
             try
             {
+                //On remplit le panel avec des boutons (Caserne)
                 string caserneCommand = "SELECT nom, id FROM Caserne";
                 SQLiteCommand cmd = new SQLiteCommand(caserneCommand, _con);
                 SQLiteDataReader data = cmd.ExecuteReader();
@@ -77,6 +78,7 @@ namespace UCGestionPerso
                     flpCaserne.Controls.Add(btn);
                 }
 
+                //On charge nos combobox 
                 ChargercboGrade();
                 ChargercboCaserne();
             }
@@ -100,6 +102,7 @@ namespace UCGestionPerso
             grpContact.Visible = false;
             grpIdentite.Visible = false;
             lblMatricule.Visible = false;
+            btnInfo.Visible = false;
 
             refreshPompier();
         }
@@ -387,7 +390,7 @@ namespace UCGestionPerso
 
         private void btnCreate_Click(object sender, EventArgs e)
         {
-            if (!login.Connected)
+            if (login.Connected) //AAAAA
             {
                 MessageBox.Show("Vous devez être connecté pour pouvoir créer un pompier !");
                 return;

@@ -52,7 +52,7 @@
             this.lblInfo1.Location = new System.Drawing.Point(153, 52);
             this.lblInfo1.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
             this.lblInfo1.Name = "lblInfo1";
-            this.lblInfo1.Size = new System.Drawing.Size(127, 16);
+            this.lblInfo1.Size = new System.Drawing.Size(184, 25);
             this.lblInfo1.TabIndex = 1;
             this.lblInfo1.Text = "Information num 1";
             this.lblInfo1.MouseClick += new System.Windows.Forms.MouseEventHandler(this.RichButton_MouseClick);
@@ -65,7 +65,7 @@
             this.lblInfo2.Location = new System.Drawing.Point(153, 81);
             this.lblInfo2.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
             this.lblInfo2.Name = "lblInfo2";
-            this.lblInfo2.Size = new System.Drawing.Size(110, 16);
+            this.lblInfo2.Size = new System.Drawing.Size(167, 25);
             this.lblInfo2.TabIndex = 2;
             this.lblInfo2.Text = "Information num 2";
             this.lblInfo2.MouseClick += new System.Windows.Forms.MouseEventHandler(this.RichButton_MouseClick);
@@ -73,7 +73,7 @@
             // 
             // UCRichButton
             // 
-            this.AutoScaleDimensions = new System.Drawing.SizeF(9F, 20F);
+            this.AutoScaleDimensions = new System.Drawing.SizeF(14F, 29F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.Controls.Add(this.lblInfo2);
             this.Controls.Add(this.lblInfo1);
@@ -81,7 +81,7 @@
             this.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.Margin = new System.Windows.Forms.Padding(4, 5, 4, 5);
             this.Name = "UCRichButton";
-            this.Size = new System.Drawing.Size(326, 150);
+            this.Size = new System.Drawing.Size(361, 150);
             this.Load += new System.EventHandler(this.UCRichButton_Load);
             this.MouseClick += new System.Windows.Forms.MouseEventHandler(this.RichButton_MouseClick);
             this.MouseEnter += new System.EventHandler(this.UCRichButton_MouseEnter);

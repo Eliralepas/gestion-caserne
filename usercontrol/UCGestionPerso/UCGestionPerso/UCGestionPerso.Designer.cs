@@ -118,7 +118,7 @@
             this.lblMatricule.ForeColor = System.Drawing.Color.Black;
             this.lblMatricule.Location = new System.Drawing.Point(174, 0);
             this.lblMatricule.Name = "lblMatricule";
-            this.lblMatricule.Size = new System.Drawing.Size(116, 27);
+            this.lblMatricule.Size = new System.Drawing.Size(134, 32);
             this.lblMatricule.TabIndex = 19;
             this.lblMatricule.Text = "Matricule ";
             this.lblMatricule.Visible = false;
@@ -152,7 +152,7 @@
             this.chbConge.Font = new System.Drawing.Font("Arial", 10F);
             this.chbConge.Location = new System.Drawing.Point(10, 226);
             this.chbConge.Name = "chbConge";
-            this.chbConge.Size = new System.Drawing.Size(99, 23);
+            this.chbConge.Size = new System.Drawing.Size(116, 27);
             this.chbConge.TabIndex = 26;
             this.chbConge.Text = "en congé";
             this.chbConge.UseVisualStyleBackColor = true;
@@ -165,7 +165,7 @@
             this.cboCaserne.FormattingEnabled = true;
             this.cboCaserne.Location = new System.Drawing.Point(211, 69);
             this.cboCaserne.Name = "cboCaserne";
-            this.cboCaserne.Size = new System.Drawing.Size(255, 25);
+            this.cboCaserne.Size = new System.Drawing.Size(255, 29);
             this.cboCaserne.TabIndex = 25;
             // 
             // cboGrade
@@ -176,7 +176,7 @@
             this.cboGrade.FormattingEnabled = true;
             this.cboGrade.Location = new System.Drawing.Point(211, 36);
             this.cboGrade.Name = "cboGrade";
-            this.cboGrade.Size = new System.Drawing.Size(255, 25);
+            this.cboGrade.Size = new System.Drawing.Size(255, 29);
             this.cboGrade.TabIndex = 24;
             this.cboGrade.SelectedIndexChanged += new System.EventHandler(this.cboGrade_SelectedIndexChanged);
             // 
@@ -187,7 +187,7 @@
             this.txtGradeCode.Location = new System.Drawing.Point(98, 37);
             this.txtGradeCode.Name = "txtGradeCode";
             this.txtGradeCode.ReadOnly = true;
-            this.txtGradeCode.Size = new System.Drawing.Size(91, 25);
+            this.txtGradeCode.Size = new System.Drawing.Size(91, 28);
             this.txtGradeCode.TabIndex = 19;
             // 
             // rtbAffec
@@ -207,7 +207,7 @@
             this.label11.ForeColor = System.Drawing.Color.Black;
             this.label11.Location = new System.Drawing.Point(6, 169);
             this.label11.Name = "label11";
-            this.label11.Size = new System.Drawing.Size(161, 19);
+            this.label11.Size = new System.Drawing.Size(195, 23);
             this.label11.TabIndex = 22;
             this.label11.Text = "Affectations passés :";
             // 
@@ -228,7 +228,7 @@
             this.label10.ForeColor = System.Drawing.Color.Black;
             this.label10.Location = new System.Drawing.Point(6, 104);
             this.label10.Name = "label10";
-            this.label10.Size = new System.Drawing.Size(106, 19);
+            this.label10.Size = new System.Drawing.Size(127, 23);
             this.label10.TabIndex = 20;
             this.label10.Text = "Habilitations :";
             // 
@@ -239,7 +239,7 @@
             this.label9.ForeColor = System.Drawing.Color.Black;
             this.label9.Location = new System.Drawing.Point(6, 69);
             this.label9.Name = "label9";
-            this.label9.Size = new System.Drawing.Size(86, 19);
+            this.label9.Size = new System.Drawing.Size(102, 23);
             this.label9.TabIndex = 19;
             this.label9.Text = "Caserne : ";
             // 
@@ -250,7 +250,7 @@
             this.label7.ForeColor = System.Drawing.Color.Black;
             this.label7.Location = new System.Drawing.Point(6, 36);
             this.label7.Name = "label7";
-            this.label7.Size = new System.Drawing.Size(64, 19);
+            this.label7.Size = new System.Drawing.Size(78, 23);
             this.label7.TabIndex = 18;
             this.label7.Text = "Grade :";
             // 
@@ -291,7 +291,7 @@
             this.lblBip.ForeColor = System.Drawing.Color.Black;
             this.lblBip.Location = new System.Drawing.Point(50, 219);
             this.lblBip.Name = "lblBip";
-            this.lblBip.Size = new System.Drawing.Size(14, 19);
+            this.lblBip.Size = new System.Drawing.Size(16, 23);
             this.lblBip.TabIndex = 27;
             this.lblBip.Text = ".";
             // 
@@ -302,15 +302,15 @@
             this.lblTel.ForeColor = System.Drawing.Color.Black;
             this.lblTel.Location = new System.Drawing.Point(50, 168);
             this.lblTel.Name = "lblTel";
-            this.lblTel.Size = new System.Drawing.Size(14, 19);
+            this.lblTel.Size = new System.Drawing.Size(16, 23);
             this.lblTel.TabIndex = 26;
             this.lblTel.Text = ".";
             // 
             // pic
             // 
-            this.pic.Location = new System.Drawing.Point(54, 33);
+            this.pic.Location = new System.Drawing.Point(63, 46);
             this.pic.Name = "pic";
-            this.pic.Size = new System.Drawing.Size(114, 101);
+            this.pic.Size = new System.Drawing.Size(106, 89);
             this.pic.TabIndex = 12;
             this.pic.TabStop = false;
             // 
@@ -321,7 +321,7 @@
             this.label6.ForeColor = System.Drawing.Color.Black;
             this.label6.Location = new System.Drawing.Point(50, 200);
             this.label6.Name = "label6";
-            this.label6.Size = new System.Drawing.Size(43, 19);
+            this.label6.Size = new System.Drawing.Size(50, 23);
             this.label6.TabIndex = 11;
             this.label6.Text = "Bip :";
             // 
@@ -332,7 +332,7 @@
             this.label5.ForeColor = System.Drawing.Color.Black;
             this.label5.Location = new System.Drawing.Point(50, 150);
             this.label5.Name = "label5";
-            this.label5.Size = new System.Drawing.Size(99, 19);
+            this.label5.Size = new System.Drawing.Size(119, 23);
             this.label5.TabIndex = 10;
             this.label5.Text = "Téléphone : ";
             // 
@@ -368,7 +368,7 @@
             this.lblDateEmbauche.ForeColor = System.Drawing.Color.Black;
             this.lblDateEmbauche.Location = new System.Drawing.Point(110, 178);
             this.lblDateEmbauche.Name = "lblDateEmbauche";
-            this.lblDateEmbauche.Size = new System.Drawing.Size(14, 19);
+            this.lblDateEmbauche.Size = new System.Drawing.Size(16, 23);
             this.lblDateEmbauche.TabIndex = 25;
             this.lblDateEmbauche.Text = ".";
             // 
@@ -379,7 +379,7 @@
             this.lblDateNaissance.ForeColor = System.Drawing.Color.Black;
             this.lblDateNaissance.Location = new System.Drawing.Point(94, 138);
             this.lblDateNaissance.Name = "lblDateNaissance";
-            this.lblDateNaissance.Size = new System.Drawing.Size(14, 19);
+            this.lblDateNaissance.Size = new System.Drawing.Size(16, 23);
             this.lblDateNaissance.TabIndex = 24;
             this.lblDateNaissance.Text = ".";
             // 
@@ -390,7 +390,7 @@
             this.lblNom.ForeColor = System.Drawing.Color.Black;
             this.lblNom.Location = new System.Drawing.Point(94, 33);
             this.lblNom.Name = "lblNom";
-            this.lblNom.Size = new System.Drawing.Size(14, 19);
+            this.lblNom.Size = new System.Drawing.Size(16, 23);
             this.lblNom.TabIndex = 23;
             this.lblNom.Text = ".";
             // 
@@ -401,7 +401,7 @@
             this.lblPrenom.ForeColor = System.Drawing.Color.Black;
             this.lblPrenom.Location = new System.Drawing.Point(94, 66);
             this.lblPrenom.Name = "lblPrenom";
-            this.lblPrenom.Size = new System.Drawing.Size(14, 19);
+            this.lblPrenom.Size = new System.Drawing.Size(16, 23);
             this.lblPrenom.TabIndex = 22;
             this.lblPrenom.Text = ".";
             // 
@@ -412,7 +412,7 @@
             this.lblSexe.ForeColor = System.Drawing.Color.Black;
             this.lblSexe.Location = new System.Drawing.Point(94, 102);
             this.lblSexe.Name = "lblSexe";
-            this.lblSexe.Size = new System.Drawing.Size(14, 19);
+            this.lblSexe.Size = new System.Drawing.Size(16, 23);
             this.lblSexe.TabIndex = 21;
             this.lblSexe.Text = ".";
             // 
@@ -423,7 +423,7 @@
             this.label12.ForeColor = System.Drawing.Color.Black;
             this.label12.Location = new System.Drawing.Point(6, 178);
             this.label12.Name = "label12";
-            this.label12.Size = new System.Drawing.Size(119, 19);
+            this.label12.Size = new System.Drawing.Size(141, 23);
             this.label12.TabIndex = 19;
             this.label12.Text = "Embauché le : ";
             // 
@@ -435,7 +435,7 @@
             this.rdbVolontaire.ForeColor = System.Drawing.Color.Black;
             this.rdbVolontaire.Location = new System.Drawing.Point(97, 251);
             this.rdbVolontaire.Name = "rdbVolontaire";
-            this.rdbVolontaire.Size = new System.Drawing.Size(102, 23);
+            this.rdbVolontaire.Size = new System.Drawing.Size(122, 27);
             this.rdbVolontaire.TabIndex = 14;
             this.rdbVolontaire.TabStop = true;
             this.rdbVolontaire.Text = "Volontaire";
@@ -449,7 +449,7 @@
             this.rdbPro.ForeColor = System.Drawing.Color.Black;
             this.rdbPro.Location = new System.Drawing.Point(97, 218);
             this.rdbPro.Name = "rdbPro";
-            this.rdbPro.Size = new System.Drawing.Size(120, 23);
+            this.rdbPro.Size = new System.Drawing.Size(143, 27);
             this.rdbPro.TabIndex = 13;
             this.rdbPro.TabStop = true;
             this.rdbPro.Text = "Professionel";
@@ -462,7 +462,7 @@
             this.label4.ForeColor = System.Drawing.Color.Black;
             this.label4.Location = new System.Drawing.Point(5, 218);
             this.label4.Name = "label4";
-            this.label4.Size = new System.Drawing.Size(64, 19);
+            this.label4.Size = new System.Drawing.Size(78, 23);
             this.label4.TabIndex = 10;
             this.label4.Text = "Status :";
             // 
@@ -473,7 +473,7 @@
             this.label8.ForeColor = System.Drawing.Color.Black;
             this.label8.Location = new System.Drawing.Point(6, 138);
             this.label8.Name = "label8";
-            this.label8.Size = new System.Drawing.Size(61, 19);
+            this.label8.Size = new System.Drawing.Size(73, 23);
             this.label8.TabIndex = 9;
             this.label8.Text = "Né le : ";
             // 
@@ -484,7 +484,7 @@
             this.label2.ForeColor = System.Drawing.Color.Black;
             this.label2.Location = new System.Drawing.Point(6, 102);
             this.label2.Name = "label2";
-            this.label2.Size = new System.Drawing.Size(65, 19);
+            this.label2.Size = new System.Drawing.Size(78, 23);
             this.label2.TabIndex = 4;
             this.label2.Text = "Sexe :  ";
             // 
@@ -495,7 +495,7 @@
             this.label3.ForeColor = System.Drawing.Color.Black;
             this.label3.Location = new System.Drawing.Point(6, 66);
             this.label3.Name = "label3";
-            this.label3.Size = new System.Drawing.Size(81, 19);
+            this.label3.Size = new System.Drawing.Size(96, 23);
             this.label3.TabIndex = 3;
             this.label3.Text = "Prénom : ";
             // 
@@ -506,7 +506,7 @@
             this.label1.ForeColor = System.Drawing.Color.Black;
             this.label1.Location = new System.Drawing.Point(6, 32);
             this.label1.Name = "label1";
-            this.label1.Size = new System.Drawing.Size(57, 19);
+            this.label1.Size = new System.Drawing.Size(68, 23);
             this.label1.TabIndex = 1;
             this.label1.Text = "Nom : ";
             // 
@@ -535,7 +535,7 @@
             // 
             // UCGestionPerso
             // 
-            this.AutoScaleDimensions = new System.Drawing.SizeF(14F, 29F);
+            this.AutoScaleDimensions = new System.Drawing.SizeF(16F, 32F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.Controls.Add(this.btnCreate);
             this.Controls.Add(this.pnlInfo);
