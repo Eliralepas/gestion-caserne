@@ -93,6 +93,7 @@
             this.Font = new System.Drawing.Font("Arial", 10F);
             this.Margin = new System.Windows.Forms.Padding(3, 4, 3, 4);
             this.Name = "frmCompteRendu";
+            this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
             this.Text = "Compte rendu";
             this.ResumeLayout(false);
             this.PerformLayout();

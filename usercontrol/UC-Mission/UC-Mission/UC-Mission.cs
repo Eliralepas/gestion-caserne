@@ -7,17 +7,19 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
+using System.Diagnostics;
+using System.IO;
 
 namespace UC_Mission
 {
 
-    public delegate void TerminerMission(object sender, EventArgs e, int idMission); //Déclaration de la signature du délégué pour terminer une mission
-    public delegate void CreerPdfMission(int idMission); //Déclaration de la signature du délégué pour créer un PDF de la mission
+    public delegate void TerminerMission(object sender, EventArgs e, int idMission); // Déclaration de la signature du délégué pour terminer une mission
+    public delegate string CreerPdfMission(int idMission); // Déclaration de la signature du délégué pour créer un PDF de la mission
 
     public partial class Mission: UserControl
     {
 
-        public Mission(int _idMission, string _nomCaserne, string _natureMission, string _motifMission, DateTime _dateDebut) //Constructeur pour une mission en cours
+        public Mission(int _idMission, string _nomCaserne, string _natureMission, string _motifMission, DateTime _dateDebut) // Constructeur pour une mission en cours
         {
             InitializeComponent();
             MissionID = _idMission;
@@ -28,7 +30,7 @@ namespace UC_Mission
             EstEnCours = true;
         }
 
-        public Mission(int _idMission, string _nomCaserne, string _natureMission, string _motifMission, DateTime _dateDebut, DateTime _dateFin) //Constructeur pour une mission terminée
+        public Mission(int _idMission, string _nomCaserne, string _natureMission, string _motifMission, DateTime _dateDebut, DateTime _dateFin) // Constructeur pour une mission terminée
         {
             InitializeComponent();
             MissionID = _idMission;
@@ -48,15 +50,15 @@ namespace UC_Mission
             NatureMission = dr[2].ToString();
             MotifMission = dr[3].ToString();
             DateDebut = Convert.ToDateTime(dr[4]);
-            if (dr[5] != DBNull.Value) //Si la date de fin n'est pas nulle
+            if (dr[5] != DBNull.Value) // Si la date de fin n'est pas nulle
             {
                 DateFin = Convert.ToDateTime(dr[5]);
             }
             EstEnCours = Convert.ToBoolean(dr[6]);
         }
 
-        public TerminerMission terminerMission; //Instance du délégué pour terminer une mission
-        public CreerPdfMission creerPdfMission; //Instance du délégué pour créer un PDF de la mission
+        public TerminerMission terminerMission; // Instance du délégué pour terminer une mission
+        public CreerPdfMission creerPdfMission; // Instance du délégué pour créer un PDF de la mission
 
         private int idMission;
         private string nomCaserne;
@@ -138,7 +140,7 @@ namespace UC_Mission
                 }
                 else
                 {
-                    btnTerminerMission.Visible = false; //On cache le bouton terminer la mission
+                    btnTerminerMission.Visible = false; // On cache le bouton terminer la mission
                 }
             }
         }
@@ -147,31 +149,44 @@ namespace UC_Mission
         {
             set
             {
-                panelMission.BackColor = value; //On change la couleur du panel
-                txtMotifMission.BackColor = value; //On change la couleur du fond du textbox
+                panelMission.BackColor = value;     // On change la couleur du panel
+                txtMotifMission.BackColor = value;  // On change la couleur du fond du textbox
             }
         }
 
         public void Terminer()
         {
             
-            DateFin = DateTime.Now; //On met à jour la date de fin
-            EstEnCours = false; //On met à jour l'état de la mission
+            DateFin = DateTime.Now; // On met à jour la date de fin
+            EstEnCours = false;     // On met à jour l'état de la mission
         }
 
         private void btnTerminerMission_Click(object sender, EventArgs e)
         {
             if (terminerMission != null)
             {
-                terminerMission(this, e, MissionID); //On appelle le délégué pour terminer la mission
+                terminerMission(this, e, MissionID); // On appelle le délégué pour terminer la mission
             }
         }
 
         private void btnCreerPdf_Click(object sender, EventArgs e)
         {
-            if (creerPdfMission != null) //Si le délégué n'est pas nul
+            if (creerPdfMission != null) // Si le délégué n'est pas nul
             {
-                creerPdfMission(MissionID); //On appelle le délégué pour créer un PDF de la mission
+                string cheminFichier = creerPdfMission(MissionID); // On appelle le délégué pour créer un PDF de la mission
+                // Ouvrir le PDF généré
+                if (File.Exists(cheminFichier))
+                {
+                    frmOuverturePDF frmOuverturePDF = new frmOuverturePDF(); // On crée une instance de la fenêtre de confirmation
+                    if (frmOuverturePDF.ShowDialog() == DialogResult.OK)
+                    {
+                        Process.Start(new ProcessStartInfo(cheminFichier) { UseShellExecute = true }); // On ouvre le PDF si l'utilisateur a cliqué sur Oui
+                    }
+                }
+                else
+                {
+                    MessageBox.Show("Le fichier n'existe pas.", "Erreur", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                }
             }
         }
     }

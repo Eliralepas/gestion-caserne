@@ -14,7 +14,7 @@ namespace UC_TableauDeBord
 
     public delegate void AjouterMissionBD(Mission mission, string compteRendu, DataTable enginsEnPanne); //Déclaration de la signature du délégué pour ajouter une mission à la base de données
     public delegate DataTable GetEnginsMission(int idMission); //Déclaration de la signature du délégué pour récupérer les engins d'une mission
-    public delegate void CreerPdfMission(int idMission); //Déclaration de la signature du délégué pour créer le PDF de la mission
+    public delegate string CreerPdfMission(int idMission); //Déclaration de la signature du délégué pour créer le PDF de la mission
 
     public partial class TableauDeBord : UserControl
     {
@@ -127,11 +127,15 @@ namespace UC_TableauDeBord
             DisplayMissions(); //Appel de la méthode pour afficher les missions
         }
 
-        private void CreerPdfMission(int idMission)
+        private string CreerPdfMission(int idMission)
         {
             if (creerPdfMission != null) //Si le délégué n'est pas nul
             {
-                creerPdfMission(idMission); //Appel du délégué pour créer le PDF de la mission
+                return creerPdfMission(idMission); //Appel du délégué pour créer le PDF de la mission
+            }
+            else
+            {
+                return string.Empty; //Retourne une chaîne vide si le délégué est nul
             }
         }
     }

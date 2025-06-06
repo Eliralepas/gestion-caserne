@@ -31,13 +31,13 @@
             System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(frmCaserne));
             this.panelVolet = new System.Windows.Forms.Panel();
             this.panelNavigation = new System.Windows.Forms.Panel();
+            this.btnQuitter = new System.Windows.Forms.Button();
             this.btn5 = new NavigationBarUserControl.UCButton();
             this.btn1 = new NavigationBarUserControl.UCButton();
             this.btn4 = new NavigationBarUserControl.UCButton();
             this.btn2 = new NavigationBarUserControl.UCButton();
             this.btn3 = new NavigationBarUserControl.UCButton();
             this.picBoxCaserne = new System.Windows.Forms.PictureBox();
-            this.btnQuitter = new System.Windows.Forms.Button();
             this.panelNavigation.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.picBoxCaserne)).BeginInit();
             this.SuspendLayout();
@@ -63,6 +63,19 @@
             this.panelNavigation.Name = "panelNavigation";
             this.panelNavigation.Size = new System.Drawing.Size(283, 628);
             this.panelNavigation.TabIndex = 3;
+            // 
+            // btnQuitter
+            // 
+            this.btnQuitter.AutoSize = true;
+            this.btnQuitter.Font = new System.Drawing.Font("Arial", 18.2F, System.Drawing.FontStyle.Bold);
+            this.btnQuitter.ForeColor = System.Drawing.Color.DarkRed;
+            this.btnQuitter.Location = new System.Drawing.Point(77, 561);
+            this.btnQuitter.Name = "btnQuitter";
+            this.btnQuitter.Size = new System.Drawing.Size(124, 46);
+            this.btnQuitter.TabIndex = 5;
+            this.btnQuitter.Text = "Quitter";
+            this.btnQuitter.UseVisualStyleBackColor = true;
+            this.btnQuitter.Click += new System.EventHandler(this.btnQuitter_Click);
             // 
             // btn5
             // 
@@ -134,19 +147,6 @@
             this.picBoxCaserne.TabIndex = 0;
             this.picBoxCaserne.TabStop = false;
             // 
-            // btnQuitter
-            // 
-            this.btnQuitter.AutoSize = true;
-            this.btnQuitter.Font = new System.Drawing.Font("Arial", 18.2F, System.Drawing.FontStyle.Bold);
-            this.btnQuitter.ForeColor = System.Drawing.Color.DarkRed;
-            this.btnQuitter.Location = new System.Drawing.Point(77, 561);
-            this.btnQuitter.Name = "btnQuitter";
-            this.btnQuitter.Size = new System.Drawing.Size(124, 46);
-            this.btnQuitter.TabIndex = 5;
-            this.btnQuitter.Text = "Quitter";
-            this.btnQuitter.UseVisualStyleBackColor = true;
-            this.btnQuitter.Click += new System.EventHandler(this.btnQuitter_Click);
-            // 
             // frmCaserne
             // 
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.None;
@@ -155,6 +155,7 @@
             this.Controls.Add(this.panelVolet);
             this.Controls.Add(this.picBoxCaserne);
             this.Font = new System.Drawing.Font("Arial", 14F);
+            this.Icon = ((System.Drawing.Icon)(resources.GetObject("$this.Icon")));
             this.Margin = new System.Windows.Forms.Padding(5);
             this.Name = "frmCaserne";
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
