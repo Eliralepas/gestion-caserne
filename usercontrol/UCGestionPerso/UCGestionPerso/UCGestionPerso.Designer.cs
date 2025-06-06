@@ -47,7 +47,7 @@
             this.grpContact = new System.Windows.Forms.GroupBox();
             this.lblBip = new System.Windows.Forms.Label();
             this.lblTel = new System.Windows.Forms.Label();
-            this.pictureBox1 = new System.Windows.Forms.PictureBox();
+            this.pic = new System.Windows.Forms.PictureBox();
             this.label6 = new System.Windows.Forms.Label();
             this.label5 = new System.Windows.Forms.Label();
             this.grpIdentite = new System.Windows.Forms.GroupBox();
@@ -69,7 +69,7 @@
             this.pnlInfo.SuspendLayout();
             this.grpCaserne.SuspendLayout();
             this.grpContact.SuspendLayout();
-            ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.pic)).BeginInit();
             this.grpIdentite.SuspendLayout();
             this.SuspendLayout();
             // 
@@ -271,14 +271,14 @@
             // 
             this.grpContact.Controls.Add(this.lblBip);
             this.grpContact.Controls.Add(this.lblTel);
-            this.grpContact.Controls.Add(this.pictureBox1);
+            this.grpContact.Controls.Add(this.pic);
             this.grpContact.Controls.Add(this.label6);
             this.grpContact.Controls.Add(this.label5);
             this.grpContact.Font = new System.Drawing.Font("Arial", 13F);
             this.grpContact.ForeColor = System.Drawing.SystemColors.ControlText;
             this.grpContact.Location = new System.Drawing.Point(278, 31);
             this.grpContact.Name = "grpContact";
-            this.grpContact.Size = new System.Drawing.Size(215, 288);
+            this.grpContact.Size = new System.Drawing.Size(215, 250);
             this.grpContact.TabIndex = 15;
             this.grpContact.TabStop = false;
             this.grpContact.Text = "Contact";
@@ -289,7 +289,7 @@
             this.lblBip.AutoSize = true;
             this.lblBip.Font = new System.Drawing.Font("Arial", 10F);
             this.lblBip.ForeColor = System.Drawing.Color.Black;
-            this.lblBip.Location = new System.Drawing.Point(25, 254);
+            this.lblBip.Location = new System.Drawing.Point(50, 219);
             this.lblBip.Name = "lblBip";
             this.lblBip.Size = new System.Drawing.Size(14, 19);
             this.lblBip.TabIndex = 27;
@@ -300,26 +300,26 @@
             this.lblTel.AutoSize = true;
             this.lblTel.Font = new System.Drawing.Font("Arial", 10F);
             this.lblTel.ForeColor = System.Drawing.Color.Black;
-            this.lblTel.Location = new System.Drawing.Point(21, 198);
+            this.lblTel.Location = new System.Drawing.Point(50, 168);
             this.lblTel.Name = "lblTel";
             this.lblTel.Size = new System.Drawing.Size(14, 19);
             this.lblTel.TabIndex = 26;
             this.lblTel.Text = ".";
             // 
-            // pictureBox1
+            // pic
             // 
-            this.pictureBox1.Location = new System.Drawing.Point(25, 36);
-            this.pictureBox1.Name = "pictureBox1";
-            this.pictureBox1.Size = new System.Drawing.Size(163, 121);
-            this.pictureBox1.TabIndex = 12;
-            this.pictureBox1.TabStop = false;
+            this.pic.Location = new System.Drawing.Point(54, 33);
+            this.pic.Name = "pic";
+            this.pic.Size = new System.Drawing.Size(114, 101);
+            this.pic.TabIndex = 12;
+            this.pic.TabStop = false;
             // 
             // label6
             // 
             this.label6.AutoSize = true;
             this.label6.Font = new System.Drawing.Font("Arial", 10F);
             this.label6.ForeColor = System.Drawing.Color.Black;
-            this.label6.Location = new System.Drawing.Point(21, 231);
+            this.label6.Location = new System.Drawing.Point(50, 200);
             this.label6.Name = "label6";
             this.label6.Size = new System.Drawing.Size(43, 19);
             this.label6.TabIndex = 11;
@@ -330,7 +330,7 @@
             this.label5.AutoSize = true;
             this.label5.Font = new System.Drawing.Font("Arial", 10F);
             this.label5.ForeColor = System.Drawing.Color.Black;
-            this.label5.Location = new System.Drawing.Point(21, 178);
+            this.label5.Location = new System.Drawing.Point(50, 150);
             this.label5.Name = "label5";
             this.label5.Size = new System.Drawing.Size(99, 19);
             this.label5.TabIndex = 10;
@@ -514,7 +514,7 @@
             // 
             this.btnInfo.Font = new System.Drawing.Font("Arial", 10F);
             this.btnInfo.ForeColor = System.Drawing.SystemColors.GrayText;
-            this.btnInfo.Location = new System.Drawing.Point(292, 325);
+            this.btnInfo.Location = new System.Drawing.Point(285, 287);
             this.btnInfo.Name = "btnInfo";
             this.btnInfo.Size = new System.Drawing.Size(195, 32);
             this.btnInfo.TabIndex = 1;
@@ -553,7 +553,7 @@
             this.grpCaserne.PerformLayout();
             this.grpContact.ResumeLayout(false);
             this.grpContact.PerformLayout();
-            ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.pic)).EndInit();
             this.grpIdentite.ResumeLayout(false);
             this.grpIdentite.PerformLayout();
             this.ResumeLayout(false);
@@ -577,7 +577,7 @@
         private System.Windows.Forms.RadioButton rdbVolontaire;
         private System.Windows.Forms.RadioButton rdbPro;
         private System.Windows.Forms.GroupBox grpContact;
-        private System.Windows.Forms.PictureBox pictureBox1;
+        private System.Windows.Forms.PictureBox pic;
         private System.Windows.Forms.Label label6;
         private System.Windows.Forms.Label label5;
         private System.Windows.Forms.RichTextBox rtbHab;

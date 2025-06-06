@@ -28,12 +28,13 @@
         /// </summary>
         private void InitializeComponent()
         {
+            this.components = new System.ComponentModel.Container();
             this.pnlIdentite = new System.Windows.Forms.Panel();
             this.txtBip = new System.Windows.Forms.TextBox();
             this.lblBip = new System.Windows.Forms.Label();
             this.txtTel = new System.Windows.Forms.TextBox();
             this.lblTel = new System.Windows.Forms.Label();
-            this.dateTimePicker1 = new System.Windows.Forms.DateTimePicker();
+            this.dtpN = new System.Windows.Forms.DateTimePicker();
             this.lblDateN = new System.Windows.Forms.Label();
             this.txtPrenom = new System.Windows.Forms.TextBox();
             this.txtNom = new System.Windows.Forms.TextBox();
@@ -43,8 +44,10 @@
             this.lblPrenom = new System.Windows.Forms.Label();
             this.lblNom = new System.Windows.Forms.Label();
             this.pnlCarriere = new System.Windows.Forms.Panel();
+            this.btnAnnulDateF = new System.Windows.Forms.Button();
+            this.btnDateF = new System.Windows.Forms.Button();
             this.grpEmbauche = new System.Windows.Forms.GroupBox();
-            this.dateTimePicker2 = new System.Windows.Forms.DateTimePicker();
+            this.dtpC = new System.Windows.Forms.DateTimePicker();
             this.cboCaserne = new System.Windows.Forms.ComboBox();
             this.lblCaserne = new System.Windows.Forms.Label();
             this.lblDateFin = new System.Windows.Forms.Label();
@@ -56,9 +59,11 @@
             this.lblMatricule = new System.Windows.Forms.Label();
             this.btnValider = new System.Windows.Forms.Button();
             this.btnAnnuler = new System.Windows.Forms.Button();
+            this.erp = new System.Windows.Forms.ErrorProvider(this.components);
             this.pnlIdentite.SuspendLayout();
             this.pnlCarriere.SuspendLayout();
             this.grpEmbauche.SuspendLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.erp)).BeginInit();
             this.SuspendLayout();
             // 
             // pnlIdentite
@@ -68,7 +73,7 @@
             this.pnlIdentite.Controls.Add(this.lblBip);
             this.pnlIdentite.Controls.Add(this.txtTel);
             this.pnlIdentite.Controls.Add(this.lblTel);
-            this.pnlIdentite.Controls.Add(this.dateTimePicker1);
+            this.pnlIdentite.Controls.Add(this.dtpN);
             this.pnlIdentite.Controls.Add(this.lblDateN);
             this.pnlIdentite.Controls.Add(this.txtPrenom);
             this.pnlIdentite.Controls.Add(this.txtNom);
@@ -123,17 +128,17 @@
             this.lblTel.TabIndex = 10;
             this.lblTel.Text = "Téléphone : ";
             // 
-            // dateTimePicker1
+            // dtpN
             // 
-            this.dateTimePicker1.Format = System.Windows.Forms.DateTimePickerFormat.Short;
-            this.dateTimePicker1.Location = new System.Drawing.Point(154, 200);
-            this.dateTimePicker1.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
-            this.dateTimePicker1.MaxDate = new System.DateTime(2007, 1, 1, 0, 0, 0, 0);
-            this.dateTimePicker1.MinDate = new System.DateTime(1960, 1, 1, 0, 0, 0, 0);
-            this.dateTimePicker1.Name = "dateTimePicker1";
-            this.dateTimePicker1.Size = new System.Drawing.Size(199, 30);
-            this.dateTimePicker1.TabIndex = 9;
-            this.dateTimePicker1.Value = new System.DateTime(2007, 1, 1, 0, 0, 0, 0);
+            this.dtpN.Format = System.Windows.Forms.DateTimePickerFormat.Short;
+            this.dtpN.Location = new System.Drawing.Point(154, 200);
+            this.dtpN.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
+            this.dtpN.MaxDate = new System.DateTime(2007, 1, 1, 0, 0, 0, 0);
+            this.dtpN.MinDate = new System.DateTime(1960, 1, 1, 0, 0, 0, 0);
+            this.dtpN.Name = "dtpN";
+            this.dtpN.Size = new System.Drawing.Size(199, 30);
+            this.dtpN.TabIndex = 9;
+            this.dtpN.Value = new System.DateTime(2007, 1, 1, 0, 0, 0, 0);
             // 
             // lblDateN
             // 
@@ -220,6 +225,8 @@
             // pnlCarriere
             // 
             this.pnlCarriere.BackColor = System.Drawing.Color.DarkRed;
+            this.pnlCarriere.Controls.Add(this.btnAnnulDateF);
+            this.pnlCarriere.Controls.Add(this.btnDateF);
             this.pnlCarriere.Controls.Add(this.grpEmbauche);
             this.pnlCarriere.Controls.Add(this.cboGrade);
             this.pnlCarriere.Controls.Add(this.rdbVolontaire);
@@ -230,12 +237,37 @@
             this.pnlCarriere.Location = new System.Drawing.Point(417, 56);
             this.pnlCarriere.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
             this.pnlCarriere.Name = "pnlCarriere";
-            this.pnlCarriere.Size = new System.Drawing.Size(381, 297);
+            this.pnlCarriere.Size = new System.Drawing.Size(381, 346);
             this.pnlCarriere.TabIndex = 1;
+            // 
+            // btnAnnulDateF
+            // 
+            this.btnAnnulDateF.Font = new System.Drawing.Font("Arial", 12F);
+            this.btnAnnulDateF.Location = new System.Drawing.Point(17, 297);
+            this.btnAnnulDateF.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
+            this.btnAnnulDateF.Name = "btnAnnulDateF";
+            this.btnAnnulDateF.Size = new System.Drawing.Size(259, 34);
+            this.btnAnnulDateF.TabIndex = 20;
+            this.btnAnnulDateF.Text = "Ne pas rajouter de date fin";
+            this.btnAnnulDateF.UseVisualStyleBackColor = true;
+            this.btnAnnulDateF.Visible = false;
+            this.btnAnnulDateF.Click += new System.EventHandler(this.btnAnnulDateF_Click);
+            // 
+            // btnDateF
+            // 
+            this.btnDateF.Font = new System.Drawing.Font("Arial", 12F);
+            this.btnDateF.Location = new System.Drawing.Point(17, 296);
+            this.btnDateF.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
+            this.btnDateF.Name = "btnDateF";
+            this.btnDateF.Size = new System.Drawing.Size(258, 34);
+            this.btnDateF.TabIndex = 4;
+            this.btnDateF.Text = "Ajout de la date fin";
+            this.btnDateF.UseVisualStyleBackColor = true;
+            this.btnDateF.Click += new System.EventHandler(this.btnDateF_Click);
             // 
             // grpEmbauche
             // 
-            this.grpEmbauche.Controls.Add(this.dateTimePicker2);
+            this.grpEmbauche.Controls.Add(this.dtpC);
             this.grpEmbauche.Controls.Add(this.cboCaserne);
             this.grpEmbauche.Controls.Add(this.lblCaserne);
             this.grpEmbauche.Controls.Add(this.lblDateFin);
@@ -248,27 +280,27 @@
             this.grpEmbauche.TabStop = false;
             this.grpEmbauche.Text = "Affectation à une caserne";
             // 
-            // dateTimePicker2
+            // dtpC
             // 
-            this.dateTimePicker2.Format = System.Windows.Forms.DateTimePickerFormat.Short;
-            this.dateTimePicker2.Location = new System.Drawing.Point(133, 86);
-            this.dateTimePicker2.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
-            this.dateTimePicker2.MaxDate = new System.DateTime(2051, 1, 1, 0, 0, 0, 0);
-            this.dateTimePicker2.MinDate = new System.DateTime(1970, 1, 1, 0, 0, 0, 0);
-            this.dateTimePicker2.Name = "dateTimePicker2";
-            this.dateTimePicker2.Size = new System.Drawing.Size(163, 30);
-            this.dateTimePicker2.TabIndex = 15;
-            this.dateTimePicker2.Value = new System.DateTime(2025, 6, 5, 0, 0, 0, 0);
-            this.dateTimePicker2.Visible = false;
+            this.dtpC.Format = System.Windows.Forms.DateTimePickerFormat.Short;
+            this.dtpC.Location = new System.Drawing.Point(121, 83);
+            this.dtpC.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
+            this.dtpC.MaxDate = new System.DateTime(2051, 1, 1, 0, 0, 0, 0);
+            this.dtpC.MinDate = new System.DateTime(2025, 6, 7, 0, 0, 0, 0);
+            this.dtpC.Name = "dtpC";
+            this.dtpC.Size = new System.Drawing.Size(226, 30);
+            this.dtpC.TabIndex = 15;
+            this.dtpC.Value = new System.DateTime(2025, 6, 7, 0, 0, 0, 0);
+            this.dtpC.Visible = false;
             // 
             // cboCaserne
             // 
             this.cboCaserne.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
             this.cboCaserne.FormattingEnabled = true;
-            this.cboCaserne.Location = new System.Drawing.Point(133, 35);
+            this.cboCaserne.Location = new System.Drawing.Point(121, 39);
             this.cboCaserne.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
             this.cboCaserne.Name = "cboCaserne";
-            this.cboCaserne.Size = new System.Drawing.Size(204, 31);
+            this.cboCaserne.Size = new System.Drawing.Size(226, 31);
             this.cboCaserne.TabIndex = 18;
             // 
             // lblCaserne
@@ -283,7 +315,7 @@
             // lblDateFin
             // 
             this.lblDateFin.AutoSize = true;
-            this.lblDateFin.Location = new System.Drawing.Point(5, 89);
+            this.lblDateFin.Location = new System.Drawing.Point(6, 89);
             this.lblDateFin.Name = "lblDateFin";
             this.lblDateFin.Size = new System.Drawing.Size(75, 23);
             this.lblDateFin.TabIndex = 14;
@@ -294,16 +326,16 @@
             // 
             this.cboGrade.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
             this.cboGrade.FormattingEnabled = true;
-            this.cboGrade.Location = new System.Drawing.Point(149, 97);
+            this.cboGrade.Location = new System.Drawing.Point(137, 96);
             this.cboGrade.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
             this.cboGrade.Name = "cboGrade";
-            this.cboGrade.Size = new System.Drawing.Size(204, 31);
+            this.cboGrade.Size = new System.Drawing.Size(226, 31);
             this.cboGrade.TabIndex = 16;
             // 
             // rdbVolontaire
             // 
             this.rdbVolontaire.AutoSize = true;
-            this.rdbVolontaire.Location = new System.Drawing.Point(149, 53);
+            this.rdbVolontaire.Location = new System.Drawing.Point(137, 53);
             this.rdbVolontaire.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
             this.rdbVolontaire.Name = "rdbVolontaire";
             this.rdbVolontaire.Size = new System.Drawing.Size(118, 27);
@@ -324,7 +356,7 @@
             // rdbPro
             // 
             this.rdbPro.AutoSize = true;
-            this.rdbPro.Location = new System.Drawing.Point(149, 23);
+            this.rdbPro.Location = new System.Drawing.Point(137, 23);
             this.rdbPro.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
             this.rdbPro.Name = "rdbPro";
             this.rdbPro.Size = new System.Drawing.Size(139, 27);
@@ -355,7 +387,7 @@
             // btnValider
             // 
             this.btnValider.Font = new System.Drawing.Font("Arial", 12F);
-            this.btnValider.Location = new System.Drawing.Point(442, 372);
+            this.btnValider.Location = new System.Drawing.Point(492, 410);
             this.btnValider.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
             this.btnValider.Name = "btnValider";
             this.btnValider.Size = new System.Drawing.Size(150, 34);
@@ -367,7 +399,7 @@
             // btnAnnuler
             // 
             this.btnAnnuler.Font = new System.Drawing.Font("Arial", 12F);
-            this.btnAnnuler.Location = new System.Drawing.Point(622, 372);
+            this.btnAnnuler.Location = new System.Drawing.Point(650, 410);
             this.btnAnnuler.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
             this.btnAnnuler.Name = "btnAnnuler";
             this.btnAnnuler.Size = new System.Drawing.Size(148, 34);
@@ -376,12 +408,16 @@
             this.btnAnnuler.UseVisualStyleBackColor = true;
             this.btnAnnuler.Click += new System.EventHandler(this.btnAnnuler_Click);
             // 
+            // erp
+            // 
+            this.erp.ContainerControl = this;
+            // 
             // frmCreationPompier
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 16F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.BackColor = System.Drawing.Color.Gainsboro;
-            this.ClientSize = new System.Drawing.Size(809, 417);
+            this.ClientSize = new System.Drawing.Size(809, 455);
             this.Controls.Add(this.btnAnnuler);
             this.Controls.Add(this.btnValider);
             this.Controls.Add(this.pnlCarriere);
@@ -390,12 +426,14 @@
             this.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
             this.Name = "frmCreationPompier";
             this.Text = "frmCreationPompier";
+            this.Load += new System.EventHandler(this.frmCreationPompier_Load);
             this.pnlIdentite.ResumeLayout(false);
             this.pnlIdentite.PerformLayout();
             this.pnlCarriere.ResumeLayout(false);
             this.pnlCarriere.PerformLayout();
             this.grpEmbauche.ResumeLayout(false);
             this.grpEmbauche.PerformLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.erp)).EndInit();
             this.ResumeLayout(false);
             this.PerformLayout();
 
@@ -411,7 +449,7 @@
         private System.Windows.Forms.Label lblNom;
         private System.Windows.Forms.Label lblMatricule;
         private System.Windows.Forms.Panel pnlCarriere;
-        private System.Windows.Forms.DateTimePicker dateTimePicker1;
+        private System.Windows.Forms.DateTimePicker dtpN;
         private System.Windows.Forms.Label lblDateN;
         private System.Windows.Forms.TextBox txtPrenom;
         private System.Windows.Forms.TextBox txtNom;
@@ -426,10 +464,13 @@
         private System.Windows.Forms.ComboBox cboGrade;
         private System.Windows.Forms.RadioButton rdbVolontaire;
         private System.Windows.Forms.RadioButton rdbPro;
-        private System.Windows.Forms.DateTimePicker dateTimePicker2;
+        private System.Windows.Forms.DateTimePicker dtpC;
         private System.Windows.Forms.Label lblDateFin;
         private System.Windows.Forms.GroupBox grpEmbauche;
         private System.Windows.Forms.Button btnValider;
         private System.Windows.Forms.Button btnAnnuler;
+        private System.Windows.Forms.Button btnDateF;
+        private System.Windows.Forms.Button btnAnnulDateF;
+        private System.Windows.Forms.ErrorProvider erp;
     }
 }

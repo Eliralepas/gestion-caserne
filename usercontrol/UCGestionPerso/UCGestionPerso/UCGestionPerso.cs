@@ -4,8 +4,10 @@ using System.ComponentModel;
 using System.Data;
 using System.Data.SqlClient;
 using System.Data.SQLite;
+using System.Diagnostics;
 using System.Drawing;
 using System.Globalization;
+using System.IO;
 using System.Linq;
 using System.Text;
 using System.Threading;
@@ -20,6 +22,9 @@ namespace UCGestionPerso
     {
         SQLiteConnection _con;
         UCLogin login;
+
+        //chemin
+        string chemin = Path.Combine(Application.StartupPath, "ImagesGrades");
 
         int idCaserneInit;
         string codeGradeInit;
@@ -90,8 +95,13 @@ namespace UCGestionPerso
             }
             clicked.isSelected = true;
             Selected = clicked;
-            refreshPompier();
 
+            grpCaserne.Visible = false;
+            grpContact.Visible = false;
+            grpIdentite.Visible = false;
+            lblMatricule.Visible = false;
+
+            refreshPompier();
         }
 
         private void btnClickPompier(UCRichButton clicked,object tag)
@@ -123,7 +133,13 @@ namespace UCGestionPerso
                     SQLiteCommand cd1 = new SQLiteCommand(cmdNom, _con);
                     string nom = (string) cd1.ExecuteScalar();
 
-                    UCRichButton btn = new UCRichButton(nom, id.ToString());
+                    string cmdGrade = $@"SELECT codeGrade FROM Pompier WHERE matricule = {id}";
+                    SQLiteCommand cd2 = new SQLiteCommand(cmdGrade, _con);
+                    string grade = (string)cd2.ExecuteScalar();
+
+                    string photo = Path.Combine(chemin, $"{grade}.png");
+                    Image monImage = Image.FromFile(photo);
+                    UCRichButton btn = new UCRichButton(nom, id.ToString(), monImage);
                     btn.Tag = id;
                     btn.clickReturnTag += btnClickPompier;
 
@@ -256,7 +272,10 @@ namespace UCGestionPerso
                     rtbHab.Text += hab + " " + dr2.GetString(2) + "\n";
                 }
 
-                if (!login.Connected)
+                string photo = Path.Combine(chemin, $"{codeGradeInit}.png");
+                pic.Image = Image.FromFile(photo);
+
+                if (login.Connected)
                 {
                     btnChanger.Visible = true;
                     cboCaserne.Enabled = true;
@@ -354,6 +373,7 @@ namespace UCGestionPerso
             rtbAffec.Text = String.Empty;
             rtbHab.Text = String.Empty;
             chbConge.Checked = false;
+            grpCaserne.Visible = false;
 
         }
 
@@ -367,20 +387,19 @@ namespace UCGestionPerso
 
         private void btnCreate_Click(object sender, EventArgs e)
         {
-            /*if (!login.Connected)
+            if (!login.Connected)
             {
                 MessageBox.Show("Vous devez être connecté pour pouvoir créer un pompier !");
-                //return;
-            }*/
+                return;
+            }
 
             frmCreationPompier creerPompier = new frmCreationPompier(_con);
             DialogResult res = creerPompier.ShowDialog();
 
             if (res == DialogResult.OK) 
             {
-                
+                MessageBox.Show("Vous avez créer un nouveau pompier");
             }
-            else if (res == DialogResult.Cancel) { }
         }
 
         private void btnChanger_Click(object sender, EventArgs e)
