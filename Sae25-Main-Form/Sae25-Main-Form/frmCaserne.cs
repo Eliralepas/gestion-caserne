@@ -109,24 +109,30 @@ namespace Sae25_Main_Form
         {
             if (monDs != null)  // Vérifier si monDs n'est pas vide
             {
-                ajoutMission = new ucMission(monDs);    // Instancier le volet 2 (Ajout de mission)
-                ajoutMission.ajouterMission = AjouterMission; // Lier la méthode d'ajout de mission
+                InitTableauDeBord();                            // Initialiser le tableau de bord si ce n'est pas déjà fait pour l'ajout éventuel de missions
+                ajoutMission = new ucMission(monDs);            // Instancier le volet 2 (Ajout de mission)
+                ajoutMission.ajouterMission = AjouterMission;   // Lier la méthode d'ajout de mission
             }
-            panelVolet.Controls.Add(ajoutMission);      // Ajouter le volet d'ajout de mission au panneau
+            panelVolet.Controls.Add(ajoutMission); // Ajouter le volet d'ajout de mission au panneau
         }
 
         private void LoadTableauDeBord()
         {
             if (tableauDeBord == null) // Si le tableau de bord n'existe pas
             {
-                tableauDeBord = new UC_TableauDeBord.TableauDeBord();   // Instancier le volet de tableau de bord
-                tableauDeBord.ajouterMissionBD = AjouterMissionBD;      // Lier la méthode d'ajout de mission à la base de données
-                tableauDeBord.getEnginsMission = getEnginsMission;      // Lier la méthode de récupération des engins de la mission
-                tableauDeBord.creerPdfMission = CreerPdfMission;        // Lier la méthode de création du PDF de la mission
-                RemplirTableMissionsFormatees();                        // Remplir la table de missions formatées
-                tableauDeBord.LoadMissions(dtMissionsFormatees);        // Charger les missions dans le tableau de bord
+                InitTableauDeBord(); // Initialiser le tableau de bord
             }
             panelVolet.Controls.Add(tableauDeBord); // Ajouter le tableau de bord au panneau
+        }
+
+        private void InitTableauDeBord()
+        {
+            tableauDeBord = new UC_TableauDeBord.TableauDeBord();   // Instancier le volet de tableau de bord
+            tableauDeBord.ajouterMissionBD = AjouterMissionBD;      // Lier la méthode d'ajout de mission à la base de données
+            tableauDeBord.getEnginsMission = getEnginsMission;      // Lier la méthode de récupération des engins de la mission
+            tableauDeBord.creerPdfMission = CreerPdfMission;        // Lier la méthode de création du PDF de la mission
+            RemplirTableMissionsFormatees();                        // Remplir la table de missions formatées
+            tableauDeBord.LoadMissions(dtMissionsFormatees);        // Charger les missions dans le tableau de bord
         }
 
         private void LoadStatistique()
