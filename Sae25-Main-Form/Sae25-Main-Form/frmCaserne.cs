@@ -40,8 +40,8 @@ namespace Sae25_Main_Form
         private ucMission ajoutMission;
         private UCStatistique tabStat;
         private SQLiteConnection con;
-        private DataSet monDs;
-        private DataTable dtMissionsFormatees; // Déclarer une table de missions formatées pour le tableau de bord
+        private static DataSet monDs;
+        private DataTable dtMissionsFormatees = CreerTableMission(); // Créer une table de missions formatées pour le tableau de bord
 
         private void frmCaserne_Load(object sender, EventArgs e)
         {
@@ -122,7 +122,6 @@ namespace Sae25_Main_Form
                 tableauDeBord.ajouterMissionBD = AjouterMissionBD;      // Lier la méthode d'ajout de mission à la base de données
                 tableauDeBord.getEnginsMission = getEnginsMission;      // Lier la méthode de récupération des engins de la mission
                 tableauDeBord.creerPdfMission = CreerPdfMission;        // Lier la méthode de création du PDF de la mission
-                dtMissionsFormatees = CreerTableMission();              // Créer une table de missions formatées pour le tableau de bord
                 RemplirTableMissionsFormatees();                        // Remplir la table de missions formatées
                 tableauDeBord.LoadMissions(dtMissionsFormatees);        // Charger les missions dans le tableau de bord
             }
@@ -151,7 +150,7 @@ namespace Sae25_Main_Form
         }
 
 
-        private DataTable CreerTableMission()
+        private static DataTable CreerTableMission()
         {
             if (monDs != null)
             {
