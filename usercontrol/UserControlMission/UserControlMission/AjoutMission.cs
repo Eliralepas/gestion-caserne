@@ -13,6 +13,8 @@ using System.Net;
 
 namespace UserControlMission
 {
+    public delegate void AjouterMission(DataRow drMission); // Déclaration de la signature du délégué pour ajouter une mission
+
     public partial class ucMission : UserControl
     {
         public ucMission()
@@ -20,6 +22,7 @@ namespace UserControlMission
             InitializeComponent();
         }
 
+        public AjouterMission ajouterMission; // Instance du délégué pour ajouter une mission
         DataSet monDs;
         int nextId = 0;
         String date;
@@ -188,6 +191,10 @@ namespace UserControlMission
 
             //Ajout de la ligne
             monDs.Tables["Mission"].Rows.Add(row);
+            if(ajouterMission != null)
+            {
+                ajouterMission(row); // Appel du délégué pour ajouter la mission
+            }
 
             //Après avoir valider rendre les boutons pas visible 
             btnAnnuler.Visible = false;

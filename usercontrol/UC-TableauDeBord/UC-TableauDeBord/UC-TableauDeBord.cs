@@ -32,7 +32,7 @@ namespace UC_TableauDeBord
 
         private Mission InitMission(DataRow dr)
         {
-            Mission mission = new Mission(dr);          //Création d'une nouvelle mission à partir de la ligne du DataTable
+            Mission mission = new Mission(dr);          //Création d'une nouvelle mission à partir de la ligne du DataRow
             switchCouleurMission(mission);              //Appel de la méthode pour alterner la couleur de la mission
             mission.terminerMission = TerminerMission;  //Ajout de l'événement pour terminer la mission
             mission.creerPdfMission = CreerPdfMission;  //Ajout de l'événement pour créer le PDF de la mission
@@ -47,20 +47,14 @@ namespace UC_TableauDeBord
                 Mission mission = InitMission(dr);  //Création d'une nouvelle mission à partir de la ligne du DataTable
                 listMissions.Add(mission);          //Ajout de la mission à la liste
             }
-            TriParIdDecroissant(listMissions);  //Tri des missions par ID décroissant
             DisplayMissions();                  //Appel de la méthode pour afficher les missions
         }
 
-        public void AddMission(Mission mission)
+        public void AjouterMission(DataRow dr)
         {
+            Mission mission = InitMission(dr);  //Création d'une nouvelle mission à partir du DataRow
             listMissions.Insert(0, mission);    //Ajout de la mission au début de la liste
             DisplayMissions();                  //Appel de la méthode pour afficher les missions
-        }
-
-        public void RemoveMission(Mission mission)
-        {
-            listMissions.Remove(mission);   //Suppression de la mission de la liste
-            DisplayMissions();              //Appel de la méthode pour afficher les missions
         }
 
         private void TriParIdDecroissant(List<Mission> missions)
@@ -68,11 +62,12 @@ namespace UC_TableauDeBord
             missions.Sort((x, y) => y.MissionID.CompareTo(x.MissionID)); //Tri des missions par ID décroissant
         }
 
-        public void DisplayMissions()
+        private void DisplayMissions()
         {
-            panelMissions.Controls.Clear(); //Vider le panel avant d'ajouter les missions
-            int top = 6;                    //Position en hauteur de la première mission
-            int left = 30;                  //Position en largeur de la première mission
+            TriParIdDecroissant(listMissions);  //Tri des missions par ID décroissant
+            panelMissions.Controls.Clear();     //Vider le panel avant d'ajouter les missions
+            int top = 6;                        //Position en hauteur de la première mission
+            int left = 30;                      //Position en largeur de la première mission
             foreach (Mission mission in listMissions)
             {
                 if (!sckbEnCours.Checked || (sckbEnCours.Checked && mission.EstEnCours)) //Si la checkbox n'est pas cochée, ou que la checkbox est cochée et que la mission est en cours : on affiche la mission

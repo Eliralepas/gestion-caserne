@@ -35,12 +35,13 @@ namespace Sae25_Main_Form
             InitializeComponent();
         }
 
-        TableauDeBord tableauDeBord;
-        UCGestionEngin gestionEngin;
-        ucMission ajoutMission;
-        UCStatistique tabStat;
-        SQLiteConnection con;
-        DataSet monDs;
+        private TableauDeBord tableauDeBord;
+        private UCGestionEngin gestionEngin;
+        private ucMission ajoutMission;
+        private UCStatistique tabStat;
+        private SQLiteConnection con;
+        private DataSet monDs;
+        private DataTable dtMissionsFormatees; // Déclarer une table de missions formatées pour le tableau de bord
 
         private void frmCaserne_Load(object sender, EventArgs e)
         {
@@ -108,9 +109,11 @@ namespace Sae25_Main_Form
             if (monDs != null)  // Vérifier si monDs n'est pas vide
             {
                 ajoutMission = new ucMission(monDs);    // Instancier le volet 2 (Ajout de mission)
+                ajoutMission.ajouterMission = AjouterMission; // Lier la méthode d'ajout de mission
             }
             panelVolet.Controls.Add(ajoutMission);      // Ajouter le volet d'ajout de mission au panneau
         }
+
         private void LoadTableauDeBord()
         {
             if (tableauDeBord == null) // Si le tableau de bord n'existe pas
@@ -119,9 +122,9 @@ namespace Sae25_Main_Form
                 tableauDeBord.ajouterMissionBD = AjouterMissionBD;      // Lier la méthode d'ajout de mission à la base de données
                 tableauDeBord.getEnginsMission = getEnginsMission;      // Lier la méthode de récupération des engins de la mission
                 tableauDeBord.creerPdfMission = CreerPdfMission;        // Lier la méthode de création du PDF de la mission
-                DataTable dtMissions = CreerTableMission();             // Créer une table de missions au bon format
-                RemplirTableMission(dtMissions);                        // Remplir la table de missions
-                tableauDeBord.LoadMissions(dtMissions);
+                dtMissionsFormatees = CreerTableMission();              // Créer une table de missions formatées pour le tableau de bord
+                RemplirTableMissionsFormatees();                        // Remplir la table de missions formatées
+                tableauDeBord.LoadMissions(dtMissionsFormatees);        // Charger les missions dans le tableau de bord
             }
             panelVolet.Controls.Add(tableauDeBord); // Ajouter le tableau de bord au panneau
         }
@@ -195,38 +198,48 @@ namespace Sae25_Main_Form
             return null; // Retourner null si le DataSet est vide
         }
 
-        private void RemplirTableMission(DataTable dtMissions)
+        private void RemplirTableMissionsFormatees()
         {
             if (monDs != null)
             {
                 DataTable dt = monDs.Tables["Mission"];     // Récupérer la table des missions
                 foreach (DataRow row in dt.Rows)            // Parcourir les lignes de la table
                 {
-                    DataRow newRow = dtMissions.NewRow();   // Créer une nouvelle ligne
-                    // Récupérer l'ID de la mission
-                    newRow["MissionID"] = Convert.ToInt32(row["id"]);
-                    // Récupérer le nom de la caserne
-                    newRow["Caserne"] = monDs.Tables["Caserne"].Select("id = " + row["idCaserne"].ToString())[0]["nom"].ToString();
-                    // Récupérer le nom de la nature de la mission
-                    newRow["Nature"] = monDs.Tables["NatureSinistre"].Select("id = " + row["idNatureSinistre"].ToString())[0]["libelle"].ToString();
-                    // Récupérer le motif de la mission
-                    newRow["Motif"] = row["motifAppel"].ToString();
-                    // Récupérer la date de début
-                    newRow["DateDebut"] = DateTime.Parse(row["dateHeureDepart"].ToString());
-                    // Récupérer la date de fin
-                    if (row["dateHeureRetour"] == DBNull.Value)     // Vérifier si la date de retour est nulle
-                    {
-                        newRow["DateFin"] = DBNull.Value;           // Mettre la date de fin à null
-                    }
-                    else
-                    {
-                        newRow["DateFin"] = DateTime.Parse(row["dateHeureRetour"].ToString());
-                    }
-                    newRow["EstEnCours"] = !Convert.ToBoolean(row["terminee"]); // Récupérer l'état de la mission
-
-                    dtMissions.Rows.Add(newRow); // Ajouter la nouvelle ligne à la table de données
+                    dtMissionsFormatees.Rows.Add(FormaterMission(row)); // Ajouter la nouvelle ligne à la table de données
                 }
             }
+        }
+
+        private DataRow FormaterMission(DataRow drMission)
+        {
+            DataRow newRow = dtMissionsFormatees.NewRow();   // Créer une nouvelle ligne
+            // Récupérer l'ID de la mission
+            newRow["MissionID"] = Convert.ToInt32(drMission["id"]);
+            // Récupérer le nom de la caserne
+            newRow["Caserne"] = monDs.Tables["Caserne"].Select("id = " + drMission["idCaserne"].ToString())[0]["nom"].ToString();
+            // Récupérer le nom de la nature de la mission
+            newRow["Nature"] = monDs.Tables["NatureSinistre"].Select("id = " + drMission["idNatureSinistre"].ToString())[0]["libelle"].ToString();
+            // Récupérer le motif de la mission
+            newRow["Motif"] = drMission["motifAppel"].ToString();
+            // Récupérer la date de début
+            newRow["DateDebut"] = DateTime.Parse(drMission["dateHeureDepart"].ToString());
+            // Récupérer la date de fin
+            if (drMission["dateHeureRetour"] == DBNull.Value)     // Vérifier si la date de retour est nulle
+            {
+                newRow["DateFin"] = DBNull.Value;           // Mettre la date de fin à null
+            }
+            else
+            {
+                newRow["DateFin"] = DateTime.Parse(drMission["dateHeureRetour"].ToString());
+            }
+            newRow["EstEnCours"] = !Convert.ToBoolean(drMission["terminee"]); // Récupérer l'état de la mission
+
+            return newRow; // Retourner la nouvelle ligne formatée
+        }
+
+        private void AjouterMission(DataRow drMission)
+        {
+            tableauDeBord.AjouterMission(FormaterMission(drMission)); // Ajouter la mission formatée au tableau de bord
         }
 
         private DataTable getEnginsMission(int idMission)
@@ -249,34 +262,48 @@ namespace Sae25_Main_Form
 
         private void AjouterMissionBD(Mission mission, string compteRendu, DataTable engins)
         {
-            string requete = "";                // Initialiser la requête SQL
+            // Mettre à jour le DataSet local avec les informations de la mission
             int idMission = mission.MissionID;  // Récupérer l'ID de la mission
+            DataRow drMission = monDs.Tables["Mission"].Select("id = " + idMission.ToString()).FirstOrDefault(); // Récupérer la ligne de la mission dans le DataSet local
+            drMission["dateHeureRetour"] = mission.DateFin; // Mettre à jour la date de fin de la mission dans le DataSet local
+            drMission["compteRendu"] = compteRendu;         // Mettre à jour le compte rendu de la mission dans le DataSet local
+            drMission["terminee"] = 1;                      // Mettre à jour le statut de la mission à "terminée" dans le DataSet local
+            string requete = ""; // Initialiser la requête SQL
+            con.Open(); // Ouvrir la connexion à la base de données
             // Vérifier si la mission existe déjà
-            if (monDs.Tables["Mission"].Select("id = " + idMission.ToString()).Length > 0)
+            if (ExisteMissionBD(idMission)) // Si la mission existe déjà dans la base de données
             {
                 requete = UpdateMission(mission, compteRendu);      // Appeler la méthode de mise à jour de mission
             }
-            else
+            else // Si la mission n'existe pas dans la base de données
             {
                 requete = InsertionMission(mission, compteRendu);   // Appeler la méthode d'insertion de mission
             }
             try
             {
-                con.Open();                                                     // Ouvrir la connexion à la base de données
                 SQLiteCommand cmdMission = new SQLiteCommand(requete, con);     // Définir la commande SQL
                 MessageBox.Show(requete);                                       // Afficher la requête SQL                                                                      
                 cmdMission.ExecuteNonQuery();                                   // Insertion de la mission dans la table des missions
-                // Récupérer la commande pour mettre à jour le statut "En panne" et "En mission" de chaque engin faisant partie de la mission
-                UpdateStatutEnginsMission(idMission, engins);
-                // Mettre à jour le statut "En mission" de chaque pompier faisant partie de la mission
-                UpdateStatutPompiersMission(idMission);
-                con.Close();                                                    // Fermer la connexion à la base de données
             }
             catch (Exception ex)
             {
                 MessageBox.Show("Erreur lors de l'ajout ou de la mise à jour de la mission dans la base de données"); // Afficher un message d'erreur
                 MessageBox.Show(ex.ToString()); // Afficher l'erreur
             }
+            // Mettre à jour le statut "En panne" et "En mission" de chaque engin faisant partie de la mission
+            UpdateStatutEnginsMission(idMission, engins);
+            
+            // Mettre à jour le statut "En mission" de chaque pompier faisant partie de la mission
+            UpdateStatutPompiersMission(idMission);
+            con.Close(); // Fermer la connexion à la base de données
+        }
+
+        private bool ExisteMissionBD(int idMission)
+        {
+            // Logique pour vérifier si la mission existe déjà dans la base de données
+            SQLiteCommand cmd = new SQLiteCommand("SELECT COUNT(*) FROM Mission WHERE id = " + idMission, con);
+            int count = Convert.ToInt32(cmd.ExecuteScalar()); // Exécuter la requête et récupérer le nombre de missions
+            return count > 0; // Retourner true si la mission existe, sinon false
         }
 
         private string InsertionMission(Mission mission, string compteRendu)
@@ -299,41 +326,66 @@ namespace Sae25_Main_Form
             // Renvoyer la requête SQL pour insérer la mission
             return "INSERT INTO Mission (id, dateHeureDepart, dateHeureRetour, motifAppel, adresse, cp, ville, terminee, compteRendu, idNatureSinistre, idCaserne)" +
                 " VALUES " +
-                "(" + idMission.ToString() + ",'" + mission.DateDebut + "','" + mission.DateFin + "','" + mission.MotifMission + "','" + AdresseMission +
-                "','" + CodePostalMission + "','" + VilleMission + "', 1,'" + compteRendu + "'," + IdNatureSinistre.ToString() + "," + IdCaserne.ToString() + ");";
+                $"({idMission.ToString()}, '{mission.DateDebut}', '{mission.DateFin}', '{mission.MotifMission}', '{AdresseMission}', " +
+                $"'{CodePostalMission}', '{VilleMission}', 1, '{compteRendu}', {IdNatureSinistre.ToString()}, {IdCaserne.ToString()});";
         }
 
         private string UpdateMission(Mission mission, string compteRendu)
         {
             MessageBox.Show("La mission existe déjà dans la base de données"); // Afficher le message
             // Renvoyer la requête SQL pour mettre à jour la mission
-            return "UPDATE Mission SET dateHeureRetour = '" + mission.DateFin + "', terminee = 1, compteRendu = '" + compteRendu + "' " +
-                    "WHERE id = " + mission.MissionID.ToString() + ";";
+            return $"UPDATE Mission SET dateHeureRetour = '{mission.DateFin}', terminee = 1, compteRendu = '{compteRendu}' WHERE id = {mission.MissionID.ToString()};";
         }
 
         private void UpdateStatutEnginsMission(int idMission, DataTable engins)
         {
             // Mettre à jour le statut "En panne" et "En mission" de chaque engin faisant partie de la mission
-            foreach (DataRow row in engins.Rows) {
-                string codeTypeEngin = row["Type"].ToString();  // Récupérer le code type de l'engin
-                int numero = Convert.ToInt32(row["Numero"]);    // Récupérer le numero de l'engin
-                int enPanne = Convert.ToInt32(row["enPanne"]);  // Récupérer le statut "En panne" de l'engin
-                SQLiteCommand cmdEngin = new SQLiteCommand("UPDATE Engin SET enPanne = " + enPanne + ", enMission = 0 WHERE codeTypeEngin = " + codeTypeEngin + " AND numero = " + numero + ";", con);
-                cmdEngin.ExecuteNonQuery(); // Exécuter la commande SQL
+            try
+            {
+                foreach (DataRow row in engins.Rows)
+                {
+                    // Mettre à jour le statut de l'engin dans la base de données
+                    string codeTypeEngin = row["Type"].ToString();  // Récupérer le code type de l'engin
+                    int numero = Convert.ToInt32(row["Numero"]);    // Récupérer le numero de l'engin
+                    int enPanne = Convert.ToInt32(row["enPanne"]);  // Récupérer le statut "En panne" de l'engin
+                    SQLiteCommand cmdEngin = new SQLiteCommand($"UPDATE Engin SET enPanne = {enPanne}, enMission = 0 WHERE codeTypeEngin = '{codeTypeEngin}' AND numero = {numero};", con);
+                    cmdEngin.ExecuteNonQuery(); // Exécuter la commande SQL
+                    // Mettre à jour le statut de l'engin dans la table "Engin"
+                    DataRow drEngin = monDs.Tables["Engin"].Select($"codeTypeEngin = '{codeTypeEngin}' AND numero = {numero}").FirstOrDefault(); // Récupérer la ligne de l'engin dans le DataSet local
+                    drEngin["enPanne"] = enPanne; // Mettre à jour le statut "En panne" de l'engin dans le DataSet local
+                    drEngin["enMission"] = 0; // Mettre à jour le statut "En mission" de l'engin dans le DataSet local
+                }
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show("Erreur lors de la mise à jour des engins dans la base de données"); // Afficher un message d'erreur
+                MessageBox.Show(ex.ToString()); // Afficher l'erreur
             }
         }
 
         private void UpdateStatutPompiersMission(int idMission)
         {
             // Mettre à jour le statut "En mission" de chaque pompier faisant partie de la mission
-            foreach (DataRow row in monDs.Tables["Mobiliser"].Rows) // Parcourir les lignes de la table "Mobiliser"
+            try
             {
-                if (Convert.ToInt32(row["idMission"]) == idMission) // Vérifier si l'ID de la mission correspond
+                foreach (DataRow row in monDs.Tables["Mobiliser"].Rows) // Parcourir les lignes de la table "Mobiliser"
                 {
-                    int matriculePompier = Convert.ToInt32(row["matriculePompier"]); // Récupérer le matricule du pompier
-                    SQLiteCommand cmdPompier = new SQLiteCommand("UPDATE Pompier SET enMission = 0 WHERE matricule = " + matriculePompier + ";", con);
-                    cmdPompier.ExecuteNonQuery(); // Exécuter la commande SQL
+                    if (Convert.ToInt32(row["idMission"]) == idMission) // Vérifier si l'ID de la mission correspond
+                    {
+                        // Mettre à jour le statut du pompier dans la base de données
+                        int matriculePompier = Convert.ToInt32(row["matriculePompier"]); // Récupérer le matricule du pompier
+                        SQLiteCommand cmdPompier = new SQLiteCommand("UPDATE Pompier SET enMission = 0 WHERE matricule = " + matriculePompier + ";", con);
+                        cmdPompier.ExecuteNonQuery(); // Exécuter la commande SQL
+                        // Mettre à jour le statut du pompier dans le DataSet local
+                        DataRow drPompier = monDs.Tables["Pompier"].Select("matricule = " + matriculePompier.ToString()).FirstOrDefault(); // Récupérer la ligne du pompier dans le DataSet local
+                        drPompier["enMission"] = 0; // Mettre à jour le statut "En mission" du pompier dans le DataSet local
+                    }
                 }
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show("Erreur lors de la mise à jour des pompiers dans la base de données"); // Afficher un message d'erreur
+                MessageBox.Show(ex.ToString()); // Afficher l'erreur
             }
         }
 
@@ -420,27 +472,27 @@ namespace Sae25_Main_Form
 
         private void AjouterTitrePDF(Document document, int idMission, iTextSharp.text.Font fontTitre)
         {
-            document.Add(new Phrase("Rapport: Mission n°" + idMission, fontTitre)); //Ajouter le titre du rapport
+            document.Add(new Phrase($"Rapport: Mission n°{idMission}", fontTitre)); //Ajouter le titre du rapport
         }
 
         private void AjouterDateDebutPDF(Document document, DataRow drMission)
         {
             DateTime dateDebut = Convert.ToDateTime(drMission["dateHeureDepart"]);      // Récupérer la date de fin de la mission
             string dateDebutFormatted = dateDebut.ToString("dd MMMM yyyy à HH:mm");     // Formater la date de fin
-            document.Add(new Paragraph("\nDéclenchée le " + dateDebutFormatted));       // Indiquer la date de début de la mission
+            document.Add(new Paragraph($"\nDéclenchée le {dateDebutFormatted}"));       // Indiquer la date de début de la mission
         }
 
         private void AjouterDateFinPDF(Document document, DataRow drMission)
         {
             if (Convert.ToInt32(drMission["terminee"]) == 0) // Vérifier si la mission est en cours
             {
-                document.Add(new Paragraph("En cours ...")); // Indiquer que la mission est en cours
+                document.Add(new Paragraph("\nEn cours ...")); // Indiquer que la mission est en cours
             }
             else
             {
                 DateTime dateFin = Convert.ToDateTime(drMission["dateHeureRetour"]);    // Récupérer la date de fin de la mission
                 string dateFinFormatted = dateFin.ToString("dd MMMM yyyy à HH:mm");     // Formater la date de fin
-                document.Add(new Paragraph("\nTerminée le " + dateFinFormatted));       // Indiquer la date de fin de la mission
+                document.Add(new Paragraph($"\nTerminée le {dateFinFormatted}"));       // Indiquer la date de fin de la mission
             }
         }
 
@@ -463,7 +515,7 @@ namespace Sae25_Main_Form
             string codePostalMission = drMission["cp"].ToString();      // Récupérer le code postal de la mission
             string villeMission = drMission["ville"].ToString();        // Récupérer la ville de la mission
             document.Add(new Phrase("Adresse : ", fontGras));           // Indiquer l'adresse de la mission
-            document.Add(new Phrase(adresseMission + ", " + villeMission + ", " + codePostalMission + "\n")); // Ajouter l'adresse de la mission
+            document.Add(new Phrase($"{adresseMission}, {villeMission}, {codePostalMission}\n")); // Ajouter l'adresse de la mission
         }
 
         private void AjouterCompteRenduPDF(Document document, DataRow drMission, iTextSharp.text.Font fontGras)
@@ -492,15 +544,15 @@ namespace Sae25_Main_Form
                     string codeTypeEngin = row["codeTypeEngin"].ToString(); // Récupérer le code type de l'engin
                     string numeroEngin = row["numeroEngin"].ToString();     // Récupérer le numéro de l'engin
                     string idCaserne = row["idCaserne"].ToString();         // Récupérer l'ID de la caserne de l'engin
-                    string typeEngin = monDs.Tables["TypeEngin"].Select("code = '" + codeTypeEngin + "'")[0]["nom"].ToString(); // Récupérer le libellé du type d'engin
-                    int enPanne = Convert.ToInt32(monDs.Tables["Engin"].Select("idCaserne = " + idCaserne + " AND codeTypeEngin = '" + codeTypeEngin + "' AND numero = " + numeroEngin)[0]["enPanne"]); // Récupérer le statut "En panne" de l'engin
+                    string typeEngin = monDs.Tables["TypeEngin"].Select($"code = '{codeTypeEngin}'")[0]["nom"].ToString(); // Récupérer le libellé du type d'engin
+                    int enPanne = Convert.ToInt32(monDs.Tables["Engin"].Select($"idCaserne = {idCaserne} AND codeTypeEngin = '{codeTypeEngin}' AND numero = {numeroEngin}")[0]["enPanne"]); // Récupérer le statut "En panne" de l'engin
                     string enPanneText = enPanne == 1 ? "Oui" : "Non"; //Indiquer si l'engin est en panne
-                    string reparationsEventuelles = monDs.Tables["PartirAvec"].Select("idCaserne = " + idCaserne + " AND codeTypeEngin = '" + codeTypeEngin + "' AND numeroEngin = '" + numeroEngin + "'" + " AND idMission = " + idMission)[0]["reparationsEventuelles"].ToString(); // Récupérer les réparations éventuelles de l'engin
+                    string reparationsEventuelles = monDs.Tables["PartirAvec"].Select($"idCaserne = {idCaserne} AND codeTypeEngin = '{codeTypeEngin}' AND numeroEngin = '{numeroEngin}' AND idMission = {idMission}")[0]["reparationsEventuelles"].ToString(); // Récupérer les réparations éventuelles de l'engin
                     if (string.IsNullOrEmpty(reparationsEventuelles))
                     {
                         reparationsEventuelles = "Aucune réparation prévue"; // Indiquer qu'il n'y a pas de réparations prévues
                     }
-                    document.Add(new Paragraph(" --> " + typeEngin + " " + idCaserne + "-" + codeTypeEngin + "-" + numeroEngin + "(En panne: " + enPanneText + ")" + "\n       Réparations éventuelles: " + reparationsEventuelles)); // Indiquer le type d'engin, son numéro, son statut "En panne" et les réparations éventuelles
+                    document.Add(new Paragraph($" --> {typeEngin} {idCaserne}-{codeTypeEngin}-{numeroEngin} (En panne: {enPanneText})\n       Réparations éventuelles: {reparationsEventuelles}")); // Indiquer le type d'engin, son numéro, son statut "En panne" et les réparations éventuelles
                 }
             }
             else
@@ -523,11 +575,11 @@ namespace Sae25_Main_Form
                     string prenomPompier = monDs.Tables["Pompier"].Select("matricule = " + matriculePompier)[0]["prenom"].ToString();       // Récupérer le prénom du pompier
                     string nomPompier = monDs.Tables["Pompier"].Select("matricule = " + matriculePompier)[0]["nom"].ToString();             // Récupérer le nom du pompier
                     string codeGradePompier = monDs.Tables["Pompier"].Select("matricule = " + matriculePompier)[0]["codeGrade"].ToString(); // Récupérer le grade du pompier
-                    string gradePompier = monDs.Tables["Grade"].Select("code = '" + codeGradePompier + "'")[0]["libelle"].ToString();       // Récupérer le libellé du grade du pompier
-                    string idHabilitationPompier = monDs.Tables["Mobiliser"].Select("matriculePompier = " + matriculePompier + " AND idMission = " + idMission)[0]["idHabilitation"].ToString(); // Récupérer l'habilitation du pompier
+                    string gradePompier = monDs.Tables["Grade"].Select($"code = '{codeGradePompier}'")[0]["libelle"].ToString();            // Récupérer le libellé du grade du pompier
+                    string idHabilitationPompier = monDs.Tables["Mobiliser"].Select($"matriculePompier = {matriculePompier} AND idMission = {idMission}")[0]["idHabilitation"].ToString(); // Récupérer l'habilitation du pompier
                     string habilitationPompier = monDs.Tables["Habilitation"].Select("id = " + idHabilitationPompier)[0]["libelle"].ToString(); // Récupérer le libellé de l'habilitation du pompier
 
-                    document.Add(new Paragraph(" --> " + gradePompier + " " + prenomPompier + " " + nomPompier + " (" + habilitationPompier + ")")); // Indiquer le grade, le prénom, le nom et l'habilitation du pompier
+                    document.Add(new Paragraph($" --> {gradePompier} {prenomPompier} {nomPompier} ({habilitationPompier})")); // Indiquer le grade, le prénom, le nom et l'habilitation du pompier
                 }
             }
             else

@@ -45,7 +45,7 @@ namespace UC_Mission
         public Mission(DataRow dr)
         {
             InitializeComponent();
-            MissionID = Convert.ToInt32(dr[0]);
+            MissionID = Convert.ToInt32(dr["id"]);
             Caserne = dr[1].ToString();
             NatureMission = dr[2].ToString();
             MotifMission = dr[3].ToString();
