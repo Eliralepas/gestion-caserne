@@ -106,3 +106,4 @@ C:\Users\Akifm\OneDrive\Bureau\SAE\Sae25-Main-Form\Sae25-Main-Form\obj\Debug\Sae
 C:\Users\Akifm\OneDrive\Bureau\SAE\Sae25-Main-Form\Sae25-Main-Form\obj\Debug\Sae25-Ma.85EEC115.Up2Date
 C:\Users\Akifm\OneDrive\Bureau\SAE\Sae25-Main-Form\Sae25-Main-Form\obj\Debug\Sae25-Main-Form.exe
 C:\Users\Akifm\OneDrive\Bureau\SAE\Sae25-Main-Form\Sae25-Main-Form\obj\Debug\Sae25-Main-Form.pdb
+C:\Users\miaou\Desktop\SAE25\Sae25-Main-Form\Sae25-Main-Form\bin\Debug\UC-TableauDeBord.pdb

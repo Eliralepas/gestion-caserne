@@ -118,7 +118,7 @@ namespace Sae25_Main_Form
             if(perso == null)
             {
                 perso = new UCGestionPerso.UCGestionPerso(con);
-                perso.Dock = DockStyle.Fill;    
+                perso.Dock = DockStyle.Fill;
             }
             panelVolet.Controls.Add(perso);
         }
