@@ -40,8 +40,8 @@ namespace Sae25_Main_Form
         private ucMission ajoutMission;
         private UCStatistique tabStat;
         private SQLiteConnection con;
-        private static DataSet monDs;
-        private DataTable dtMissionsFormatees = CreerTableMission(); // Créer une table de missions formatées pour le tableau de bord
+        private DataSet monDs;
+        private DataTable dtMissionsFormatees; // Déclarer une table de missions formatées pour le tableau de bord
 
         private void frmCaserne_Load(object sender, EventArgs e)
         {
@@ -56,6 +56,7 @@ namespace Sae25_Main_Form
                     SQLiteDataAdapter da = new SQLiteDataAdapter("Select * From " + nomTable, con);     // Créer un adaptateur de données
                     da.Fill(monDs, nomTable);                                                           // Remplir le DataSet avec les données de la table
                 }
+                dtMissionsFormatees = CreerTableMission(); // Créer la table de missions formatées pour le tableau de bord
             }
             catch { } // Gérer les exceptions
             finally
@@ -150,7 +151,7 @@ namespace Sae25_Main_Form
         }
 
 
-        private static DataTable CreerTableMission()
+        private DataTable CreerTableMission()
         {
             if (monDs != null)
             {
