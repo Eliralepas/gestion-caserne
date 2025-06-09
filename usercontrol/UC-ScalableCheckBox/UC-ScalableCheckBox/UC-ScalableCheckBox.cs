@@ -50,5 +50,26 @@ namespace UC_ScalableCheckBox
             panel.Width = this.Width;
             panel.Height = this.Height;
         }
+
+        private void panel_MouseEnter(object sender, EventArgs e)
+        {
+            if (!ReadOnly) // Si le contrôle n'est pas en lecture seule
+            {
+                // Changer le curseur pour indiquer que c'est cliquable
+                panel.Cursor = Cursors.Hand;
+                // Mettre le contrôle en surbrillance
+                panel.BackColor = System.Drawing.Color.LightBlue;
+            }
+            else
+            {
+                panel.Cursor = Cursors.Default; // Si en lecture seule, utiliser le curseur par défaut
+            }
+        }
+
+        private void panel_MouseLeave(object sender, EventArgs e)
+        {
+            panel.Cursor = Cursors.Default;                     // Réinitialiser le curseur à la sortie du contrôle
+            panel.BackColor = System.Drawing.Color.Transparent; // Réinitialiser la couleur de fond
+        }
     }
 }
