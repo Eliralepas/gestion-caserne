@@ -185,7 +185,6 @@ namespace UCGestionPerso
                 grpContact.Visible = true;
                 lblMatricule.Visible = true;
                 btnInfo.Visible = true;
-                btnModif.Visible = true;
 
                 int id = Convert.ToInt32(SelectedPompier.Tag);
                 lblMatricule.Text = "Matricule " + id;
@@ -321,8 +320,14 @@ namespace UCGestionPerso
 
         private void btnInfo_Click(object sender, EventArgs e)
         {
+            if(!login.Connected)
+            {
+                connexionRequest();
+                return;
+            }
             grpCaserne.Visible = true;
             btnInfo.Visible = false;
+            btnModif.Visible = true;
         }
         private void ChargementCbo(DataTable dt, String col1, String col2, ComboBox c)
         {
@@ -408,23 +413,34 @@ namespace UCGestionPerso
             }
         }
 
+
+
+
+        private bool _pendingCreatePompier = false;
+
         private void btnCreate_Click(object sender, EventArgs e)
         {
-
             if(!login.Connected)
             {
-                MessageBox.Show("Vous devez être connecté pour pouvoir créer un pompier !");
+                _pendingCreatePompier = true; // On retient qu’on veut créer un pompier
+                connexionRequest(); // Lancement du login
                 return;
             }
 
+            OpenCreatePompier(); // Sinon on ouvre direct
+        }
+        private void OpenCreatePompier()
+        {
             frmCreationPompier creerPompier = new frmCreationPompier(_con);
             DialogResult res = creerPompier.ShowDialog();
 
             if(res == DialogResult.OK)
             {
-                MessageBox.Show("Vous avez créer un nouveau pompier");
+                MessageBox.Show("Vous avez créé un nouveau pompier");
+                refreshPompier();
             }
         }
+
 
         private void btnChanger_Click(object sender, EventArgs e)
         {
@@ -501,23 +517,30 @@ namespace UCGestionPerso
             if(!login.Connected)
             {
                 connexionRequest();
+                return;
+            }
+
+            bool isInEditMode = cboCaserne.Enabled;
+
+            if(isInEditMode)
+            {
+                cboCaserne.Enabled = false;
+                cboGrade.Enabled = false;
+                chbConge.Enabled = false;
+                btnModif.Text = "Modifier";
+                btnChanger.Visible = false;
+
+                cboGrade.SelectedValue = codeGradeInit;
+                cboCaserne.SelectedValue = idCaserneInit;
+                chbConge.Checked = (enCongeInit == 1);
             }
             else
             {
-                bool editMode = !cboCaserne.Enabled;
-                cboCaserne.Enabled = editMode;
-                cboGrade.Enabled = editMode;
-                chbConge.Enabled = editMode;
-                btnModif.Text = editMode ? "Annuler" : "Modifier";
-                btnChanger.Visible = editMode; // Afficher le bouton Changer seulement en mode édition
-
-                if(!editMode)
-                {
-                    // Réinitialiser toutes les modifications
-                    cboGrade.SelectedValue = codeGradeInit;
-                    cboCaserne.SelectedValue = idCaserneInit;
-                    chbConge.Checked = (enCongeInit == 1);
-                }
+                cboCaserne.Enabled = true;
+                cboGrade.Enabled = true;
+                chbConge.Enabled = true;
+                btnModif.Text = "Annuler";
+                btnChanger.Visible = true;
             }
         }
 
@@ -526,8 +549,9 @@ namespace UCGestionPerso
             if(login == null)
             {
                 login = new UCLogin(_con);
-                login.OnLoginResult = HandleLoginResult;
             }
+            login.OnLoginResult = HandleLoginResult;
+            login.OnLoginCancelled = HandleLoginCancelled;
 
             this.Parent.Controls.Add(login);
             login.BringToFront();
@@ -536,19 +560,31 @@ namespace UCGestionPerso
             this.Enabled = false;
         }
 
+        private void HandleLoginCancelled()
+        {
+            this.Enabled = true;
+            login.Visible = false;
+        }
 
         private void HandleLoginResult(bool success)
         {
             this.Enabled = true;
             login.Visible = false;
+
             if(success)
             {
-                MessageBox.Show(login.Connected.ToString());
                 btnModif.Text = "Annuler";
                 cboCaserne.Enabled = true;
                 cboGrade.Enabled = true;
                 chbConge.Enabled = true;
+
+                if(_pendingCreatePompier)
+                {
+                    _pendingCreatePompier = false;
+                    OpenCreatePompier(); 
+                }
             }
         }
+
     }
 }

@@ -31,6 +31,7 @@
             flpCaserne = new FlowLayoutPanel();
             flpPompier = new FlowLayoutPanel();
             pnlInfo = new Panel();
+            btnModif = new Button();
             lblMatricule = new Label();
             grpCaserne = new GroupBox();
             chbConge = new CheckBox();
@@ -66,7 +67,6 @@
             label1 = new Label();
             btnInfo = new Button();
             btnCreate = new Button();
-            btnModif = new Button();
             pnlInfo.SuspendLayout();
             grpCaserne.SuspendLayout();
             grpContact.SuspendLayout();
@@ -114,6 +114,17 @@
             pnlInfo.Name = "pnlInfo";
             pnlInfo.Size = new Size(562, 624);
             pnlInfo.TabIndex = 2;
+            // 
+            // btnModif
+            // 
+            btnModif.Location = new Point(133, 590);
+            btnModif.Name = "btnModif";
+            btnModif.Size = new Size(156, 31);
+            btnModif.TabIndex = 21;
+            btnModif.Text = "Modifier";
+            btnModif.UseVisualStyleBackColor = true;
+            btnModif.Visible = false;
+            btnModif.Click += btnModif_Click;
             // 
             // lblMatricule
             // 
@@ -536,16 +547,6 @@
             btnCreate.Text = "Nouveau Pompier";
             btnCreate.UseVisualStyleBackColor = true;
             btnCreate.Click += btnCreate_Click;
-            // 
-            // btnModif
-            // 
-            btnModif.Location = new Point(133, 590);
-            btnModif.Name = "btnModif";
-            btnModif.Size = new Size(156, 31);
-            btnModif.TabIndex = 21;
-            btnModif.Text = "Modifier";
-            btnModif.UseVisualStyleBackColor = true;
-            btnModif.Click += btnModif_Click;
             // 
             // UCGestionPerso
             // 

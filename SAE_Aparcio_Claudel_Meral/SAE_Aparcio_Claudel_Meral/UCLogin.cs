@@ -5,6 +5,8 @@ using System.Windows.Forms;
 
 namespace UCGestionPerso
 {
+    public delegate void LoginResultDelegate(bool success);
+    public delegate void LoginCancelledDelegate();
     public partial class UCLogin : UserControl
     {
         SQLiteConnection m_con;
@@ -25,9 +27,8 @@ namespace UCGestionPerso
             }
         }
 
-        public delegate void LoginResultDelegate(bool success);
         public LoginResultDelegate OnLoginResult;
-        public event EventHandler LoginSuccessful;
+        public LoginCancelledDelegate OnLoginCancelled;
 
         public UCLogin()
         {
@@ -89,7 +90,6 @@ namespace UCGestionPerso
                     {
                         _connected = true;
                         OnLoginResult?.Invoke(true);
-                        LoginSuccessful?.Invoke(this, EventArgs.Empty);
                     }
                     else
                     {
@@ -107,7 +107,9 @@ namespace UCGestionPerso
 
         private void btnCancel_Click(object sender, EventArgs e)
         {
-            OnLoginResult?.Invoke(false);
+            MessageBox.Show("aaaaaaaaaaa");
+            OnLoginCancelled.Invoke();  
+            this.Visible = false;
         }
 
         private void txtUser_KeyPress(object sender, KeyPressEventArgs e)
