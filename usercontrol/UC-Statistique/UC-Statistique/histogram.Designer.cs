@@ -60,8 +60,8 @@
             this.rectValue.Name = "rectValue";
             this.rectValue.Size = new System.Drawing.Size(81, 121);
             this.rectValue.TabIndex = 2;
-            this.rectValue.MouseEnter += new System.EventHandler(this.histogram_MouseEnter);
-            this.rectValue.MouseLeave += new System.EventHandler(this.histogram_MouseLeave);
+            //this.rectValue.MouseEnter += new System.EventHandler(this.histogram_MouseEnter);
+            //this.rectValue.MouseLeave += new System.EventHandler(this.histogram_MouseLeave);
             // 
             // lblValue
             // 
@@ -88,7 +88,7 @@
             this.Name = "histogram";
             this.Size = new System.Drawing.Size(109, 178);
             this.Load += new System.EventHandler(this.histogram_Load);
-            this.MouseLeave += new System.EventHandler(this.histogram_MouseLeave_1);
+            //this.MouseLeave += new System.EventHandler(this.histogram_MouseLeave_1);
             this.ResumeLayout(false);
             this.PerformLayout();
 

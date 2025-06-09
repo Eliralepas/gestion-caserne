@@ -43,6 +43,7 @@ namespace Sae25_Main_Form
         private SQLiteConnection con;
         private DataSet monDs;
         private DataTable dtMissionsFormatees; // Déclarer une table de missions formatées pour le tableau de bord
+        private UCButton btnActuel;
 
         private void frmCaserne_Load(object sender, EventArgs e)
         {
@@ -66,12 +67,12 @@ namespace Sae25_Main_Form
             }
 
             // Initialiser les boutons de navigation et définir leurs tags
-            btn1.Tag = "tabBord";
-            btn1.buttonText = "Tableau de Bord";
-            btn2.Tag = "nvMission";
-            btn3.Tag = "engins";
-            btn4.Tag = "dummy";
-            btn5.Tag = "tabStat";
+            btnTableauDeBord.Tag = "tabBord";
+            btnTableauDeBord.buttonText = "Tableau de Bord";
+            btnAjoutMission.Tag = "nvMission";
+            btnGestionEngins.Tag = "engins";
+            btnGestionPersonnel.Tag = "dummy";
+            btnStatistiques.Tag = "tabStat";
 
             foreach (UCButton btn in panelNavigation.Controls.OfType<UCButton>())   // Lier les boutons de navigation
             {
@@ -86,9 +87,15 @@ namespace Sae25_Main_Form
             {
                 con.Close(); // Fermer la connexion
             }
+            UCButton btn = (UCButton)sender;    // Récupérer le bouton cliqué
             panelVolet.Visible = true;          // Rendre le panneau de volet visible
             panelVolet.Controls.Clear();        // Vider le panneau de volet avant d'ajouter un nouveau contrôle
-            switch (((UCButton)sender).Tag)     // Vérifier le tag du bouton cliqué
+            if (btnActuel != null)  // Vérifier si un bouton est déjà actif
+            {
+                btnActuel.IsClicked = false;    // Désactiver l'état cliqué du bouton précédent
+            }
+            btnActuel = btn;                    // Mettre à jour le bouton actuel
+            switch (btn.Tag)     // Vérifier le tag du bouton cliqué
             {
                 case ("tabBord"):
                     LoadTableauDeBord();    // Charger le tableau de bord
@@ -131,7 +138,7 @@ namespace Sae25_Main_Form
 
         private void InitTableauDeBord()
         {
-            tableauDeBord = new UC_TableauDeBord.TableauDeBord();   // Instancier le volet de tableau de bord
+            tableauDeBord = new TableauDeBord();                    // Instancier le volet de tableau de bord
             tableauDeBord.ajouterMissionBD = AjouterMissionBD;      // Lier la méthode d'ajout de mission à la base de données
             tableauDeBord.getEnginsMission = getEnginsMission;      // Lier la méthode de récupération des engins de la mission
             tableauDeBord.creerPdfMission = CreerPdfMission;        // Lier la méthode de création du PDF de la mission

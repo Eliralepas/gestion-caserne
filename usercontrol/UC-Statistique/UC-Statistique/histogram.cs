@@ -54,24 +54,24 @@ namespace UC_Statistique
             _basetop = rectValue.Top;
         }
 
-        private void histogram_MouseEnter(object sender, EventArgs e)
-        {
-            if (leave) { return; }
-            leave = true;
-            rectValue.Height = (int)(_baseHeight * 1.2);
-            rectValue.Top = _basetop - (rectValue.Height - _baseHeight);
-        }
+        //private void histogram_MouseEnter(object sender, EventArgs e)
+        //{
+        //    if (leave) { return; }
+        //    leave = true;
+        //    rectValue.Height = (int)(_baseHeight * 1.2);
+        //    rectValue.Top = _basetop - (rectValue.Height - _baseHeight);
+        //}
 
-        private void histogram_MouseLeave(object sender, EventArgs e)
-        {
-            rectValue.Height = _baseHeight;
-            rectValue.Top = _basetop;
-        }
+        //private void histogram_MouseLeave(object sender, EventArgs e)
+        //{
+        //    rectValue.Height = _baseHeight;
+        //    rectValue.Top = _basetop;
+        //}
 
-        private void histogram_MouseLeave_1(object sender, EventArgs e)
-        {
-            leave = false;
+        //private void histogram_MouseLeave_1(object sender, EventArgs e)
+        //{
+        //    leave = false;
 
-        }
+        //}
     }
 }

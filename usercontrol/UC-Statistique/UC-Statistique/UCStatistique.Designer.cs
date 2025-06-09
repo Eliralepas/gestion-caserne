@@ -94,6 +94,7 @@
             this.grpEngins.Controls.Add(this.lblTitleEnginPerHour);
             this.grpEngins.Controls.Add(this.cbxCaserne);
             this.grpEngins.Controls.Add(this.lblCaserne);
+            this.grpEngins.Cursor = System.Windows.Forms.Cursors.Arrow;
             this.grpEngins.Dock = System.Windows.Forms.DockStyle.Left;
             this.grpEngins.Font = new System.Drawing.Font("Arial", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.grpEngins.ForeColor = System.Drawing.Color.Black;
@@ -176,6 +177,7 @@
             this.tabPage2.BackColor = System.Drawing.Color.White;
             this.tabPage2.Controls.Add(this.flpSinistreStat);
             this.tabPage2.Controls.Add(this.lblTitleIntervention);
+            this.tabPage2.Cursor = System.Windows.Forms.Cursors.Arrow;
             this.tabPage2.Font = new System.Drawing.Font("Arial", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.tabPage2.ForeColor = System.Drawing.Color.Black;
             this.tabPage2.Location = new System.Drawing.Point(4, 32);
@@ -214,13 +216,14 @@
             this.tabPage3.Controls.Add(this.flpHabilitation);
             this.tabPage3.Controls.Add(this.pnlHabilitation);
             this.tabPage3.Controls.Add(this.lblTitleHabilitation);
+            this.tabPage3.Cursor = System.Windows.Forms.Cursors.Arrow;
             this.tabPage3.Font = new System.Drawing.Font("Arial", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.tabPage3.ForeColor = System.Drawing.Color.Black;
-            this.tabPage3.Location = new System.Drawing.Point(4, 33);
+            this.tabPage3.Location = new System.Drawing.Point(4, 32);
             this.tabPage3.Margin = new System.Windows.Forms.Padding(3, 4, 3, 4);
             this.tabPage3.Name = "tabPage3";
             this.tabPage3.Padding = new System.Windows.Forms.Padding(3, 4, 3, 4);
-            this.tabPage3.Size = new System.Drawing.Size(984, 610);
+            this.tabPage3.Size = new System.Drawing.Size(984, 611);
             this.tabPage3.TabIndex = 2;
             this.tabPage3.Text = "Habilitation";
             // 
