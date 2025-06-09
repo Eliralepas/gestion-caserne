@@ -108,9 +108,12 @@ namespace Sae25_Main_Form
 
         private void LoadAjoutMission()
         {
-            if (monDs != null)  // Vérifier si monDs n'est pas vide
+            if (ajoutMission == null)  // Vérifier si monDs n'est pas vide
             {
-                InitTableauDeBord();                            // Initialiser le tableau de bord si ce n'est pas déjà fait pour l'ajout éventuel de missions
+                if (tableauDeBord == null) // Si le tableau de bord n'existe pas
+                {
+                    InitTableauDeBord(); // Initialiser le tableau de bord pour l'ajout éventuel de missions
+                }
                 ajoutMission = new ucMission(monDs);            // Instancier le volet 2 (Ajout de mission)
                 ajoutMission.ajouterMission = AjouterMission;   // Lier la méthode d'ajout de mission
             }
@@ -280,7 +283,6 @@ namespace Sae25_Main_Form
             // Vérifier si la mission existe déjà
             if (ExisteMissionBD(idMission)) // Si la mission existe déjà dans la base de données
             {
-                MessageBox.Show("La mission existe déjà dans la base de données");  // Afficher le message
                 requeteMission = UpdateMission(mission, compteRendu);      // Appeler la méthode de mise à jour de mission
             }
             else // Si la mission n'existe pas dans la base de données
@@ -291,8 +293,7 @@ namespace Sae25_Main_Form
             }
             try
             {
-                SQLiteCommand cmdMission = new SQLiteCommand(requeteMission, con);  // Définir la commande SQL
-                MessageBox.Show(requeteMission);                                    // Afficher la requête SQL                                                                      
+                SQLiteCommand cmdMission = new SQLiteCommand(requeteMission, con);  // Définir la commande SQL                                                                    
                 cmdMission.ExecuteNonQuery();                                       // Insertion de la mission dans la table des missions
             }
             catch (Exception ex)
@@ -320,7 +321,6 @@ namespace Sae25_Main_Form
         {
             // Logique pour ajouter une mission à la base de données
             int idMission = mission.MissionID; // Récupérer l'ID de la mission
-            MessageBox.Show("Mission ajoutée à la base de données : Mission n°" + idMission + "\nCompte rendu: " + compteRendu); // Afficher un message de confirmation
             // Récupération des informations de la mission
             DataRow drMission = monDs.Tables["Mission"].Select("id = " + idMission.ToString())[0];  // Récupérer la ligne de la mission dans le DataSet local
             string AdresseMission = drMission["adresse"].ToString();                                // Récupération de l'adresse de la mission dans le DataSet local
@@ -361,8 +361,7 @@ namespace Sae25_Main_Form
                         requeteMobiliser = $"INSERT INTO Mobiliser (matriculePompier, idMission, idHabilitation) VALUES ({matriculePompier}, {idMission}, {idHabilitation}); "; // Créer la requête d'insertion
                     }
                 }
-                SQLiteCommand cmdMobiliser = new SQLiteCommand(requeteMobiliser, con);  // Définir la commande SQL
-                MessageBox.Show(requeteMobiliser);                                      // Afficher la requête SQL                                                                      
+                SQLiteCommand cmdMobiliser = new SQLiteCommand(requeteMobiliser, con);  // Définir la commande SQL                                                                  
                 cmdMobiliser.ExecuteNonQuery();                                         // Insertion de la mobilisation des pompiers dans la table "Mobiliser"
             }
             catch (Exception ex)
@@ -389,8 +388,7 @@ namespace Sae25_Main_Form
                         requetePartirAvec += $"INSERT INTO PartirAvec (idCaserne, codeTypeEngin, numeroEngin, idMission, reparationsEventuelles) VALUES ({idCaserne}, '{codeTypeEngin}', {numeroEngin}, {idMission}, '{reparationsEventuelles}'); "; // Créer la requête d'insertion
                     }
                 }
-                SQLiteCommand cmdPartirAvec = new SQLiteCommand(requetePartirAvec, con);    // Définir la commande SQL
-                MessageBox.Show(requetePartirAvec);                                         // Afficher la requête SQL                                                                      
+                SQLiteCommand cmdPartirAvec = new SQLiteCommand(requetePartirAvec, con);    // Définir la commande SQL                                                                    
                 cmdPartirAvec.ExecuteNonQuery();                                            // Insertion de la mobilisation des engins dans la table "PartirAvec"
             }
             catch (Exception ex)
@@ -412,11 +410,22 @@ namespace Sae25_Main_Form
                     int numero = Convert.ToInt32(row["Numero"]);    // Récupérer le numero de l'engin
                     int enPanne = Convert.ToInt32(row["enPanne"]);  // Récupérer le statut "En panne" de l'engin
                     SQLiteCommand cmdEngin = new SQLiteCommand($"UPDATE Engin SET enPanne = {enPanne}, enMission = 0 WHERE codeTypeEngin = '{codeTypeEngin}' AND numero = {numero};", con);
-                    cmdEngin.ExecuteNonQuery(); // Exécuter la commande SQL
-                    // Mettre à jour le statut de l'engin dans la table "Engin"
+                    cmdEngin.ExecuteNonQuery(); // Exécuter la commande SQL pour mettre à jour le statut de l'engin dans la table "Engin"
+
+                    // Mettre à jour les réparations éventuelles de l'engin dans la base de données
+                    string reparations = row["Reparations"].ToString(); // Récupérer les réparations éventuelles de l'engin
+                    reparations = reparations.Replace("'", " ");        // Remplacer les apostrophes par des espaces pour éviter les erreurs SQL
+                    int idCaserne = Convert.ToInt32(monDs.Tables["Mission"].Select($"id = {idMission}").FirstOrDefault()["idCaserne"]);  // Récupérer l'ID de la caserne
+                    SQLiteCommand cmdReparations = new SQLiteCommand($"UPDATE PartirAvec SET reparationsEventuelles = '{reparations}' WHERE idCaserne = {idCaserne} AND codeTypeEngin = '{codeTypeEngin}' AND numeroEngin = {numero} AND idMission = {idMission};", con);
+                    cmdReparations.ExecuteNonQuery(); // Exécuter la commande SQL pour mettre à jour les réparations éventuelles
+
+                    // Mettre à jour le statut de l'engin dans le DataSet local
                     DataRow drEngin = monDs.Tables["Engin"].Select($"codeTypeEngin = '{codeTypeEngin}' AND numero = {numero}").FirstOrDefault(); // Récupérer la ligne de l'engin dans le DataSet local
-                    drEngin["enPanne"] = enPanne; // Mettre à jour le statut "En panne" de l'engin dans le DataSet local
-                    drEngin["enMission"] = 0; // Mettre à jour le statut "En mission" de l'engin dans le DataSet local
+                    drEngin["enPanne"] = enPanne;                       // Mettre à jour le statut "En panne" de l'engin dans le DataSet local
+                    drEngin["enMission"] = 0;                           // Mettre à jour le statut "En mission" de l'engin dans le DataSet local
+                    // Mettre à jour les réparations éventuelles de l'engin dans le DataSet local
+                    DataRow drReparations = monDs.Tables["PartirAvec"].Select($"idCaserne = {idCaserne} AND codeTypeEngin = '{codeTypeEngin}' AND numeroEngin = {numero} AND idMission = {idMission}").FirstOrDefault(); // Récupérer la ligne de l'engin dans la table "PartirAvec" du DataSet local
+                    drReparations["reparationsEventuelles"] = reparations; // Mettre à jour les réparations éventuelles de l'engin dans le DataSet local
                 }
             }
             catch (Exception ex)
@@ -602,7 +611,6 @@ namespace Sae25_Main_Form
             DataTable enginsMission = getEnginsMission(idMission);      // Récupérer les engins de la mission
             if (enginsMission != null && enginsMission.Rows.Count > 0)  // Vérifier si des engins sont mobilisés
             {
-                MessageBox.Show($"Nombre d'engins mobilisés pour la mission n°{idMission} : {enginsMission.Rows.Count}"); // Afficher le nombre d'engins mobilisés
                 foreach (DataRow row in enginsMission.Rows) // Parcourir les lignes de la table des engins
                 {
                     string codeTypeEngin = row["codeTypeEngin"].ToString(); // Récupérer le code type de l'engin
@@ -633,7 +641,6 @@ namespace Sae25_Main_Form
             DataTable pompiersMission = monDs.Tables["Mobiliser"].Select("idMission = " + idMission.ToString()).CopyToDataTable(); // Récupérer les pompiers de la mission
             if (pompiersMission != null && pompiersMission.Rows.Count > 0) // Vérifier si des pompiers sont mobilisés
             {
-                MessageBox.Show($"Nombre de pompiers mobilisés pour la mission n°{idMission} : {pompiersMission.Rows.Count}"); // Afficher le nombre de pompiers mobilisés
                 foreach (DataRow row in pompiersMission.Rows) // Parcourir les lignes de la table des pompiers
                 {
                     string matriculePompier = Convert.ToInt32(row["matriculePompier"]).ToString(); // Récupérer le matricule du pompier

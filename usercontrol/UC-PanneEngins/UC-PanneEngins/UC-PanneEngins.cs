@@ -19,6 +19,8 @@ namespace UC_PanneEngins
             lblNumero.Text = dr["numeroEngin"].ToString();
         }
 
+        private string reparations = "";
+
         public Boolean EnPanne{
             get{ return ckbEnPanne.Checked; }
         }
@@ -31,6 +33,25 @@ namespace UC_PanneEngins
         public int Numero
         {
             get { return int.Parse(lblNumero.Text); }
+        }
+
+        public string Reparations
+        {
+            get { return reparations; }
+        }
+
+        private void ckbEnPanne_Click(object sender, EventArgs e)
+        {
+            frmReparations frm = new frmReparations();
+            if (frm.ShowDialog() == DialogResult.OK)
+            {
+                reparations = frm.Reparations;
+                ckbEnPanne.Checked = true;
+            }
+            else
+            {
+                ckbEnPanne.Checked = false;
+            }
         }
     }
 }
