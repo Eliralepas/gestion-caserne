@@ -21,8 +21,9 @@ namespace UC_PanneEngins
 
         private string reparations = "";
 
-        public Boolean EnPanne{
-            get{ return ckbEnPanne.Checked; }
+        public Boolean EnPanne
+        {
+            get { return ckbEnPanne.Checked; }
         }
 
         public String Type
@@ -43,7 +44,7 @@ namespace UC_PanneEngins
         private void ckbEnPanne_Click(object sender, EventArgs e)
         {
             frmReparations frm = new frmReparations();
-            if (frm.ShowDialog() == DialogResult.OK)
+            if(frm.ShowDialog() == DialogResult.OK)
             {
                 reparations = frm.Reparations;
                 ckbEnPanne.Checked = true;
