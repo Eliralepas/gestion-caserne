@@ -32,11 +32,11 @@
             panelVolet = new Panel();
             panelNavigation = new Panel();
             btnQuitter = new Button();
-            btn5 = new NavigationBarUserControl.UCButton();
-            btn1 = new NavigationBarUserControl.UCButton();
-            btn4 = new NavigationBarUserControl.UCButton();
-            btn2 = new NavigationBarUserControl.UCButton();
-            btn3 = new NavigationBarUserControl.UCButton();
+            btnStatistiques = new NavigationBarUserControl.UCButton();
+            btnTableauDeBord = new NavigationBarUserControl.UCButton();
+            btnGestionPersonnel = new NavigationBarUserControl.UCButton();
+            btnAjoutMission = new NavigationBarUserControl.UCButton();
+            btnGestionEngins = new NavigationBarUserControl.UCButton();
             picBoxCaserne = new PictureBox();
             panelNavigation.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)picBoxCaserne).BeginInit();
@@ -54,11 +54,11 @@
             // 
             panelNavigation.BackColor = Color.DarkRed;
             panelNavigation.Controls.Add(btnQuitter);
-            panelNavigation.Controls.Add(btn5);
-            panelNavigation.Controls.Add(btn1);
-            panelNavigation.Controls.Add(btn4);
-            panelNavigation.Controls.Add(btn2);
-            panelNavigation.Controls.Add(btn3);
+            panelNavigation.Controls.Add(btnStatistiques);
+            panelNavigation.Controls.Add(btnTableauDeBord);
+            panelNavigation.Controls.Add(btnGestionPersonnel);
+            panelNavigation.Controls.Add(btnAjoutMission);
+            panelNavigation.Controls.Add(btnGestionEngins);
             panelNavigation.Location = new Point(13, 13);
             panelNavigation.Name = "panelNavigation";
             panelNavigation.Size = new Size(283, 628);
@@ -77,60 +77,60 @@
             btnQuitter.UseVisualStyleBackColor = true;
             btnQuitter.Click += btnQuitter_Click;
             // 
-            // btn5
+            // btnStatistiques
             // 
-            btn5.Buttonimage = Properties.Resources.stat;
-            btn5.buttonText = "Statistiques";
-            btn5.Font = new Font("Arial Narrow", 13.8F, FontStyle.Regular, GraphicsUnit.Point, 0);
-            btn5.Location = new Point(14, 387);
-            btn5.Margin = new Padding(4, 5, 4, 5);
-            btn5.Name = "btn5";
-            btn5.Size = new Size(225, 77);
-            btn5.TabIndex = 3;
+            btnStatistiques.Buttonimage = Properties.Resources.stat;
+            btnStatistiques.buttonText = "Statistiques";
+            btnStatistiques.Font = new Font("Arial Narrow", 13.8F, FontStyle.Regular, GraphicsUnit.Point, 0);
+            btnStatistiques.Location = new Point(14, 387);
+            btnStatistiques.Margin = new Padding(4, 5, 4, 5);
+            btnStatistiques.Name = "btnStatistiques";
+            btnStatistiques.Size = new Size(225, 77);
+            btnStatistiques.TabIndex = 3;
             // 
-            // btn1
+            // btnTableauDeBord
             // 
-            btn1.Buttonimage = Properties.Resources.tableau_de_bord1;
-            btn1.buttonText = "Tableau de bord";
-            btn1.Font = new Font("Arial Narrow", 13.8F, FontStyle.Regular, GraphicsUnit.Point, 0);
-            btn1.Location = new Point(10, 26);
-            btn1.Margin = new Padding(4, 5, 4, 5);
-            btn1.Name = "btn1";
-            btn1.Size = new Size(229, 83);
-            btn1.TabIndex = 0;
+            btnTableauDeBord.Buttonimage = Properties.Resources.tableau_de_bord1;
+            btnTableauDeBord.buttonText = "Tableau de bord";
+            btnTableauDeBord.Font = new Font("Arial Narrow", 13.8F, FontStyle.Regular, GraphicsUnit.Point, 0);
+            btnTableauDeBord.Location = new Point(10, 26);
+            btnTableauDeBord.Margin = new Padding(4, 5, 4, 5);
+            btnTableauDeBord.Name = "btnTableauDeBord";
+            btnTableauDeBord.Size = new Size(229, 83);
+            btnTableauDeBord.TabIndex = 0;
             // 
-            // btn4
+            // btnGestionPersonnel
             // 
-            btn4.Buttonimage = Properties.Resources.perso;
-            btn4.buttonText = "Gestion du personnel";
-            btn4.Font = new Font("Arial Narrow", 13.8F, FontStyle.Regular, GraphicsUnit.Point, 0);
-            btn4.Location = new Point(14, 294);
-            btn4.Margin = new Padding(4, 5, 4, 5);
-            btn4.Name = "btn4";
-            btn4.Size = new Size(225, 83);
-            btn4.TabIndex = 2;
+            btnGestionPersonnel.Buttonimage = Properties.Resources.perso;
+            btnGestionPersonnel.buttonText = "Gestion du personnel";
+            btnGestionPersonnel.Font = new Font("Arial Narrow", 13.8F, FontStyle.Regular, GraphicsUnit.Point, 0);
+            btnGestionPersonnel.Location = new Point(14, 294);
+            btnGestionPersonnel.Margin = new Padding(4, 5, 4, 5);
+            btnGestionPersonnel.Name = "btnGestionPersonnel";
+            btnGestionPersonnel.Size = new Size(225, 83);
+            btnGestionPersonnel.TabIndex = 2;
             // 
-            // btn2
+            // btnAjoutMission
             // 
-            btn2.Buttonimage = Properties.Resources.alarme;
-            btn2.buttonText = "Nouvelle mission";
-            btn2.Font = new Font("Arial Narrow", 13.8F, FontStyle.Regular, GraphicsUnit.Point, 0);
-            btn2.Location = new Point(10, 119);
-            btn2.Margin = new Padding(4, 5, 4, 5);
-            btn2.Name = "btn2";
-            btn2.Size = new Size(229, 79);
-            btn2.TabIndex = 4;
+            btnAjoutMission.Buttonimage = Properties.Resources.alarme;
+            btnAjoutMission.buttonText = "Nouvelle mission";
+            btnAjoutMission.Font = new Font("Arial Narrow", 13.8F, FontStyle.Regular, GraphicsUnit.Point, 0);
+            btnAjoutMission.Location = new Point(10, 119);
+            btnAjoutMission.Margin = new Padding(4, 5, 4, 5);
+            btnAjoutMission.Name = "btnAjoutMission";
+            btnAjoutMission.Size = new Size(229, 79);
+            btnAjoutMission.TabIndex = 4;
             // 
-            // btn3
+            // btnGestionEngins
             // 
-            btn3.Buttonimage = Properties.Resources.pompiers;
-            btn3.buttonText = "Gestion des engins";
-            btn3.Font = new Font("Arial Narrow", 13.8F, FontStyle.Regular, GraphicsUnit.Point, 0);
-            btn3.Location = new Point(10, 208);
-            btn3.Margin = new Padding(4, 5, 4, 5);
-            btn3.Name = "btn3";
-            btn3.Size = new Size(229, 76);
-            btn3.TabIndex = 1;
+            btnGestionEngins.Buttonimage = Properties.Resources.pompiers;
+            btnGestionEngins.buttonText = "Gestion des engins";
+            btnGestionEngins.Font = new Font("Arial Narrow", 13.8F, FontStyle.Regular, GraphicsUnit.Point, 0);
+            btnGestionEngins.Location = new Point(10, 208);
+            btnGestionEngins.Margin = new Padding(4, 5, 4, 5);
+            btnGestionEngins.Name = "btnGestionEngins";
+            btnGestionEngins.Size = new Size(229, 76);
+            btnGestionEngins.TabIndex = 1;
             // 
             // picBoxCaserne
             // 
@@ -167,11 +167,11 @@
         #endregion
 
         private System.Windows.Forms.PictureBox picBoxCaserne;
-        private NavigationBarUserControl.UCButton btn2;
-        private NavigationBarUserControl.UCButton btn5;
-        private NavigationBarUserControl.UCButton btn4;
-        private NavigationBarUserControl.UCButton btn3;
-        private NavigationBarUserControl.UCButton btn1;
+        private NavigationBarUserControl.UCButton btnAjoutMission;
+        private NavigationBarUserControl.UCButton btnStatistiques;
+        private NavigationBarUserControl.UCButton btnGestionPersonnel;
+        private NavigationBarUserControl.UCButton btnGestionEngins;
+        private NavigationBarUserControl.UCButton btnTableauDeBord;
         private System.Windows.Forms.Panel panelVolet;
         private System.Windows.Forms.Panel panelNavigation;
         private System.Windows.Forms.Button btnQuitter;

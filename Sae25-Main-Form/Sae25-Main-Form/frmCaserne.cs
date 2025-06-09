@@ -44,6 +44,7 @@ namespace Sae25_Main_Form
         private DataSet monDs;
         private DataTable dtMissionsFormatees; // Déclarer une table de missions formatées pour le tableau de bord
         private UCButton btnActuel;
+        UCGestionPerso perso;
 
         private void frmCaserne_Load(object sender, EventArgs e)
         {
@@ -71,7 +72,7 @@ namespace Sae25_Main_Form
             btnTableauDeBord.buttonText = "Tableau de Bord";
             btnAjoutMission.Tag = "nvMission";
             btnGestionEngins.Tag = "engins";
-            btnGestionPersonnel.Tag = "dummy";
+            btnGestionPersonnel.Tag = "perso";
             btnStatistiques.Tag = "tabStat";
 
             foreach (UCButton btn in panelNavigation.Controls.OfType<UCButton>())   // Lier les boutons de navigation
@@ -108,6 +109,9 @@ namespace Sae25_Main_Form
                     break;
                 case ("nvMission"):
                     LoadAjoutMission();     // Charger le volet d'ajout de mission
+                    break;
+                case ("perso"):
+                    LoadPerso();
                     break;
 
             }
@@ -156,7 +160,20 @@ namespace Sae25_Main_Form
             }
             panelVolet.Controls.Add(tabStat);       // Ajouter le tableau de statistiques au panneau
         }
+        private void LoadPerso()
+        {
+            if(con.State == ConnectionState.Closed)
+            {
+                con.Open();
+            }
 
+            if(perso == null)
+            {
+                perso = new UCGestionPerso.UCGestionPerso(con);
+                perso.Dock = DockStyle.Fill;
+            }
+            panelVolet.Controls.Add(perso);
+        }
         private void LoadEngins()
         {
             if (gestionEngin == null) // Vérifier si le volet de gestion des engins n'existe pas
