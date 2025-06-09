@@ -123,8 +123,8 @@ namespace UserControlMission
                 && tryPompier(idCaserne, enginNecessaire))
             {
                 remplirMission();
-                remplissageEngin(idSinistre, idCaserne);
-                remplissagePompier(idCaserne, enginNecessaire);
+                //remplissageEngin(idSinistre, idCaserne);
+                //remplissagePompier(idCaserne, enginNecessaire);
                 generationUC(idSinistre, idCaserne);
 
                 //UC gried view

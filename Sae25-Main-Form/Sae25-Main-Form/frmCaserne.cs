@@ -386,7 +386,7 @@ namespace Sae25_Main_Form
                         string codeTypeEngin = row["codeTypeEngin"].ToString();                     // Récupérer le code type de l'engin
                         int numeroEngin = Convert.ToInt32(row["numeroEngin"]);                      // Récupérer le numéro de l'engin
                         string reparationsEventuelles = row["reparationsEventuelles"].ToString();   // Récupérer les réparations éventuelles de l'engin
-                        requetePartirAvec += $"INSERT INTO PartirAvec (idCaserne, codeTypeEngin, numeroEngin, idMission, reparationsEventuelles) VALUES ({idCaserne}, '{codeTypeEngin}', {numeroEngin}, {idMission}, {reparationsEventuelles}); "; // Créer la requête d'insertion
+                        requetePartirAvec += $"INSERT INTO PartirAvec (idCaserne, codeTypeEngin, numeroEngin, idMission, reparationsEventuelles) VALUES ({idCaserne}, '{codeTypeEngin}', {numeroEngin}, {idMission}, '{reparationsEventuelles}'); "; // Créer la requête d'insertion
                     }
                 }
                 SQLiteCommand cmdPartirAvec = new SQLiteCommand(requetePartirAvec, con);    // Définir la commande SQL
