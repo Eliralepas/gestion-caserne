@@ -452,7 +452,6 @@ namespace UserControlMission
                     // Marquer l'engin comme en mission
                     enginsDispo[i]["enMission"] = 1;
                 }
-
             }
             return dt;
 
@@ -521,6 +520,7 @@ namespace UserControlMission
             DataTable Pompier = remplissagePompier(idCaserne, enginMission(idSinistre));
             int top = 10;
             int left = 5;
+            MessageBox.Show("Il y a " + Engin.Rows.Count + " engins et " + Pompier.Rows.Count + " pompiers mobilisés pour cette mission.");
             foreach (DataRow dr in Engin.Rows) 
             {
                 string code = "Type d'engin : " + dr["TypeEngin"].ToString();

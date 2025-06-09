@@ -24,6 +24,7 @@ using iTextSharp.text.pdf.draw;
 using Org.BouncyCastle.Asn1.IsisMtt.X509;
 using System.Xml.Linq;
 using System.Diagnostics;
+using Org.BouncyCastle.Asn1.Ocsp;
 
 
 namespace Sae25_Main_Form
@@ -274,22 +275,25 @@ namespace Sae25_Main_Form
             drMission["dateHeureRetour"] = mission.DateFin; // Mettre à jour la date de fin de la mission dans le DataSet local
             drMission["compteRendu"] = compteRendu;         // Mettre à jour le compte rendu de la mission dans le DataSet local
             drMission["terminee"] = 1;                      // Mettre à jour le statut de la mission à "terminée" dans le DataSet local
-            string requete = ""; // Initialiser la requête SQL
+            string requeteMission = "";         // Initialiser la requête SQL pour la mission
             con.Open(); // Ouvrir la connexion à la base de données
             // Vérifier si la mission existe déjà
             if (ExisteMissionBD(idMission)) // Si la mission existe déjà dans la base de données
             {
-                requete = UpdateMission(mission, compteRendu);      // Appeler la méthode de mise à jour de mission
+                MessageBox.Show("La mission existe déjà dans la base de données");  // Afficher le message
+                requeteMission = UpdateMission(mission, compteRendu);      // Appeler la méthode de mise à jour de mission
             }
             else // Si la mission n'existe pas dans la base de données
             {
-                requete = InsertionMission(mission, compteRendu);   // Appeler la méthode d'insertion de mission
+                requeteMission = InsertionMission(mission, compteRendu); // Appeler la méthode d'insertion de mission
+                InsertionMobiliser(idMission);  // Appeler la méthode d'insertion des pompiers mobilisés
+                InsertionPartirAvec(idMission); // Appeler la méthode d'insertion des engins mobilisés
             }
             try
             {
-                SQLiteCommand cmdMission = new SQLiteCommand(requete, con);     // Définir la commande SQL
-                MessageBox.Show(requete);                                       // Afficher la requête SQL                                                                      
-                cmdMission.ExecuteNonQuery();                                   // Insertion de la mission dans la table des missions
+                SQLiteCommand cmdMission = new SQLiteCommand(requeteMission, con);  // Définir la commande SQL
+                MessageBox.Show(requeteMission);                                    // Afficher la requête SQL                                                                      
+                cmdMission.ExecuteNonQuery();                                       // Insertion de la mission dans la table des missions
             }
             catch (Exception ex)
             {
@@ -338,9 +342,62 @@ namespace Sae25_Main_Form
 
         private string UpdateMission(Mission mission, string compteRendu)
         {
-            MessageBox.Show("La mission existe déjà dans la base de données"); // Afficher le message
             // Renvoyer la requête SQL pour mettre à jour la mission
             return $"UPDATE Mission SET dateHeureRetour = '{mission.DateFin}', terminee = 1, compteRendu = '{compteRendu}' WHERE id = {mission.MissionID.ToString()};";
+        }
+
+        private void InsertionMobiliser(int idMission)
+        {
+            try
+            {
+                // Logique pour ajouter les pompiers mobilisés à la mission dans la base de données
+                string requeteMobiliser = ""; // Initialiser la requête SQL pour la mobilisation des pompiers
+                foreach (DataRow row in monDs.Tables["Mobiliser"].Rows) // Parcourir les lignes de la table "Mobiliser"
+                {
+                    if (Convert.ToInt32(row["idMission"]) == idMission) // Vérifier si l'ID de la mission correspond
+                    {
+                        int matriculePompier = Convert.ToInt32(row["matriculePompier"]);    // Récupérer le matricule du pompier
+                        int idHabilitation = Convert.ToInt32(row["idHabilitation"]);        // Récupérer l'ID de l'habilitation du pompier
+                        requeteMobiliser = $"INSERT INTO Mobiliser (matriculePompier, idMission, idHabilitation) VALUES ({matriculePompier}, {idMission}, {idHabilitation}); "; // Créer la requête d'insertion
+                    }
+                }
+                SQLiteCommand cmdMobiliser = new SQLiteCommand(requeteMobiliser, con);  // Définir la commande SQL
+                MessageBox.Show(requeteMobiliser);                                      // Afficher la requête SQL                                                                      
+                cmdMobiliser.ExecuteNonQuery();                                         // Insertion de la mobilisation des pompiers dans la table "Mobiliser"
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show("Erreur lors de l'ajout de la mobilisation des pompiers dans la base de données"); // Afficher un message d'erreur
+                MessageBox.Show(ex.ToString()); // Afficher l'erreur
+            }
+        }
+
+        private void InsertionPartirAvec(int idMission)
+        {
+            try
+            {
+                // Logique pour ajouter les engins mobilisés à la mission dans la base de données
+                string requetePartirAvec = ""; // Initialiser la requête SQL pour la mobilisation des engins
+                foreach (DataRow row in monDs.Tables["PartirAvec"].Rows) // Parcourir les lignes de la table "PartirAvec"
+                {
+                    if (Convert.ToInt32(row["idMission"]) == idMission) // Vérifier si l'ID de la mission correspond
+                    {
+                        int idCaserne = Convert.ToInt32(row["idCaserne"]);                          // Récupérer l'ID de la caserne
+                        string codeTypeEngin = row["codeTypeEngin"].ToString();                     // Récupérer le code type de l'engin
+                        int numeroEngin = Convert.ToInt32(row["numeroEngin"]);                      // Récupérer le numéro de l'engin
+                        string reparationsEventuelles = row["reparationsEventuelles"].ToString();   // Récupérer les réparations éventuelles de l'engin
+                        requetePartirAvec += $"INSERT INTO PartirAvec (idCaserne, codeTypeEngin, numeroEngin, idMission, reparationsEventuelles) VALUES ({idCaserne}, '{codeTypeEngin}', {numeroEngin}, {idMission}, {reparationsEventuelles}); "; // Créer la requête d'insertion
+                    }
+                }
+                SQLiteCommand cmdPartirAvec = new SQLiteCommand(requetePartirAvec, con);    // Définir la commande SQL
+                MessageBox.Show(requetePartirAvec);                                         // Afficher la requête SQL                                                                      
+                cmdPartirAvec.ExecuteNonQuery();                                            // Insertion de la mobilisation des engins dans la table "PartirAvec"
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show("Erreur lors de l'ajout de la mobilisation des engins dans la base de données"); // Afficher un message d'erreur
+                MessageBox.Show(ex.ToString()); // Afficher l'erreur
+            }
         }
 
         private void UpdateStatutEnginsMission(int idMission, DataTable engins)
@@ -545,6 +602,7 @@ namespace Sae25_Main_Form
             DataTable enginsMission = getEnginsMission(idMission);      // Récupérer les engins de la mission
             if (enginsMission != null && enginsMission.Rows.Count > 0)  // Vérifier si des engins sont mobilisés
             {
+                MessageBox.Show($"Nombre d'engins mobilisés pour la mission n°{idMission} : {enginsMission.Rows.Count}"); // Afficher le nombre d'engins mobilisés
                 foreach (DataRow row in enginsMission.Rows) // Parcourir les lignes de la table des engins
                 {
                     string codeTypeEngin = row["codeTypeEngin"].ToString(); // Récupérer le code type de l'engin
@@ -575,6 +633,7 @@ namespace Sae25_Main_Form
             DataTable pompiersMission = monDs.Tables["Mobiliser"].Select("idMission = " + idMission.ToString()).CopyToDataTable(); // Récupérer les pompiers de la mission
             if (pompiersMission != null && pompiersMission.Rows.Count > 0) // Vérifier si des pompiers sont mobilisés
             {
+                MessageBox.Show($"Nombre de pompiers mobilisés pour la mission n°{idMission} : {pompiersMission.Rows.Count}"); // Afficher le nombre de pompiers mobilisés
                 foreach (DataRow row in pompiersMission.Rows) // Parcourir les lignes de la table des pompiers
                 {
                     string matriculePompier = Convert.ToInt32(row["matriculePompier"]).ToString(); // Récupérer le matricule du pompier
