@@ -92,8 +92,9 @@
             this.ckbEnPanne.TabIndex = 5;
             this.ckbEnPanne.Text = "En panne";
             this.ckbEnPanne.UseVisualStyleBackColor = true;
+            this.ckbEnPanne.Click += new System.EventHandler(this.ckbEnPanne_Click);
             // 
-            // UC_PanneEngins
+            // PanneEngins
             // 
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.None;
             this.BackColor = System.Drawing.SystemColors.Control;
@@ -104,7 +105,7 @@
             this.Controls.Add(this.lblType);
             this.Controls.Add(this.picBoxEngin);
             this.Font = new System.Drawing.Font("Arial", 10F);
-            this.Name = "UC_PanneEngins";
+            this.Name = "PanneEngins";
             this.Size = new System.Drawing.Size(500, 150);
             ((System.ComponentModel.ISupportInitialize)(this.picBoxEngin)).EndInit();
             this.ResumeLayout(false);
