@@ -52,6 +52,7 @@
             // panelMissions
             // 
             panelMissions.AutoScroll = true;
+            panelMissions.AutoSizeMode = AutoSizeMode.GrowAndShrink;
             panelMissions.BackColor = Color.DarkRed;
             panelMissions.Location = new Point(19, 95);
             panelMissions.Name = "panelMissions";
@@ -97,6 +98,7 @@
             // 
             AutoScaleDimensions = new SizeF(120F, 120F);
             AutoScaleMode = AutoScaleMode.Dpi;
+            AutoSizeMode = AutoSizeMode.GrowAndShrink;
             Controls.Add(sckbEnCours);
             Controls.Add(lblEnCours);
             Controls.Add(lblBarre);

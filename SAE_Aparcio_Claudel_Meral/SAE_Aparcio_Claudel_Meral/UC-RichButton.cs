@@ -8,7 +8,7 @@ using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
 
-namespace UCGestionPerso
+namespace UC_GestionPerso
 {
     public delegate void ClickedWithTagHandler(UCRichButton me,object tag);
 

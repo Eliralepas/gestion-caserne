@@ -8,14 +8,14 @@ using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
 
-namespace NavigationBarUserControl
+namespace UC_Bouton
 {
-    public partial class UCButton : UserControl
+    public partial class Bouton : UserControl
     {
         private bool isExpanded = false;
         private bool isClicked = false;
 
-        public UCButton()
+        public Bouton()
         {
             InitializeComponent();
         }
@@ -53,7 +53,7 @@ namespace NavigationBarUserControl
         }
 
 
-        public UCButton(string str, Image img, Control binder)
+        public Bouton(string str, Image img, Control binder)
         {
             InitializeComponent();
             label1.Text = str;

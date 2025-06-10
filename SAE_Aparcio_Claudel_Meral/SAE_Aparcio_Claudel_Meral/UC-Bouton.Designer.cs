@@ -1,6 +1,6 @@
-﻿namespace NavigationBarUserControl
+﻿namespace UC_Bouton
 {
-    partial class UCButton
+    partial class Bouton
     {
         /// <summary>
         /// Variable nécessaire au concepteur.

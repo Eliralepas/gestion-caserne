@@ -11,13 +11,13 @@ using System.Data.SqlClient;
 using System.Reflection.Emit;
 using System.Net;
 
-namespace UserControlMission
+namespace UC_AjoutMissions
 {
     public delegate void AjouterMission(DataRow drMission); // Déclaration de la signature du délégué pour ajouter une mission
 
-    public partial class ucMission : UserControl
+    public partial class AjoutMissions : UserControl
     {
-        public ucMission()
+        public AjoutMissions()
         {
             InitializeComponent();
             monDs = SAE_Aparcio_Claudel_Meral.MesDatas.DsGlobal;

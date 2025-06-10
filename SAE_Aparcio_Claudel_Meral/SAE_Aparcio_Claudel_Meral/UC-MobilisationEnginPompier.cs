@@ -9,7 +9,7 @@ using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
 
-namespace UserControlMission
+namespace UC_AjoutMissions
 {
     public partial class UC_MobilisationEnginPompier : UserControl
     {

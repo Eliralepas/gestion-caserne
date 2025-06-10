@@ -8,7 +8,7 @@ using System.Text;
 using System.Windows.Forms;
 using System.Data.SQLite;
 
-namespace NavigationBarUserControl
+namespace UC_Bouton
 {
     public partial class button: UserControl
     {

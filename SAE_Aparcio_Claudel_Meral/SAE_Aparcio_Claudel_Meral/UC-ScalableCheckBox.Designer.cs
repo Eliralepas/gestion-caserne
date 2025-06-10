@@ -43,6 +43,8 @@
             this.panel.Size = new System.Drawing.Size(48, 48);
             this.panel.TabIndex = 0;
             this.panel.Click += new System.EventHandler(this.panel_Click);
+            this.panel.MouseEnter += new System.EventHandler(this.panel_MouseEnter);
+            this.panel.MouseLeave += new System.EventHandler(this.panel_MouseLeave);
             // 
             // ScalableCheckBox
             // 

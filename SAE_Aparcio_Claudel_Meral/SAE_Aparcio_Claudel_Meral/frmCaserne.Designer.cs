@@ -32,11 +32,11 @@
             panelVolet = new Panel();
             panelNavigation = new Panel();
             btnQuitter = new Button();
-            btnStatistiques = new NavigationBarUserControl.UCButton();
-            btnTableauDeBord = new NavigationBarUserControl.UCButton();
-            btnGestionPersonnel = new NavigationBarUserControl.UCButton();
-            btnAjoutMission = new NavigationBarUserControl.UCButton();
-            btnGestionEngins = new NavigationBarUserControl.UCButton();
+            btnStatistiques = new UC_Bouton.Bouton();
+            btnTableauDeBord = new UC_Bouton.Bouton();
+            btnGestionPersonnel = new UC_Bouton.Bouton();
+            btnAjoutMission = new UC_Bouton.Bouton();
+            btnGestionEngins = new UC_Bouton.Bouton();
             picBoxCaserne = new PictureBox();
             panelNavigation.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)picBoxCaserne).BeginInit();
@@ -177,11 +177,11 @@
         #endregion
 
         private System.Windows.Forms.PictureBox picBoxCaserne;
-        private NavigationBarUserControl.UCButton btnAjoutMission;
-        private NavigationBarUserControl.UCButton btnStatistiques;
-        private NavigationBarUserControl.UCButton btnGestionPersonnel;
-        private NavigationBarUserControl.UCButton btnGestionEngins;
-        private NavigationBarUserControl.UCButton btnTableauDeBord;
+        private UC_Bouton.Bouton btnAjoutMission;
+        private UC_Bouton.Bouton btnStatistiques;
+        private UC_Bouton.Bouton btnGestionPersonnel;
+        private UC_Bouton.Bouton btnGestionEngins;
+        private UC_Bouton.Bouton btnTableauDeBord;
         private System.Windows.Forms.Panel panelVolet;
         private System.Windows.Forms.Panel panelNavigation;
         private System.Windows.Forms.Button btnQuitter;

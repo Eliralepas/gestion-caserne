@@ -1,6 +1,6 @@
-﻿namespace UCGestionPerso
+﻿namespace UC_GestionPerso
 {
-    partial class UCGestionPerso
+    partial class GestionPerso
     {
         /// <summary>
         /// Variable nécessaire au concepteur.

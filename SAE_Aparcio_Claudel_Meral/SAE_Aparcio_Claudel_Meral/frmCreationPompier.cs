@@ -10,7 +10,7 @@ using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
 
-namespace UCGestionPerso
+namespace UC_GestionPerso
 {
     public partial class frmCreationPompier : Form
     {

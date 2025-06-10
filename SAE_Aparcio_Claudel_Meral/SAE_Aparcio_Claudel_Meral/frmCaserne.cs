@@ -1,4 +1,4 @@
-﻿using NavigationBarUserControl;
+﻿using UC_Bouton;
 using System;
 using System.Collections.Generic;
 using System.ComponentModel;
@@ -14,8 +14,8 @@ using UC_Statistique;
 using UC_Mission;
 using System.Net;
 using System.Reflection;
-using UCGestionEngins;
-using UserControlMission;
+using UC_GestionEngins;
+using UC_AjoutMissions;
 using System.IO;
 using iTextSharp.text.pdf;
 using iTextSharp.text;
@@ -26,6 +26,7 @@ using System.Diagnostics;
 using Org.BouncyCastle.Asn1.Ocsp;
 using SAE_Aparcio_Claudel_Meral.Properties;
 using SAE_Aparcio_Claudel_Meral;
+using UC_GestionPerso;
 
 
 namespace SAE_Aparcio_Claudel_Meral
@@ -37,15 +38,15 @@ namespace SAE_Aparcio_Claudel_Meral
             InitializeComponent();
         }
 
-        private TableauDeBord tableauDeBord;
-        private UCGestionEngin gestionEngin;
-        private ucMission ajoutMission;
-        private UCStatistique tabStat;
-        private SQLiteConnection con;
-        private DataSet monDs;
-        private DataTable dtMissionsFormatees; // Déclarer une table de missions formatées pour le tableau de bord
-        private UCButton btnActuel;
-        UCGestionPerso.UCGestionPerso perso;
+        private TableauDeBord tableauDeBord;    // Déclarer le volet du tableau de bord
+        private AjoutMissions ajoutMissions;    // Déclarer le volet d'ajout de missions
+        private GestionEngins gestionEngins;    // Déclarer le volet de gestion des engins
+        private GestionPerso gestionPerso;      // Déclarer le volet de gestion du personnel
+        private Statistique stats;              // Déclarer le volet de statistiques
+        private SQLiteConnection con;           // Déclarer la connection à la base de données
+        private DataSet monDs;                  // Déclarer le DataSet Global
+        private DataTable dtMissionsFormatees;  // Déclarer une table de missions formatées pour le tableau de bord
+        private Bouton btnActuel;               // Déclarer le bouton du volet actuellement ouvert
 
         private void frmCaserne_Load(object sender, EventArgs e)
         {
@@ -76,7 +77,7 @@ namespace SAE_Aparcio_Claudel_Meral
             btnGestionPersonnel.Tag = "perso";
             btnStatistiques.Tag = "tabStat";
 
-            foreach(UCButton btn in panelNavigation.Controls.OfType<UCButton>())   // Lier les boutons de navigation
+            foreach(Bouton btn in panelNavigation.Controls.OfType<Bouton>())   // Lier les boutons de navigation
             {
                 btn.ButtonClicked += NavigationButtonClick;                         // Lier l'événement de clic du bouton
             }
@@ -89,7 +90,7 @@ namespace SAE_Aparcio_Claudel_Meral
             {
                 con.Close(); // Fermer la connexion
             }
-            UCButton btn = (UCButton)sender;    // Récupérer le bouton cliqué
+            Bouton btn = (Bouton)sender;    // Récupérer le bouton cliqué
             panelVolet.Visible = true;          // Rendre le panneau de volet visible
             panelVolet.Controls.Clear();        // Vider le panneau de volet avant d'ajouter un nouveau contrôle
             if(btnActuel != null)  // Vérifier si un bouton est déjà actif
@@ -120,16 +121,17 @@ namespace SAE_Aparcio_Claudel_Meral
 
         private void LoadAjoutMission()
         {
-            if(ajoutMission == null)  // Vérifier si monDs n'est pas vide
+            if(ajoutMissions == null)  // Vérifier si monDs n'est pas vide
             {
                 if(tableauDeBord == null) // Si le tableau de bord n'existe pas
                 {
                     InitTableauDeBord(); // Initialiser le tableau de bord pour l'ajout éventuel de missions
                 }
-                ajoutMission = new ucMission();            // Instancier le volet 2 (Ajout de mission)
-                ajoutMission.ajouterMission = AjouterMission;   // Lier la méthode d'ajout de mission
+                ajoutMissions = new AjoutMissions();            // Instancier le volet 2 (Ajout de mission)
+                ajoutMissions.ajouterMission = AjouterMission;  // Lier la méthode d'ajout de mission
+                ajoutMissions.Dock = DockStyle.Fill;            // Définir le dock du volet d'ajout de mission
             }
-            panelVolet.Controls.Add(ajoutMission); // Ajouter le volet d'ajout de mission au panneau
+            panelVolet.Controls.Add(ajoutMissions); // Ajouter le volet d'ajout de mission au panneau
         }
 
         private void LoadTableauDeBord()
@@ -149,17 +151,18 @@ namespace SAE_Aparcio_Claudel_Meral
             tableauDeBord.creerPdfMission = CreerPdfMission;        // Lier la méthode de création du PDF de la mission
             RemplirTableMissionsFormatees();                        // Remplir la table de missions formatées
             tableauDeBord.LoadMissions(dtMissionsFormatees);        // Charger les missions dans le tableau de bord
+            tableauDeBord.Dock = DockStyle.Fill;                    // Définir le dock du tableau de bord
         }
 
         private void LoadStatistique()
         {
             con.Open();             // Ouvrir la connexion à la base de données
-            if(tabStat == null)    // Vérifier si le tableau de statistiques n'existe pas
+            if(stats == null)    // Vérifier si le tableau de statistiques n'existe pas
             {
-                tabStat = new UCStatistique(con);   // Instancier le volet de statistiques
-                tabStat.Dock = DockStyle.Fill;
+                stats = new Statistique(con);   // Instancier le volet de statistiques
+                stats.Dock = DockStyle.Fill;
             }
-            panelVolet.Controls.Add(tabStat);       // Ajouter le tableau de statistiques au panneau
+            panelVolet.Controls.Add(stats);       // Ajouter le tableau de statistiques au panneau
         }
         private void LoadPerso()
         {
@@ -168,21 +171,21 @@ namespace SAE_Aparcio_Claudel_Meral
                 con.Open();
             }
 
-            if(perso == null)
+            if(gestionPerso == null)
             {
-                perso = new UCGestionPerso.UCGestionPerso(con);
-                perso.Dock = DockStyle.Fill;
+                gestionPerso = new UC_GestionPerso.GestionPerso(con);
+                gestionPerso.Dock = DockStyle.Fill;
             }
-            panelVolet.Controls.Add(perso);
+            panelVolet.Controls.Add(gestionPerso);
         }
         private void LoadEngins()
         {
-            if(gestionEngin == null) // Vérifier si le volet de gestion des engins n'existe pas
+            if(gestionEngins == null) // Vérifier si le volet de gestion des engins n'existe pas
             {
-                gestionEngin = new UCGestionEngin(monDs);   // Instancier le volet de gestion des engins
-                gestionEngin.Dock = DockStyle.Fill;         // Définir le dock du volet de gestion des engins
+                gestionEngins = new GestionEngins(monDs);   // Instancier le volet de gestion des engins
+                gestionEngins.Dock = DockStyle.Fill;         // Définir le dock du volet de gestion des engins
             }
-            panelVolet.Controls.Add(gestionEngin); // Ajouter le volet de gestion des engins au panneau
+            panelVolet.Controls.Add(gestionEngins); // Ajouter le volet de gestion des engins au panneau
         }
 
 

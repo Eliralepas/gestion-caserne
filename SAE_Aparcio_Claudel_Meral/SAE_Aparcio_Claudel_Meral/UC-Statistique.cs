@@ -15,17 +15,17 @@ using System.Data.SqlClient;
 
 namespace UC_Statistique
 {
-    public partial class UCStatistique : UserControl
+    public partial class Statistique : UserControl
     {
         private SQLiteConnection _con; // connection utilisé pour récupere les statistiques
         private Color[] colors = new Color[] { Color.Blue, Color.Green, Color.Red, Color.Yellow, Color.Purple, Color.Black, Color.Fuchsia };
 
-        public UCStatistique()
+        public Statistique()
         {
             InitializeComponent();
         }
 
-        public UCStatistique(SQLiteConnection con) : this()
+        public Statistique(SQLiteConnection con) : this()
         {
             if(con.State != ConnectionState.Open)
             {

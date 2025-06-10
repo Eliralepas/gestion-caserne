@@ -28,149 +28,153 @@
         /// </summary>
         private void InitializeComponent()
         {
-            this.lblMissionId = new System.Windows.Forms.Label();
-            this.lblDateDebut = new System.Windows.Forms.Label();
-            this.lblNatureMission = new System.Windows.Forms.Label();
-            this.lblCaserne = new System.Windows.Forms.Label();
-            this.panelMission = new System.Windows.Forms.Panel();
-            this.lblDateFin = new System.Windows.Forms.Label();
-            this.btnCreerPdf = new System.Windows.Forms.Button();
-            this.btnTerminerMission = new System.Windows.Forms.Button();
-            this.picBox = new System.Windows.Forms.PictureBox();
-            this.txtMotifMission = new System.Windows.Forms.RichTextBox();
-            this.panelMission.SuspendLayout();
-            ((System.ComponentModel.ISupportInitialize)(this.picBox)).BeginInit();
-            this.SuspendLayout();
+            lblMissionId = new Label();
+            lblDateDebut = new Label();
+            lblNatureMission = new Label();
+            lblCaserne = new Label();
+            panelMission = new Panel();
+            txtMotifMission = new RichTextBox();
+            lblDateFin = new Label();
+            picBox = new PictureBox();
+            btnCreerPdf = new Button();
+            btnTerminerMission = new Button();
+            panelMission.SuspendLayout();
+            ((System.ComponentModel.ISupportInitialize)picBox).BeginInit();
+            SuspendLayout();
             // 
             // lblMissionId
             // 
-            this.lblMissionId.AutoSize = true;
-            this.lblMissionId.Location = new System.Drawing.Point(143, 9);
-            this.lblMissionId.Margin = new System.Windows.Forms.Padding(2, 0, 2, 0);
-            this.lblMissionId.Name = "lblMissionId";
-            this.lblMissionId.Size = new System.Drawing.Size(119, 23);
-            this.lblMissionId.TabIndex = 1;
-            this.lblMissionId.Text = "ID mission : ";
+            lblMissionId.AutoSize = true;
+            lblMissionId.Location = new Point(143, 9);
+            lblMissionId.Margin = new Padding(2, 0, 2, 0);
+            lblMissionId.Name = "lblMissionId";
+            lblMissionId.Size = new Size(119, 23);
+            lblMissionId.TabIndex = 1;
+            lblMissionId.Text = "ID mission : ";
             // 
             // lblDateDebut
             // 
-            this.lblDateDebut.AutoSize = true;
-            this.lblDateDebut.Location = new System.Drawing.Point(143, 73);
-            this.lblDateDebut.Margin = new System.Windows.Forms.Padding(2, 0, 2, 0);
-            this.lblDateDebut.Name = "lblDateDebut";
-            this.lblDateDebut.Size = new System.Drawing.Size(119, 23);
-            this.lblDateDebut.TabIndex = 2;
-            this.lblDateDebut.Text = "Début le    : ";
+            lblDateDebut.AutoSize = true;
+            lblDateDebut.Location = new Point(143, 73);
+            lblDateDebut.Margin = new Padding(2, 0, 2, 0);
+            lblDateDebut.Name = "lblDateDebut";
+            lblDateDebut.Size = new Size(119, 23);
+            lblDateDebut.TabIndex = 2;
+            lblDateDebut.Text = "Début le    : ";
             // 
             // lblNatureMission
             // 
-            this.lblNatureMission.AutoSize = true;
-            this.lblNatureMission.Font = new System.Drawing.Font("Arial", 12F, System.Drawing.FontStyle.Bold);
-            this.lblNatureMission.Location = new System.Drawing.Point(428, 9);
-            this.lblNatureMission.Margin = new System.Windows.Forms.Padding(2, 0, 2, 0);
-            this.lblNatureMission.Name = "lblNatureMission";
-            this.lblNatureMission.Size = new System.Drawing.Size(209, 24);
-            this.lblNatureMission.TabIndex = 4;
-            this.lblNatureMission.Text = "Nature de la mission ";
+            lblNatureMission.AutoSize = true;
+            lblNatureMission.Font = new Font("Arial", 12F, FontStyle.Bold);
+            lblNatureMission.Location = new Point(428, 9);
+            lblNatureMission.Margin = new Padding(2, 0, 2, 0);
+            lblNatureMission.Name = "lblNatureMission";
+            lblNatureMission.Size = new Size(209, 24);
+            lblNatureMission.TabIndex = 4;
+            lblNatureMission.Text = "Nature de la mission ";
             // 
             // lblCaserne
             // 
-            this.lblCaserne.AutoSize = true;
-            this.lblCaserne.Location = new System.Drawing.Point(143, 41);
-            this.lblCaserne.Margin = new System.Windows.Forms.Padding(2, 0, 2, 0);
-            this.lblCaserne.Name = "lblCaserne";
-            this.lblCaserne.Size = new System.Drawing.Size(120, 23);
-            this.lblCaserne.TabIndex = 3;
-            this.lblCaserne.Text = "Caserne    : ";
+            lblCaserne.AutoSize = true;
+            lblCaserne.Location = new Point(143, 41);
+            lblCaserne.Margin = new Padding(2, 0, 2, 0);
+            lblCaserne.Name = "lblCaserne";
+            lblCaserne.Size = new Size(120, 23);
+            lblCaserne.TabIndex = 3;
+            lblCaserne.Text = "Caserne    : ";
             // 
             // panelMission
             // 
-            this.panelMission.BackColor = System.Drawing.Color.White;
-            this.panelMission.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
-            this.panelMission.Controls.Add(this.txtMotifMission);
-            this.panelMission.Controls.Add(this.lblDateFin);
-            this.panelMission.Controls.Add(this.picBox);
-            this.panelMission.Controls.Add(this.lblMissionId);
-            this.panelMission.Controls.Add(this.lblNatureMission);
-            this.panelMission.Controls.Add(this.lblCaserne);
-            this.panelMission.Controls.Add(this.lblDateDebut);
-            this.panelMission.Location = new System.Drawing.Point(0, 0);
-            this.panelMission.Name = "panelMission";
-            this.panelMission.Size = new System.Drawing.Size(815, 150);
-            this.panelMission.TabIndex = 6;
-            // 
-            // lblDateFin
-            // 
-            this.lblDateFin.AutoSize = true;
-            this.lblDateFin.Location = new System.Drawing.Point(144, 105);
-            this.lblDateFin.Margin = new System.Windows.Forms.Padding(2, 0, 2, 0);
-            this.lblDateFin.Name = "lblDateFin";
-            this.lblDateFin.Size = new System.Drawing.Size(123, 23);
-            this.lblDateFin.TabIndex = 6;
-            this.lblDateFin.Text = "Fin le        :  ";
-            // 
-            // btnCreerPdf
-            // 
-            this.btnCreerPdf.BackgroundImage = global::SAE_Aparcio_Claudel_Meral.Properties.Resources.imagePDF;
-            this.btnCreerPdf.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Stretch;
-            this.btnCreerPdf.Location = new System.Drawing.Point(825, 74);
-            this.btnCreerPdf.Name = "btnCreerPdf";
-            this.btnCreerPdf.Size = new System.Drawing.Size(65, 65);
-            this.btnCreerPdf.TabIndex = 8;
-            this.btnCreerPdf.UseVisualStyleBackColor = true;
-            this.btnCreerPdf.Click += new System.EventHandler(this.btnCreerPdf_Click);
-            // 
-            // btnTerminerMission
-            // 
-            this.btnTerminerMission.BackgroundImage = global::SAE_Aparcio_Claudel_Meral.Properties.Resources.imageValider;
-            this.btnTerminerMission.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Stretch;
-            this.btnTerminerMission.Location = new System.Drawing.Point(825, 6);
-            this.btnTerminerMission.Name = "btnTerminerMission";
-            this.btnTerminerMission.Size = new System.Drawing.Size(65, 65);
-            this.btnTerminerMission.TabIndex = 7;
-            this.btnTerminerMission.UseVisualStyleBackColor = true;
-            this.btnTerminerMission.Click += new System.EventHandler(this.btnTerminerMission_Click);
-            // 
-            // picBox
-            // 
-            this.picBox.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
-            this.picBox.Image = global::SAE_Aparcio_Claudel_Meral.Properties.Resources.imageSirene;
-            this.picBox.Location = new System.Drawing.Point(20, 25);
-            this.picBox.Margin = new System.Windows.Forms.Padding(2);
-            this.picBox.Name = "picBox";
-            this.picBox.Size = new System.Drawing.Size(100, 100);
-            this.picBox.SizeMode = System.Windows.Forms.PictureBoxSizeMode.StretchImage;
-            this.picBox.TabIndex = 0;
-            this.picBox.TabStop = false;
+            panelMission.Anchor = AnchorStyles.Top | AnchorStyles.Bottom | AnchorStyles.Left | AnchorStyles.Right;
+            panelMission.BackColor = Color.White;
+            panelMission.BorderStyle = BorderStyle.FixedSingle;
+            panelMission.Controls.Add(txtMotifMission);
+            panelMission.Controls.Add(lblDateFin);
+            panelMission.Controls.Add(picBox);
+            panelMission.Controls.Add(lblMissionId);
+            panelMission.Controls.Add(lblNatureMission);
+            panelMission.Controls.Add(lblCaserne);
+            panelMission.Controls.Add(lblDateDebut);
+            panelMission.Location = new Point(0, 0);
+            panelMission.Name = "panelMission";
+            panelMission.Size = new Size(815, 150);
+            panelMission.TabIndex = 6;
             // 
             // txtMotifMission
             // 
-            this.txtMotifMission.BackColor = System.Drawing.Color.White;
-            this.txtMotifMission.BorderStyle = System.Windows.Forms.BorderStyle.None;
-            this.txtMotifMission.ForeColor = System.Drawing.Color.DarkRed;
-            this.txtMotifMission.Location = new System.Drawing.Point(432, 51);
-            this.txtMotifMission.Name = "txtMotifMission";
-            this.txtMotifMission.ReadOnly = true;
-            this.txtMotifMission.ShortcutsEnabled = false;
-            this.txtMotifMission.Size = new System.Drawing.Size(329, 87);
-            this.txtMotifMission.TabIndex = 8;
-            this.txtMotifMission.Text = "--> Motif de la mission";
+            txtMotifMission.BackColor = Color.White;
+            txtMotifMission.BorderStyle = BorderStyle.None;
+            txtMotifMission.ForeColor = Color.DarkRed;
+            txtMotifMission.Location = new Point(432, 51);
+            txtMotifMission.Name = "txtMotifMission";
+            txtMotifMission.ReadOnly = true;
+            txtMotifMission.ShortcutsEnabled = false;
+            txtMotifMission.Size = new Size(329, 87);
+            txtMotifMission.TabIndex = 8;
+            txtMotifMission.Text = "--> Motif de la mission";
+            // 
+            // lblDateFin
+            // 
+            lblDateFin.AutoSize = true;
+            lblDateFin.Location = new Point(144, 105);
+            lblDateFin.Margin = new Padding(2, 0, 2, 0);
+            lblDateFin.Name = "lblDateFin";
+            lblDateFin.Size = new Size(117, 23);
+            lblDateFin.TabIndex = 6;
+            lblDateFin.Text = "Fin le        : ";
+            // 
+            // picBox
+            // 
+            picBox.BorderStyle = BorderStyle.FixedSingle;
+            picBox.Image = SAE_Aparcio_Claudel_Meral.Properties.Resources.imageSirene;
+            picBox.Location = new Point(20, 25);
+            picBox.Margin = new Padding(2);
+            picBox.Name = "picBox";
+            picBox.Size = new Size(100, 100);
+            picBox.SizeMode = PictureBoxSizeMode.StretchImage;
+            picBox.TabIndex = 0;
+            picBox.TabStop = false;
+            // 
+            // btnCreerPdf
+            // 
+            btnCreerPdf.BackgroundImage = SAE_Aparcio_Claudel_Meral.Properties.Resources.imagePDF;
+            btnCreerPdf.BackgroundImageLayout = ImageLayout.Stretch;
+            btnCreerPdf.Location = new Point(825, 74);
+            btnCreerPdf.Name = "btnCreerPdf";
+            btnCreerPdf.Size = new Size(65, 65);
+            btnCreerPdf.TabIndex = 8;
+            btnCreerPdf.UseVisualStyleBackColor = true;
+            btnCreerPdf.Click += btnCreerPdf_Click;
+            // 
+            // btnTerminerMission
+            // 
+            btnTerminerMission.BackgroundImage = SAE_Aparcio_Claudel_Meral.Properties.Resources.imageValider;
+            btnTerminerMission.BackgroundImageLayout = ImageLayout.Stretch;
+            btnTerminerMission.Location = new Point(825, 6);
+            btnTerminerMission.Name = "btnTerminerMission";
+            btnTerminerMission.Size = new Size(65, 65);
+            btnTerminerMission.TabIndex = 7;
+            btnTerminerMission.UseVisualStyleBackColor = true;
+            btnTerminerMission.Click += btnTerminerMission_Click;
             // 
             // Mission
             // 
-            this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.None;
-            this.Controls.Add(this.btnCreerPdf);
-            this.Controls.Add(this.btnTerminerMission);
-            this.Controls.Add(this.panelMission);
-            this.Font = new System.Drawing.Font("Arial", 12F);
-            this.ForeColor = System.Drawing.Color.DarkRed;
-            this.Margin = new System.Windows.Forms.Padding(5, 6, 5, 6);
-            this.Name = "Mission";
-            this.Size = new System.Drawing.Size(900, 150);
-            this.panelMission.ResumeLayout(false);
-            this.panelMission.PerformLayout();
-            ((System.ComponentModel.ISupportInitialize)(this.picBox)).EndInit();
-            this.ResumeLayout(false);
+            AutoScaleDimensions = new SizeF(120F, 120F);
+            AutoScaleMode = AutoScaleMode.Dpi;
+            AutoSize = true;
+            AutoSizeMode = AutoSizeMode.GrowAndShrink;
+            Controls.Add(btnCreerPdf);
+            Controls.Add(btnTerminerMission);
+            Controls.Add(panelMission);
+            Font = new Font("Arial", 12F);
+            ForeColor = Color.DarkRed;
+            Margin = new Padding(5, 6, 5, 6);
+            Name = "Mission";
+            Size = new Size(893, 153);
+            panelMission.ResumeLayout(false);
+            panelMission.PerformLayout();
+            ((System.ComponentModel.ISupportInitialize)picBox).EndInit();
+            ResumeLayout(false);
 
         }
 

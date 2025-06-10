@@ -3,7 +3,7 @@ using System.Data;
 using System.Data.SQLite;
 using System.Windows.Forms;
 
-namespace UCGestionPerso
+namespace UC_GestionPerso
 {
     public delegate void LoginResultDelegate(bool success);
     public delegate void LoginCancelledDelegate();

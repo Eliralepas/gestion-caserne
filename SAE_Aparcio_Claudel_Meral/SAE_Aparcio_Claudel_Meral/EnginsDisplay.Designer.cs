@@ -1,4 +1,4 @@
-﻿namespace UCGestionEngins
+﻿namespace UC_GestionEngins
 {
     partial class EnginsDisplay
     {

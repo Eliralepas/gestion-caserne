@@ -9,18 +9,19 @@ using System.Threading.Tasks;
 using System.Windows.Forms;
 using static System.Windows.Forms.VisualStyles.VisualStyleElement;
 
-namespace UCGestionEngins
+namespace UC_GestionEngins
 {
-    public partial class UCGestionEngin: UserControl
+    public partial class GestionEngins: UserControl
     {
         DataSet monDs;
         EnginsDisplay display;
-        public UCGestionEngin()
+
+        public GestionEngins()
         {
             InitializeComponent();
         }
 
-        public UCGestionEngin(DataSet ds)
+        public GestionEngins(DataSet ds)
         {
             monDs = ds;
             InitializeComponent();

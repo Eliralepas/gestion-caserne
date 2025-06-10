@@ -1,4 +1,4 @@
-﻿namespace UCGestionPerso
+﻿namespace UC_GestionPerso
 {
     partial class UCLogin
     {

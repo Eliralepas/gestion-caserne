@@ -1,6 +1,6 @@
 ﻿namespace UC_Statistique
 {
-    partial class UCStatistique
+    partial class Statistique
     {
         /// <summary>
         /// Variable nécessaire au concepteur.

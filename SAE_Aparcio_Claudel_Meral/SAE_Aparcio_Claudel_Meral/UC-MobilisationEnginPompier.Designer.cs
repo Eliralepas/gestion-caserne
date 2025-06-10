@@ -1,4 +1,4 @@
-﻿namespace UserControlMission
+﻿namespace UC_AjoutMissions
 {
     partial class UC_MobilisationEnginPompier
     {
