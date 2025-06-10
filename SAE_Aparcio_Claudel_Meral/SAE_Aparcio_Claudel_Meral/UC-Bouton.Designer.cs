@@ -40,6 +40,7 @@
             // 
             // roundedRectangle
             // 
+            roundedRectangle.AutoSizeMode = AutoSizeMode.GrowAndShrink;
             roundedRectangle.BackColor = Color.FromArgb(0, 255, 255, 255);
             roundedRectangle.CornerRadius = 30F;
             roundedRectangle.Dock = DockStyle.Fill;
@@ -49,12 +50,12 @@
             roundedRectangle.m_EdgeSize = 20;
             roundedRectangle.m_FontColor = Color.White;
             roundedRectangle.m_NBSommet = 50;
-            roundedRectangle.m_Size = new Size(440, 115);
+            roundedRectangle.m_Size = new Size(275, 83);
             roundedRectangle.m_Text = null;
             roundedRectangle.m_TextFont = null;
             roundedRectangle.Margin = new Padding(2);
             roundedRectangle.Name = "roundedRectangle";
-            roundedRectangle.Size = new Size(440, 115);
+            roundedRectangle.Size = new Size(275, 83);
             roundedRectangle.TabIndex = 1;
             roundedRectangle.Click += OnAnyClick;
             roundedRectangle.MouseEnter += Button_MouseEnter;
@@ -68,7 +69,7 @@
             pictureBox1.Location = new Point(0, 0);
             pictureBox1.Margin = new Padding(2);
             pictureBox1.Name = "pictureBox1";
-            pictureBox1.Size = new Size(80, 80);
+            pictureBox1.Size = new Size(50, 50);
             pictureBox1.SizeMode = PictureBoxSizeMode.StretchImage;
             pictureBox1.TabIndex = 1;
             pictureBox1.TabStop = false;
@@ -81,10 +82,10 @@
             label1.Anchor = AnchorStyles.Top | AnchorStyles.Bottom | AnchorStyles.Left | AnchorStyles.Right;
             label1.BackColor = Color.Crimson;
             label1.Font = new Font("Arial", 12F);
-            label1.Location = new Point(122, 19);
+            label1.Location = new Point(82, 19);
             label1.Margin = new Padding(2, 0, 2, 0);
             label1.Name = "label1";
-            label1.Size = new Size(290, 80);
+            label1.Size = new Size(165, 48);
             label1.TabIndex = 3;
             label1.Text = "Display Text Here";
             label1.TextAlign = ContentAlignment.MiddleLeft;
@@ -95,11 +96,12 @@
             // panelImage
             // 
             panelImage.Anchor = AnchorStyles.Top | AnchorStyles.Bottom | AnchorStyles.Left;
+            panelImage.AutoSizeMode = AutoSizeMode.GrowAndShrink;
             panelImage.Controls.Add(pictureBox1);
-            panelImage.Location = new Point(38, 19);
+            panelImage.Location = new Point(28, 19);
             panelImage.Margin = new Padding(2);
             panelImage.Name = "panelImage";
-            panelImage.Size = new Size(80, 80);
+            panelImage.Size = new Size(50, 50);
             panelImage.TabIndex = 2;
             // 
             // panelBouton
@@ -110,18 +112,19 @@
             panelBouton.Dock = DockStyle.Fill;
             panelBouton.Location = new Point(0, 0);
             panelBouton.Name = "panelBouton";
-            panelBouton.Size = new Size(440, 115);
+            panelBouton.Size = new Size(275, 83);
             panelBouton.TabIndex = 0;
             // 
-            // UCButton
+            // Bouton
             // 
-            AutoScaleMode = AutoScaleMode.None;
+            AutoScaleDimensions = new SizeF(9F, 18F);
+            AutoScaleMode = AutoScaleMode.Font;
             AutoSizeMode = AutoSizeMode.GrowAndShrink;
             Controls.Add(panelBouton);
             Font = new Font("Arial", 12F);
             Margin = new Padding(4, 5, 4, 5);
-            Name = "UCButton";
-            Size = new Size(440, 115);
+            Name = "Bouton";
+            Size = new Size(275, 83);
             ((System.ComponentModel.ISupportInitialize)pictureBox1).EndInit();
             panelImage.ResumeLayout(false);
             panelBouton.ResumeLayout(false);
