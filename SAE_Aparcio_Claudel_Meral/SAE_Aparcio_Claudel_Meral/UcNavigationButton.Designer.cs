@@ -115,8 +115,7 @@
             // 
             // UCButton
             // 
-            AutoScaleDimensions = new SizeF(120F, 120F);
-            AutoScaleMode = AutoScaleMode.Dpi;
+            AutoScaleMode = AutoScaleMode.None;
             AutoSizeMode = AutoSizeMode.GrowAndShrink;
             Controls.Add(panelBouton);
             Font = new Font("Arial", 12F);

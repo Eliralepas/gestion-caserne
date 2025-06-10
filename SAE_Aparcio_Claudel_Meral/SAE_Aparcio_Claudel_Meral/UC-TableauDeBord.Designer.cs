@@ -42,9 +42,9 @@
             lblTableauDeBord.Font = new Font("Arial", 20F, FontStyle.Bold);
             lblTableauDeBord.ForeColor = Color.DarkRed;
             lblTableauDeBord.ImageAlign = ContentAlignment.TopCenter;
-            lblTableauDeBord.Location = new Point(580, 28);
+            lblTableauDeBord.Location = new Point(427, 20);
             lblTableauDeBord.Name = "lblTableauDeBord";
-            lblTableauDeBord.Size = new Size(227, 32);
+            lblTableauDeBord.Size = new Size(277, 40);
             lblTableauDeBord.TabIndex = 0;
             lblTableauDeBord.Text = "Tableau de bord";
             lblTableauDeBord.TextAlign = ContentAlignment.TopCenter;
@@ -75,7 +75,7 @@
             lblEnCours.ForeColor = Color.DarkRed;
             lblEnCours.Location = new Point(87, 20);
             lblEnCours.Name = "lblEnCours";
-            lblEnCours.Size = new Size(104, 26);
+            lblEnCours.Size = new Size(132, 32);
             lblEnCours.TabIndex = 7;
             lblEnCours.Text = "En cours";
             // 
@@ -95,8 +95,8 @@
             // 
             // TableauDeBord
             // 
-            AutoScaleDimensions = new SizeF(11F, 22F);
-            AutoScaleMode = AutoScaleMode.Font;
+            AutoScaleDimensions = new SizeF(120F, 120F);
+            AutoScaleMode = AutoScaleMode.Dpi;
             Controls.Add(sckbEnCours);
             Controls.Add(lblEnCours);
             Controls.Add(lblBarre);

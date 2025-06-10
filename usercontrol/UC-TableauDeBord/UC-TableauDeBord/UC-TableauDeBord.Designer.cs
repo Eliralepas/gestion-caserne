@@ -44,9 +44,9 @@
             this.lblTableauDeBord.Font = new System.Drawing.Font("Arial", 20F, System.Drawing.FontStyle.Bold);
             this.lblTableauDeBord.ForeColor = System.Drawing.Color.DarkRed;
             this.lblTableauDeBord.ImageAlign = System.Drawing.ContentAlignment.TopCenter;
-            this.lblTableauDeBord.Location = new System.Drawing.Point(343, 20);
+            this.lblTableauDeBord.Location = new System.Drawing.Point(383, 20);
             this.lblTableauDeBord.Name = "lblTableauDeBord";
-            this.lblTableauDeBord.Size = new System.Drawing.Size(277, 40);
+            this.lblTableauDeBord.Size = new System.Drawing.Size(227, 32);
             this.lblTableauDeBord.TabIndex = 0;
             this.lblTableauDeBord.Text = "Tableau de bord";
             this.lblTableauDeBord.TextAlign = System.Drawing.ContentAlignment.TopCenter;
@@ -77,7 +77,7 @@
             this.lblEnCours.ForeColor = System.Drawing.Color.DarkRed;
             this.lblEnCours.Location = new System.Drawing.Point(87, 20);
             this.lblEnCours.Name = "lblEnCours";
-            this.lblEnCours.Size = new System.Drawing.Size(132, 32);
+            this.lblEnCours.Size = new System.Drawing.Size(104, 26);
             this.lblEnCours.TabIndex = 7;
             this.lblEnCours.Text = "En cours";
             // 
@@ -85,6 +85,7 @@
             // 
             this.sckbEnCours.AutoSizeMode = System.Windows.Forms.AutoSizeMode.GrowAndShrink;
             this.sckbEnCours.BackColor = System.Drawing.Color.Transparent;
+            this.sckbEnCours.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
             this.sckbEnCours.Checked = false;
             this.sckbEnCours.Location = new System.Drawing.Point(34, 10);
             this.sckbEnCours.Margin = new System.Windows.Forms.Padding(0);
@@ -96,8 +97,8 @@
             // 
             // TableauDeBord
             // 
-            this.AutoScaleDimensions = new System.Drawing.SizeF(13F, 26F);
-            this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
+            this.AutoScaleDimensions = new System.Drawing.SizeF(96F, 96F);
+            this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Dpi;
             this.Controls.Add(this.sckbEnCours);
             this.Controls.Add(this.lblEnCours);
             this.Controls.Add(this.lblBarre);

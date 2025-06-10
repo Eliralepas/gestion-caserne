@@ -44,7 +44,7 @@ namespace Sae25_Main_Form
         private DataSet monDs;
         private DataTable dtMissionsFormatees; // Déclarer une table de missions formatées pour le tableau de bord
         private UCButton btnActuel;
-        private UCGestionPerso.UCGestionPerso perso;
+        private UCGestionPerso.UCGestionPerso tabPerso;
 
         private void frmCaserne_Load(object sender, EventArgs e)
         {
@@ -167,13 +167,14 @@ namespace Sae25_Main_Form
                 con.Open();
             }
 
-            if(perso == null)
+            if(tabPerso == null)
             {
-                perso = new UCGestionPerso.UCGestionPerso();
-                perso.Dock = DockStyle.Fill;
+                tabPerso = new UCGestionPerso.UCGestionPerso();
+                tabPerso.Dock = DockStyle.Fill;
             }
-            panelVolet.Controls.Add(perso);
+            panelVolet.Controls.Add(tabPerso);
         }
+
         private void LoadEngins()
         {
             if (gestionEngin == null) // Vérifier si le volet de gestion des engins n'existe pas
