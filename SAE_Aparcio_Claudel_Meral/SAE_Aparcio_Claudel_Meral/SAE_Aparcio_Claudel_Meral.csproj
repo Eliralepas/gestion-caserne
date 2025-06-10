@@ -15,7 +15,7 @@
 
   <ItemGroup>
     <Reference Include="Polygon">
-      <HintPath>..\..\..\SAE25\usercontrol\Rectangle\Rectangle\bin\Debug\Polygon.dll</HintPath>
+      <HintPath>..\Rectangle\Rectangle\bin\Debug\Polygon.dll</HintPath>
     </Reference>
   </ItemGroup>
 

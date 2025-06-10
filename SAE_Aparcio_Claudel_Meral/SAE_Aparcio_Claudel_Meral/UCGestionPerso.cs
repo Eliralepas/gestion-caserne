@@ -24,7 +24,6 @@ namespace UCGestionPerso
         SQLiteConnection _con;
         UCLogin login;
 
-        //chemin
         int idCaserneInit;
         string codeGradeInit;
         bool dateF;
@@ -553,7 +552,7 @@ namespace UCGestionPerso
             login.OnLoginResult = HandleLoginResult;
             login.OnLoginCancelled = HandleLoginCancelled;
 
-            this.Parent.Controls.Add(login);
+            Parent.Controls.Add(login);
             login.BringToFront();
             login.Left = (this.Width - login.Width) / 2;
             login.Top = (this.Height - login.Height) / 2;
