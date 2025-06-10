@@ -45,9 +45,9 @@
             // panelVolet
             // 
             panelVolet.AutoScroll = true;
-            panelVolet.Location = new Point(302, 12);
+            panelVolet.Location = new Point(367, 39);
             panelVolet.Name = "panelVolet";
-            panelVolet.Size = new Size(1047, 647);
+            panelVolet.Size = new Size(1003, 647);
             panelVolet.TabIndex = 2;
             // 
             // panelNavigation
@@ -59,9 +59,9 @@
             panelNavigation.Controls.Add(btnGestionPersonnel);
             panelNavigation.Controls.Add(btnAjoutMission);
             panelNavigation.Controls.Add(btnGestionEngins);
-            panelNavigation.Location = new Point(13, 13);
+            panelNavigation.Location = new Point(12, 39);
             panelNavigation.Name = "panelNavigation";
-            panelNavigation.Size = new Size(283, 628);
+            panelNavigation.Size = new Size(336, 646);
             panelNavigation.TabIndex = 3;
             // 
             // btnQuitter
@@ -69,7 +69,7 @@
             btnQuitter.AutoSize = true;
             btnQuitter.Font = new Font("Arial", 18.2F, FontStyle.Bold);
             btnQuitter.ForeColor = Color.DarkRed;
-            btnQuitter.Location = new Point(77, 561);
+            btnQuitter.Location = new Point(94, 579);
             btnQuitter.Name = "btnQuitter";
             btnQuitter.Size = new Size(124, 46);
             btnQuitter.TabIndex = 5;
@@ -79,67 +79,77 @@
             // 
             // btnStatistiques
             // 
+            btnStatistiques.AutoSizeMode = AutoSizeMode.GrowAndShrink;
             btnStatistiques.Buttonimage = Properties.Resources.stat;
             btnStatistiques.buttonText = "Statistiques";
             btnStatistiques.Font = new Font("Arial Narrow", 13.8F, FontStyle.Regular, GraphicsUnit.Point, 0);
-            btnStatistiques.Location = new Point(14, 387);
+            btnStatistiques.IsClicked = false;
+            btnStatistiques.Location = new Point(10, 451);
             btnStatistiques.Margin = new Padding(4, 5, 4, 5);
             btnStatistiques.Name = "btnStatistiques";
-            btnStatistiques.Size = new Size(225, 77);
+            btnStatistiques.Size = new Size(275, 83);
             btnStatistiques.TabIndex = 3;
             // 
             // btnTableauDeBord
             // 
+            btnTableauDeBord.AutoSizeMode = AutoSizeMode.GrowAndShrink;
             btnTableauDeBord.Buttonimage = Properties.Resources.tableau_de_bord1;
             btnTableauDeBord.buttonText = "Tableau de bord";
-            btnTableauDeBord.Font = new Font("Arial Narrow", 13.8F, FontStyle.Regular, GraphicsUnit.Point, 0);
+            btnTableauDeBord.Font = new Font("Arial", 12F);
+            btnTableauDeBord.IsClicked = false;
             btnTableauDeBord.Location = new Point(10, 26);
             btnTableauDeBord.Margin = new Padding(4, 5, 4, 5);
             btnTableauDeBord.Name = "btnTableauDeBord";
-            btnTableauDeBord.Size = new Size(229, 83);
+            btnTableauDeBord.Size = new Size(275, 83);
             btnTableauDeBord.TabIndex = 0;
             // 
             // btnGestionPersonnel
             // 
+            btnGestionPersonnel.AutoSizeMode = AutoSizeMode.GrowAndShrink;
             btnGestionPersonnel.Buttonimage = Properties.Resources.perso;
             btnGestionPersonnel.buttonText = "Gestion du personnel";
             btnGestionPersonnel.Font = new Font("Arial Narrow", 13.8F, FontStyle.Regular, GraphicsUnit.Point, 0);
-            btnGestionPersonnel.Location = new Point(14, 294);
+            btnGestionPersonnel.IsClicked = false;
+            btnGestionPersonnel.Location = new Point(10, 343);
             btnGestionPersonnel.Margin = new Padding(4, 5, 4, 5);
             btnGestionPersonnel.Name = "btnGestionPersonnel";
-            btnGestionPersonnel.Size = new Size(225, 83);
+            btnGestionPersonnel.Size = new Size(275, 83);
             btnGestionPersonnel.TabIndex = 2;
             // 
             // btnAjoutMission
             // 
+            btnAjoutMission.AutoSizeMode = AutoSizeMode.GrowAndShrink;
             btnAjoutMission.Buttonimage = Properties.Resources.alarme;
             btnAjoutMission.buttonText = "Nouvelle mission";
             btnAjoutMission.Font = new Font("Arial Narrow", 13.8F, FontStyle.Regular, GraphicsUnit.Point, 0);
-            btnAjoutMission.Location = new Point(10, 119);
+            btnAjoutMission.IsClicked = false;
+            btnAjoutMission.Location = new Point(10, 137);
             btnAjoutMission.Margin = new Padding(4, 5, 4, 5);
             btnAjoutMission.Name = "btnAjoutMission";
-            btnAjoutMission.Size = new Size(229, 79);
+            btnAjoutMission.Size = new Size(275, 83);
             btnAjoutMission.TabIndex = 4;
             // 
             // btnGestionEngins
             // 
+            btnGestionEngins.AutoSizeMode = AutoSizeMode.GrowAndShrink;
             btnGestionEngins.Buttonimage = Properties.Resources.pompiers;
             btnGestionEngins.buttonText = "Gestion des engins";
             btnGestionEngins.Font = new Font("Arial Narrow", 13.8F, FontStyle.Regular, GraphicsUnit.Point, 0);
-            btnGestionEngins.Location = new Point(10, 208);
+            btnGestionEngins.IsClicked = false;
+            btnGestionEngins.Location = new Point(10, 241);
             btnGestionEngins.Margin = new Padding(4, 5, 4, 5);
             btnGestionEngins.Name = "btnGestionEngins";
-            btnGestionEngins.Size = new Size(229, 76);
+            btnGestionEngins.Size = new Size(275, 83);
             btnGestionEngins.TabIndex = 1;
             // 
             // picBoxCaserne
             // 
             picBoxCaserne.Anchor = AnchorStyles.Top | AnchorStyles.Bottom | AnchorStyles.Left | AnchorStyles.Right;
             picBoxCaserne.BackgroundImageLayout = ImageLayout.Center;
-            picBoxCaserne.Image = Properties.Resources.back;
+            picBoxCaserne.Image = Properties.Resources.imageCaserne;
             picBoxCaserne.Location = new Point(-3, -1);
             picBoxCaserne.Name = "picBoxCaserne";
-            picBoxCaserne.Size = new Size(1352, 660);
+            picBoxCaserne.Size = new Size(1392, 730);
             picBoxCaserne.SizeMode = PictureBoxSizeMode.StretchImage;
             picBoxCaserne.TabIndex = 0;
             picBoxCaserne.TabStop = false;
@@ -147,7 +157,7 @@
             // frmCaserne
             // 
             AutoScaleMode = AutoScaleMode.None;
-            ClientSize = new Size(1371, 671);
+            ClientSize = new Size(1382, 723);
             Controls.Add(panelNavigation);
             Controls.Add(panelVolet);
             Controls.Add(picBoxCaserne);

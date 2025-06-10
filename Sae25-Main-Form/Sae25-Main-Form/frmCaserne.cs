@@ -44,7 +44,7 @@ namespace Sae25_Main_Form
         private DataSet monDs;
         private DataTable dtMissionsFormatees; // Déclarer une table de missions formatées pour le tableau de bord
         private UCButton btnActuel;
-        UCGestionPerso perso;
+        private UCGestionPerso.UCGestionPerso perso;
 
         private void frmCaserne_Load(object sender, EventArgs e)
         {
@@ -169,7 +169,7 @@ namespace Sae25_Main_Form
 
             if(perso == null)
             {
-                perso = new UCGestionPerso.UCGestionPerso(con);
+                perso = new UCGestionPerso.UCGestionPerso();
                 perso.Dock = DockStyle.Fill;
             }
             panelVolet.Controls.Add(perso);
