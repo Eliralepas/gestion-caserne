@@ -63,23 +63,23 @@
             // 
             // txtMotif
             // 
-            txtMotif.Location = new Point(20, 76);
+            txtMotif.Location = new Point(20, 66);
             txtMotif.Margin = new Padding(2, 4, 2, 4);
             txtMotif.Multiline = true;
             txtMotif.Name = "txtMotif";
-            txtMotif.Size = new Size(380, 95);
-            txtMotif.TabIndex = 4;
+            txtMotif.Size = new Size(327, 182);
+            txtMotif.TabIndex = 0;
             // 
             // lblNumMission
             // 
             lblNumMission.AutoSize = true;
             lblNumMission.BackColor = Color.FromArgb(100, 20, 0);
-            lblNumMission.Font = new Font("Arial", 12F, FontStyle.Bold, GraphicsUnit.Point, 0);
+            lblNumMission.Font = new Font("Arial", 16F, FontStyle.Bold);
             lblNumMission.ForeColor = Color.White;
             lblNumMission.Location = new Point(13, 10);
             lblNumMission.Margin = new Padding(2, 0, 2, 0);
             lblNumMission.Name = "lblNumMission";
-            lblNumMission.Size = new Size(88, 19);
+            lblNumMission.Size = new Size(117, 26);
             lblNumMission.TabIndex = 1;
             lblNumMission.Text = "Mission n°";
             // 
@@ -101,13 +101,13 @@
             grpDecision.Controls.Add(cboNature);
             grpDecision.Controls.Add(lblCaserne);
             grpDecision.Controls.Add(lblNatSin);
-            grpDecision.Font = new Font("Arial", 12F);
+            grpDecision.Font = new Font("Arial", 14F);
             grpDecision.ForeColor = Color.White;
-            grpDecision.Location = new Point(459, 49);
+            grpDecision.Location = new Point(621, 49);
             grpDecision.Margin = new Padding(2, 4, 2, 4);
             grpDecision.Name = "grpDecision";
             grpDecision.Padding = new Padding(2, 4, 2, 4);
-            grpDecision.Size = new Size(435, 224);
+            grpDecision.Size = new Size(288, 185);
             grpDecision.TabIndex = 1;
             grpDecision.TabStop = false;
             grpDecision.Text = "Décisions du régulateurs";
@@ -116,27 +116,27 @@
             // 
             cboCaserne.DropDownStyle = ComboBoxStyle.DropDownList;
             cboCaserne.FormattingEnabled = true;
-            cboCaserne.Location = new Point(22, 141);
+            cboCaserne.Location = new Point(15, 141);
             cboCaserne.Margin = new Padding(2, 3, 2, 3);
             cboCaserne.Name = "cboCaserne";
-            cboCaserne.Size = new Size(394, 26);
-            cboCaserne.TabIndex = 18;
+            cboCaserne.Size = new Size(256, 30);
+            cboCaserne.TabIndex = 5;
             // 
             // cboNature
             // 
             cboNature.DropDownStyle = ComboBoxStyle.DropDownList;
             cboNature.FormattingEnabled = true;
-            cboNature.Location = new Point(22, 65);
+            cboNature.Location = new Point(15, 66);
             cboNature.Margin = new Padding(2, 3, 2, 3);
             cboNature.Name = "cboNature";
-            cboNature.Size = new Size(394, 26);
-            cboNature.TabIndex = 17;
+            cboNature.Size = new Size(258, 30);
+            cboNature.TabIndex = 4;
             // 
             // lblCaserne
             // 
             lblCaserne.AutoSize = true;
             lblCaserne.Font = new Font("Arial Narrow", 14.25F, FontStyle.Bold);
-            lblCaserne.Location = new Point(18, 115);
+            lblCaserne.Location = new Point(68, 115);
             lblCaserne.Margin = new Padding(2, 0, 2, 0);
             lblCaserne.Name = "lblCaserne";
             lblCaserne.Size = new Size(160, 23);
@@ -147,7 +147,7 @@
             // 
             lblNatSin.AutoSize = true;
             lblNatSin.Font = new Font("Arial Narrow", 14.25F, FontStyle.Bold, GraphicsUnit.Point, 0);
-            lblNatSin.Location = new Point(18, 39);
+            lblNatSin.Location = new Point(68, 39);
             lblNatSin.Margin = new Padding(2, 0, 2, 0);
             lblNatSin.Name = "lblNatSin";
             lblNatSin.Size = new Size(144, 23);
@@ -156,36 +156,36 @@
             // 
             // txtCP
             // 
-            txtCP.Location = new Point(20, 331);
+            txtCP.Location = new Point(370, 219);
             txtCP.Margin = new Padding(2, 4, 2, 4);
             txtCP.Name = "txtCP";
             txtCP.Size = new Size(116, 29);
-            txtCP.TabIndex = 16;
+            txtCP.TabIndex = 3;
             txtCP.KeyPress += txtCP_KeyPress;
             // 
             // txtVille
             // 
-            txtVille.Location = new Point(185, 331);
+            txtVille.Location = new Point(370, 95);
             txtVille.Margin = new Padding(2, 4, 2, 4);
             txtVille.Name = "txtVille";
-            txtVille.Size = new Size(215, 29);
-            txtVille.TabIndex = 15;
+            txtVille.Size = new Size(203, 29);
+            txtVille.TabIndex = 1;
             txtVille.KeyPress += txtVille_KeyPress;
             // 
             // txtRue
             // 
-            txtRue.Location = new Point(20, 261);
+            txtRue.Location = new Point(370, 156);
             txtRue.Margin = new Padding(2, 4, 2, 4);
             txtRue.Name = "txtRue";
-            txtRue.Size = new Size(380, 29);
-            txtRue.TabIndex = 14;
+            txtRue.Size = new Size(203, 29);
+            txtRue.TabIndex = 2;
             txtRue.KeyPress += txtVille_KeyPress;
             // 
             // lblVille
             // 
             lblVille.AutoSize = true;
             lblVille.Font = new Font("Arial Narrow", 14.25F, FontStyle.Bold);
-            lblVille.Location = new Point(181, 304);
+            lblVille.Location = new Point(370, 68);
             lblVille.Margin = new Padding(2, 0, 2, 0);
             lblVille.Name = "lblVille";
             lblVille.Size = new Size(41, 23);
@@ -196,7 +196,7 @@
             // 
             lblCP.AutoSize = true;
             lblCP.Font = new Font("Arial Narrow", 14.25F, FontStyle.Bold);
-            lblCP.Location = new Point(20, 304);
+            lblCP.Location = new Point(370, 192);
             lblCP.Margin = new Padding(2, 0, 2, 0);
             lblCP.Name = "lblCP";
             lblCP.Size = new Size(101, 23);
@@ -207,7 +207,7 @@
             // 
             lblRue.AutoSize = true;
             lblRue.Font = new Font("Arial Narrow", 14.25F, FontStyle.Bold);
-            lblRue.Location = new Point(18, 234);
+            lblRue.Location = new Point(370, 129);
             lblRue.Margin = new Padding(2, 0, 2, 0);
             lblRue.Name = "lblRue";
             lblRue.Size = new Size(40, 23);
@@ -216,22 +216,22 @@
             // 
             // btnAnnuler
             // 
-            btnAnnuler.Location = new Point(682, 403);
+            btnAnnuler.Location = new Point(658, 241);
             btnAnnuler.Margin = new Padding(2, 3, 2, 3);
             btnAnnuler.Name = "btnAnnuler";
             btnAnnuler.Size = new Size(195, 36);
-            btnAnnuler.TabIndex = 19;
+            btnAnnuler.TabIndex = 7;
             btnAnnuler.Text = "Effacer les données";
             btnAnnuler.UseVisualStyleBackColor = true;
             btnAnnuler.Click += btnAnnuler_Click;
             // 
             // btnValider
             // 
-            btnValider.Location = new Point(461, 403);
+            btnValider.Location = new Point(658, 283);
             btnValider.Margin = new Padding(2, 3, 2, 3);
             btnValider.Name = "btnValider";
             btnValider.Size = new Size(195, 36);
-            btnValider.TabIndex = 20;
+            btnValider.TabIndex = 6;
             btnValider.Text = "Constituer équipe";
             btnValider.UseVisualStyleBackColor = true;
             btnValider.Click += btnValider_Click;
@@ -253,7 +253,7 @@
             grpInfo.Margin = new Padding(2, 3, 2, 3);
             grpInfo.Name = "grpInfo";
             grpInfo.Padding = new Padding(2, 3, 2, 3);
-            grpInfo.Size = new Size(429, 390);
+            grpInfo.Size = new Size(586, 270);
             grpInfo.TabIndex = 22;
             grpInfo.TabStop = false;
             grpInfo.Text = "Informations usager";
@@ -262,7 +262,7 @@
             // 
             label2.AutoSize = true;
             label2.Font = new Font("Arial Narrow", 14.25F, FontStyle.Bold);
-            label2.Location = new Point(107, 213);
+            label2.Location = new Point(395, 39);
             label2.Margin = new Padding(2, 0, 2, 0);
             label2.Name = "label2";
             label2.Size = new Size(157, 23);
@@ -273,7 +273,7 @@
             // 
             label1.AutoSize = true;
             label1.Font = new Font("Arial Narrow", 14.25F, FontStyle.Bold);
-            label1.Location = new Point(16, 49);
+            label1.Location = new Point(18, 39);
             label1.Margin = new Padding(2, 0, 2, 0);
             label1.Name = "label1";
             label1.Size = new Size(47, 23);
@@ -286,13 +286,13 @@
             grpMob.Controls.Add(pnlPompier);
             grpMob.Controls.Add(label3);
             grpMob.Controls.Add(label4);
-            grpMob.Font = new Font("Arial", 12F);
+            grpMob.Font = new Font("Arial", 14F);
             grpMob.ForeColor = Color.White;
-            grpMob.Location = new Point(12, 480);
+            grpMob.Location = new Point(12, 326);
             grpMob.Margin = new Padding(2, 4, 2, 4);
             grpMob.Name = "grpMob";
             grpMob.Padding = new Padding(2, 4, 2, 4);
-            grpMob.Size = new Size(882, 320);
+            grpMob.Size = new Size(882, 240);
             grpMob.TabIndex = 19;
             grpMob.TabStop = false;
             grpMob.Text = "Mobilisation des engins et pompiers";
@@ -301,24 +301,24 @@
             // pnlEngin
             // 
             pnlEngin.AutoScroll = true;
-            pnlEngin.Location = new Point(22, 88);
+            pnlEngin.Location = new Point(22, 49);
             pnlEngin.Name = "pnlEngin";
-            pnlEngin.Size = new Size(407, 216);
+            pnlEngin.Size = new Size(407, 180);
             pnlEngin.TabIndex = 19;
             // 
             // pnlPompier
             // 
             pnlPompier.AutoScroll = true;
-            pnlPompier.Location = new Point(459, 88);
+            pnlPompier.Location = new Point(459, 49);
             pnlPompier.Name = "pnlPompier";
-            pnlPompier.Size = new Size(404, 216);
+            pnlPompier.Size = new Size(404, 180);
             pnlPompier.TabIndex = 18;
             // 
             // label3
             // 
             label3.AutoSize = true;
             label3.Font = new Font("Arial Narrow", 14.25F, FontStyle.Bold);
-            label3.Location = new Point(465, 62);
+            label3.Location = new Point(465, 23);
             label3.Margin = new Padding(2, 0, 2, 0);
             label3.Name = "label3";
             label3.Size = new Size(159, 23);
@@ -329,7 +329,7 @@
             // 
             label4.AutoSize = true;
             label4.Font = new Font("Arial Narrow", 14.25F, FontStyle.Bold);
-            label4.Location = new Point(29, 62);
+            label4.Location = new Point(22, 23);
             label4.Margin = new Padding(2, 0, 2, 0);
             label4.Name = "label4";
             label4.Size = new Size(140, 23);
@@ -338,11 +338,11 @@
             // 
             // btnNvMission
             // 
-            btnNvMission.Location = new Point(682, 807);
+            btnNvMission.Location = new Point(680, 573);
             btnNvMission.Margin = new Padding(2, 3, 2, 3);
             btnNvMission.Name = "btnNvMission";
             btnNvMission.Size = new Size(195, 36);
-            btnNvMission.TabIndex = 23;
+            btnNvMission.TabIndex = 8;
             btnNvMission.Text = "Nouvelle mission";
             btnNvMission.UseVisualStyleBackColor = true;
             btnNvMission.Visible = false;
@@ -369,7 +369,7 @@
             Font = new Font("Arial", 10F);
             Margin = new Padding(2, 4, 2, 4);
             Name = "AjoutMissions";
-            Size = new Size(905, 872);
+            Size = new Size(922, 644);
             grpDecision.ResumeLayout(false);
             grpDecision.PerformLayout();
             grpInfo.ResumeLayout(false);

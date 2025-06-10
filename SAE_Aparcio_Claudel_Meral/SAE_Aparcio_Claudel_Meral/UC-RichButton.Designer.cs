@@ -28,67 +28,69 @@
         /// </summary>
         private void InitializeComponent()
         {
-            this.pictureBox1 = new System.Windows.Forms.PictureBox();
-            this.lblInfo1 = new System.Windows.Forms.Label();
-            this.lblInfo2 = new System.Windows.Forms.Label();
-            ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).BeginInit();
-            this.SuspendLayout();
+            pictureBox1 = new PictureBox();
+            lblInfo1 = new Label();
+            lblInfo2 = new Label();
+            ((System.ComponentModel.ISupportInitialize)pictureBox1).BeginInit();
+            SuspendLayout();
             // 
             // pictureBox1
             // 
-            this.pictureBox1.Location = new System.Drawing.Point(4, 5);
-            this.pictureBox1.Margin = new System.Windows.Forms.Padding(4, 5, 4, 5);
-            this.pictureBox1.Name = "pictureBox1";
-            this.pictureBox1.Size = new System.Drawing.Size(127, 127);
-            this.pictureBox1.TabIndex = 0;
-            this.pictureBox1.TabStop = false;
-            this.pictureBox1.MouseClick += new System.Windows.Forms.MouseEventHandler(this.RichButton_MouseClick);
-            this.pictureBox1.MouseEnter += new System.EventHandler(this.UCRichButton_MouseEnter);
+            pictureBox1.Anchor = AnchorStyles.Top | AnchorStyles.Bottom | AnchorStyles.Left | AnchorStyles.Right;
+            pictureBox1.Location = new Point(4, 5);
+            pictureBox1.Margin = new Padding(4, 5, 4, 5);
+            pictureBox1.Name = "pictureBox1";
+            pictureBox1.Size = new Size(65, 65);
+            pictureBox1.TabIndex = 0;
+            pictureBox1.TabStop = false;
+            pictureBox1.MouseClick += RichButton_MouseClick;
+            pictureBox1.MouseEnter += UCRichButton_MouseEnter;
             // 
             // lblInfo1
             // 
-            this.lblInfo1.AutoSize = true;
-            this.lblInfo1.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.lblInfo1.Location = new System.Drawing.Point(153, 52);
-            this.lblInfo1.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
-            this.lblInfo1.Name = "lblInfo1";
-            this.lblInfo1.Size = new System.Drawing.Size(184, 25);
-            this.lblInfo1.TabIndex = 1;
-            this.lblInfo1.Text = "Information num 1";
-            this.lblInfo1.MouseClick += new System.Windows.Forms.MouseEventHandler(this.RichButton_MouseClick);
-            this.lblInfo1.MouseEnter += new System.EventHandler(this.UCRichButton_MouseEnter);
+            lblInfo1.AutoSize = true;
+            lblInfo1.Font = new Font("Arial", 10.2F, FontStyle.Bold, GraphicsUnit.Point, 0);
+            lblInfo1.Location = new Point(77, 14);
+            lblInfo1.Margin = new Padding(4, 0, 4, 0);
+            lblInfo1.Name = "lblInfo1";
+            lblInfo1.Size = new Size(99, 16);
+            lblInfo1.TabIndex = 1;
+            lblInfo1.Text = "Information 1";
+            lblInfo1.MouseClick += RichButton_MouseClick;
+            lblInfo1.MouseEnter += UCRichButton_MouseEnter;
             // 
             // lblInfo2
             // 
-            this.lblInfo2.AutoSize = true;
-            this.lblInfo2.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.lblInfo2.Location = new System.Drawing.Point(153, 81);
-            this.lblInfo2.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
-            this.lblInfo2.Name = "lblInfo2";
-            this.lblInfo2.Size = new System.Drawing.Size(167, 25);
-            this.lblInfo2.TabIndex = 2;
-            this.lblInfo2.Text = "Information num 2";
-            this.lblInfo2.MouseClick += new System.Windows.Forms.MouseEventHandler(this.RichButton_MouseClick);
-            this.lblInfo2.MouseEnter += new System.EventHandler(this.UCRichButton_MouseEnter);
+            lblInfo2.AutoSize = true;
+            lblInfo2.Font = new Font("Arial", 10F);
+            lblInfo2.Location = new Point(77, 41);
+            lblInfo2.Margin = new Padding(4, 0, 4, 0);
+            lblInfo2.Name = "lblInfo2";
+            lblInfo2.Size = new Size(89, 16);
+            lblInfo2.TabIndex = 2;
+            lblInfo2.Text = "Information 2";
+            lblInfo2.MouseClick += RichButton_MouseClick;
+            lblInfo2.MouseEnter += UCRichButton_MouseEnter;
             // 
             // UCRichButton
             // 
-            this.AutoScaleDimensions = new System.Drawing.SizeF(14F, 29F);
-            this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.Controls.Add(this.lblInfo2);
-            this.Controls.Add(this.lblInfo1);
-            this.Controls.Add(this.pictureBox1);
-            this.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.Margin = new System.Windows.Forms.Padding(4, 5, 4, 5);
-            this.Name = "UCRichButton";
-            this.Size = new System.Drawing.Size(361, 150);
-            this.Load += new System.EventHandler(this.UCRichButton_Load);
-            this.MouseClick += new System.Windows.Forms.MouseEventHandler(this.RichButton_MouseClick);
-            this.MouseEnter += new System.EventHandler(this.UCRichButton_MouseEnter);
-            this.MouseLeave += new System.EventHandler(this.UCRichButton_MouseLeave);
-            ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).EndInit();
-            this.ResumeLayout(false);
-            this.PerformLayout();
+            AutoScaleDimensions = new SizeF(9F, 20F);
+            AutoScaleMode = AutoScaleMode.Font;
+            AutoSizeMode = AutoSizeMode.GrowAndShrink;
+            Controls.Add(lblInfo2);
+            Controls.Add(lblInfo1);
+            Controls.Add(pictureBox1);
+            Font = new Font("Microsoft Sans Serif", 12F, FontStyle.Regular, GraphicsUnit.Point, 0);
+            Margin = new Padding(4, 5, 4, 5);
+            Name = "UCRichButton";
+            Size = new Size(200, 75);
+            Load += UCRichButton_Load;
+            MouseClick += RichButton_MouseClick;
+            MouseEnter += UCRichButton_MouseEnter;
+            MouseLeave += UCRichButton_MouseLeave;
+            ((System.ComponentModel.ISupportInitialize)pictureBox1).EndInit();
+            ResumeLayout(false);
+            PerformLayout();
 
         }
 

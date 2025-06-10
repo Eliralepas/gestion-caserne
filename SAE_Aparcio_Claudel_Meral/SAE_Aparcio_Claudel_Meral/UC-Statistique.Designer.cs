@@ -69,7 +69,7 @@
             tabStatistique.Margin = new Padding(3, 4, 3, 4);
             tabStatistique.Name = "tabStatistique";
             tabStatistique.SelectedIndex = 0;
-            tabStatistique.Size = new Size(995, 647);
+            tabStatistique.Size = new Size(995, 571);
             tabStatistique.SizeMode = TabSizeMode.Fixed;
             tabStatistique.TabIndex = 0;
             tabStatistique.SelectedIndexChanged += tabStatistique_SelectedIndexChanged;
@@ -82,7 +82,7 @@
             tabPage1.Margin = new Padding(3, 4, 3, 4);
             tabPage1.Name = "tabPage1";
             tabPage1.Padding = new Padding(3, 4, 3, 4);
-            tabPage1.Size = new Size(987, 616);
+            tabPage1.Size = new Size(987, 540);
             tabPage1.TabIndex = 0;
             tabPage1.Text = "Engins";
             tabPage1.UseVisualStyleBackColor = true;
@@ -96,14 +96,13 @@
             grpEngins.Controls.Add(lblTitleEnginPerHour);
             grpEngins.Controls.Add(cbxCaserne);
             grpEngins.Controls.Add(lblCaserne);
-            grpEngins.Dock = DockStyle.Left;
             grpEngins.Font = new Font("Arial", 12F, FontStyle.Bold, GraphicsUnit.Point, 0);
             grpEngins.ForeColor = Color.Black;
             grpEngins.Location = new Point(3, 4);
             grpEngins.Margin = new Padding(3, 4, 3, 4);
             grpEngins.Name = "grpEngins";
             grpEngins.Padding = new Padding(3, 4, 3, 4);
-            grpEngins.Size = new Size(982, 608);
+            grpEngins.Size = new Size(982, 528);
             grpEngins.TabIndex = 0;
             grpEngins.TabStop = false;
             grpEngins.Text = "Statistiques relatives aux engins";
@@ -112,9 +111,9 @@
             // 
             flpMostUsedEngin.AutoScroll = true;
             flpMostUsedEngin.BackColor = Color.FromArgb(192, 0, 0);
-            flpMostUsedEngin.Location = new Point(24, 362);
+            flpMostUsedEngin.Location = new Point(21, 331);
             flpMostUsedEngin.Name = "flpMostUsedEngin";
-            flpMostUsedEngin.Size = new Size(944, 236);
+            flpMostUsedEngin.Size = new Size(944, 198);
             flpMostUsedEngin.TabIndex = 0;
             flpMostUsedEngin.WrapContents = false;
             // 
@@ -123,10 +122,10 @@
             flpHistogram.AutoScroll = true;
             flpHistogram.AutoScrollMargin = new Size(100, 0);
             flpHistogram.BackColor = Color.FromArgb(192, 0, 0);
-            flpHistogram.Location = new Point(21, 114);
+            flpHistogram.Location = new Point(21, 94);
             flpHistogram.Margin = new Padding(2);
             flpHistogram.Name = "flpHistogram";
-            flpHistogram.Size = new Size(947, 221);
+            flpHistogram.Size = new Size(947, 198);
             flpHistogram.TabIndex = 4;
             flpHistogram.WrapContents = false;
             // 
@@ -134,7 +133,7 @@
             // 
             lblTitleMostUsedEngin.AutoSize = true;
             lblTitleMostUsedEngin.Font = new Font("Arial", 12F, FontStyle.Bold, GraphicsUnit.Point, 0);
-            lblTitleMostUsedEngin.Location = new Point(366, 340);
+            lblTitleMostUsedEngin.Location = new Point(366, 309);
             lblTitleMostUsedEngin.Margin = new Padding(2, 0, 2, 0);
             lblTitleMostUsedEngin.Name = "lblTitleMostUsedEngin";
             lblTitleMostUsedEngin.Size = new Size(289, 19);
@@ -145,7 +144,7 @@
             // 
             lblTitleEnginPerHour.AutoSize = true;
             lblTitleEnginPerHour.Font = new Font("Arial", 12F, FontStyle.Bold, GraphicsUnit.Point, 0);
-            lblTitleEnginPerHour.Location = new Point(402, 93);
+            lblTitleEnginPerHour.Location = new Point(403, 73);
             lblTitleEnginPerHour.Margin = new Padding(2, 0, 2, 0);
             lblTitleEnginPerHour.Name = "lblTitleEnginPerHour";
             lblTitleEnginPerHour.Size = new Size(193, 19);
@@ -156,7 +155,7 @@
             // 
             cbxCaserne.Font = new Font("Arial", 12F);
             cbxCaserne.FormattingEnabled = true;
-            cbxCaserne.Location = new Point(428, 51);
+            cbxCaserne.Location = new Point(428, 31);
             cbxCaserne.Margin = new Padding(2);
             cbxCaserne.Name = "cbxCaserne";
             cbxCaserne.Size = new Size(199, 26);
@@ -167,7 +166,7 @@
             // 
             lblCaserne.AutoSize = true;
             lblCaserne.Font = new Font("Arial", 12F);
-            lblCaserne.Location = new Point(343, 54);
+            lblCaserne.Location = new Point(343, 34);
             lblCaserne.Name = "lblCaserne";
             lblCaserne.Size = new Size(80, 18);
             lblCaserne.TabIndex = 0;
@@ -184,7 +183,7 @@
             tabPage2.Margin = new Padding(3, 4, 3, 4);
             tabPage2.Name = "tabPage2";
             tabPage2.Padding = new Padding(3, 4, 3, 4);
-            tabPage2.Size = new Size(987, 616);
+            tabPage2.Size = new Size(987, 540);
             tabPage2.TabIndex = 1;
             tabPage2.Text = "Intervention";
             // 
@@ -195,7 +194,7 @@
             flpSinistreStat.Location = new Point(8, 108);
             flpSinistreStat.Margin = new Padding(5, 3, 3, 3);
             flpSinistreStat.Name = "flpSinistreStat";
-            flpSinistreStat.Size = new Size(973, 504);
+            flpSinistreStat.Size = new Size(973, 390);
             flpSinistreStat.TabIndex = 1;
             // 
             // lblTitleIntervention
@@ -223,14 +222,14 @@
             tabPage3.Margin = new Padding(3, 4, 3, 4);
             tabPage3.Name = "tabPage3";
             tabPage3.Padding = new Padding(3, 4, 3, 4);
-            tabPage3.Size = new Size(987, 616);
+            tabPage3.Size = new Size(987, 540);
             tabPage3.TabIndex = 2;
             tabPage3.Text = "Habilitation";
             // 
             // label2
             // 
             label2.AutoSize = true;
-            label2.Location = new Point(634, 88);
+            label2.Location = new Point(635, 42);
             label2.Margin = new Padding(2, 0, 2, 0);
             label2.Name = "label2";
             label2.Size = new Size(201, 19);
@@ -240,7 +239,7 @@
             // label1
             // 
             label1.AutoSize = true;
-            label1.Location = new Point(102, 88);
+            label1.Location = new Point(99, 42);
             label1.Margin = new Padding(2, 0, 2, 0);
             label1.Name = "label1";
             label1.Size = new Size(202, 19);
@@ -251,7 +250,7 @@
             // 
             cbxHabilitation.Font = new Font("Arial", 12F);
             cbxHabilitation.FormattingEnabled = true;
-            cbxHabilitation.Location = new Point(487, 110);
+            cbxHabilitation.Location = new Point(487, 64);
             cbxHabilitation.Name = "cbxHabilitation";
             cbxHabilitation.Size = new Size(494, 26);
             cbxHabilitation.TabIndex = 0;
@@ -263,19 +262,19 @@
             flpHabilitation.BackColor = Color.LightGray;
             flpHabilitation.Font = new Font("Arial", 12F);
             flpHabilitation.ForeColor = Color.Black;
-            flpHabilitation.Location = new Point(487, 146);
+            flpHabilitation.Location = new Point(487, 96);
             flpHabilitation.Name = "flpHabilitation";
-            flpHabilitation.Size = new Size(494, 454);
+            flpHabilitation.Size = new Size(494, 406);
             flpHabilitation.TabIndex = 2;
             // 
             // pnlHabilitation
             // 
             pnlHabilitation.Controls.Add(flpLegendHabi);
             pnlHabilitation.Controls.Add(pnlGrapheHabit);
-            pnlHabilitation.Location = new Point(5, 110);
+            pnlHabilitation.Location = new Point(5, 63);
             pnlHabilitation.Margin = new Padding(2);
             pnlHabilitation.Name = "pnlHabilitation";
-            pnlHabilitation.Size = new Size(427, 490);
+            pnlHabilitation.Size = new Size(427, 440);
             pnlHabilitation.TabIndex = 7;
             // 
             // flpLegendHabi
@@ -283,7 +282,7 @@
             flpLegendHabi.AutoScroll = true;
             flpLegendHabi.BackColor = Color.FromArgb(192, 0, 0);
             flpLegendHabi.Dock = DockStyle.Bottom;
-            flpLegendHabi.Location = new Point(0, 396);
+            flpLegendHabi.Location = new Point(0, 346);
             flpLegendHabi.Name = "flpLegendHabi";
             flpLegendHabi.Size = new Size(427, 94);
             flpLegendHabi.TabIndex = 1;
@@ -295,13 +294,13 @@
             pnlGrapheHabit.Dock = DockStyle.Top;
             pnlGrapheHabit.Location = new Point(0, 0);
             pnlGrapheHabit.Name = "pnlGrapheHabit";
-            pnlGrapheHabit.Size = new Size(427, 390);
+            pnlGrapheHabit.Size = new Size(427, 330);
             pnlGrapheHabit.TabIndex = 0;
             // 
             // lblTitleHabilitation
             // 
             lblTitleHabilitation.AutoSize = true;
-            lblTitleHabilitation.Location = new Point(386, 29);
+            lblTitleHabilitation.Location = new Point(385, 14);
             lblTitleHabilitation.Margin = new Padding(2, 0, 2, 0);
             lblTitleHabilitation.Name = "lblTitleHabilitation";
             lblTitleHabilitation.Size = new Size(243, 19);
@@ -317,7 +316,7 @@
             Font = new Font("Arial Narrow", 10.8F, FontStyle.Regular, GraphicsUnit.Point, 0);
             Margin = new Padding(3, 4, 3, 4);
             Name = "Statistique";
-            Size = new Size(995, 647);
+            Size = new Size(995, 571);
             tabStatistique.ResumeLayout(false);
             tabPage1.ResumeLayout(false);
             grpEngins.ResumeLayout(false);

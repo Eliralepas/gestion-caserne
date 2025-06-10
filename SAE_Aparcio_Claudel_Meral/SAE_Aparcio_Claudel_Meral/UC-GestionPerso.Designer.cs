@@ -82,7 +82,7 @@
             flpCaserne.Location = new Point(5, 5);
             flpCaserne.Margin = new Padding(5);
             flpCaserne.Name = "flpCaserne";
-            flpCaserne.Size = new Size(222, 541);
+            flpCaserne.Size = new Size(151, 469);
             flpCaserne.TabIndex = 0;
             flpCaserne.WrapContents = false;
             // 
@@ -92,10 +92,10 @@
             flpPompier.AutoScroll = true;
             flpPompier.BackColor = Color.FromArgb(224, 224, 224);
             flpPompier.ForeColor = Color.Black;
-            flpPompier.Location = new Point(237, 5);
+            flpPompier.Location = new Point(166, 5);
             flpPompier.Margin = new Padding(5);
             flpPompier.Name = "flpPompier";
-            flpPompier.Size = new Size(285, 627);
+            flpPompier.Size = new Size(213, 469);
             flpPompier.TabIndex = 1;
             // 
             // pnlInfo
@@ -109,17 +109,20 @@
             pnlInfo.Controls.Add(grpIdentite);
             pnlInfo.Controls.Add(btnInfo);
             pnlInfo.Font = new Font("Microsoft Sans Serif", 15.75F, FontStyle.Regular, GraphicsUnit.Point, 0);
-            pnlInfo.Location = new Point(532, 5);
+            pnlInfo.Location = new Point(389, 5);
             pnlInfo.Margin = new Padding(5);
             pnlInfo.Name = "pnlInfo";
-            pnlInfo.Size = new Size(562, 624);
+            pnlInfo.Size = new Size(440, 540);
             pnlInfo.TabIndex = 2;
             // 
             // btnModif
             // 
-            btnModif.Location = new Point(133, 590);
+            btnModif.AutoSize = true;
+            btnModif.Font = new Font("Arial", 14F);
+            btnModif.ForeColor = Color.Black;
+            btnModif.Location = new Point(51, 503);
             btnModif.Name = "btnModif";
-            btnModif.Size = new Size(156, 31);
+            btnModif.Size = new Size(138, 32);
             btnModif.TabIndex = 21;
             btnModif.Text = "Modifier";
             btnModif.UseVisualStyleBackColor = true;
@@ -152,9 +155,9 @@
             grpCaserne.Controls.Add(label7);
             grpCaserne.Font = new Font("Arial", 13F);
             grpCaserne.ForeColor = SystemColors.ControlText;
-            grpCaserne.Location = new Point(14, 325);
+            grpCaserne.Location = new Point(14, 286);
             grpCaserne.Name = "grpCaserne";
-            grpCaserne.Size = new Size(479, 259);
+            grpCaserne.Size = new Size(418, 211);
             grpCaserne.TabIndex = 1;
             grpCaserne.TabStop = false;
             grpCaserne.Text = " Carrière";
@@ -165,7 +168,7 @@
             chbConge.AutoSize = true;
             chbConge.Enabled = false;
             chbConge.Font = new Font("Arial Narrow", 14.25F, FontStyle.Bold);
-            chbConge.Location = new Point(10, 226);
+            chbConge.Location = new Point(6, 178);
             chbConge.Name = "chbConge";
             chbConge.Size = new Size(100, 27);
             chbConge.TabIndex = 26;
@@ -178,9 +181,9 @@
             cboCaserne.Enabled = false;
             cboCaserne.Font = new Font("Arial", 9F);
             cboCaserne.FormattingEnabled = true;
-            cboCaserne.Location = new Point(211, 69);
+            cboCaserne.Location = new Point(211, 65);
             cboCaserne.Name = "cboCaserne";
-            cboCaserne.Size = new Size(255, 23);
+            cboCaserne.Size = new Size(194, 23);
             cboCaserne.TabIndex = 25;
             // 
             // cboGrade
@@ -189,9 +192,9 @@
             cboGrade.Enabled = false;
             cboGrade.Font = new Font("Arial", 9F);
             cboGrade.FormattingEnabled = true;
-            cboGrade.Location = new Point(211, 36);
+            cboGrade.Location = new Point(211, 34);
             cboGrade.Name = "cboGrade";
-            cboGrade.Size = new Size(255, 23);
+            cboGrade.Size = new Size(194, 23);
             cboGrade.TabIndex = 24;
             cboGrade.SelectedIndexChanged += cboGrade_SelectedIndexChanged;
             // 
@@ -199,7 +202,7 @@
             // 
             txtGradeCode.Enabled = false;
             txtGradeCode.Font = new Font("Arial", 9F);
-            txtGradeCode.Location = new Point(94, 40);
+            txtGradeCode.Location = new Point(94, 36);
             txtGradeCode.Name = "txtGradeCode";
             txtGradeCode.ReadOnly = true;
             txtGradeCode.Size = new Size(91, 21);
@@ -208,10 +211,10 @@
             // rtbAffec
             // 
             rtbAffec.Font = new Font("Arial", 9F);
-            rtbAffec.Location = new Point(211, 169);
+            rtbAffec.Location = new Point(211, 143);
             rtbAffec.Name = "rtbAffec";
             rtbAffec.ReadOnly = true;
-            rtbAffec.Size = new Size(255, 59);
+            rtbAffec.Size = new Size(194, 36);
             rtbAffec.TabIndex = 23;
             rtbAffec.Text = "";
             // 
@@ -220,7 +223,7 @@
             label11.AutoSize = true;
             label11.Font = new Font("Arial Narrow", 14.25F, FontStyle.Bold);
             label11.ForeColor = Color.Black;
-            label11.Location = new Point(10, 169);
+            label11.Location = new Point(6, 143);
             label11.Name = "label11";
             label11.Size = new Size(169, 23);
             label11.TabIndex = 22;
@@ -229,10 +232,10 @@
             // rtbHab
             // 
             rtbHab.Font = new Font("Arial", 9F);
-            rtbHab.Location = new Point(211, 104);
+            rtbHab.Location = new Point(211, 100);
             rtbHab.Name = "rtbHab";
             rtbHab.ReadOnly = true;
-            rtbHab.Size = new Size(255, 59);
+            rtbHab.Size = new Size(194, 34);
             rtbHab.TabIndex = 21;
             rtbHab.Text = "";
             // 
@@ -241,7 +244,7 @@
             label10.AutoSize = true;
             label10.Font = new Font("Arial Narrow", 14.25F, FontStyle.Bold);
             label10.ForeColor = Color.Black;
-            label10.Location = new Point(6, 104);
+            label10.Location = new Point(6, 100);
             label10.Name = "label10";
             label10.Size = new Size(113, 23);
             label10.TabIndex = 20;
@@ -252,7 +255,7 @@
             label9.AutoSize = true;
             label9.Font = new Font("Arial Narrow", 14.25F, FontStyle.Bold);
             label9.ForeColor = Color.Black;
-            label9.Location = new Point(5, 69);
+            label9.Location = new Point(5, 65);
             label9.Name = "label9";
             label9.Size = new Size(86, 23);
             label9.TabIndex = 19;
@@ -263,7 +266,7 @@
             label7.AutoSize = true;
             label7.Font = new Font("Arial Narrow", 14.25F, FontStyle.Bold);
             label7.ForeColor = Color.Black;
-            label7.Location = new Point(6, 36);
+            label7.Location = new Point(5, 32);
             label7.Name = "label7";
             label7.Size = new Size(65, 23);
             label7.TabIndex = 18;
@@ -271,9 +274,10 @@
             // 
             // btnChanger
             // 
-            btnChanger.Font = new Font("Arial", 10F);
-            btnChanger.ForeColor = SystemColors.ControlText;
-            btnChanger.Location = new Point(342, 590);
+            btnChanger.AutoSize = true;
+            btnChanger.Font = new Font("Arial", 14F);
+            btnChanger.ForeColor = Color.Black;
+            btnChanger.Location = new Point(255, 503);
             btnChanger.Name = "btnChanger";
             btnChanger.Size = new Size(138, 32);
             btnChanger.TabIndex = 20;
@@ -289,11 +293,11 @@
             grpContact.Controls.Add(pic);
             grpContact.Controls.Add(label6);
             grpContact.Controls.Add(label5);
-            grpContact.Font = new Font("Arial", 13F);
+            grpContact.Font = new Font("Arial", 14F);
             grpContact.ForeColor = SystemColors.ControlText;
-            grpContact.Location = new Point(278, 31);
+            grpContact.Location = new Point(311, 31);
             grpContact.Name = "grpContact";
-            grpContact.Size = new Size(215, 250);
+            grpContact.Size = new Size(121, 211);
             grpContact.TabIndex = 15;
             grpContact.TabStop = false;
             grpContact.Text = "Contact";
@@ -304,7 +308,7 @@
             lblBip.AutoSize = true;
             lblBip.Font = new Font("Arial", 10F);
             lblBip.ForeColor = Color.Black;
-            lblBip.Location = new Point(50, 219);
+            lblBip.Location = new Point(30, 181);
             lblBip.Name = "lblBip";
             lblBip.Size = new Size(11, 16);
             lblBip.TabIndex = 27;
@@ -315,7 +319,7 @@
             lblTel.AutoSize = true;
             lblTel.Font = new Font("Arial", 10F);
             lblTel.ForeColor = Color.Black;
-            lblTel.Location = new Point(50, 168);
+            lblTel.Location = new Point(30, 125);
             lblTel.Name = "lblTel";
             lblTel.Size = new Size(11, 16);
             lblTel.TabIndex = 26;
@@ -323,9 +327,9 @@
             // 
             // pic
             // 
-            pic.Location = new Point(50, 26);
+            pic.Location = new Point(17, 26);
             pic.Name = "pic";
-            pic.Size = new Size(106, 89);
+            pic.Size = new Size(65, 65);
             pic.TabIndex = 12;
             pic.TabStop = false;
             // 
@@ -334,7 +338,7 @@
             label6.AutoSize = true;
             label6.Font = new Font("Arial Narrow", 14.25F, FontStyle.Bold);
             label6.ForeColor = Color.Black;
-            label6.Location = new Point(50, 196);
+            label6.Location = new Point(11, 158);
             label6.Name = "label6";
             label6.Size = new Size(44, 23);
             label6.TabIndex = 11;
@@ -345,7 +349,7 @@
             label5.AutoSize = true;
             label5.Font = new Font("Arial Narrow", 14.25F, FontStyle.Bold);
             label5.ForeColor = Color.Black;
-            label5.Location = new Point(50, 131);
+            label5.Location = new Point(11, 102);
             label5.Name = "label5";
             label5.Size = new Size(104, 23);
             label5.TabIndex = 10;
@@ -366,11 +370,11 @@
             grpIdentite.Controls.Add(label2);
             grpIdentite.Controls.Add(label3);
             grpIdentite.Controls.Add(label1);
-            grpIdentite.Font = new Font("Arial", 15.75F, FontStyle.Regular, GraphicsUnit.Point, 0);
+            grpIdentite.Font = new Font("Arial", 14F);
             grpIdentite.ForeColor = SystemColors.ControlText;
             grpIdentite.Location = new Point(14, 31);
             grpIdentite.Name = "grpIdentite";
-            grpIdentite.Size = new Size(246, 288);
+            grpIdentite.Size = new Size(291, 211);
             grpIdentite.TabIndex = 0;
             grpIdentite.TabStop = false;
             grpIdentite.Text = "Identité";
@@ -381,7 +385,7 @@
             lblDateEmbauche.AutoSize = true;
             lblDateEmbauche.Font = new Font("Arial", 10F);
             lblDateEmbauche.ForeColor = Color.Black;
-            lblDateEmbauche.Location = new Point(110, 178);
+            lblDateEmbauche.Location = new Point(132, 109);
             lblDateEmbauche.Name = "lblDateEmbauche";
             lblDateEmbauche.Size = new Size(11, 16);
             lblDateEmbauche.TabIndex = 25;
@@ -392,7 +396,7 @@
             lblDateNaissance.AutoSize = true;
             lblDateNaissance.Font = new Font("Arial", 10F);
             lblDateNaissance.ForeColor = Color.Black;
-            lblDateNaissance.Location = new Point(94, 138);
+            lblDateNaissance.Location = new Point(213, 73);
             lblDateNaissance.Name = "lblDateNaissance";
             lblDateNaissance.Size = new Size(11, 16);
             lblDateNaissance.TabIndex = 24;
@@ -403,7 +407,7 @@
             lblNom.AutoSize = true;
             lblNom.Font = new Font("Arial", 10F);
             lblNom.ForeColor = Color.Black;
-            lblNom.Location = new Point(94, 33);
+            lblNom.Location = new Point(59, 38);
             lblNom.Name = "lblNom";
             lblNom.Size = new Size(11, 16);
             lblNom.TabIndex = 23;
@@ -414,7 +418,7 @@
             lblPrenom.AutoSize = true;
             lblPrenom.Font = new Font("Arial", 10F);
             lblPrenom.ForeColor = Color.Black;
-            lblPrenom.Location = new Point(94, 66);
+            lblPrenom.Location = new Point(80, 72);
             lblPrenom.Name = "lblPrenom";
             lblPrenom.Size = new Size(11, 16);
             lblPrenom.TabIndex = 22;
@@ -425,7 +429,7 @@
             lblSexe.AutoSize = true;
             lblSexe.Font = new Font("Arial", 10F);
             lblSexe.ForeColor = Color.Black;
-            lblSexe.Location = new Point(94, 102);
+            lblSexe.Location = new Point(213, 39);
             lblSexe.Name = "lblSexe";
             lblSexe.Size = new Size(11, 16);
             lblSexe.TabIndex = 21;
@@ -436,7 +440,7 @@
             label12.AutoSize = true;
             label12.Font = new Font("Arial Narrow", 14.25F, FontStyle.Bold);
             label12.ForeColor = Color.Black;
-            label12.Location = new Point(6, 178);
+            label12.Location = new Point(5, 103);
             label12.Name = "label12";
             label12.Size = new Size(121, 23);
             label12.TabIndex = 19;
@@ -448,7 +452,7 @@
             rdbVolontaire.Enabled = false;
             rdbVolontaire.Font = new Font("Arial Narrow", 14.25F, FontStyle.Bold);
             rdbVolontaire.ForeColor = Color.Black;
-            rdbVolontaire.Location = new Point(94, 252);
+            rdbVolontaire.Location = new Point(80, 173);
             rdbVolontaire.Name = "rdbVolontaire";
             rdbVolontaire.Size = new Size(105, 27);
             rdbVolontaire.TabIndex = 14;
@@ -462,7 +466,7 @@
             rdbPro.Enabled = false;
             rdbPro.Font = new Font("Arial Narrow", 14.25F, FontStyle.Bold);
             rdbPro.ForeColor = Color.Black;
-            rdbPro.Location = new Point(94, 219);
+            rdbPro.Location = new Point(79, 140);
             rdbPro.Name = "rdbPro";
             rdbPro.Size = new Size(123, 27);
             rdbPro.TabIndex = 13;
@@ -475,7 +479,7 @@
             label4.AutoSize = true;
             label4.Font = new Font("Arial Narrow", 14.25F, FontStyle.Bold);
             label4.ForeColor = Color.Black;
-            label4.Location = new Point(5, 218);
+            label4.Location = new Point(6, 140);
             label4.Name = "label4";
             label4.Size = new Size(67, 23);
             label4.TabIndex = 10;
@@ -486,7 +490,7 @@
             label8.AutoSize = true;
             label8.Font = new Font("Arial Narrow", 14.25F, FontStyle.Bold);
             label8.ForeColor = Color.Black;
-            label8.Location = new Point(6, 138);
+            label8.Location = new Point(160, 66);
             label8.Name = "label8";
             label8.Size = new Size(60, 23);
             label8.TabIndex = 9;
@@ -497,7 +501,7 @@
             label2.AutoSize = true;
             label2.Font = new Font("Arial Narrow", 14.25F, FontStyle.Bold);
             label2.ForeColor = Color.Black;
-            label2.Location = new Point(6, 102);
+            label2.Location = new Point(160, 31);
             label2.Name = "label2";
             label2.Size = new Size(64, 23);
             label2.TabIndex = 4;
@@ -527,11 +531,11 @@
             // 
             // btnInfo
             // 
-            btnInfo.Font = new Font("Arial", 10F);
-            btnInfo.ForeColor = SystemColors.GrayText;
-            btnInfo.Location = new Point(285, 287);
+            btnInfo.Font = new Font("Arial", 14F);
+            btnInfo.ForeColor = Color.Black;
+            btnInfo.Location = new Point(151, 248);
             btnInfo.Name = "btnInfo";
-            btnInfo.Size = new Size(195, 32);
+            btnInfo.Size = new Size(242, 32);
             btnInfo.TabIndex = 1;
             btnInfo.Text = "Plus d'informations";
             btnInfo.UseVisualStyleBackColor = true;
@@ -540,15 +544,17 @@
             // 
             // btnCreate
             // 
-            btnCreate.Location = new Point(3, 554);
+            btnCreate.Font = new Font("Arial", 14F);
+            btnCreate.ForeColor = Color.Black;
+            btnCreate.Location = new Point(5, 482);
             btnCreate.Name = "btnCreate";
-            btnCreate.Size = new Size(224, 71);
+            btnCreate.Size = new Size(224, 58);
             btnCreate.TabIndex = 0;
             btnCreate.Text = "Nouveau Pompier";
             btnCreate.UseVisualStyleBackColor = true;
             btnCreate.Click += btnCreate_Click;
             // 
-            // UCGestionPerso
+            // GestionPerso
             // 
             AutoScaleDimensions = new SizeF(10F, 22F);
             AutoScaleMode = AutoScaleMode.Font;
@@ -559,8 +565,8 @@
             Font = new Font("Microsoft Sans Serif", 13.8F, FontStyle.Regular, GraphicsUnit.Point, 0);
             ForeColor = SystemColors.ControlDarkDark;
             Margin = new Padding(5);
-            Name = "UCGestionPerso";
-            Size = new Size(1099, 641);
+            Name = "GestionPerso";
+            Size = new Size(834, 548);
             Load += UCGestionPerso_Load;
             pnlInfo.ResumeLayout(false);
             pnlInfo.PerformLayout();

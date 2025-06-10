@@ -27,15 +27,13 @@ namespace UC_GestionPerso
 
         public UCRichButton(string inf01) : this()
         {
+            this.Width = 200;
             lblInfo1.Text = inf01;
             lblInfo1.Left = 0;
-            lblInfo1.Width = 210;
             lblInfo1.TextAlign = ContentAlignment.MiddleCenter;
             this.Controls.Remove(pictureBox1);
             this.Controls.Remove(lblInfo2);
-            lblInfo1.Left = 10;
-            this.Width = 215;
-            this.Height = 80;
+            lblInfo1.Left = (this.Width - lblInfo1.Width)/2;
             lblInfo1.Top = 80 / 2 - lblInfo1.Height + 2;
         }
 
@@ -46,7 +44,6 @@ namespace UC_GestionPerso
             this.Controls.Remove(pictureBox1);
             lblInfo1.Left = 10;
             lblInfo2.Left = lblInfo1.Left;
-            this.Width = 175;
         }
 
         public UCRichButton(string inf01, string inf02, Image img) : this()
