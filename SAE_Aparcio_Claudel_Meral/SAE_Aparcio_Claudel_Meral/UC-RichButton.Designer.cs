@@ -83,7 +83,7 @@
             Font = new Font("Microsoft Sans Serif", 12F, FontStyle.Regular, GraphicsUnit.Point, 0);
             Margin = new Padding(4, 5, 4, 5);
             Name = "UCRichButton";
-            Size = new Size(200, 75);
+            Size = new Size(200, 74);
             Load += UCRichButton_Load;
             MouseClick += RichButton_MouseClick;
             MouseEnter += UCRichButton_MouseEnter;
