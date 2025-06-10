@@ -93,16 +93,6 @@ namespace SAE_Aparcio_Claudel_Meral.Properties {
         /// <summary>
         ///   Recherche une ressource localisée de type System.Drawing.Bitmap.
         /// </summary>
-        internal static System.Drawing.Bitmap back {
-            get {
-                object obj = ResourceManager.GetObject("back", resourceCulture);
-                return ((System.Drawing.Bitmap)(obj));
-            }
-        }
-        
-        /// <summary>
-        ///   Recherche une ressource localisée de type System.Drawing.Bitmap.
-        /// </summary>
         internal static System.Drawing.Bitmap BRS {
             get {
                 object obj = ResourceManager.GetObject("BRS", resourceCulture);
@@ -216,6 +206,16 @@ namespace SAE_Aparcio_Claudel_Meral.Properties {
         internal static System.Drawing.Bitmap FPT {
             get {
                 object obj = ResourceManager.GetObject("FPT", resourceCulture);
+                return ((System.Drawing.Bitmap)(obj));
+            }
+        }
+        
+        /// <summary>
+        ///   Recherche une ressource localisée de type System.Drawing.Bitmap.
+        /// </summary>
+        internal static System.Drawing.Bitmap imageCaserne {
+            get {
+                object obj = ResourceManager.GetObject("imageCaserne", resourceCulture);
                 return ((System.Drawing.Bitmap)(obj));
             }
         }
