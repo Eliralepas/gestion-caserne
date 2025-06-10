@@ -1,19 +1,7 @@
-﻿using System;
-using System.Collections.Generic;
-using System.ComponentModel;
-using System.Data;
-using System.Data.SqlClient;
+﻿using System.Data;
 using System.Data.SQLite;
-using System.Diagnostics;
-using System.Drawing;
 using System.Globalization;
-using System.IO;
-using System.Linq;
-using System.Reflection.Emit;
-using System.Text;
-using System.Threading;
-using System.Threading.Tasks;
-using System.Windows.Forms;
+
 
 namespace UC_GestionPerso
 {
@@ -421,12 +409,12 @@ namespace UC_GestionPerso
         {
             if(!login.Connected)
             {
-                _pendingCreatePompier = true; // On retient qu’on veut créer un pompier
-                connexionRequest(); // Lancement du login
+                _pendingCreatePompier = true; 
+                connexionRequest(); 
                 return;
             }
 
-            OpenCreatePompier(); // Sinon on ouvre direct
+            OpenCreatePompier(); 
         }
         private void OpenCreatePompier()
         {
@@ -556,6 +544,7 @@ namespace UC_GestionPerso
             login.BringToFront();
             login.Left = (this.Width - login.Width) / 2;
             login.Top = (this.Height - login.Height) / 2;
+            login.Visible = true;
             this.Enabled = false;
         }
 

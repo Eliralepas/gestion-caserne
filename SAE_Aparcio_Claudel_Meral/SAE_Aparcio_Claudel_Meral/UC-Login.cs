@@ -58,7 +58,7 @@ namespace UC_GestionPerso
                 if(m_con == null || m_con.State != ConnectionState.Open)
                 {
                     MessageBox.Show("Erreur de connexion à la base de données");
-                    OnLoginResult?.Invoke(false);
+                    OnLoginResult.Invoke(false);
                     return;
                 }
 
@@ -68,7 +68,7 @@ namespace UC_GestionPerso
                 if(string.IsNullOrEmpty(login) || string.IsNullOrEmpty(mdp))
                 {
                     MessageBox.Show("Veuillez saisir un identifiant et un mot de passe");
-                    OnLoginResult?.Invoke(false);
+                    OnLoginResult.Invoke(false);
                     return;
                 }
 
@@ -94,7 +94,7 @@ namespace UC_GestionPerso
                     else
                     {
                         MessageBox.Show("Mot de passe incorrect");
-                        OnLoginResult?.Invoke(false);
+                        OnLoginResult.Invoke(false);
                     }
                 }
             }
@@ -107,7 +107,6 @@ namespace UC_GestionPerso
 
         private void btnCancel_Click(object sender, EventArgs e)
         {
-            MessageBox.Show("aaaaaaaaaaa");
             OnLoginCancelled.Invoke();  
             this.Visible = false;
         }
