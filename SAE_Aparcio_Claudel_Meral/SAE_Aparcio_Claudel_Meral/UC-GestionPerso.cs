@@ -115,6 +115,10 @@ namespace UC_GestionPerso
         {
             try
             {
+                if(Selected.Tag == null)
+                {
+                    return;
+                }
                 flpPompier.Controls.Clear();
                 string cmdPompier = $@"SELECT matriculePompier FROM Affectation WHERE idCaserne = {Selected.Tag}";
                 SQLiteCommand cd = new SQLiteCommand(cmdPompier, _con);
@@ -131,20 +135,22 @@ namespace UC_GestionPerso
                     SQLiteCommand cd2 = new SQLiteCommand(cmdGrade, _con);
                     string grade = (string)cd2.ExecuteScalar();
                     UCRichButton btn;
-                    var varimg = SAE_Aparcio_Claudel_Meral.Properties.Resources.ResourceManager.GetObject(grade);
-                    if(varimg is Image img)
+                    if(grade != null)
                     {
-                        btn = new UCRichButton(nom, id.ToString(), (Image)varimg);
+                        var varimg = SAE_Aparcio_Claudel_Meral.Properties.Resources.ResourceManager.GetObject(grade);
+                        if(varimg is Image img)
+                        {
+                            btn = new UCRichButton(nom, id.ToString(), (Image)varimg);
+                        }
+                        else
+                        {
+                            btn = new UCRichButton(nom, id.ToString(), SAE_Aparcio_Claudel_Meral.Properties.Resources.SAP);
+                        }
+                        btn.Width = flpPompier.Width - 30;
+                        btn.Tag = id;
+                        btn.clickReturnTag += btnClickPompier;
+                        flpPompier.Controls.Add(btn);
                     }
-                    else
-                    {
-                        btn = new UCRichButton(nom, id.ToString(), SAE_Aparcio_Claudel_Meral.Properties.Resources.SAP);
-                    }
-                    //btn.Width = flpPompier.Width - 30;
-                    btn.Tag = id;
-                    btn.clickReturnTag += btnClickPompier;
-
-                    flpPompier.Controls.Add(btn);
                 }
                 dr.Close();
             }
@@ -200,7 +206,7 @@ namespace UC_GestionPerso
                         rdbVolontaire.Checked = true;
                     }
 
-                    lblTel.Text = dr.GetString(6);
+                    lblTel.Text = dr.IsDBNull(6) ? "Non renseigné" : dr.GetString(6);
                     lblBip.Text = dr.GetInt32(7).ToString();
                     int enConge = dr.GetInt32(9);
                     string codeGrade = dr.GetString(10);

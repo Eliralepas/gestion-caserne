@@ -119,7 +119,7 @@ namespace UC_GestionPerso
                 {
                     txtPwd.Focus();
                 }
-                else if(sender == txtPwd)
+                else if(sender == txtPwd)   
                 {
                     ValidateLogin();
                 }
