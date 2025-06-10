@@ -15,15 +15,18 @@ namespace UCGestionPerso
     {
 
         SQLiteConnection m_con;
+
         public UCLogin()
         {
             InitializeComponent();
         }
+        bool _connected;
+        public bool Connected { get { return _connected; }  set { _connected = value; } }
 
         public UCLogin(SQLiteConnection con)
         {
             InitializeComponent();
-            con = m_con;
+            m_con = con;
             if(m_con.State == ConnectionState.Closed)
             {
                 m_con.Open();
@@ -54,7 +57,7 @@ namespace UCGestionPerso
             SQLiteDataReader data =  cmd.ExecuteReader();
             while(data.Read())
             {
-
+                
             }
         }
 

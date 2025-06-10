@@ -122,7 +122,8 @@
     <Reference Include="UCGestionEngins">
       <HintPath>..\..\usercontrol\UCGestionEngins\UCGestionEngins\bin\Debug\UCGestionEngins.dll</HintPath>
     </Reference>
-    <Reference Include="UCGestionPerso">
+    <Reference Include="UCGestionPerso, Version=1.0.0.0, Culture=neutral, processorArchitecture=MSIL">
+      <SpecificVersion>False</SpecificVersion>
       <HintPath>..\..\usercontrol\UCGestionPerso\UCGestionPerso\bin\Debug\UCGestionPerso.dll</HintPath>
     </Reference>
     <Reference Include="UserControlMission">
