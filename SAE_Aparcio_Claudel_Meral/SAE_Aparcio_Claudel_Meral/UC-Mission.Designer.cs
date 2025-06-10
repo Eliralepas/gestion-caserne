@@ -48,7 +48,7 @@
             lblMissionId.Location = new Point(143, 9);
             lblMissionId.Margin = new Padding(2, 0, 2, 0);
             lblMissionId.Name = "lblMissionId";
-            lblMissionId.Size = new Size(119, 23);
+            lblMissionId.Size = new Size(93, 18);
             lblMissionId.TabIndex = 1;
             lblMissionId.Text = "ID mission : ";
             // 
@@ -58,7 +58,7 @@
             lblDateDebut.Location = new Point(143, 73);
             lblDateDebut.Margin = new Padding(2, 0, 2, 0);
             lblDateDebut.Name = "lblDateDebut";
-            lblDateDebut.Size = new Size(119, 23);
+            lblDateDebut.Size = new Size(90, 18);
             lblDateDebut.TabIndex = 2;
             lblDateDebut.Text = "Début le    : ";
             // 
@@ -66,10 +66,10 @@
             // 
             lblNatureMission.AutoSize = true;
             lblNatureMission.Font = new Font("Arial", 12F, FontStyle.Bold);
-            lblNatureMission.Location = new Point(428, 9);
+            lblNatureMission.Location = new Point(405, 9);
             lblNatureMission.Margin = new Padding(2, 0, 2, 0);
             lblNatureMission.Name = "lblNatureMission";
-            lblNatureMission.Size = new Size(209, 24);
+            lblNatureMission.Size = new Size(168, 19);
             lblNatureMission.TabIndex = 4;
             lblNatureMission.Text = "Nature de la mission ";
             // 
@@ -79,7 +79,7 @@
             lblCaserne.Location = new Point(143, 41);
             lblCaserne.Margin = new Padding(2, 0, 2, 0);
             lblCaserne.Name = "lblCaserne";
-            lblCaserne.Size = new Size(120, 23);
+            lblCaserne.Size = new Size(92, 18);
             lblCaserne.TabIndex = 3;
             lblCaserne.Text = "Caserne    : ";
             // 
@@ -97,7 +97,7 @@
             panelMission.Controls.Add(lblDateDebut);
             panelMission.Location = new Point(0, 0);
             panelMission.Name = "panelMission";
-            panelMission.Size = new Size(815, 150);
+            panelMission.Size = new Size(753, 150);
             panelMission.TabIndex = 6;
             // 
             // txtMotifMission
@@ -105,7 +105,7 @@
             txtMotifMission.BackColor = Color.White;
             txtMotifMission.BorderStyle = BorderStyle.None;
             txtMotifMission.ForeColor = Color.DarkRed;
-            txtMotifMission.Location = new Point(432, 51);
+            txtMotifMission.Location = new Point(405, 51);
             txtMotifMission.Name = "txtMotifMission";
             txtMotifMission.ReadOnly = true;
             txtMotifMission.ShortcutsEnabled = false;
@@ -119,7 +119,7 @@
             lblDateFin.Location = new Point(144, 105);
             lblDateFin.Margin = new Padding(2, 0, 2, 0);
             lblDateFin.Name = "lblDateFin";
-            lblDateFin.Size = new Size(117, 23);
+            lblDateFin.Size = new Size(86, 18);
             lblDateFin.TabIndex = 6;
             lblDateFin.Text = "Fin le        : ";
             // 
@@ -139,7 +139,7 @@
             // 
             btnCreerPdf.BackgroundImage = SAE_Aparcio_Claudel_Meral.Properties.Resources.imagePDF;
             btnCreerPdf.BackgroundImageLayout = ImageLayout.Stretch;
-            btnCreerPdf.Location = new Point(825, 74);
+            btnCreerPdf.Location = new Point(759, 74);
             btnCreerPdf.Name = "btnCreerPdf";
             btnCreerPdf.Size = new Size(65, 65);
             btnCreerPdf.TabIndex = 8;
@@ -150,7 +150,7 @@
             // 
             btnTerminerMission.BackgroundImage = SAE_Aparcio_Claudel_Meral.Properties.Resources.imageValider;
             btnTerminerMission.BackgroundImageLayout = ImageLayout.Stretch;
-            btnTerminerMission.Location = new Point(825, 6);
+            btnTerminerMission.Location = new Point(759, 3);
             btnTerminerMission.Name = "btnTerminerMission";
             btnTerminerMission.Size = new Size(65, 65);
             btnTerminerMission.TabIndex = 7;
@@ -159,9 +159,8 @@
             // 
             // Mission
             // 
-            AutoScaleDimensions = new SizeF(120F, 120F);
-            AutoScaleMode = AutoScaleMode.Dpi;
-            AutoSize = true;
+            AutoScaleDimensions = new SizeF(9F, 18F);
+            AutoScaleMode = AutoScaleMode.Font;
             AutoSizeMode = AutoSizeMode.GrowAndShrink;
             Controls.Add(btnCreerPdf);
             Controls.Add(btnTerminerMission);
@@ -170,7 +169,7 @@
             ForeColor = Color.DarkRed;
             Margin = new Padding(5, 6, 5, 6);
             Name = "Mission";
-            Size = new Size(893, 153);
+            Size = new Size(829, 153);
             panelMission.ResumeLayout(false);
             panelMission.PerformLayout();
             ((System.ComponentModel.ISupportInitialize)picBox).EndInit();

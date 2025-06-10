@@ -47,9 +47,10 @@
             // 
             lblTitleCaserne.AutoSize = true;
             lblTitleCaserne.Font = new Font("Arial", 13.8F);
-            lblTitleCaserne.Location = new Point(69, 36);
+            lblTitleCaserne.Location = new Point(55, 29);
+            lblTitleCaserne.Margin = new Padding(2, 0, 2, 0);
             lblTitleCaserne.Name = "lblTitleCaserne";
-            lblTitleCaserne.Size = new Size(233, 26);
+            lblTitleCaserne.Size = new Size(193, 22);
             lblTitleCaserne.TabIndex = 0;
             lblTitleCaserne.Text = "Choix de la carserne :";
             // 
@@ -57,10 +58,10 @@
             // 
             cbxChoixCaserne.Anchor = AnchorStyles.Top | AnchorStyles.Right;
             cbxChoixCaserne.FormattingEnabled = true;
-            cbxChoixCaserne.Location = new Point(308, 39);
-            cbxChoixCaserne.Margin = new Padding(3, 2, 3, 2);
+            cbxChoixCaserne.Location = new Point(393, 28);
+            cbxChoixCaserne.Margin = new Padding(2, 2, 2, 2);
             cbxChoixCaserne.Name = "cbxChoixCaserne";
-            cbxChoixCaserne.Size = new Size(248, 28);
+            cbxChoixCaserne.Size = new Size(199, 23);
             cbxChoixCaserne.TabIndex = 1;
             cbxChoixCaserne.SelectionChangeCommitted += cbxChoixCaserne_SelectionChangeCommitted;
             // 
@@ -72,9 +73,9 @@
             pnlGestionEngin.Controls.Add(pnlCaserneChoice);
             pnlGestionEngin.Dock = DockStyle.Fill;
             pnlGestionEngin.Location = new Point(0, 0);
-            pnlGestionEngin.Margin = new Padding(3, 2, 3, 2);
+            pnlGestionEngin.Margin = new Padding(2, 2, 2, 2);
             pnlGestionEngin.Name = "pnlGestionEngin";
-            pnlGestionEngin.Size = new Size(735, 782);
+            pnlGestionEngin.Size = new Size(1003, 647);
             pnlGestionEngin.TabIndex = 2;
             // 
             // pnlButton
@@ -85,10 +86,10 @@
             pnlButton.Controls.Add(btnLast);
             pnlButton.Controls.Add(btnNext);
             pnlButton.Dock = DockStyle.Bottom;
-            pnlButton.Location = new Point(0, 616);
-            pnlButton.Margin = new Padding(4, 5, 4, 5);
+            pnlButton.Location = new Point(0, 514);
+            pnlButton.Margin = new Padding(3, 4, 3, 4);
             pnlButton.Name = "pnlButton";
-            pnlButton.Size = new Size(735, 166);
+            pnlButton.Size = new Size(1003, 133);
             pnlButton.TabIndex = 4;
             // 
             // btnPrevious
@@ -96,10 +97,10 @@
             btnPrevious.Anchor = AnchorStyles.Bottom | AnchorStyles.Left;
             btnPrevious.Cursor = Cursors.Hand;
             btnPrevious.Font = new Font("MS PGothic", 48F, FontStyle.Bold);
-            btnPrevious.Location = new Point(171, 19);
-            btnPrevious.Margin = new Padding(4, 5, 4, 5);
+            btnPrevious.Location = new Point(137, 15);
+            btnPrevious.Margin = new Padding(3, 4, 3, 4);
             btnPrevious.Name = "btnPrevious";
-            btnPrevious.Size = new Size(133, 122);
+            btnPrevious.Size = new Size(106, 98);
             btnPrevious.TabIndex = 3;
             btnPrevious.Text = "<";
             btnPrevious.UseVisualStyleBackColor = true;
@@ -110,10 +111,10 @@
             btnFirst.Anchor = AnchorStyles.Bottom | AnchorStyles.Left;
             btnFirst.Cursor = Cursors.Hand;
             btnFirst.Font = new Font("MS PGothic", 36F, FontStyle.Bold);
-            btnFirst.Location = new Point(17, 19);
-            btnFirst.Margin = new Padding(4, 5, 4, 5);
+            btnFirst.Location = new Point(14, 15);
+            btnFirst.Margin = new Padding(3, 4, 3, 4);
             btnFirst.Name = "btnFirst";
-            btnFirst.Size = new Size(133, 122);
+            btnFirst.Size = new Size(106, 98);
             btnFirst.TabIndex = 2;
             btnFirst.Text = "<<";
             btnFirst.UseVisualStyleBackColor = true;
@@ -124,10 +125,10 @@
             btnLast.Anchor = AnchorStyles.Bottom | AnchorStyles.Right;
             btnLast.Cursor = Cursors.Hand;
             btnLast.Font = new Font("MS PGothic", 36F, FontStyle.Bold);
-            btnLast.Location = new Point(587, 19);
-            btnLast.Margin = new Padding(4, 5, 4, 5);
+            btnLast.Location = new Point(885, 15);
+            btnLast.Margin = new Padding(3, 4, 3, 4);
             btnLast.Name = "btnLast";
-            btnLast.Size = new Size(133, 122);
+            btnLast.Size = new Size(106, 98);
             btnLast.TabIndex = 1;
             btnLast.Text = ">>";
             btnLast.UseVisualStyleBackColor = true;
@@ -138,10 +139,10 @@
             btnNext.Anchor = AnchorStyles.Bottom | AnchorStyles.Right;
             btnNext.Cursor = Cursors.Hand;
             btnNext.Font = new Font("MS PGothic", 48F, FontStyle.Bold, GraphicsUnit.Point, 0);
-            btnNext.Location = new Point(445, 19);
-            btnNext.Margin = new Padding(4, 5, 4, 5);
+            btnNext.Location = new Point(771, 15);
+            btnNext.Margin = new Padding(3, 4, 3, 4);
             btnNext.Name = "btnNext";
-            btnNext.Size = new Size(133, 122);
+            btnNext.Size = new Size(106, 98);
             btnNext.TabIndex = 0;
             btnNext.Text = ">";
             btnNext.UseVisualStyleBackColor = true;
@@ -151,10 +152,10 @@
             // 
             pnlDisplayEngin.Anchor = AnchorStyles.Top | AnchorStyles.Bottom | AnchorStyles.Left | AnchorStyles.Right;
             pnlDisplayEngin.BackColor = SystemColors.Desktop;
-            pnlDisplayEngin.Location = new Point(0, 121);
-            pnlDisplayEngin.Margin = new Padding(4, 5, 4, 5);
+            pnlDisplayEngin.Location = new Point(0, 97);
+            pnlDisplayEngin.Margin = new Padding(3, 4, 3, 4);
             pnlDisplayEngin.Name = "pnlDisplayEngin";
-            pnlDisplayEngin.Size = new Size(735, 486);
+            pnlDisplayEngin.Size = new Size(1003, 410);
             pnlDisplayEngin.TabIndex = 3;
             // 
             // pnlCaserneChoice
@@ -164,20 +165,20 @@
             pnlCaserneChoice.Controls.Add(lblTitleCaserne);
             pnlCaserneChoice.Dock = DockStyle.Top;
             pnlCaserneChoice.Location = new Point(0, 0);
-            pnlCaserneChoice.Margin = new Padding(4, 5, 4, 5);
+            pnlCaserneChoice.Margin = new Padding(3, 4, 3, 4);
             pnlCaserneChoice.Name = "pnlCaserneChoice";
-            pnlCaserneChoice.Size = new Size(735, 112);
+            pnlCaserneChoice.Size = new Size(1003, 90);
             pnlCaserneChoice.TabIndex = 2;
             // 
             // GestionEngins
             // 
-            AutoScaleDimensions = new SizeF(120F, 120F);
+            AutoScaleDimensions = new SizeF(96F, 96F);
             AutoScaleMode = AutoScaleMode.Dpi;
             BackColor = Color.Transparent;
             Controls.Add(pnlGestionEngin);
-            Margin = new Padding(3, 2, 3, 2);
+            Margin = new Padding(2, 2, 2, 2);
             Name = "GestionEngins";
-            Size = new Size(735, 782);
+            Size = new Size(1003, 647);
             Load += UCGestionEngin_Load;
             pnlGestionEngin.ResumeLayout(false);
             pnlButton.ResumeLayout(false);

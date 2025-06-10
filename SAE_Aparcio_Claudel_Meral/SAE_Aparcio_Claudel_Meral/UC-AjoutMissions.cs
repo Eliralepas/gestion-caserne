@@ -519,10 +519,11 @@ namespace UC_AjoutMissions
             int left = 5;
             foreach(DataRow dr in Engin.Rows)
             {
-                string code = "Type d'engin : " + dr["TypeEngin"].ToString();
+                string nomEngin = monDs.Tables["TypeEngin"].Select($"code = '{dr["TypeEngin"].ToString()}'")[0]["nom"].ToString();
+                string type = "Type d'engin : " + nomEngin;
                 string id = "Numéro de l'engin : " + dr["Numero"].ToString();
 
-                UC_MobilisationEnginPompier engin = new UC_MobilisationEnginPompier(code, id);
+                UC_MobilisationEnginPompier engin = new UC_MobilisationEnginPompier(type, id);
 
                 engin.Top = top;
                 engin.Left = left;
@@ -534,12 +535,22 @@ namespace UC_AjoutMissions
             top = 10;
             foreach(DataRow dr in Pompier.Rows)
             {
-                string matricule = "Matricule du pompier : " + dr["Matricule"].ToString();
-                string id = "L'habilitation associée : " + dr["idHabilitation"].ToString();
-
-                UC_MobilisationEnginPompier pompier = new UC_MobilisationEnginPompier(matricule, id);
-
-                pompier.Top = top;
+                string nom = monDs.Tables["Pompier"].Select("matricule = " + dr["Matricule"].ToString())[0]["nom"].ToString();
+                string prenom = monDs.Tables["Pompier"].Select("matricule = " + dr["Matricule"].ToString())[0]["prenom"].ToString();
+                string nomPompier = "Pompier : " + prenom + " " + nom;
+                string nomHabilitation = monDs.Tables["Habilitation"].Select("id = " + dr["idHabilitation"].ToString())[0]["libelle"].ToString();
+                string codeGrade = monDs.Tables["Pompier"].Select("matricule = " + dr["Matricule"].ToString())[0]["codeGrade"].ToString();
+                var varImage = SAE_Aparcio_Claudel_Meral.Properties.Resources.ResourceManager.GetObject(codeGrade);
+                UC_MobilisationEnginPompier pompier;
+                if (varImage is Image image)
+                {
+                    pompier = new UC_MobilisationEnginPompier(nomPompier, nomHabilitation, image);
+                }
+                else
+                {
+                    pompier = new UC_MobilisationEnginPompier(nomPompier, nomHabilitation);
+                }
+                    pompier.Top = top;
                 pompier.Left = left;
                 pompier.AutoSize = true;
 
@@ -592,7 +603,5 @@ namespace UC_AjoutMissions
             lblNumMission.Text = "Mission n°" + nextId.ToString();
             lblDate.Text = "déclenchée le : " + date;
         }
-
-
     }
 }

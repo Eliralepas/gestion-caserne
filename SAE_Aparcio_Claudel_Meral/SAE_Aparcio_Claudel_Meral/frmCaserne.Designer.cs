@@ -156,7 +156,8 @@
             // 
             // frmCaserne
             // 
-            AutoScaleMode = AutoScaleMode.None;
+            AutoScaleDimensions = new SizeF(11F, 22F);
+            AutoScaleMode = AutoScaleMode.Font;
             ClientSize = new Size(1382, 723);
             Controls.Add(panelNavigation);
             Controls.Add(panelVolet);

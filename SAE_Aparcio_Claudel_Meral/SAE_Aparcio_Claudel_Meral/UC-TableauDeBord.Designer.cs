@@ -42,30 +42,31 @@
             lblTableauDeBord.Font = new Font("Arial", 20F, FontStyle.Bold);
             lblTableauDeBord.ForeColor = Color.DarkRed;
             lblTableauDeBord.ImageAlign = ContentAlignment.TopCenter;
-            lblTableauDeBord.Location = new Point(427, 20);
+            lblTableauDeBord.Location = new Point(392, 20);
             lblTableauDeBord.Name = "lblTableauDeBord";
-            lblTableauDeBord.Size = new Size(277, 40);
+            lblTableauDeBord.Size = new Size(227, 32);
             lblTableauDeBord.TabIndex = 0;
             lblTableauDeBord.Text = "Tableau de bord";
             lblTableauDeBord.TextAlign = ContentAlignment.TopCenter;
             // 
             // panelMissions
             // 
+            panelMissions.Anchor = AnchorStyles.Top | AnchorStyles.Bottom | AnchorStyles.Left | AnchorStyles.Right;
             panelMissions.AutoScroll = true;
             panelMissions.AutoSizeMode = AutoSizeMode.GrowAndShrink;
             panelMissions.BackColor = Color.DarkRed;
-            panelMissions.Location = new Point(19, 95);
+            panelMissions.Location = new Point(55, 95);
             panelMissions.Name = "panelMissions";
-            panelMissions.Size = new Size(1139, 530);
+            panelMissions.Size = new Size(913, 541);
             panelMissions.TabIndex = 4;
             // 
             // lblBarre
             // 
             lblBarre.BackColor = Color.DarkRed;
             lblBarre.Font = new Font("Arial", 4F);
-            lblBarre.Location = new Point(19, 69);
+            lblBarre.Location = new Point(34, 69);
             lblBarre.Name = "lblBarre";
-            lblBarre.Size = new Size(1139, 23);
+            lblBarre.Size = new Size(934, 23);
             lblBarre.TabIndex = 5;
             lblBarre.Text = "                                  ";
             // 
@@ -76,7 +77,7 @@
             lblEnCours.ForeColor = Color.DarkRed;
             lblEnCours.Location = new Point(87, 20);
             lblEnCours.Name = "lblEnCours";
-            lblEnCours.Size = new Size(132, 32);
+            lblEnCours.Size = new Size(104, 26);
             lblEnCours.TabIndex = 7;
             lblEnCours.Text = "En cours";
             // 
@@ -96,8 +97,8 @@
             // 
             // TableauDeBord
             // 
-            AutoScaleDimensions = new SizeF(120F, 120F);
-            AutoScaleMode = AutoScaleMode.Dpi;
+            AutoScaleDimensions = new SizeF(11F, 22F);
+            AutoScaleMode = AutoScaleMode.Font;
             AutoSizeMode = AutoSizeMode.GrowAndShrink;
             Controls.Add(sckbEnCours);
             Controls.Add(lblEnCours);
@@ -107,7 +108,7 @@
             Font = new Font("Arial", 14F);
             Margin = new Padding(5);
             Name = "TableauDeBord";
-            Size = new Size(1177, 628);
+            Size = new Size(1003, 647);
             ResumeLayout(false);
             PerformLayout();
         }

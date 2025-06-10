@@ -28,53 +28,54 @@
         /// </summary>
         private void InitializeComponent()
         {
-            this.lblCode = new System.Windows.Forms.Label();
-            this.lblId = new System.Windows.Forms.Label();
-            this.ptbMobiliser = new System.Windows.Forms.PictureBox();
-            ((System.ComponentModel.ISupportInitialize)(this.ptbMobiliser)).BeginInit();
-            this.SuspendLayout();
+            lblCode = new Label();
+            lblId = new Label();
+            ptbMobiliser = new PictureBox();
+            ((System.ComponentModel.ISupportInitialize)ptbMobiliser).BeginInit();
+            SuspendLayout();
             // 
             // lblCode
             // 
-            this.lblCode.AutoSize = true;
-            this.lblCode.Location = new System.Drawing.Point(16, 21);
-            this.lblCode.Name = "lblCode";
-            this.lblCode.Size = new System.Drawing.Size(62, 23);
-            this.lblCode.TabIndex = 0;
-            this.lblCode.Text = "label1";
+            lblCode.AutoSize = true;
+            lblCode.Location = new Point(16, 21);
+            lblCode.Name = "lblCode";
+            lblCode.Size = new Size(45, 16);
+            lblCode.TabIndex = 0;
+            lblCode.Text = "label1";
             // 
             // lblId
             // 
-            this.lblId.AutoSize = true;
-            this.lblId.Location = new System.Drawing.Point(16, 68);
-            this.lblId.Name = "lblId";
-            this.lblId.Size = new System.Drawing.Size(62, 23);
-            this.lblId.TabIndex = 1;
-            this.lblId.Text = "label2";
+            lblId.AutoSize = true;
+            lblId.Location = new Point(16, 68);
+            lblId.Name = "lblId";
+            lblId.Size = new Size(45, 16);
+            lblId.TabIndex = 1;
+            lblId.Text = "label2";
             // 
             // ptbMobiliser
             // 
-            this.ptbMobiliser.Location = new System.Drawing.Point(249, 12);
-            this.ptbMobiliser.Name = "ptbMobiliser";
-            this.ptbMobiliser.Size = new System.Drawing.Size(114, 91);
-            this.ptbMobiliser.TabIndex = 2;
-            this.ptbMobiliser.TabStop = false;
+            ptbMobiliser.Anchor = AnchorStyles.Top | AnchorStyles.Bottom | AnchorStyles.Left | AnchorStyles.Right;
+            ptbMobiliser.Location = new Point(249, 12);
+            ptbMobiliser.Name = "ptbMobiliser";
+            ptbMobiliser.Size = new Size(114, 91);
+            ptbMobiliser.TabIndex = 2;
+            ptbMobiliser.TabStop = false;
             // 
             // UC_MobilisationEnginPompier
             // 
-            this.AutoScaleDimensions = new System.Drawing.SizeF(11F, 23F);
-            this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.BackColor = System.Drawing.Color.IndianRed;
-            this.Controls.Add(this.ptbMobiliser);
-            this.Controls.Add(this.lblId);
-            this.Controls.Add(this.lblCode);
-            this.Font = new System.Drawing.Font("Arial", 10F);
-            this.Margin = new System.Windows.Forms.Padding(4);
-            this.Name = "UC_MobilisationEnginPompier";
-            this.Size = new System.Drawing.Size(379, 118);
-            ((System.ComponentModel.ISupportInitialize)(this.ptbMobiliser)).EndInit();
-            this.ResumeLayout(false);
-            this.PerformLayout();
+            AutoScaleDimensions = new SizeF(7F, 16F);
+            AutoScaleMode = AutoScaleMode.Font;
+            BackColor = Color.IndianRed;
+            Controls.Add(ptbMobiliser);
+            Controls.Add(lblId);
+            Controls.Add(lblCode);
+            Font = new Font("Arial", 10F);
+            Margin = new Padding(4);
+            Name = "UC_MobilisationEnginPompier";
+            Size = new Size(379, 118);
+            ((System.ComponentModel.ISupportInitialize)ptbMobiliser).EndInit();
+            ResumeLayout(false);
+            PerformLayout();
 
         }
 

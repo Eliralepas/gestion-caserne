@@ -92,6 +92,7 @@
             this.ckbEnPanne.TabIndex = 5;
             this.ckbEnPanne.Text = "En panne";
             this.ckbEnPanne.UseVisualStyleBackColor = true;
+            this.ckbEnPanne.Click += new System.EventHandler(this.ckbEnPanne_Click);
             // 
             // UC_PanneEngins
             // 

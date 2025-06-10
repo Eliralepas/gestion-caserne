@@ -129,7 +129,6 @@ namespace SAE_Aparcio_Claudel_Meral
                 }
                 ajoutMissions = new AjoutMissions();            // Instancier le volet 2 (Ajout de mission)
                 ajoutMissions.ajouterMission = AjouterMission;  // Lier la méthode d'ajout de mission
-                ajoutMissions.Dock = DockStyle.Fill;            // Définir le dock du volet d'ajout de mission
             }
             panelVolet.Controls.Add(ajoutMissions); // Ajouter le volet d'ajout de mission au panneau
         }
@@ -160,7 +159,6 @@ namespace SAE_Aparcio_Claudel_Meral
             if(stats == null)    // Vérifier si le tableau de statistiques n'existe pas
             {
                 stats = new Statistique(con);   // Instancier le volet de statistiques
-                stats.Dock = DockStyle.Fill;
             }
             panelVolet.Controls.Add(stats);       // Ajouter le tableau de statistiques au panneau
         }
@@ -174,7 +172,6 @@ namespace SAE_Aparcio_Claudel_Meral
             if(gestionPerso == null)
             {
                 gestionPerso = new UC_GestionPerso.GestionPerso(con);
-                gestionPerso.Dock = DockStyle.Fill;
             }
             panelVolet.Controls.Add(gestionPerso);
         }

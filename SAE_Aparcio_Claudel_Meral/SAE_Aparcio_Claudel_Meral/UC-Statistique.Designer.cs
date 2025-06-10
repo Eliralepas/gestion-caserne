@@ -69,7 +69,7 @@
             tabStatistique.Margin = new Padding(3, 4, 3, 4);
             tabStatistique.Name = "tabStatistique";
             tabStatistique.SelectedIndex = 0;
-            tabStatistique.Size = new Size(1106, 647);
+            tabStatistique.Size = new Size(995, 647);
             tabStatistique.SizeMode = TabSizeMode.Fixed;
             tabStatistique.TabIndex = 0;
             tabStatistique.SelectedIndexChanged += tabStatistique_SelectedIndexChanged;
@@ -82,7 +82,7 @@
             tabPage1.Margin = new Padding(3, 4, 3, 4);
             tabPage1.Name = "tabPage1";
             tabPage1.Padding = new Padding(3, 4, 3, 4);
-            tabPage1.Size = new Size(1098, 616);
+            tabPage1.Size = new Size(987, 616);
             tabPage1.TabIndex = 0;
             tabPage1.Text = "Engins";
             tabPage1.UseVisualStyleBackColor = true;
@@ -103,7 +103,7 @@
             grpEngins.Margin = new Padding(3, 4, 3, 4);
             grpEngins.Name = "grpEngins";
             grpEngins.Padding = new Padding(3, 4, 3, 4);
-            grpEngins.Size = new Size(1066, 608);
+            grpEngins.Size = new Size(982, 608);
             grpEngins.TabIndex = 0;
             grpEngins.TabStop = false;
             grpEngins.Text = "Statistiques relatives aux engins";
@@ -114,7 +114,7 @@
             flpMostUsedEngin.BackColor = Color.FromArgb(192, 0, 0);
             flpMostUsedEngin.Location = new Point(24, 362);
             flpMostUsedEngin.Name = "flpMostUsedEngin";
-            flpMostUsedEngin.Size = new Size(1022, 236);
+            flpMostUsedEngin.Size = new Size(944, 236);
             flpMostUsedEngin.TabIndex = 0;
             flpMostUsedEngin.WrapContents = false;
             // 
@@ -126,7 +126,7 @@
             flpHistogram.Location = new Point(21, 114);
             flpHistogram.Margin = new Padding(2);
             flpHistogram.Name = "flpHistogram";
-            flpHistogram.Size = new Size(1025, 221);
+            flpHistogram.Size = new Size(947, 221);
             flpHistogram.TabIndex = 4;
             flpHistogram.WrapContents = false;
             // 
@@ -134,7 +134,7 @@
             // 
             lblTitleMostUsedEngin.AutoSize = true;
             lblTitleMostUsedEngin.Font = new Font("Arial", 12F, FontStyle.Bold, GraphicsUnit.Point, 0);
-            lblTitleMostUsedEngin.Location = new Point(402, 341);
+            lblTitleMostUsedEngin.Location = new Point(366, 340);
             lblTitleMostUsedEngin.Margin = new Padding(2, 0, 2, 0);
             lblTitleMostUsedEngin.Name = "lblTitleMostUsedEngin";
             lblTitleMostUsedEngin.Size = new Size(289, 19);
@@ -145,7 +145,7 @@
             // 
             lblTitleEnginPerHour.AutoSize = true;
             lblTitleEnginPerHour.Font = new Font("Arial", 12F, FontStyle.Bold, GraphicsUnit.Point, 0);
-            lblTitleEnginPerHour.Location = new Point(448, 84);
+            lblTitleEnginPerHour.Location = new Point(402, 93);
             lblTitleEnginPerHour.Margin = new Padding(2, 0, 2, 0);
             lblTitleEnginPerHour.Name = "lblTitleEnginPerHour";
             lblTitleEnginPerHour.Size = new Size(193, 19);
@@ -156,7 +156,7 @@
             // 
             cbxCaserne.Font = new Font("Arial", 12F);
             cbxCaserne.FormattingEnabled = true;
-            cbxCaserne.Location = new Point(465, 46);
+            cbxCaserne.Location = new Point(428, 51);
             cbxCaserne.Margin = new Padding(2);
             cbxCaserne.Name = "cbxCaserne";
             cbxCaserne.Size = new Size(199, 26);
@@ -167,7 +167,7 @@
             // 
             lblCaserne.AutoSize = true;
             lblCaserne.Font = new Font("Arial", 12F);
-            lblCaserne.Location = new Point(366, 54);
+            lblCaserne.Location = new Point(343, 54);
             lblCaserne.Name = "lblCaserne";
             lblCaserne.Size = new Size(80, 18);
             lblCaserne.TabIndex = 0;
@@ -184,7 +184,7 @@
             tabPage2.Margin = new Padding(3, 4, 3, 4);
             tabPage2.Name = "tabPage2";
             tabPage2.Padding = new Padding(3, 4, 3, 4);
-            tabPage2.Size = new Size(1098, 616);
+            tabPage2.Size = new Size(987, 616);
             tabPage2.TabIndex = 1;
             tabPage2.Text = "Intervention";
             // 
@@ -192,18 +192,17 @@
             // 
             flpSinistreStat.AutoScroll = true;
             flpSinistreStat.BackColor = Color.FromArgb(192, 0, 0);
-            flpSinistreStat.Dock = DockStyle.Bottom;
-            flpSinistreStat.Location = new Point(3, 108);
+            flpSinistreStat.Location = new Point(8, 108);
             flpSinistreStat.Margin = new Padding(5, 3, 3, 3);
             flpSinistreStat.Name = "flpSinistreStat";
-            flpSinistreStat.Size = new Size(1092, 504);
+            flpSinistreStat.Size = new Size(973, 504);
             flpSinistreStat.TabIndex = 1;
             // 
             // lblTitleIntervention
             // 
             lblTitleIntervention.AutoSize = true;
             lblTitleIntervention.ForeColor = Color.Black;
-            lblTitleIntervention.Location = new Point(351, 22);
+            lblTitleIntervention.Location = new Point(343, 36);
             lblTitleIntervention.Name = "lblTitleIntervention";
             lblTitleIntervention.Size = new Size(341, 19);
             lblTitleIntervention.TabIndex = 0;
@@ -224,7 +223,7 @@
             tabPage3.Margin = new Padding(3, 4, 3, 4);
             tabPage3.Name = "tabPage3";
             tabPage3.Padding = new Padding(3, 4, 3, 4);
-            tabPage3.Size = new Size(1098, 616);
+            tabPage3.Size = new Size(987, 616);
             tabPage3.TabIndex = 2;
             tabPage3.Text = "Habilitation";
             // 
@@ -241,7 +240,7 @@
             // label1
             // 
             label1.AutoSize = true;
-            label1.Location = new Point(84, 88);
+            label1.Location = new Point(102, 88);
             label1.Margin = new Padding(2, 0, 2, 0);
             label1.Name = "label1";
             label1.Size = new Size(202, 19);
@@ -254,7 +253,7 @@
             cbxHabilitation.FormattingEnabled = true;
             cbxHabilitation.Location = new Point(487, 110);
             cbxHabilitation.Name = "cbxHabilitation";
-            cbxHabilitation.Size = new Size(535, 26);
+            cbxHabilitation.Size = new Size(494, 26);
             cbxHabilitation.TabIndex = 0;
             cbxHabilitation.SelectionChangeCommitted += cbxHabilitation_SelectedIndexChanged;
             // 
@@ -266,7 +265,7 @@
             flpHabilitation.ForeColor = Color.Black;
             flpHabilitation.Location = new Point(487, 146);
             flpHabilitation.Name = "flpHabilitation";
-            flpHabilitation.Size = new Size(535, 454);
+            flpHabilitation.Size = new Size(494, 454);
             flpHabilitation.TabIndex = 2;
             // 
             // pnlHabilitation
@@ -302,24 +301,23 @@
             // lblTitleHabilitation
             // 
             lblTitleHabilitation.AutoSize = true;
-            lblTitleHabilitation.Location = new Point(411, 4);
+            lblTitleHabilitation.Location = new Point(386, 29);
             lblTitleHabilitation.Margin = new Padding(2, 0, 2, 0);
             lblTitleHabilitation.Name = "lblTitleHabilitation";
             lblTitleHabilitation.Size = new Size(243, 19);
             lblTitleHabilitation.TabIndex = 6;
             lblTitleHabilitation.Text = "Habilitations les plus solicitées";
             // 
-            // UCStatistique
+            // Statistique
             // 
             AutoScaleDimensions = new SizeF(7F, 17F);
             AutoScaleMode = AutoScaleMode.Font;
-            AutoSize = true;
             BackColor = Color.DarkRed;
             Controls.Add(tabStatistique);
             Font = new Font("Arial Narrow", 10.8F, FontStyle.Regular, GraphicsUnit.Point, 0);
             Margin = new Padding(3, 4, 3, 4);
-            Name = "UCStatistique";
-            Size = new Size(1106, 647);
+            Name = "Statistique";
+            Size = new Size(995, 647);
             tabStatistique.ResumeLayout(false);
             tabPage1.ResumeLayout(false);
             grpEngins.ResumeLayout(false);
