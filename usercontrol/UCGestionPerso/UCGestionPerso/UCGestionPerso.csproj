@@ -48,6 +48,12 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="frmCreationPompier.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="frmCreationPompier.Designer.cs">
+      <DependentUpon>frmCreationPompier.cs</DependentUpon>
+    </Compile>
     <Compile Include="UCGestionPerso.cs">
       <SubType>UserControl</SubType>
     </Compile>
@@ -61,11 +67,26 @@
     <Compile Include="UCLogin.Designer.cs">
       <DependentUpon>UCLogin.cs</DependentUpon>
     </Compile>
+    <Compile Include="UCRichButton.cs">
+      <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Include="UCRichButton.Designer.cs">
+      <DependentUpon>UCRichButton.cs</DependentUpon>
+    </Compile>
     <Service Include="{94E38DFF-614B-4cbd-B67C-F211BB35CE8B}" />
   </ItemGroup>
   <ItemGroup>
+    <EmbeddedResource Include="frmCreationPompier.resx">
+      <DependentUpon>frmCreationPompier.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="UCGestionPerso.resx">
+      <DependentUpon>UCGestionPerso.cs</DependentUpon>
+    </EmbeddedResource>
     <EmbeddedResource Include="UCLogin.resx">
       <DependentUpon>UCLogin.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="UCRichButton.resx">
+      <DependentUpon>UCRichButton.cs</DependentUpon>
     </EmbeddedResource>
   </ItemGroup>
   <ItemGroup>
