@@ -11,13 +11,13 @@ using System.Data.SqlClient;
 using System.Reflection.Emit;
 using System.Net;
 
-namespace UserControlMission
+namespace UC_AjoutMission
 {
     public delegate void AjouterMission(DataRow drMission); // Déclaration de la signature du délégué pour ajouter une mission
 
-    public partial class ucMission : UserControl
+    public partial class AjoutMission : UserControl
     {
-        public ucMission()
+        public AjoutMission()
         {
             InitializeComponent();
         }
@@ -32,7 +32,7 @@ namespace UserControlMission
         DataTable dtEngin;
         bool equipeCompletePossible;
 
-        public ucMission(DataSet ds)
+        public AjoutMission(DataSet ds)
         {
             InitializeComponent();
             monDs = ds;

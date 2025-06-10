@@ -15,7 +15,7 @@ using UC_Mission;
 using System.Net;
 using System.Reflection;
 using UCGestionEngins;
-using UserControlMission;
+using UC_AjoutMission;
 using System.IO;
 using iTextSharp.text.pdf;
 using iTextSharp.text;
@@ -25,6 +25,7 @@ using Org.BouncyCastle.Asn1.IsisMtt.X509;
 using System.Xml.Linq;
 using System.Diagnostics;
 using Org.BouncyCastle.Asn1.Ocsp;
+using UC_GestionPerso;
 
 
 namespace Sae25_Main_Form
@@ -36,15 +37,16 @@ namespace Sae25_Main_Form
             InitializeComponent();
         }
 
-        private TableauDeBord tableauDeBord;
-        private UCGestionEngin gestionEngin;
-        private ucMission ajoutMission;
-        private UCStatistique tabStat;
-        private SQLiteConnection con;
-        private DataSet monDs;
-        private DataTable dtMissionsFormatees; // Déclarer une table de missions formatées pour le tableau de bord
-        private UCButton btnActuel;
-        private UCGestionPerso.UCGestionPerso tabPerso;
+        private SQLiteConnection con;           // Déclarer la connexion à la base de données
+        private DataSet monDs;                  // Déclarer le DataSet global
+        private TableauDeBord tableauDeBord;    // Déclarer le tableau de bord
+        private AjoutMission ajoutMission;      // Déclarer le volet d'ajout de mission
+        private UCGestionEngin gestionEngin;    // Déclarer le volet de gestion des engins
+        private GestionPerso gestionPerso;      // Déclarer le volet de gestion du personnel
+        private UCStatistique tabStat;          // Déclarer le tableau de statistiques
+        private DataTable dtMissionsFormatees;  // Déclarer une table de missions formatées pour le tableau de bord
+        private UCButton btnActuel;             // Déclarer le bouton actuellement actif dans la navigation
+        
 
         private void frmCaserne_Load(object sender, EventArgs e)
         {
@@ -125,7 +127,7 @@ namespace Sae25_Main_Form
                 {
                     InitTableauDeBord(); // Initialiser le tableau de bord pour l'ajout éventuel de missions
                 }
-                ajoutMission = new ucMission(monDs);            // Instancier le volet 2 (Ajout de mission)
+                ajoutMission = new AjoutMission(monDs);            // Instancier le volet 2 (Ajout de mission)
                 ajoutMission.ajouterMission = AjouterMission;   // Lier la méthode d'ajout de mission
             }
             panelVolet.Controls.Add(ajoutMission); // Ajouter le volet d'ajout de mission au panneau
@@ -167,12 +169,12 @@ namespace Sae25_Main_Form
                 con.Open();
             }
 
-            if(tabPerso == null)
+            if(gestionPerso == null)
             {
-                tabPerso = new UCGestionPerso.UCGestionPerso();
-                tabPerso.Dock = DockStyle.Fill;
+                gestionPerso = new GestionPerso(con);
+                gestionPerso.Dock = DockStyle.Fill;
             }
-            panelVolet.Controls.Add(tabPerso);
+            panelVolet.Controls.Add(gestionPerso);
         }
 
         private void LoadEngins()

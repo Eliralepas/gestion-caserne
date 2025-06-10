@@ -14,11 +14,11 @@ using System.Threading;
 using System.Threading.Tasks;
 using System.Windows.Forms;
 
-namespace UCGestionPerso
+namespace UC_GestionPerso
 {
     public delegate void validateLogin(Dictionary<string, string> KeyLogin);
 
-    public partial class UCGestionPerso : UserControl
+    public partial class GestionPerso : UserControl
     {
         SQLiteConnection _con;
         UCLogin login;
@@ -40,12 +40,12 @@ namespace UCGestionPerso
 
         public validateLogin validateLoginDel;
 
-        public UCGestionPerso()
+        public GestionPerso()
         {
             InitializeComponent();
         }
 
-        public UCGestionPerso(SQLiteConnection con) : base()
+        public GestionPerso(SQLiteConnection con) : base()
         {
             InitializeComponent();
             _con = con;

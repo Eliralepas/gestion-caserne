@@ -9,7 +9,7 @@ using System.Threading.Tasks;
 using System.Windows.Forms;
 using System.Data.SQLite;
 
-namespace UCGestionPerso
+namespace UC_GestionPerso
 {
     public partial class UCLogin : UserControl
     {

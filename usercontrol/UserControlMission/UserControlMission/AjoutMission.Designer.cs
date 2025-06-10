@@ -1,6 +1,6 @@
-﻿namespace UserControlMission
+﻿namespace UC_AjoutMission
 {
-    partial class ucMission
+    partial class AjoutMission
     {
         /// <summary>
         /// Variable nécessaire au concepteur.
