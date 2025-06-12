@@ -1,4 +1,4 @@
-﻿namespace UCGestionEngins
+﻿namespace UC_GestionEngins
 {
     partial class EnginsDisplay
     {
@@ -28,147 +28,146 @@
         /// </summary>
         private void InitializeComponent()
         {
-            this.components = new System.ComponentModel.Container();
-            this.lblEnginTitle = new System.Windows.Forms.Label();
-            this.lblCodeEngin = new System.Windows.Forms.Label();
-            this.lblTitleDate = new System.Windows.Forms.Label();
-            this.lblDate = new System.Windows.Forms.Label();
-            this.lblTitlePanne = new System.Windows.Forms.Label();
-            this.lblTitleMission = new System.Windows.Forms.Label();
-            this.pctEnginImage = new System.Windows.Forms.PictureBox();
-            this.timer = new System.Windows.Forms.Timer(this.components);
-            this.chkEnPanne = new UC_ScalableCheckBox.ScalableCheckBox();
-            this.chkEnMission = new UC_ScalableCheckBox.ScalableCheckBox();
-            ((System.ComponentModel.ISupportInitialize)(this.pctEnginImage)).BeginInit();
-            this.SuspendLayout();
+            components = new System.ComponentModel.Container();
+            lblEnginTitle = new Label();
+            lblCodeEngin = new Label();
+            lblTitleDate = new Label();
+            lblDate = new Label();
+            lblTitlePanne = new Label();
+            lblTitleMission = new Label();
+            pctEnginImage = new PictureBox();
+            timer = new System.Windows.Forms.Timer(components);
+            chkEnPanne = new UC_ScalableCheckBox.ScalableCheckBox();
+            chkEnMission = new UC_ScalableCheckBox.ScalableCheckBox();
+            ((System.ComponentModel.ISupportInitialize)pctEnginImage).BeginInit();
+            SuspendLayout();
             // 
             // lblEnginTitle
             // 
-            this.lblEnginTitle.AutoSize = true;
-            this.lblEnginTitle.Font = new System.Drawing.Font("Arial", 16F);
-            this.lblEnginTitle.Location = new System.Drawing.Point(22, 29);
-            this.lblEnginTitle.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
-            this.lblEnginTitle.Name = "lblEnginTitle";
-            this.lblEnginTitle.Size = new System.Drawing.Size(148, 32);
-            this.lblEnginTitle.TabIndex = 1;
-            this.lblEnginTitle.Text = "Identifiant :";
+            lblEnginTitle.AutoSize = true;
+            lblEnginTitle.Font = new Font("Arial", 16F);
+            lblEnginTitle.Location = new Point(22, 29);
+            lblEnginTitle.Margin = new Padding(4, 0, 4, 0);
+            lblEnginTitle.Name = "lblEnginTitle";
+            lblEnginTitle.Size = new Size(117, 25);
+            lblEnginTitle.TabIndex = 1;
+            lblEnginTitle.Text = "Identifiant :";
             // 
             // lblCodeEngin
             // 
-            this.lblCodeEngin.AutoSize = true;
-            this.lblCodeEngin.Font = new System.Drawing.Font("Arial", 16F);
-            this.lblCodeEngin.Location = new System.Drawing.Point(273, 29);
-            this.lblCodeEngin.Name = "lblCodeEngin";
-            this.lblCodeEngin.Size = new System.Drawing.Size(42, 32);
-            this.lblCodeEngin.TabIndex = 2;
-            this.lblCodeEngin.Text = "ID";
+            lblCodeEngin.AutoSize = true;
+            lblCodeEngin.Font = new Font("Arial", 16F);
+            lblCodeEngin.Location = new Point(273, 29);
+            lblCodeEngin.Name = "lblCodeEngin";
+            lblCodeEngin.Size = new Size(34, 25);
+            lblCodeEngin.TabIndex = 2;
+            lblCodeEngin.Text = "ID";
             // 
             // lblTitleDate
             // 
-            this.lblTitleDate.AutoSize = true;
-            this.lblTitleDate.Font = new System.Drawing.Font("Arial", 16F);
-            this.lblTitleDate.Location = new System.Drawing.Point(22, 68);
-            this.lblTitleDate.Name = "lblTitleDate";
-            this.lblTitleDate.Size = new System.Drawing.Size(245, 32);
-            this.lblTitleDate.TabIndex = 3;
-            this.lblTitleDate.Text = "Date d\'acquisition :";
+            lblTitleDate.AutoSize = true;
+            lblTitleDate.Font = new Font("Arial", 16F);
+            lblTitleDate.Location = new Point(22, 68);
+            lblTitleDate.Name = "lblTitleDate";
+            lblTitleDate.Size = new Size(194, 25);
+            lblTitleDate.TabIndex = 3;
+            lblTitleDate.Text = "Date d'acquisition :";
             // 
             // lblDate
             // 
-            this.lblDate.AutoSize = true;
-            this.lblDate.Font = new System.Drawing.Font("Arial", 16F);
-            this.lblDate.Location = new System.Drawing.Point(273, 68);
-            this.lblDate.Name = "lblDate";
-            this.lblDate.Size = new System.Drawing.Size(72, 32);
-            this.lblDate.TabIndex = 4;
-            this.lblDate.Text = "Date";
+            lblDate.AutoSize = true;
+            lblDate.Font = new Font("Arial", 16F);
+            lblDate.Location = new Point(273, 68);
+            lblDate.Name = "lblDate";
+            lblDate.Size = new Size(58, 25);
+            lblDate.TabIndex = 4;
+            lblDate.Text = "Date";
             // 
             // lblTitlePanne
             // 
-            this.lblTitlePanne.AutoSize = true;
-            this.lblTitlePanne.Font = new System.Drawing.Font("Arial", 16F);
-            this.lblTitlePanne.Location = new System.Drawing.Point(91, 237);
-            this.lblTitlePanne.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
-            this.lblTitlePanne.Name = "lblTitlePanne";
-            this.lblTitlePanne.Size = new System.Drawing.Size(146, 32);
-            this.lblTitlePanne.TabIndex = 5;
-            this.lblTitlePanne.Text = "En panne :";
+            lblTitlePanne.AutoSize = true;
+            lblTitlePanne.Font = new Font("Arial", 16F);
+            lblTitlePanne.Location = new Point(91, 237);
+            lblTitlePanne.Margin = new Padding(4, 0, 4, 0);
+            lblTitlePanne.Name = "lblTitlePanne";
+            lblTitlePanne.Size = new Size(114, 25);
+            lblTitlePanne.TabIndex = 5;
+            lblTitlePanne.Text = "En panne :";
             // 
             // lblTitleMission
             // 
-            this.lblTitleMission.AutoSize = true;
-            this.lblTitleMission.Font = new System.Drawing.Font("Arial", 16F);
-            this.lblTitleMission.Location = new System.Drawing.Point(74, 139);
-            this.lblTitleMission.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
-            this.lblTitleMission.Name = "lblTitleMission";
-            this.lblTitleMission.Size = new System.Drawing.Size(163, 32);
-            this.lblTitleMission.TabIndex = 6;
-            this.lblTitleMission.Text = "En mission :";
+            lblTitleMission.AutoSize = true;
+            lblTitleMission.Font = new Font("Arial", 16F);
+            lblTitleMission.Location = new Point(74, 139);
+            lblTitleMission.Margin = new Padding(4, 0, 4, 0);
+            lblTitleMission.Name = "lblTitleMission";
+            lblTitleMission.Size = new Size(130, 25);
+            lblTitleMission.TabIndex = 6;
+            lblTitleMission.Text = "En mission :";
             // 
             // pctEnginImage
             // 
-            this.pctEnginImage.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
-            | System.Windows.Forms.AnchorStyles.Right)));
-            this.pctEnginImage.ErrorImage = global::SAE_Aparcio_Claudel_Meral.Properties.Resources.Default;
-            this.pctEnginImage.Image = global::SAE_Aparcio_Claudel_Meral.Properties.Resources.Default;
-            this.pctEnginImage.Location = new System.Drawing.Point(471, 32);
-            this.pctEnginImage.Name = "pctEnginImage";
-            this.pctEnginImage.Size = new System.Drawing.Size(297, 251);
-            this.pctEnginImage.SizeMode = System.Windows.Forms.PictureBoxSizeMode.StretchImage;
-            this.pctEnginImage.TabIndex = 9;
-            this.pctEnginImage.TabStop = false;
+            pctEnginImage.Anchor = AnchorStyles.Top | AnchorStyles.Bottom | AnchorStyles.Left | AnchorStyles.Right;
+            pctEnginImage.ErrorImage = SAE_Aparcio_Claudel_Meral.Properties.Resources.Default;
+            pctEnginImage.Image = SAE_Aparcio_Claudel_Meral.Properties.Resources.Default;
+            pctEnginImage.Location = new Point(471, 32);
+            pctEnginImage.Name = "pctEnginImage";
+            pctEnginImage.Size = new Size(297, 251);
+            pctEnginImage.SizeMode = PictureBoxSizeMode.StretchImage;
+            pctEnginImage.TabIndex = 9;
+            pctEnginImage.TabStop = false;
             // 
             // timer
             // 
-            this.timer.Tick += new System.EventHandler(this.timer_Tick);
+            timer.Tick += timer_Tick;
             // 
             // chkEnPanne
             // 
-            this.chkEnPanne.AutoSizeMode = System.Windows.Forms.AutoSizeMode.GrowAndShrink;
-            this.chkEnPanne.BackColor = System.Drawing.Color.White;
-            this.chkEnPanne.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
-            this.chkEnPanne.Checked = false;
-            this.chkEnPanne.Location = new System.Drawing.Point(237, 228);
-            this.chkEnPanne.Margin = new System.Windows.Forms.Padding(0);
-            this.chkEnPanne.Name = "chkEnPanne";
-            this.chkEnPanne.ReadOnly = true;
-            this.chkEnPanne.Size = new System.Drawing.Size(50, 50);
-            this.chkEnPanne.TabIndex = 13;
+            chkEnPanne.AutoSizeMode = AutoSizeMode.GrowAndShrink;
+            chkEnPanne.BackColor = Color.White;
+            chkEnPanne.BorderStyle = BorderStyle.FixedSingle;
+            chkEnPanne.Checked = false;
+            chkEnPanne.Location = new Point(237, 228);
+            chkEnPanne.Margin = new Padding(0);
+            chkEnPanne.Name = "chkEnPanne";
+            chkEnPanne.ReadOnly = true;
+            chkEnPanne.Size = new Size(50, 50);
+            chkEnPanne.TabIndex = 13;
             // 
             // chkEnMission
             // 
-            this.chkEnMission.AutoSizeMode = System.Windows.Forms.AutoSizeMode.GrowAndShrink;
-            this.chkEnMission.BackColor = System.Drawing.Color.White;
-            this.chkEnMission.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
-            this.chkEnMission.Checked = false;
-            this.chkEnMission.Location = new System.Drawing.Point(237, 130);
-            this.chkEnMission.Margin = new System.Windows.Forms.Padding(0);
-            this.chkEnMission.Name = "chkEnMission";
-            this.chkEnMission.ReadOnly = true;
-            this.chkEnMission.Size = new System.Drawing.Size(50, 50);
-            this.chkEnMission.TabIndex = 12;
+            chkEnMission.AutoSizeMode = AutoSizeMode.GrowAndShrink;
+            chkEnMission.BackColor = Color.White;
+            chkEnMission.BorderStyle = BorderStyle.FixedSingle;
+            chkEnMission.Checked = false;
+            chkEnMission.Location = new Point(237, 130);
+            chkEnMission.Margin = new Padding(0);
+            chkEnMission.Name = "chkEnMission";
+            chkEnMission.ReadOnly = true;
+            chkEnMission.Size = new Size(50, 50);
+            chkEnMission.TabIndex = 12;
             // 
             // EnginsDisplay
             // 
-            this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.None;
-            this.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(192)))), ((int)(((byte)(0)))), ((int)(((byte)(0)))));
-            this.Controls.Add(this.chkEnPanne);
-            this.Controls.Add(this.chkEnMission);
-            this.Controls.Add(this.pctEnginImage);
-            this.Controls.Add(this.lblTitleMission);
-            this.Controls.Add(this.lblTitlePanne);
-            this.Controls.Add(this.lblDate);
-            this.Controls.Add(this.lblTitleDate);
-            this.Controls.Add(this.lblCodeEngin);
-            this.Controls.Add(this.lblEnginTitle);
-            this.Font = new System.Drawing.Font("Arial", 12F);
-            this.Margin = new System.Windows.Forms.Padding(4, 5, 4, 5);
-            this.Name = "EnginsDisplay";
-            this.Size = new System.Drawing.Size(787, 315);
-            this.Load += new System.EventHandler(this.EnginsDisplay_Load);
-            ((System.ComponentModel.ISupportInitialize)(this.pctEnginImage)).EndInit();
-            this.ResumeLayout(false);
-            this.PerformLayout();
+            AutoScaleMode = AutoScaleMode.None;
+            BackColor = Color.FromArgb(192, 0, 0);
+            Controls.Add(chkEnPanne);
+            Controls.Add(chkEnMission);
+            Controls.Add(pctEnginImage);
+            Controls.Add(lblTitleMission);
+            Controls.Add(lblTitlePanne);
+            Controls.Add(lblDate);
+            Controls.Add(lblTitleDate);
+            Controls.Add(lblCodeEngin);
+            Controls.Add(lblEnginTitle);
+            Font = new Font("Arial", 12F);
+            Margin = new Padding(4, 5, 4, 5);
+            Name = "EnginsDisplay";
+            Size = new Size(787, 315);
+            Load += EnginsDisplay_Load;
+            ((System.ComponentModel.ISupportInitialize)pctEnginImage).EndInit();
+            ResumeLayout(false);
+            PerformLayout();
 
         }
 

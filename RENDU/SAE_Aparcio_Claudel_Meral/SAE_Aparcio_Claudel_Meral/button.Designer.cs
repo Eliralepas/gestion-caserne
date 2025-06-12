@@ -1,4 +1,4 @@
-﻿namespace NavigationBarUserControl
+﻿namespace UC_Bouton
 {
     partial class button
     {

@@ -100,6 +100,14 @@ namespace UC_TableauDeBord
             }
         }
 
+
+        public void AjouterMission(DataRow dr)
+        {
+            Mission item = InitMission(dr);
+            listMissions.Insert(0, item);
+            DisplayMissions();
+        }
+
         private DataTable getEngins(int idMission)
         {
             DataTable engins = new DataTable();         //Création d'un DataTable pour stocker les engins de la mission
