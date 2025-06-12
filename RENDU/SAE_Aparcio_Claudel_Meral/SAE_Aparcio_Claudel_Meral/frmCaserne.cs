@@ -113,7 +113,6 @@ namespace SAE_Aparcio_Claudel_Meral
                 {
                     monDs.Tables["Mission"].Rows.Add(mission);
                 }
-                missionLocales.Clear();
 
                 // Recréer la table des missions formatées
                 dtMissionsFormatees = CreerTableMission();
@@ -356,6 +355,7 @@ namespace SAE_Aparcio_Claudel_Meral
             }
             else // Si la mission n'existe pas dans la base de données
             {
+                missionLocales.Remove(drMission);
                 requeteMission = InsertionMission(mission, compteRendu); // Appeler la méthode d'insertion de mission
                 InsertionMobiliser(idMission);  // Appeler la méthode d'insertion des pompiers mobilisés
                 InsertionPartirAvec(idMission); // Appeler la méthode d'insertion des engins mobilisés
