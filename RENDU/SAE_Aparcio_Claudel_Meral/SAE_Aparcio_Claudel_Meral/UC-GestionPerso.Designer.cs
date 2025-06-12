@@ -34,6 +34,7 @@
             btnModif = new Button();
             lblMatricule = new Label();
             grpCaserne = new GroupBox();
+            btnHabilitation = new Button();
             chbConge = new CheckBox();
             cboCaserne = new ComboBox();
             cboGrade = new ComboBox();
@@ -67,7 +68,6 @@
             label1 = new Label();
             btnInfo = new Button();
             btnCreate = new Button();
-            btnHabilitation = new Button();
             pnlInfo.SuspendLayout();
             grpCaserne.SuspendLayout();
             grpContact.SuspendLayout();
@@ -164,6 +164,16 @@
             grpCaserne.TabStop = false;
             grpCaserne.Text = " Carrière";
             grpCaserne.Visible = false;
+            // 
+            // btnHabilitation
+            // 
+            btnHabilitation.Location = new Point(211, 99);
+            btnHabilitation.Name = "btnHabilitation";
+            btnHabilitation.Size = new Size(196, 35);
+            btnHabilitation.TabIndex = 27;
+            btnHabilitation.Text = "Gerer Habilitations";
+            btnHabilitation.UseVisualStyleBackColor = true;
+            btnHabilitation.Click += btnHabilitation_Click;
             // 
             // chbConge
             // 
@@ -555,15 +565,6 @@
             btnCreate.Text = "Nouveau Pompier";
             btnCreate.UseVisualStyleBackColor = true;
             btnCreate.Click += btnCreate_Click;
-            // 
-            // btnHabilitation
-            // 
-            btnHabilitation.Location = new Point(211, 99);
-            btnHabilitation.Name = "btnHabilitation";
-            btnHabilitation.Size = new Size(196, 35);
-            btnHabilitation.TabIndex = 27;
-            btnHabilitation.Text = "Gerer Habilitations";
-            btnHabilitation.UseVisualStyleBackColor = true;
             // 
             // GestionPerso
             // 
