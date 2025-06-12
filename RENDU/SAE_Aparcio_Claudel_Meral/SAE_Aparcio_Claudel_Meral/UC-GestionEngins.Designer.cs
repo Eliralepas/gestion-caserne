@@ -50,16 +50,16 @@
             lblTitleCaserne.Location = new Point(55, 29);
             lblTitleCaserne.Margin = new Padding(2, 0, 2, 0);
             lblTitleCaserne.Name = "lblTitleCaserne";
-            lblTitleCaserne.Size = new Size(193, 22);
+            lblTitleCaserne.Size = new Size(187, 22);
             lblTitleCaserne.TabIndex = 0;
-            lblTitleCaserne.Text = "Choix de la carserne :";
+            lblTitleCaserne.Text = "Choix de la caserne :";
             // 
             // cbxChoixCaserne
             // 
             cbxChoixCaserne.Anchor = AnchorStyles.Top | AnchorStyles.Right;
             cbxChoixCaserne.FormattingEnabled = true;
             cbxChoixCaserne.Location = new Point(393, 28);
-            cbxChoixCaserne.Margin = new Padding(2, 2, 2, 2);
+            cbxChoixCaserne.Margin = new Padding(2);
             cbxChoixCaserne.Name = "cbxChoixCaserne";
             cbxChoixCaserne.Size = new Size(199, 23);
             cbxChoixCaserne.TabIndex = 1;
@@ -73,7 +73,7 @@
             pnlGestionEngin.Controls.Add(pnlCaserneChoice);
             pnlGestionEngin.Dock = DockStyle.Fill;
             pnlGestionEngin.Location = new Point(0, 0);
-            pnlGestionEngin.Margin = new Padding(2, 2, 2, 2);
+            pnlGestionEngin.Margin = new Padding(2);
             pnlGestionEngin.Name = "pnlGestionEngin";
             pnlGestionEngin.Size = new Size(1003, 647);
             pnlGestionEngin.TabIndex = 2;
@@ -176,7 +176,7 @@
             AutoScaleMode = AutoScaleMode.Dpi;
             BackColor = Color.Transparent;
             Controls.Add(pnlGestionEngin);
-            Margin = new Padding(2, 2, 2, 2);
+            Margin = new Padding(2);
             Name = "GestionEngins";
             Size = new Size(1003, 647);
             Load += UCGestionEngin_Load;

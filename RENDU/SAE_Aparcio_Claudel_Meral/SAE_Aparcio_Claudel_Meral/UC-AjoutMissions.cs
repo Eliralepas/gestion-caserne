@@ -187,7 +187,7 @@ namespace UC_AjoutMissions
 
             //Ajout de la ligne
             monDs.Tables["Mission"].Rows.Add(row);
-            if(ajouterMission != null)
+            if (ajouterMission != null)
             {
                 ajouterMission(row); // Appel du délégué pour ajouter la mission
             }
@@ -322,12 +322,16 @@ namespace UC_AjoutMissions
                     foreach(DataRow pomp in pompierhab)
                     {
                         int idPompier = Convert.ToInt32(pomp["matriculePompier"]);
-                        DataRow[] pompierCaserne = monDs.Tables["Affectation"].Select($"idCaserne = {idCaserne} AND matriculePompier = {idPompier}");
-                        foreach(DataRow pompierTrier in pompierCaserne)
+                        if (monDs.Tables["Pompier"].Select($"matricule = {idPompier} AND enMission = 0 AND enConge = 0").Length > 0)
                         {
-                            int[] ligne = new int[] { idPompier, idhab };
-                            listePompierNecessaire.Add(ligne);
+                            DataRow[] pompierCaserne = monDs.Tables["Affectation"].Select($"idCaserne = {idCaserne} AND matriculePompier = {idPompier}");
+                            foreach(DataRow pompierTrier in pompierCaserne)
+                            {
+                                int[] ligne = new int[] { idPompier, idhab };
+                                listePompierNecessaire.Add(ligne);
+                            }
                         }
+                        
                     }
 
                 }

@@ -47,6 +47,7 @@ namespace SAE_Aparcio_Claudel_Meral
         private DataSet monDs;                  // Déclarer le DataSet Global
         private DataTable dtMissionsFormatees;  // Déclarer une table de missions formatées pour le tableau de bord
         private Bouton btnActuel;               // Déclarer le bouton du volet actuellement ouvert
+        private List<DataRow> missionLocales = new List<DataRow>();   // Déclarer une liste de missions locales pour le tableau de bord
 
         private void frmCaserne_Load(object sender, EventArgs e)
         {
@@ -108,6 +109,11 @@ namespace SAE_Aparcio_Claudel_Meral
                     SQLiteDataAdapter da = new SQLiteDataAdapter("Select * From " + nomTable, con);
                     da.Fill(monDs, nomTable);
                 }
+                foreach (DataRow mission in missionLocales)
+                {
+                    monDs.Tables["Mission"].Rows.Add(mission);
+                }
+                missionLocales.Clear();
 
                 // Recréer la table des missions formatées
                 dtMissionsFormatees = CreerTableMission();
@@ -185,7 +191,7 @@ namespace SAE_Aparcio_Claudel_Meral
             tableauDeBord.ajouterMissionBD = AjouterMissionBD;      // Lier la méthode d'ajout de mission à la base de données
             tableauDeBord.getEnginsMission = getEnginsMission;      // Lier la méthode de récupération des engins de la mission
             tableauDeBord.creerPdfMission = CreerPdfMission;        // Lier la méthode de création du PDF de la mission
-            RemplirTableMissionsFormatees();                        // Remplir la table de missions formatées
+            //RemplirTableMissionsFormatees();                        // Remplir la table de missions formatées
             tableauDeBord.LoadMissions(dtMissionsFormatees);        // Charger les missions dans le tableau de bord
             tableauDeBord.Dock = DockStyle.Fill;                    // Définir le dock du tableau de bord
         }
@@ -312,6 +318,7 @@ namespace SAE_Aparcio_Claudel_Meral
         private void AjouterMission(DataRow drMission)
         {
             tableauDeBord.AjouterMission(FormaterMission(drMission)); // Ajouter la mission formatée au tableau de bord
+            missionLocales.Add(drMission);
         }
 
         private DataTable getEnginsMission(int idMission)
@@ -531,7 +538,7 @@ namespace SAE_Aparcio_Claudel_Meral
 
         private string CreerPdfMission(int idMission)
         {
-            DataRow drMission = monDs.Tables["Mission"].Select("id = " + idMission.ToString())[0];  // Récupérer la ligne de la mission dans le DataSet local
+            DataRow drMission = monDs.Tables["Mission"].Select("id = " + idMission.ToString()).FirstOrDefault();  // Récupérer la ligne de la mission dans le DataSet local
 
             // Logique pour générer le PDF
             try
