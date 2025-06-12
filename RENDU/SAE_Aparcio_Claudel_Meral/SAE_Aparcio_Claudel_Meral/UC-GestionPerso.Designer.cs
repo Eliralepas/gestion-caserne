@@ -67,6 +67,7 @@
             label1 = new Label();
             btnInfo = new Button();
             btnCreate = new Button();
+            btnValider = new Button();
             pnlInfo.SuspendLayout();
             grpCaserne.SuspendLayout();
             grpContact.SuspendLayout();
@@ -143,6 +144,7 @@
             // 
             // grpCaserne
             // 
+            grpCaserne.Controls.Add(btnValider);
             grpCaserne.Controls.Add(chbConge);
             grpCaserne.Controls.Add(cboCaserne);
             grpCaserne.Controls.Add(cboGrade);
@@ -554,6 +556,15 @@
             btnCreate.UseVisualStyleBackColor = true;
             btnCreate.Click += btnCreate_Click;
             // 
+            // btnValider
+            // 
+            btnValider.Location = new Point(211, 99);
+            btnValider.Name = "btnValider";
+            btnValider.Size = new Size(196, 35);
+            btnValider.TabIndex = 27;
+            btnValider.Text = "Gerer Habilitations";
+            btnValider.UseVisualStyleBackColor = true;
+            // 
             // GestionPerso
             // 
             AutoScaleDimensions = new SizeF(10F, 22F);
@@ -621,5 +632,6 @@
         private System.Windows.Forms.Label lblBip;
         private System.Windows.Forms.Label lblTel;
         private Button btnModif;
+        private Button btnValider;
     }
 }
