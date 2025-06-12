@@ -3,7 +3,7 @@ using System.Data;
 using System.Drawing;
 using System.Windows.Forms;
 
-namespace UCGestionEngins
+namespace UC_GestionEngins
 {
 
     public partial class EnginsDisplay : UserControl

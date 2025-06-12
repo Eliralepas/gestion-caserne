@@ -151,7 +151,7 @@ namespace UC_GestionPerso
                         {
                             btn = new UCRichButton(nom, id.ToString(), SAE_Aparcio_Claudel_Meral.Properties.Resources.SAP);
                         }
-                        btn.Width = flpPompier.Width - 30;
+                        //btn.Width = flpPompier.Width - 30;
                         btn.Tag = id;
                         btn.clickReturnTag += btnClickPompier;
                         flpPompier.Controls.Add(btn);

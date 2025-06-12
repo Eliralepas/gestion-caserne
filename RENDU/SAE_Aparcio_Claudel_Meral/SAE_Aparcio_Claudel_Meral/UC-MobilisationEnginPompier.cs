@@ -9,17 +9,24 @@ using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
 
-namespace UserControlMission
+namespace UC_AjoutMissions
 {
     public partial class UC_MobilisationEnginPompier : UserControl
     {
+        public UC_MobilisationEnginPompier(string premierChamp, string deuxiemeChamp, Image img)
+        {
+            InitializeComponent();
+            lblCode.Text = premierChamp;
+            lblId.Text = deuxiemeChamp;
+            ptbMobiliser.Image = img;
+        }
+
         public UC_MobilisationEnginPompier(string premierChamp, string deuxiemeChamp)
         {
             InitializeComponent();
             lblCode.Text = premierChamp;
             lblId.Text = deuxiemeChamp;
-            
+            ptbMobiliser.Visible = false;
         }
-
     }
 }

@@ -10,7 +10,7 @@ using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
 
-namespace UCGestionPerso
+namespace UC_GestionPerso
 {
     public partial class frmCreationPompier : Form
     {
@@ -26,10 +26,10 @@ namespace UCGestionPerso
         {
             try
             {
-                string cmdMatricule = $@"SELECT MAX(matricule) FROM Pompier";
+                string cmdMatricule = @"SELECT MAX(matricule) FROM Pompier";
                 SQLiteCommand cd = new SQLiteCommand(cmdMatricule, _con);
-                int matricule = Convert.ToInt32(cd.ExecuteScalar());
-                matricule++;
+                object result = cd.ExecuteScalar();
+                int matricule = (result == DBNull.Value) ? 1 : Convert.ToInt32(result) + 1;
 
                 lblMatricule.Text += matricule;
                 lblMatricule.Tag = matricule;
@@ -39,7 +39,7 @@ namespace UCGestionPerso
 
                 dtpC.MinDate = DateTime.Now.AddDays(15);
             }
-            catch (Exception er)
+            catch(Exception er)
             {
                 MessageBox.Show(er.Message);
             }
@@ -54,67 +54,70 @@ namespace UCGestionPerso
 
             e.Handled = true;
 
-            if (e.KeyChar == (char) Keys.Back)
+            // Autoriser backspace
+            if(e.KeyChar == (char)Keys.Back)
             {
                 e.Handled = false;
             }
 
-            if (char.IsLetter(e.KeyChar))
+            // Autoriser lettres
+            if(char.IsLetter(e.KeyChar))
             {
                 e.Handled = false;
             }
 
-            if (e.KeyChar == ' ' || e.KeyChar == '-')
+            // Autoriser apostrophe, espace et tiret (avec contrôles)
+            if(e.KeyChar == '\'' || e.KeyChar == ' ' || e.KeyChar == '-')
             {
                 e.Handled = false;
-                
+
                 // Pas en premier caractère
-                if (pos == 0)
+                if(pos == 0)
                 {
                     e.Handled = true;
                 }
 
-                // Pas deux espaces/tirets consécutifs
-                if ((pos > 0 && (texteActuel[pos - 1] == ' ' || texteActuel[pos - 1] == '-')))
+                // Pas deux caractères spéciaux consécutifs
+                if(pos > 0 && (texteActuel[pos - 1] == ' ' || texteActuel[pos - 1] == '-' || texteActuel[pos - 1] == '\''))
                 {
                     e.Handled = true;
                 }
-            } 
+            }
         }
 
         private void btnValider_Click(object sender, EventArgs e)
         {
             //errorProvider (champ pas remplit)
             erp.Clear();
-            if (txtNom.Text == String.Empty) { erp.SetError(txtNom, "Veuillez entrez le nom."); return; }
-            else if (txtPrenom.Text == String.Empty) { erp.SetError(txtPrenom, "Veuillez entrez le prénom."); return; }
-            else if (!rdbFemme.Checked && !rdbHomme.Checked) { erp.SetError(rdbHomme, "Veuillez choisir le sexe."); return; }
-            else if (!rdbPro.Checked && !rdbVolontaire.Checked) { erp.SetError(rdbPro, "Veuillez choisir le type du pompier."); return; }
-            else if (cboCaserne.SelectedIndex == -1) { erp.SetError(cboCaserne, "Veuillez choisir la caserne."); return; }
-            else if (cboGrade.SelectedIndex == -1) { erp.SetError(cboGrade, "Veuillez choisir le grade."); return; }
-            else if (txtTel.Text != String.Empty && txtTel.Text.Length < 10) { erp.SetError(txtTel, "Veuillez entrez le numéro de téléphone."); return; }
+            if(txtNom.Text == String.Empty) { erp.SetError(txtNom, "Veuillez entrez le nom."); return; }
+            else if(txtPrenom.Text == String.Empty) { erp.SetError(txtPrenom, "Veuillez entrez le prénom."); return; }
+            else if(!rdbFemme.Checked && !rdbHomme.Checked) { erp.SetError(rdbHomme, "Veuillez choisir le sexe."); return; }
+            else if(!rdbPro.Checked && !rdbVolontaire.Checked) { erp.SetError(rdbPro, "Veuillez choisir le type du pompier."); return; }
+            else if(cboCaserne.SelectedIndex == -1) { erp.SetError(cboCaserne, "Veuillez choisir la caserne."); return; }
+            else if(cboGrade.SelectedIndex == -1) { erp.SetError(cboGrade, "Veuillez choisir le grade."); return; }
+            else if(txtTel.Text != String.Empty && txtTel.Text.Length < 10) { erp.SetError(txtTel, "Veuillez entrez le numéro de téléphone."); return; }
 
             //creer pompier 
             TextInfo ti = CultureInfo.CurrentCulture.TextInfo;
-            string nom = ti.ToTitleCase(txtNom.Text.ToLower()); ;
+            string nom = ti.ToTitleCase(txtNom.Text.ToLower());
             string prenom = ti.ToTitleCase(txtPrenom.Text.ToLower());
 
-            string sexe="";
-            if (rdbFemme.Checked)
+            string sexe = "";
+            if(rdbFemme.Checked)
             {
                 sexe = "f";
             }
-            else if (rdbHomme.Checked)
+            else if(rdbHomme.Checked)
             {
                 sexe = "m";
             }
 
             string type = "";
-            if (rdbPro.Checked)
+            if(rdbPro.Checked)
             {
                 type = "p";
             }
-            else if (rdbVolontaire.Checked)
+            else if(rdbVolontaire.Checked)
             {
                 type = "v";
             }
@@ -128,40 +131,45 @@ namespace UCGestionPerso
             string dateE = DateTime.Now.ToString("yyyy-MM-dd", CultureInfo.InvariantCulture);
 
             string tel = null;
-            if (txtTel.Text != String.Empty)
+            if(txtTel.Text != String.Empty)
             {
                 tel = txtTel.Text;
-                
             }
 
             string dateC = null;
-            if (dtpC.Visible)
+            if(dtpC.Visible)
             {
                 dateC = dtpC.Value.ToString("yyyy-MM-dd");
             }
 
-            string requete = "";
-            if (tel == null)
-            {
-                requete = $@"INSERT INTO Pompier VALUES ({matricule}, '{nom}', '{prenom}', '{sexe}', '{dateN}', '{type}', NULL, {bip}, 0, 0, '{codeGrade}', '{dateE}')";
-            }
-            else if (tel != null)
-            {
-                requete = $@"INSERT INTO Pompier VALUES ({matricule}, '{nom}', '{prenom}', '{sexe}', '{dateN}', '{type}', '{tel}', {bip}, 0, 0, '{codeGrade}', '{dateE}')";
-            }
+            // Insertion dans Pompier avec paramètres
+            string requete = @"INSERT INTO Pompier VALUES (@matricule, @nom, @prenom, @sexe, @dateN, @type, @tel, @bip, 0, 0, @codeGrade, @dateE)";
             SQLiteCommand cd = new SQLiteCommand(requete, _con);
+
+            // Ajout des paramètres
+            cd.Parameters.AddWithValue("@matricule", matricule);
+            cd.Parameters.AddWithValue("@nom", nom);
+            cd.Parameters.AddWithValue("@prenom", prenom);
+            cd.Parameters.AddWithValue("@sexe", sexe);
+            cd.Parameters.AddWithValue("@dateN", dateN);
+            cd.Parameters.AddWithValue("@type", type);
+            cd.Parameters.AddWithValue("@tel", tel ?? (object)DBNull.Value); 
+            cd.Parameters.AddWithValue("@bip", bip);
+            cd.Parameters.AddWithValue("@codeGrade", codeGrade);
+            cd.Parameters.AddWithValue("@dateE", dateE);
+
             cd.ExecuteNonQuery();
 
-            string requete1 = "";
-            if (dateC == null)
-            {
-                requete1 = $@"INSERT INTO Affectation VALUES ({matricule}, '{dateE}', NULL, {codeCaserne})";
-            }
-            else if (dateC != null)
-            {
-                requete1 = $@"INSERT INTO Affectation VALUES ({matricule}, '{dateE}', '{dateC}', {codeCaserne})";
-            }
+            // Insertion dans Affectation avec paramètres
+            string requete1 = @"INSERT INTO Affectation VALUES (@matricule, @dateE, @dateC, @codeCaserne)";
             SQLiteCommand cd1 = new SQLiteCommand(requete1, _con);
+
+            // Ajout des paramètres
+            cd1.Parameters.AddWithValue("@matricule", matricule);
+            cd1.Parameters.AddWithValue("@dateE", dateE);
+            cd1.Parameters.AddWithValue("@dateC", dateC ?? (object)DBNull.Value); // Si dateC est null, envoie DBNull
+            cd1.Parameters.AddWithValue("@codeCaserne", codeCaserne);
+
             cd1.ExecuteNonQuery();
 
             DialogResult = DialogResult.OK;

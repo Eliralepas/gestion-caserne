@@ -124,7 +124,7 @@ namespace UC_Mission
             set
             {
                 dateFin = value;
-                lblDateFin.Text = "Fin le        :  " + dateFin.ToString();
+                lblDateFin.Text = "Fin le        : " + dateFin.ToString();
             }
         }
 
@@ -136,7 +136,7 @@ namespace UC_Mission
                 estEnCours = value;
                 if (estEnCours)
                 {
-                    lblDateFin.Text = "Fin le        :  ";
+                    lblDateFin.Text = "Fin le        : ";
                 }
                 else
                 {
