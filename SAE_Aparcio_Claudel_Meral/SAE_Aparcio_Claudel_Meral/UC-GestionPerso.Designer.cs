@@ -34,6 +34,7 @@
             btnModif = new Button();
             lblMatricule = new Label();
             grpCaserne = new GroupBox();
+            btnHabilitation = new Button();
             chbConge = new CheckBox();
             cboCaserne = new ComboBox();
             cboGrade = new ComboBox();
@@ -143,6 +144,7 @@
             // 
             // grpCaserne
             // 
+            grpCaserne.Controls.Add(btnHabilitation);
             grpCaserne.Controls.Add(chbConge);
             grpCaserne.Controls.Add(cboCaserne);
             grpCaserne.Controls.Add(cboGrade);
@@ -162,6 +164,17 @@
             grpCaserne.TabStop = false;
             grpCaserne.Text = " Carrière";
             grpCaserne.Visible = false;
+            // 
+            // btnHabilitation
+            // 
+            btnHabilitation.Location = new Point(211, 100);
+            btnHabilitation.Name = "btnHabilitation";
+            btnHabilitation.Size = new Size(194, 37);
+            btnHabilitation.TabIndex = 27;
+            btnHabilitation.Text = "gérer habilitations";
+            btnHabilitation.UseVisualStyleBackColor = true;
+            btnHabilitation.Visible = false;
+            btnHabilitation.Click += btnHabilitation_Click;
             // 
             // chbConge
             // 
@@ -621,5 +634,6 @@
         private System.Windows.Forms.Label lblBip;
         private System.Windows.Forms.Label lblTel;
         private Button btnModif;
+        private Button btnHabilitation;
     }
 }

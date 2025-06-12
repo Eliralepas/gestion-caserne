@@ -1,4 +1,5 @@
-﻿using System.Data;
+﻿using SAE_Aparcio_Claudel_Meral;
+using System.Data;
 using System.Data.SQLite;
 using System.Globalization;
 
@@ -43,7 +44,7 @@ namespace UC_GestionPerso
             }
 
             login = new UCLogin(_con);
-            login.OnLoginResult = HandleLoginResult; 
+            login.OnLoginResult = HandleLoginResult;
         }
 
         private void UCGestionPerso_Load(object sender, EventArgs e)
@@ -113,6 +114,10 @@ namespace UC_GestionPerso
 
         private void refreshPompier()
         {
+            if(Selected == null)
+            {
+                return;
+            }
             try
             {
                 if(Selected.Tag == null)
@@ -415,12 +420,12 @@ namespace UC_GestionPerso
         {
             if(!login.Connected)
             {
-                _pendingCreatePompier = true; 
-                connexionRequest(); 
+                _pendingCreatePompier = true;
+                connexionRequest();
                 return;
             }
 
-            OpenCreatePompier(); 
+            OpenCreatePompier();
         }
         private void OpenCreatePompier()
         {
@@ -502,6 +507,13 @@ namespace UC_GestionPerso
             finally
             {
                 transaction.Dispose();
+                cboCaserne.Enabled = false;
+                cboGrade.Enabled = false;
+                chbConge.Enabled = false;
+                btnHabilitation.Visible = false;
+                btnModif.Text = "Modifier";
+                btnChanger.Visible = false;
+                formPompier();
             }
         }
 
@@ -522,6 +534,7 @@ namespace UC_GestionPerso
                 chbConge.Enabled = false;
                 btnModif.Text = "Modifier";
                 btnChanger.Visible = false;
+                btnHabilitation.Visible = false;
 
                 cboGrade.SelectedValue = codeGradeInit;
                 cboCaserne.SelectedValue = idCaserneInit;
@@ -534,6 +547,7 @@ namespace UC_GestionPerso
                 chbConge.Enabled = true;
                 btnModif.Text = "Annuler";
                 btnChanger.Visible = true;
+                btnHabilitation.Visible = true;
             }
         }
 
@@ -567,16 +581,43 @@ namespace UC_GestionPerso
 
             if(success)
             {
-                btnModif.Text = "Annuler";
-                cboCaserne.Enabled = true;
-                cboGrade.Enabled = true;
-                chbConge.Enabled = true;
+              
 
                 if(_pendingCreatePompier)
                 {
                     _pendingCreatePompier = false;
-                    OpenCreatePompier(); 
+                    OpenCreatePompier();
                 }
+            }
+        }
+
+        private void btnHabilitation_Click(object sender, EventArgs e)
+        {
+            if(lblMatricule.Tag == null)
+            {
+                MessageBox.Show("Aucun pompier sélectionné !");
+                return;
+            }
+
+            int matricule = Convert.ToInt32(lblMatricule.Tag);
+            frmHabilitation habilitation = new frmHabilitation(_con, matricule);
+            DialogResult res = habilitation.ShowDialog();
+
+            if(res == DialogResult.OK)
+            {
+                var selected = habilitation.SelectedHabilitations;
+                SQLiteCommand deleteCmd = new SQLiteCommand($"DELETE FROM Passer WHERE matriculePompier = {matricule}", _con);
+                deleteCmd.ExecuteNonQuery();
+                foreach(var item in selected)
+                {
+                    string date = DateTime.Now.ToString("yyyy-MM-dd");
+                    string insert = $"INSERT INTO Passer (matriculePompier, idHabilitation, dateObtention) VALUES ({matricule}, {item.Id}, '{date}')";
+                    SQLiteCommand insertCmd = new SQLiteCommand(insert, _con);
+                    insertCmd.ExecuteNonQuery();
+                }
+
+                MessageBox.Show("Habilitations mises à jour !");
+                refreshPompier();
             }
         }
 

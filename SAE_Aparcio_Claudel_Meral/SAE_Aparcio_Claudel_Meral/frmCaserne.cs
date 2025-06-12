@@ -86,36 +86,73 @@ namespace SAE_Aparcio_Claudel_Meral
 
         private void NavigationButtonClick(object sender, EventArgs e)
         {
-            if(con.State == ConnectionState.Open) // Vérifier si la connexion est ouverte
+            // Fermer la connexion si elle est ouverte
+            if(con.State == ConnectionState.Open)
             {
-                con.Close(); // Fermer la connexion
+                con.Close();
             }
-            Bouton btn = (Bouton)sender;    // Récupérer le bouton cliqué
-            panelVolet.Visible = true;          // Rendre le panneau de volet visible
-            panelVolet.Controls.Clear();        // Vider le panneau de volet avant d'ajouter un nouveau contrôle
-            if(btnActuel != null)  // Vérifier si un bouton est déjà actif
+
+            try
             {
-                btnActuel.IsClicked = false;    // Désactiver l'état cliqué du bouton précédent
+                // Recharger les données
+                con.Open();
+
+                // Vider le DataSet existant
+                monDs.Clear();
+
+                // Récupérer le schéma et recharger toutes les tables
+                DataTable schemaTable = con.GetSchema("Tables");
+                foreach(DataRow row in schemaTable.Rows)
+                {
+                    string nomTable = row[2].ToString();
+                    SQLiteDataAdapter da = new SQLiteDataAdapter("Select * From " + nomTable, con);
+                    da.Fill(monDs, nomTable);
+                }
+
+                // Recréer la table des missions formatées
+                dtMissionsFormatees = CreerTableMission();
+                if(dtMissionsFormatees != null)
+                {
+                    dtMissionsFormatees.Clear();
+                    RemplirTableMissionsFormatees();
+                }
             }
-            btnActuel = btn;                    // Mettre à jour le bouton actuel
-            switch(btn.Tag)     // Vérifier le tag du bouton cliqué
+            catch(Exception ex)
             {
-                case ("tabBord"):
-                    LoadTableauDeBord();    // Charger le tableau de bord
+                MessageBox.Show("Erreur lors du rechargement des données: " + ex.Message);
+            }
+            finally
+            {
+                con.Close();
+            }
+
+            Bouton btn = (Bouton)sender;
+            panelVolet.Visible = true;
+            panelVolet.Controls.Clear();
+
+            if(btnActuel != null)
+            {
+                btnActuel.IsClicked = false;
+            }
+            btnActuel = btn;
+
+            switch(btn.Tag)
+            {
+                case "tabBord":
+                    LoadTableauDeBord();
                     break;
-                case ("tabStat"):
-                    LoadStatistique();      // Charger les statistiques
+                case "tabStat":
+                    LoadStatistique();
                     break;
-                case ("engins"):
-                    LoadEngins();           // Charger la gestion des engins
+                case "engins":
+                    LoadEngins();
                     break;
-                case ("nvMission"):
-                    LoadAjoutMission();     // Charger le volet d'ajout de mission
+                case "nvMission":
+                    LoadAjoutMission();
                     break;
-                case ("perso"):
+                case "perso":
                     LoadPerso();
                     break;
-
             }
         }
 
