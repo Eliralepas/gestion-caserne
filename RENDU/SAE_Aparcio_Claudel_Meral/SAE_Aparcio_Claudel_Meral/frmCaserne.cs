@@ -27,6 +27,8 @@ using Org.BouncyCastle.Asn1.Ocsp;
 using SAE_Aparcio_Claudel_Meral.Properties;
 using SAE_Aparcio_Claudel_Meral;
 using UC_GestionPerso;
+using Org.BouncyCastle.Asn1.Crmf;
+using static System.Runtime.InteropServices.JavaScript.JSType;
 
 
 namespace SAE_Aparcio_Claudel_Meral
@@ -47,8 +49,7 @@ namespace SAE_Aparcio_Claudel_Meral
         private DataSet monDs;                  // Déclarer le DataSet Global
         private DataTable dtMissionsFormatees;  // Déclarer une table de missions formatées pour le tableau de bord
         private Bouton btnActuel;               // Déclarer le bouton du volet actuellement ouvert
-        private List<DataRow> missionLocales = new List<DataRow>();   // Déclarer une liste de missions locales pour le tableau de bord
-
+        
         private void frmCaserne_Load(object sender, EventArgs e)
         {
             con = Connexion.Connec;     // Récupérer la connexion à la base de données
@@ -88,48 +89,38 @@ namespace SAE_Aparcio_Claudel_Meral
         private void NavigationButtonClick(object sender, EventArgs e)
         {
             // Fermer la connexion si elle est ouverte
-            if(con.State == ConnectionState.Open)
+            if(con.State == ConnectionState.Closed)
             {
-                con.Close();
-            }
-
-            try
-            {
-                // Recharger les données
                 con.Open();
-
-                // Vider le DataSet existant
-                monDs.Clear();
-
-                // Récupérer le schéma et recharger toutes les tables
-                DataTable schemaTable = con.GetSchema("Tables");
-                foreach(DataRow row in schemaTable.Rows)
-                {
-                    string nomTable = row[2].ToString();
-                    SQLiteDataAdapter da = new SQLiteDataAdapter("Select * From " + nomTable, con);
-                    da.Fill(monDs, nomTable);
-                }
-                foreach (DataRow mission in missionLocales)
-                {
-                    monDs.Tables["Mission"].Rows.Add(mission);
-                }
-
-                // Recréer la table des missions formatées
-                dtMissionsFormatees = CreerTableMission();
-                if(dtMissionsFormatees != null)
-                {
-                    dtMissionsFormatees.Clear();
-                    RemplirTableMissionsFormatees();
-                }
             }
-            catch(Exception ex)
+
+            // Créer un DataSet temporaire
+            DataSet dsTemp = new DataSet();
+
+            DataTable schemaTable = con.GetSchema("Tables");
+            foreach (DataRow row in schemaTable.Rows)
             {
-                MessageBox.Show("Erreur lors du rechargement des données: " + ex.Message);
+                string nomTable = row[2].ToString();
+                SQLiteDataAdapter da = new SQLiteDataAdapter("Select * From " + nomTable, con);
+
+                // Important : inclure les clés pour que le Merge puisse reconnaître les lignes existantes
+                da.MissingSchemaAction = MissingSchemaAction.AddWithKey;
+
+                da.Fill(dsTemp, nomTable);
             }
-            finally
+
+            // Fusionner dans le DataSet principal sans écraser les données locales modifiées ou ajoutées
+            monDs.Merge(dsTemp, preserveChanges: true, MissingSchemaAction.AddWithKey);
+
+            // Recréer la table des missions formatées
+            dtMissionsFormatees = CreerTableMission();
+            if(dtMissionsFormatees != null)
             {
-                con.Close();
+                dtMissionsFormatees.Clear();
+                RemplirTableMissionsFormatees();
             }
+
+            con.Close();
 
             Bouton btn = (Bouton)sender;
             panelVolet.Visible = true;
@@ -317,7 +308,6 @@ namespace SAE_Aparcio_Claudel_Meral
         private void AjouterMission(DataRow drMission)
         {
             tableauDeBord.AjouterMission(FormaterMission(drMission)); // Ajouter la mission formatée au tableau de bord
-            missionLocales.Add(drMission);
         }
 
         private DataTable getEnginsMission(int idMission)
@@ -355,7 +345,6 @@ namespace SAE_Aparcio_Claudel_Meral
             }
             else // Si la mission n'existe pas dans la base de données
             {
-                missionLocales.Remove(drMission);
                 requeteMission = InsertionMission(mission, compteRendu); // Appeler la méthode d'insertion de mission
                 InsertionMobiliser(idMission);  // Appeler la méthode d'insertion des pompiers mobilisés
                 InsertionPartirAvec(idMission); // Appeler la méthode d'insertion des engins mobilisés
