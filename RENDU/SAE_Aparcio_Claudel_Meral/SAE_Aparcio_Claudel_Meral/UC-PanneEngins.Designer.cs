@@ -28,88 +28,88 @@
         /// </summary>
         private void InitializeComponent()
         {
-            this.picBoxEngin = new System.Windows.Forms.PictureBox();
-            this.lblType = new System.Windows.Forms.Label();
-            this.lblNumero = new System.Windows.Forms.Label();
-            this.lblTextType = new System.Windows.Forms.Label();
-            this.lblTextNumero = new System.Windows.Forms.Label();
-            this.ckbEnPanne = new System.Windows.Forms.CheckBox();
-            ((System.ComponentModel.ISupportInitialize)(this.picBoxEngin)).BeginInit();
-            this.SuspendLayout();
+            picBoxEngin = new PictureBox();
+            lblType = new Label();
+            lblNumero = new Label();
+            lblTextType = new Label();
+            lblTextNumero = new Label();
+            ckbEnPanne = new CheckBox();
+            ((System.ComponentModel.ISupportInitialize)picBoxEngin).BeginInit();
+            SuspendLayout();
             // 
             // picBoxEngin
             // 
-            this.picBoxEngin.Location = new System.Drawing.Point(4, 4);
-            this.picBoxEngin.Name = "picBoxEngin";
-            this.picBoxEngin.Size = new System.Drawing.Size(142, 142);
-            this.picBoxEngin.SizeMode = System.Windows.Forms.PictureBoxSizeMode.StretchImage;
-            this.picBoxEngin.TabIndex = 0;
-            this.picBoxEngin.TabStop = false;
+            picBoxEngin.Location = new Point(4, 4);
+            picBoxEngin.Name = "picBoxEngin";
+            picBoxEngin.Size = new Size(142, 142);
+            picBoxEngin.SizeMode = PictureBoxSizeMode.StretchImage;
+            picBoxEngin.TabIndex = 0;
+            picBoxEngin.TabStop = false;
             // 
             // lblType
             // 
-            this.lblType.AutoSize = true;
-            this.lblType.Location = new System.Drawing.Point(252, 29);
-            this.lblType.Name = "lblType";
-            this.lblType.Size = new System.Drawing.Size(44, 19);
-            this.lblType.TabIndex = 1;
-            this.lblType.Text = "Type";
+            lblType.AutoSize = true;
+            lblType.Location = new Point(252, 29);
+            lblType.Name = "lblType";
+            lblType.Size = new Size(38, 16);
+            lblType.TabIndex = 1;
+            lblType.Text = "Type";
             // 
             // lblNumero
             // 
-            this.lblNumero.AutoSize = true;
-            this.lblNumero.Location = new System.Drawing.Point(252, 69);
-            this.lblNumero.Name = "lblNumero";
-            this.lblNumero.Size = new System.Drawing.Size(42, 19);
-            this.lblNumero.TabIndex = 2;
-            this.lblNumero.Text = "Num";
+            lblNumero.AutoSize = true;
+            lblNumero.Location = new Point(252, 69);
+            lblNumero.Name = "lblNumero";
+            lblNumero.Size = new Size(35, 16);
+            lblNumero.TabIndex = 2;
+            lblNumero.Text = "Num";
             // 
             // lblTextType
             // 
-            this.lblTextType.AutoSize = true;
-            this.lblTextType.Location = new System.Drawing.Point(152, 29);
-            this.lblTextType.Name = "lblTextType";
-            this.lblTextType.Size = new System.Drawing.Size(94, 19);
-            this.lblTextType.TabIndex = 3;
-            this.lblTextType.Text = "Type engin:";
+            lblTextType.AutoSize = true;
+            lblTextType.Location = new Point(152, 29);
+            lblTextType.Name = "lblTextType";
+            lblTextType.Size = new Size(81, 16);
+            lblTextType.TabIndex = 3;
+            lblTextType.Text = "Type engin:";
             // 
             // lblTextNumero
             // 
-            this.lblTextNumero.AutoSize = true;
-            this.lblTextNumero.Location = new System.Drawing.Point(152, 69);
-            this.lblTextNumero.Name = "lblTextNumero";
-            this.lblTextNumero.Size = new System.Drawing.Size(71, 19);
-            this.lblTextNumero.TabIndex = 4;
-            this.lblTextNumero.Text = "Numero:";
+            lblTextNumero.AutoSize = true;
+            lblTextNumero.Location = new Point(152, 69);
+            lblTextNumero.Name = "lblTextNumero";
+            lblTextNumero.Size = new Size(60, 16);
+            lblTextNumero.TabIndex = 4;
+            lblTextNumero.Text = "Numero:";
             // 
             // ckbEnPanne
             // 
-            this.ckbEnPanne.AutoSize = true;
-            this.ckbEnPanne.Font = new System.Drawing.Font("Arial", 10F);
-            this.ckbEnPanne.Location = new System.Drawing.Point(374, 65);
-            this.ckbEnPanne.Name = "ckbEnPanne";
-            this.ckbEnPanne.Size = new System.Drawing.Size(101, 23);
-            this.ckbEnPanne.TabIndex = 5;
-            this.ckbEnPanne.Text = "En panne";
-            this.ckbEnPanne.UseVisualStyleBackColor = true;
-            this.ckbEnPanne.Click += new System.EventHandler(this.ckbEnPanne_Click);
+            ckbEnPanne.AutoSize = true;
+            ckbEnPanne.Font = new Font("Arial", 10F);
+            ckbEnPanne.Location = new Point(374, 65);
+            ckbEnPanne.Name = "ckbEnPanne";
+            ckbEnPanne.Size = new Size(87, 20);
+            ckbEnPanne.TabIndex = 5;
+            ckbEnPanne.Text = "En panne";
+            ckbEnPanne.UseVisualStyleBackColor = true;
+            ckbEnPanne.Click += ckbEnPanne_Click;
             // 
-            // UC_PanneEngins
+            // PanneEngins
             // 
-            this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.None;
-            this.BackColor = System.Drawing.SystemColors.Control;
-            this.Controls.Add(this.ckbEnPanne);
-            this.Controls.Add(this.lblTextNumero);
-            this.Controls.Add(this.lblTextType);
-            this.Controls.Add(this.lblNumero);
-            this.Controls.Add(this.lblType);
-            this.Controls.Add(this.picBoxEngin);
-            this.Font = new System.Drawing.Font("Arial", 10F);
-            this.Name = "UC_PanneEngins";
-            this.Size = new System.Drawing.Size(500, 150);
-            ((System.ComponentModel.ISupportInitialize)(this.picBoxEngin)).EndInit();
-            this.ResumeLayout(false);
-            this.PerformLayout();
+            AutoScaleMode = AutoScaleMode.None;
+            BackColor = SystemColors.Control;
+            Controls.Add(ckbEnPanne);
+            Controls.Add(lblTextNumero);
+            Controls.Add(lblTextType);
+            Controls.Add(lblNumero);
+            Controls.Add(lblType);
+            Controls.Add(picBoxEngin);
+            Font = new Font("Arial", 10F);
+            Name = "PanneEngins";
+            Size = new Size(500, 150);
+            ((System.ComponentModel.ISupportInitialize)picBoxEngin).EndInit();
+            ResumeLayout(false);
+            PerformLayout();
 
         }
 

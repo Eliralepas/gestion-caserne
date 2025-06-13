@@ -27,7 +27,7 @@ namespace SAE_Aparcio_Claudel_Meral
                     try
                     {
 						// Chaîne de connexion à votre base de données
-						string chaine = @"Data Source = ..\..\..\SDIS67TEST2.db";
+						string chaine = @"Data Source = ..\..\..\SDIS67.db";
                         connec = new SQLiteConnection(chaine);
                         connec.Open();
                     }

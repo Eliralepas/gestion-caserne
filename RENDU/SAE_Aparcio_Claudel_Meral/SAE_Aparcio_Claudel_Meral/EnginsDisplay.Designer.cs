@@ -39,6 +39,7 @@
             timer = new System.Windows.Forms.Timer(components);
             chkEnPanne = new UC_ScalableCheckBox.ScalableCheckBox();
             chkEnMission = new UC_ScalableCheckBox.ScalableCheckBox();
+            lblcodeType = new Label();
             ((System.ComponentModel.ISupportInitialize)pctEnginImage).BeginInit();
             SuspendLayout();
             // 
@@ -147,10 +148,21 @@
             chkEnMission.Size = new Size(50, 50);
             chkEnMission.TabIndex = 12;
             // 
+            // lblcodeType
+            // 
+            lblcodeType.AutoSize = true;
+            lblcodeType.Font = new Font("Arial", 16F);
+            lblcodeType.Location = new Point(313, 29);
+            lblcodeType.Name = "lblcodeType";
+            lblcodeType.Size = new Size(83, 25);
+            lblcodeType.TabIndex = 14;
+            lblcodeType.Text = "Display";
+            // 
             // EnginsDisplay
             // 
             AutoScaleMode = AutoScaleMode.None;
             BackColor = Color.FromArgb(192, 0, 0);
+            Controls.Add(lblcodeType);
             Controls.Add(chkEnPanne);
             Controls.Add(chkEnMission);
             Controls.Add(pctEnginImage);
@@ -183,5 +195,6 @@
         private System.Windows.Forms.Timer timer;
         private UC_ScalableCheckBox.ScalableCheckBox chkEnMission;
         private UC_ScalableCheckBox.ScalableCheckBox chkEnPanne;
+        private Label lblcodeType;
     }
 }

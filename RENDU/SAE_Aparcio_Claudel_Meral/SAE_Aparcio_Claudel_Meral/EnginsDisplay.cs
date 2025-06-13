@@ -23,6 +23,7 @@ namespace UC_GestionEngins
             lblDate.DataBindings.Add("Text", EnginsList, "dateReception");
             chkEnPanne.DataBindings.Add("Checked", EnginsList,"enPanne");
             chkEnMission.DataBindings.Add("Checked", EnginsList, "enMission");
+            lblcodeType.DataBindings.Add("Text", EnginsList, "codeTypeEngin");
         }
 
         private void EnginsDisplay_Load(object sender, EventArgs e)
