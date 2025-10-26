@@ -1,6 +1,0 @@
-C:\Users\elira\OneDrive\Desktop\SAE\usercontrol\UserControlMission\UserControlMission\bin\Debug\UserControlMission.dll
-C:\Users\elira\OneDrive\Desktop\SAE\usercontrol\UserControlMission\UserControlMission\bin\Debug\UserControlMission.pdb
-C:\Users\elira\OneDrive\Desktop\SAE\usercontrol\UserControlMission\UserControlMission\obj\Debug\UserControlMission.csproj.AssemblyReference.cache
-C:\Users\elira\OneDrive\Desktop\SAE\usercontrol\UserControlMission\UserControlMission\obj\Debug\UserControlMission.csproj.CoreCompileInputs.cache
-C:\Users\elira\OneDrive\Desktop\SAE\usercontrol\UserControlMission\UserControlMission\obj\Debug\UserControlMission.dll
-C:\Users\elira\OneDrive\Desktop\SAE\usercontrol\UserControlMission\UserControlMission\obj\Debug\UserControlMission.pdb
