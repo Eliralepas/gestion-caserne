@@ -1,4 +1,4 @@
-# SAE Caserne
+# SAE Caserne ![Statut](https://img.shields.io/badge/Statut-Terminé-success)
 
 Projet de fin de 1ère année de **BUT Informatique** à l’**IUT d’Illkirch**.
 
